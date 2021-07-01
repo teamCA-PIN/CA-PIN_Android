@@ -39,7 +39,11 @@ android {
         }
 
         getByName("debug"){
-            resValue("string", "NAVER_MAP_CLIENT_ID", properties["naver_map_client_id"] as String)
+            buildConfigField(
+                "String",
+                "NAVER_MAP_CLIENT_ID",
+                properties["naver_map_client_id"] as String
+            )
         }
 
     }
