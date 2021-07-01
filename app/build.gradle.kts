@@ -1,3 +1,6 @@
+import java.util.Properties
+import java.io.FileInputStream
+
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
@@ -6,6 +9,9 @@ plugins {
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.PARCELIZE)
 }
+
+val properties = Properties()
+properties.load(FileInputStream(rootProject.file("./local.properties")))
 
 android {
     compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
@@ -19,14 +25,17 @@ android {
         versionName = BuildAndroidConfig.VERSION_NAME
 
         testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
+        buildConfigField(
+            "String",
+            "NAVER_MAP_CLIENT_ID",
+            properties["naver_map_client_id"] as String
+        )
     }
 
     buildTypes {
         getByName("release") {
             isMinifyEnabled = false
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
-        }
-        getByName("debug") {
         }
     }
     buildFeatures {

@@ -22,5 +22,6 @@ class MainActivity : AppCompatActivity() {
     private fun setNavController() {
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_nav_host) as NavHostFragment
         navController = navHostFragment.findNavController()
+
     }
 }
