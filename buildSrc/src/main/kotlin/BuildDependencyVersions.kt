@@ -1,7 +1,7 @@
 object BuildDependencyVersions {
     const val KOTLIN = "1.5.10"
 
-    const val GRADLE = "4.2.1"
+    const val GRADLE = "4.2.2"
     const val CORE_KTX = "1.5.0"
 
     const val APPCOMPAT = "1.3.0"
@@ -26,6 +26,8 @@ object BuildDependencyVersions {
     const val RETROFIT_RX_ADAPTER = "2.9.0"
 
     const val LIFECYCLE = "2.3.1"
+
+    const val NAVER_MAP = "3.12.0"
 
     //Test
     const val JUNIT = "4.13.2"

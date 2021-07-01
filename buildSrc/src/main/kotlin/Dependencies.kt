@@ -34,6 +34,7 @@ object Dependencies {
     const val RX_ANDROID = "io.reactivex.rxjava3:rxandroid:${BuildDependencyVersions.RX_ANDROID}"
     const val RETROFIT_RX_ADAPTER = "com.squareup.retrofit2:adapter-rxjava3:${BuildDependencyVersions.RETROFIT_RX_ADAPTER}"
 
+    const val NAVER_MAP = "com.naver.maps:map-sdk:${BuildDependencyVersions.NAVER_MAP}"
 
     const val ROOM = "androidx.room:room-runtime:${BuildDependencyVersions.ROOM}"
 

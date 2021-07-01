@@ -3,12 +3,13 @@ buildscript {
     repositories {
         google()
         mavenCentral()
+
     }
     dependencies {
-        classpath ("com.android.tools.build:gradle:${BuildDependencyVersions.GRADLE}")
-        classpath ("org.jetbrains.kotlin:kotlin-gradle-plugin:${BuildDependencyVersions.KOTLIN}")
-        classpath ("com.google.dagger:hilt-android-gradle-plugin:${BuildDependencyVersions.HILT}")
-        classpath ("androidx.navigation:navigation-safe-args-gradle-plugin:${BuildDependencyVersions.NAVIGATION}")
+        classpath("com.android.tools.build:gradle:${BuildDependencyVersions.GRADLE}")
+        classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${BuildDependencyVersions.KOTLIN}")
+        classpath("com.google.dagger:hilt-android-gradle-plugin:${BuildDependencyVersions.HILT}")
+        classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${BuildDependencyVersions.NAVIGATION}")
 
         // NOTE: Do not place your application dependencies here; they belong
         // in the individual module build.gradle files
@@ -19,7 +20,9 @@ allprojects {
     repositories {
         google()
         mavenCentral()
-        jcenter() // Warning: this repository is going to shut down soon
+        maven {
+            setUrl("https://naver.jfrog.io/artifactory/maven/")
+        }
     }
 }
 

@@ -1,6 +1,3 @@
-import java.util.Properties
-import java.io.FileInputStream
-
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
@@ -10,18 +7,14 @@ plugins {
     id(BuildPlugins.PARCELIZE)
 }
 
-val properties = Properties()
-properties.load(FileInputStream(rootProject.file("./local.properties")))
-
 android {
     compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
+    buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
 
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
         targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
         minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
-        buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
-
         versionCode = BuildAndroidConfig.VERSION_CODE
         versionName = BuildAndroidConfig.VERSION_NAME
 
@@ -33,9 +26,12 @@ android {
             isMinifyEnabled = false
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
+        getByName("debug") {
+        }
     }
     buildFeatures {
         dataBinding = true
+        viewBinding = true
     }
 
     compileOptions {
@@ -48,16 +44,14 @@ android {
     }
 
     dependencies {
-        implementation (Dependencies.KOTLIN)
-        implementation (Dependencies.CORE_KTX)
-        implementation (Dependencies.APPCOMPAT)
-        implementation (Dependencies.MATERIAL)
-        implementation (Dependencies.CONSTRAIN_LAYOUT)
-        testImplementation (TestDependencies.JUNIT)
-        androidTestImplementation (TestDependencies.EXT)
-        androidTestImplementation (TestDependencies.ESPRESSO)
+        implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+        implementation(Dependencies.KOTLIN)
+        implementation(Dependencies.CORE_KTX)
+        implementation(Dependencies.APPCOMPAT)
+        implementation(Dependencies.MATERIAL)
+        implementation(Dependencies.CONSTRAIN_LAYOUT)
 
-        implementation (Dependencies.FRAGMENT_KTX)
+        implementation(Dependencies.FRAGMENT_KTX)
         implementation(Dependencies.LOTTIE)
 
         implementation(Dependencies.GLIDE)
@@ -84,6 +78,11 @@ android {
         implementation(Dependencies.ROOM)
         kapt(Dependencies.ROOM_COMPILER)
 
+        implementation(Dependencies.NAVER_MAP)
+
+        testImplementation(TestDependencies.JUNIT)
+        androidTestImplementation(TestDependencies.EXT)
+        androidTestImplementation(TestDependencies.ESPRESSO)
     }
 }
 
