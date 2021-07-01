@@ -10,9 +10,6 @@ plugins {
     id(BuildPlugins.PARCELIZE)
 }
 
-val properties = Properties()
-properties.load(FileInputStream(rootProject.file("./local.properties")))
-
 android {
     compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
 
