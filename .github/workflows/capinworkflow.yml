@@ -40,7 +40,7 @@ jobs:
 
     - name: Decode NAVER_MAP_CLIENT_ID
       env:
-       BASEURL: ${{ secrets.NAVER_MAP_CLIENT_ID }}
+        NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
       run: echo NAVER_MAP_CLIENT_ID="$NAVER_MAP_CLIENT_ID" > ./local.properties
 
     - name: Change gradlew permissions
