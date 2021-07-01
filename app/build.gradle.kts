@@ -28,7 +28,7 @@ android {
         buildConfigField(
             "String",
             "NAVER_MAP_CLIENT_ID",
-            properties["naver_map_client_id"] as String
+            properties["NAVER_MAP_CLIENT_ID"] as String
         )
     }
 
@@ -42,7 +42,7 @@ android {
             buildConfigField(
                 "String",
                 "NAVER_MAP_CLIENT_ID",
-                properties["naver_map_client_id"] as String
+                properties["NAVER_MAP_CLIENT_ID"] as String
             )
         }
 
