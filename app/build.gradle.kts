@@ -5,7 +5,6 @@ plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
     id(BuildPlugins.KOTLIN_KAPT)
-    id(BuildPlugins.HILT_PLUGIN)
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.PARCELIZE)
 }
@@ -28,7 +27,7 @@ android {
         buildConfigField(
             "String",
             "NAVER_MAP_CLIENT_ID",
-            properties["NAVER_MAP_CLIENT_ID"] as String
+            properties["naver_map_client_id"] as String
         )
     }
 
@@ -39,7 +38,7 @@ android {
         }
 
         getByName("debug"){
-            resValue("string", "maps_key", properties["NAVER_MAP_CLIENT_ID"] as String)
+            resValue("string", "NAVER_MAP_CLIENT_ID", properties["naver_map_client_id"] as String)
         }
 
     }
@@ -80,8 +79,6 @@ android {
         implementation(Dependencies.NAVIGATION_FRAGMENT)
         implementation(Dependencies.NAVIGATION_UI)
 
-        implementation(Dependencies.HILT)
-        kapt(Dependencies.HILT_COMPILER)
 
         implementation(Dependencies.LIFECYCLE_LIVEDATA)
         implementation(Dependencies.LIFECYCLE_VIEWMODEL)
