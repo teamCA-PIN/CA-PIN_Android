@@ -1,7 +1,14 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs'
+    id 'kotlin-parcelize'
 }
+
+Properties properties = new Properties()
+properties.load(project.rootProject.file('local.properties').newDataInputStream())
 
 android {
     compileSdkVersion 30
@@ -33,13 +40,40 @@ android {
 }
 
 dependencies {
+    implementation (Dependencies.KOTLIN)
+    implementation (Dependencies.CORE_KTX)
+    implementation (Dependencies.APPCOMPAT)
+    implementation (Dependencies.MATERIAL)
+    implementation (Dependencies.CONSTRAIN_LAYOUT)
+    testImplementation (TestDependencies.JUNIT)
+    androidTestImplementation (TestDependencies.EXT)
+    androidTestImplementation (TestDependencies.ESPRESSO)
 
-    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
-    implementation 'androidx.core:core-ktx:1.5.0'
-    implementation 'androidx.appcompat:appcompat:1.3.0'
-    implementation 'com.google.android.material:material:1.3.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+    implementation (Dependencies.FRAGMENT_KTX)
+    implementation(Dependencies.LOTTIE)
+
+    implementation(Dependencies.GLIDE)
+    kapt(Dependencies.GLIDE_COMPILER)
+
+    implementation(Dependencies.RETROFIT)
+    implementation(Dependencies.RETROFIT_CONVERTER)
+    implementation(Dependencies.RETROFIT_RX_ADAPTER)
+    implementation(Dependencies.OKHTTP)
+
+    implementation(Dependencies.NAVIGATION_FRAGMENT)
+    implementation(Dependencies.NAVIGATION_UI)
+
+    implementation(Dependencies.HILT)
+    kapt(Dependencies.HILT_COMPILER)
+
+    implementation(Dependencies.LIFECYCLE_LIVEDATA)
+    implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+    kapt(Dependencies.LIFECYCLE_COMPILER)
+
+    implementation(Dependencies.RXJAVA)
+    implementation(Dependencies.RX_ANDROID)
+
+    implementation(Dependencies.ROOM)
+    kapt(Dependencies.ROOM_COMPILER)
+
 }
