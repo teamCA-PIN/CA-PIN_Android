@@ -28,7 +28,7 @@ android {
         buildConfigField(
             "String",
             "NAVER_MAP_CLIENT_ID",
-            properties["naver_map_client_id"] as String
+            properties["NAVER_MAP_CLIENT_ID"] as String
         )
     }
 
@@ -37,7 +37,13 @@ android {
             isMinifyEnabled = false
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
+
+        getByName("debug"){
+            resValue("string", "maps_key", properties["NAVER_MAP_CLIENT_ID"] as String)
+        }
+
     }
+
     buildFeatures {
         dataBinding = true
         viewBinding = true
