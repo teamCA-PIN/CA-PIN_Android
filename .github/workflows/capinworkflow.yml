@@ -22,6 +22,11 @@ jobs:
     runs-on: ubuntu-16.04
     steps:
     - uses: actions/checkout@v2
+
+    - name: Decode NAVER_MAP_CLIENT_ID
+      env:
+        NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
+      run: echo NAVER_MAP_CLIENT_ID=\"$NAVER_MAP_CLIENT_ID\" > ./local.properties
           
     - name: Gradle cache
       uses: actions/cache@v2
@@ -41,10 +46,7 @@ jobs:
       with:
         java-version: 1.8
 
-    - name: Decode NAVER_MAP_CLIENT_ID
-      env:
-        NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
-      run: echo NAVER_MAP_CLIENT_ID="$NAVER_MAP_CLIENT_ID" > ./local.properties
+
 
     - name: Build debug APK
       run: ./gradlew assembleDebug --stacktrace
