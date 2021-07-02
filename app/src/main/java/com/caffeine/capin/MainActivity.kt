@@ -19,7 +19,10 @@ class MainActivity : AppCompatActivity() {
         setNavController()
     }
 
+    ///test
+
     private fun setNavController() {
+        val hello = 7
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragment_nav_host) as NavHostFragment
         navController = navHostFragment.findNavController()
 
