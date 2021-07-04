@@ -35,6 +35,7 @@ object NetworkModule {
 
     @Provides
     @Singleton
+    @BaseClient
     fun provideOkHttpClient(interceptor: HttpLoggingInterceptor): OkHttpClient =
         OkHttpClient.Builder()
             .addInterceptor(interceptor)
@@ -45,8 +46,8 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    @BaseClient
-    fun provideHttpClient(client: OkHttpClient): OkHttpClient {
+    @HttpClient
+    fun provideHttpClient(@BaseClient client: OkHttpClient): OkHttpClient {
         val interceptor = Interceptor { chain ->
             val request = chain.request()
                 .newBuilder()
@@ -59,8 +60,7 @@ object NetworkModule {
     //Todo: Server URL 나오면 local.properties에 저장하고 baseUrl에 추가
     @Provides
     @Singleton
-    @HttpClient
-    fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit =
+    fun provideRetrofit(@HttpClient okHttpClient: OkHttpClient):Retrofit =
         Retrofit.Builder()
             .baseUrl("")
             .client(okHttpClient)
