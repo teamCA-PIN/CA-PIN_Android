@@ -5,10 +5,11 @@ plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
     id(BuildPlugins.KOTLIN_ANDROID)
     id(BuildPlugins.KOTLIN_KAPT)
+    id(BuildPlugins.HILT_PLUGIN)
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.PARCELIZE)
 }
-//
+
 val properties = Properties()
 properties.load(FileInputStream(rootProject.file("./local.properties")))
 
@@ -92,6 +93,9 @@ android {
 
         implementation(Dependencies.ROOM)
         kapt(Dependencies.ROOM_COMPILER)
+
+        implementation(Dependencies.HILT)
+        kapt(Dependencies.HILT_COMPILER)
 
         implementation(Dependencies.NAVER_MAP)
 
