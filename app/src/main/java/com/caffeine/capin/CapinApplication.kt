@@ -2,9 +2,7 @@ package com.caffeine.capin
 
 import android.app.Application
 import com.naver.maps.map.NaverMapSdk
-import dagger.hilt.android.HiltAndroidApp
 
-@HiltAndroidApp
 class CapinApplication: Application() {
     override fun onCreate() {
         super.onCreate()
