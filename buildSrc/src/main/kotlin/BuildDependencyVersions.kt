@@ -7,6 +7,11 @@ object BuildDependencyVersions {
     const val APPCOMPAT = "1.3.0"
     const val CONSTRAINT_LAYOUT = "2.0.4"
     const val MATERIAL = "1.3.0"
+    const val CARD_VIEW = "1.0.0"
+    const val VIEW_PAGER = "1.0.0"
+    const val RECYCLER_VIEW = "1.2.0"
+
+
 
     const val FRAGMENT_KTX = "1.3.4"
 
@@ -28,6 +33,8 @@ object BuildDependencyVersions {
     const val LIFECYCLE = "2.3.1"
 
     const val NAVER_MAP = "3.12.0"
+
+    const val CRYPTO =  "1.0.0"
 
     //Test
     const val JUNIT = "4.13.2"

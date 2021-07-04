@@ -4,11 +4,16 @@ object Dependencies {
     const val CONSTRAIN_LAYOUT = "androidx.constraintlayout:constraintlayout:${BuildDependencyVersions.CONSTRAINT_LAYOUT}"
     const val APPCOMPAT = "androidx.appcompat:appcompat:${BuildDependencyVersions.APPCOMPAT}"
     const val MATERIAL = "com.google.android.material:material:${BuildDependencyVersions.MATERIAL}"
+    const val CARD_VIEW = "androidx.cardview:cardview:${BuildDependencyVersions.CARD_VIEW}"
+    const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${BuildDependencyVersions.RECYCLER_VIEW}"
+    const val VIEW_PAGER = "androidx.viewpager2:viewpager2:${BuildDependencyVersions.VIEW_PAGER}"
+
 
     //Fragment-ktx
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${BuildDependencyVersions.FRAGMENT_KTX}"
 
     const val LOTTIE = "com.airbnb.android:lottie:${BuildDependencyVersions.LOTTIE}"
+
     const val GLIDE = "com.github.bumptech.glide:glide:${BuildDependencyVersions.GLIDE}"
 
     //Retrofit
@@ -28,6 +33,8 @@ object Dependencies {
     //Lifecycle
     const val LIFECYCLE_VIEWMODEL = "androidx.lifecycle:lifecycle-viewmodel-ktx:${BuildDependencyVersions.LIFECYCLE}"
     const val LIFECYCLE_LIVEDATA = "androidx.lifecycle:lifecycle-livedata-ktx:${BuildDependencyVersions.LIFECYCLE}"
+    const val LIFECYCLE_RUNTIME = "androidx.lifecycle:lifecycle-runtime:${BuildDependencyVersions.LIFECYCLE}"
+    const val LIFECYCLE_COMMON_JAVA = "androidx.lifecycle:lifecycle-common-java8:${BuildDependencyVersions.LIFECYCLE}"
 
     // RxJava
     const val RXJAVA = "io.reactivex.rxjava3:rxjava:${BuildDependencyVersions.RXJAVA}"
@@ -37,6 +44,9 @@ object Dependencies {
     const val NAVER_MAP = "com.naver.maps:map-sdk:${BuildDependencyVersions.NAVER_MAP}"
 
     const val ROOM = "androidx.room:room-runtime:${BuildDependencyVersions.ROOM}"
+
+    //EncryptedSharedPreference
+    const val CRYPTO = "androidx.security:security-crypto:${BuildDependencyVersions.CRYPTO}"
 
     //Compliler
     const val ROOM_COMPILER = "androidx.room:room-compiler:${BuildDependencyVersions.ROOM}"

@@ -65,6 +65,9 @@ android {
         implementation(Dependencies.APPCOMPAT)
         implementation(Dependencies.MATERIAL)
         implementation(Dependencies.CONSTRAIN_LAYOUT)
+        implementation(Dependencies.CARD_VIEW)
+        implementation(Dependencies.VIEW_PAGER)
+        implementation(Dependencies.RECYCLER_VIEW)
 
         implementation(Dependencies.FRAGMENT_KTX)
         implementation(Dependencies.LOTTIE)
@@ -85,6 +88,7 @@ android {
 
         implementation(Dependencies.LIFECYCLE_LIVEDATA)
         implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+        implementation(Dependencies.LIFECYCLE_COMMON_JAVA)
         kapt(Dependencies.LIFECYCLE_COMPILER)
 
         implementation(Dependencies.RXJAVA)
@@ -94,6 +98,8 @@ android {
         kapt(Dependencies.ROOM_COMPILER)
 
         implementation(Dependencies.NAVER_MAP)
+
+        implementation(Dependencies.CRYPTO)
 
         testImplementation(TestDependencies.JUNIT)
         androidTestImplementation(TestDependencies.EXT)
