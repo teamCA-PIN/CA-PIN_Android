@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
@@ -39,12 +40,21 @@ class MapFragment: Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        setToolbar()
     }
 
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
         setCafeInformation()
         changeMap()
+    }
+
+    private fun setToolbar() {
+        binding.toolbar.apply {
+            setMenuButton{
+                findNavController().navigate(R.id.action_mapFragment_to_mapProfileFragment)
+            }
+        }
     }
 
     private fun setCafeInformation() {

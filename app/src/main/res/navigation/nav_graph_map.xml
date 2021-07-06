@@ -3,16 +3,22 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph_map"
-    app:startDestination="@id/mapProfileFragment">
+    app:startDestination="@id/mapFragment">
 
     <fragment
         android:id="@+id/mapFragment"
         android:name="com.caffeine.capin.map.MapFragment"
         android:label="fragment_map"
-        tools:layout="@layout/fragment_map" />
+        tools:layout="@layout/fragment_map" >
+        <action
+            android:id="@+id/action_mapFragment_to_mapProfileFragment"
+            app:destination="@id/mapProfileFragment"
+            app:enterAnim="@anim/animation_slide_right_to_left"/>
+    </fragment>
     <fragment
         android:id="@+id/mapProfileFragment"
         android:name="com.caffeine.capin.MapProfileFragment"
-        android:label="MapProfileFragment" />
+        android:label="MapProfileFragment"
+        tools:layout="@layout/fragment_map_profile"/>
 
 </navigation>
