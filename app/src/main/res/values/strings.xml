@@ -2,4 +2,7 @@
     <string name="app_name">Capin</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_and_policy">약관 및 정책</string>
+    <string name="logout">로그아웃</string>
+    <string name="copyright">Copyright 2021. capin. All rights reserved.</string>
 </resources>

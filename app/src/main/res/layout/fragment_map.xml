@@ -69,10 +69,7 @@
                 android:textColor="@color/selector_map_toggle_text"
                 android:button="@null"
                 android:background="@drawable/selector_map_toggle"/>
-
         </RadioGroup>
-
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

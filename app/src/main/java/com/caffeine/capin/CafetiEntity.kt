@@ -1,4 +1,8 @@
 package com.caffeine.capin
 
-class CafetiEntity {
-}
+data class CafetiEntity(
+    val _id: String,
+    val type: String,
+    val img: String,
+    val description: String
+)
