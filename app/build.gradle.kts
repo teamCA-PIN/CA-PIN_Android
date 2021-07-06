@@ -107,4 +107,3 @@ android {
         androidTestImplementation(TestDependencies.ESPRESSO)
     }
 }
-
