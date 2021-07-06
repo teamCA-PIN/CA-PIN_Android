@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 찾기"
+        tools:layout_editor_absoluteX="126dp"
+        tools:layout_editor_absoluteY="107dp" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증번호를 입력하고, 새로운 비밀번호를 설정하세요."
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="152dp" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증번호"
+        tools:layout_editor_absoluteX="91dp"
+        tools:layout_editor_absoluteY="251dp" />
+
+    <EditText
+        android:id="@+id/edittext_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="인증번호를 입력하세요."
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="36dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <EditText
+        android:id="@+id/edittext_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="새로운 비밀번호를 입력하세요."
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="0dp"
+        tools:layout_editor_absoluteY="358dp" />
+
+    <EditText
+        android:id="@+id/edittext_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="새로운 비밀번호를 입력하세요."
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="466dp" />
+
+    <TextView
+        android:id="@+id/textView17"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="339dp" />
+
+    <TextView
+        android:id="@+id/textView18"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 확인"
+        tools:layout_editor_absoluteX="88dp"
+        tools:layout_editor_absoluteY="432dp" />
+
+    <Button
+        android:id="@+id/button4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="변경하기"
+        tools:layout_editor_absoluteX="115dp"
+        tools:layout_editor_absoluteY="575dp" />
+
+    <Button
+        android:id="@+id/button6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="인증하기"
+        tools:layout_editor_absoluteX="256dp"
+        tools:layout_editor_absoluteY="244dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        tools:layout_editor_absoluteX="142dp"
+        tools:layout_editor_absoluteY="57dp" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="사용자 이름"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="123dp" />
+
+
+    <EditText
+        android:id="@+id/edittext_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="김카핀"
+        android:textColor="#302323"
+        android:textColorHint="#c4c4c4"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="-16dp"
+        tools:layout_editor_absoluteY="156dp" />
+
+
+    <EditText
+        android:id="@+id/edittext_pw"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="capin@naver.com"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="81dp"
+        tools:layout_editor_absoluteY="289dp"
+
+    <EditText
+        android:id="@+id/edittext_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="***********"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="47dp"
+        tools:layout_editor_absoluteY="434dp"
+
+    <EditText
+        android:id="@+id/edittext_id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="***********"
+        android:textSize="15sp"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="524dp"
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="2~10자 이내의 한글, 영문, 숫자 사용가능"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="215dp" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이메일 아이디"
+        tools:layout_editor_absoluteX="25dp"
+        tools:layout_editor_absoluteY="270dp" />
+
+    <TextView
+        android:id="@+id/textView9"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호를 잊어버렸을 때 회원가입 시 입력한 이메일로 임시 비밀번호를 보내드립니다."
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="330dp" />
+
+    <TextView
+        android:id="@+id/textView10"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호"
+        tools:layout_editor_absoluteX="54dp"
+        tools:layout_editor_absoluteY="415dp" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 확인"
+        tools:layout_editor_absoluteX="55dp"
+        tools:layout_editor_absoluteY="505dp" />
+
+    <Button
+        android:id="@+id/button2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="가입하기"
+        tools:layout_editor_absoluteX="161dp"
+        tools:layout_editor_absoluteY="602dp" />
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:srcCompat="@drawable/icon_delete_1616"
+        tools:layout_editor_absoluteX="329dp"
+        tools:layout_editor_absoluteY="142dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

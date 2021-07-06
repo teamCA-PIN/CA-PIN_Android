@@ -8,6 +8,7 @@ plugins {
     id(BuildPlugins.HILT_PLUGIN)
     id(BuildPlugins.NAVIGATION_SAFE_ARGS)
     id(BuildPlugins.PARCELIZE)
+
 }
 
 val properties = Properties()
@@ -106,4 +107,5 @@ android {
         androidTestImplementation(TestDependencies.ESPRESSO)
     }
 }
+
 
