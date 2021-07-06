@@ -18,7 +18,6 @@ class CapinToolbar @JvmOverloads constructor(
 
     init {
         binding.root.apply {
-            setBackgroundResource(R.drawable.map_toolbar_raidus_background)
             clipToOutline = true
         }
     }

@@ -1,21 +1,20 @@
 package com.caffeine.capin
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.RadioGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.*
+import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.OverlayImage
 import dagger.hilt.android.AndroidEntryPoint
-import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class MapFragment: Fragment(), OnMapReadyCallback {
@@ -32,7 +31,6 @@ class MapFragment: Fragment(), OnMapReadyCallback {
         binding = FragmentMapBinding.inflate(layoutInflater, container, false)
         mapView = binding.mapview
         mapView.getMapAsync(this)
-
         return binding.root
     }
 
@@ -96,7 +94,6 @@ class MapFragment: Fragment(), OnMapReadyCallback {
         marker.position = location
         marker.icon = OverlayImage.fromResource(R.drawable.marker_capinmap_unselected)
         marker.map = naverMap
-        Log.e("marker", "${marker.position}")
         activeMarkers.add(marker)
     }
 
