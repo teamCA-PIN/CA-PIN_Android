@@ -7,4 +7,37 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <color name="gray_1">#f9f9f9</color>
+    <color name="pointcolor_1">#a98e7a</color>
+    <color name="subcolor_blue_3">#bbdcef</color>
+    <color name="subcolor_blue_2">#cee4f1</color>
+    <color name="subcolor_blue_1">#dcecf5</color>
+    <color name="subcolor_blue_4">#91c2de</color>
+    <color name="gray_3">#c4c4c4</color>
+    <color name="gray_2">#ededed</color>
+    <color name="gray_4">#878787</color>
+    <color name="subcolor_brown_3">#947d6c</color>
+    <color name="subcolor_brown_1">#d6c7bc</color>
+    <color name="subcolor_brown_2">#c6b2a3</color>
+    <color name="subcolor_brown_4">#6b513d</color>
+    <color name="pointcolor_yellow">#ffcd6b</color>
+    <color name="category_1">#6492f5</color>
+    <color name="white_3">#07ffffff</color>
+    <color name="category_2">#6bbc9a</color>
+    <color name="category_3">#ffc24b</color>
+    <color name="category_5">#ffc2d5</color>
+    <color name="category_4">#816f7c</color>
+    <color name="category_6">#c9d776</color>
+    <color name="category_7">#b2b9e5</color>
+    <color name="category_8">#ff8e8e</color>
+    <color name="category_10">#9dc5e8</color>
+    <color name="category_9">#ebeaef</color>
+    <color name="pointcolor_green">#91b185</color>
+    <color name="maincolor_1">#6b503c</color>
+    <color name="logo_skyblue">#acd4eb</color>
+    <color name="pointcolor_red">#f45e5e</color>
+    <color name="background_cover">#99000000</color>
+    <color name="logo_brown">#927865</color>
+    <color name="logo_white">#ccffffff</color>
 </resources>
