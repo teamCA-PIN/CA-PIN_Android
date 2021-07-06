@@ -9,8 +9,8 @@ class MapProfileViewModel: ViewModel() {
     val userInfo: LiveData<UserEntity>
         get() = _userInfo
 
-    fun getUserInfo() {
-        _userInfo.value = DummyUserInfo
+    fun fetchUserInfo() {
+        _userInfo.value = dummyUserInfo
     }
 
 
@@ -22,7 +22,7 @@ class MapProfileViewModel: ViewModel() {
             "hello i'm ENTJ"
         )
 
-        private val DummyUserInfo = UserEntity(
+        private val dummyUserInfo = UserEntity(
             "핸드피쓰",
             "capin@teamcapin.com",
             56,

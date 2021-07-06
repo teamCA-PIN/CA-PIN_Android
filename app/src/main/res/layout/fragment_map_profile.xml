@@ -9,7 +9,6 @@
             type="com.caffeine.capin.MapProfileViewModel" />
     </data>
 
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -33,31 +32,34 @@
             android:background="@drawable/cafeti_asset"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_nickName"
+            style="@style/Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text=""
             android:layout_marginTop="40dp"
-            android:theme="@style/Headline2"
-            android:textSize="20dp"
+            android:text="@{viewModel.userInfo.nickName}"
             android:textColor="@color/black"
+            android:textSize="20dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/imageview_cafeti"
-            app:layout_constraintStart_toStartOf="@id/imageview_cafeti"
-            app:layout_constraintEnd_toEndOf="@id/imageview_cafeti"
-            tools:text="김카핀"/>
+            tools:text="김카핀" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_email"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:theme="@style/Body3"
+            android:layout_marginTop="3dp"
+            style="@style/Body3"
+            android:text="@{viewModel.userInfo.email}"
             android:textColor="@color/gray_4"
-            android:layout_marginTop="8dp"
+            android:textSize="12dp"
             app:layout_constraintTop_toBottomOf="@id/textview_nickName"
             app:layout_constraintStart_toStartOf="@id/textview_nickName"
             app:layout_constraintEnd_toEndOf="@id/textview_nickName"
@@ -67,12 +69,12 @@
             android:id="@+id/textview_cafeti"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/toggle_selected"
-            android:theme="@style/Body3"
+            android:background="@drawable/background_cafeti_tag"
+            style="@style/Body3"
+            android:paddingHorizontal="8dp"
+            android:text="@{viewModel.userInfo.cafeti.type}"
             android:layout_marginTop="11dp"
             android:textColor="@color/white"
-            android:paddingHorizontal="12dp"
-            android:paddingVertical="2dp"
             app:layout_constraintTop_toBottomOf="@id/textview_email"
             app:layout_constraintStart_toStartOf="@id/textview_email"
             app:layout_constraintEnd_toEndOf="@id/textview_email"
@@ -83,13 +85,13 @@
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/background_archive_info"
+            android:elevation="5dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:0.575"
-            android:elevation="5dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_cafeti"
-            app:layout_constraintVertical_bias="0.236"
+            app:layout_constraintVertical_bias="0.098"
             app:layout_constraintWidth_percent="0.55">
 
             <TextView
@@ -98,12 +100,12 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="20dp"
+                android:text="아카이브"
                 android:textColor="@color/pointcolor_1"
                 android:textSize="16dp"
                 android:theme="@style/Subhead"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                tools:text="아카이브" />
+                app:layout_constraintTop_toTopOf="parent" />
 
             <androidx.appcompat.widget.AppCompatButton
                 android:id="@+id/button_archive"
@@ -120,30 +122,32 @@
                 android:id="@+id/textview_pin"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="핀"
+                android:layout_marginTop="10dp"
                 android:textColor="@color/gray_4"
                 android:textSize="14dp"
                 android:theme="@style/Body2"
                 app:layout_constraintBottom_toTopOf="@+id/textview_feed"
                 app:layout_constraintStart_toStartOf="@id/textview_archive"
-                app:layout_constraintTop_toBottomOf="@+id/textview_archive"
-                tools:text="핀" />
+                app:layout_constraintTop_toBottomOf="@+id/textview_archive" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_feed"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="피드"
                 android:textColor="@color/gray_4"
                 android:textSize="14dp"
                 android:theme="@style/Body2"
-                android:layout_marginTop="4dp"
                 app:layout_constraintStart_toStartOf="@id/textview_pin"
-                app:layout_constraintTop_toBottomOf="@+id/textview_pin"
-                tools:text="피드" />
+                app:layout_constraintTop_toBottomOf="@+id/textview_pin" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_pin_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.userInfo.pinNum)}"
                 android:textColor="@color/subcolor_blue_4"
                 android:textSize="14dp"
                 android:theme="@style/Body2"
@@ -155,6 +159,7 @@
                 android:id="@+id/textview_feed_count"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="@{Integer.toString(viewModel.userInfo.reviewNum)}"
                 android:textColor="@color/subcolor_blue_4"
                 android:textSize="14dp"
                 android:theme="@style/Body2"
@@ -175,9 +180,9 @@
             app:layout_constraintVertical_bias="0.215"
             android:text="@string/terms_and_policy"
             app:layout_constraintTop_toBottomOf="@id/constraintlayout_archive"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@id/constraintlayout_archive"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintEnd_toEndOf="@id/constraintlayout_archive" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_logout"
@@ -189,8 +194,8 @@
             android:textSize="14dp"
             android:text="@string/logout"
             app:layout_constraintTop_toBottomOf="@id/textview_terms"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintStart_toStartOf="@id/textview_terms"
+            app:layout_constraintEnd_toEndOf="@id/textview_terms" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_copyright"
