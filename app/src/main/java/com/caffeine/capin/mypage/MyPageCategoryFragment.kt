@@ -47,7 +47,7 @@ class MyPageCategoryFragment : Fragment() {
                     name = "기본 카테고리",
                     cafeNum = 1
                 ),
-                
+
                 Category(
                     color = "6bbc9a",
                     name = "카테고리1",
