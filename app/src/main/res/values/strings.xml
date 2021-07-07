@@ -5,4 +5,5 @@
     <string name="mypage_hello">안녕하세요!</string>
     <string name="mypage_dear">님</string>
     <string name="mypage_profile_edit">프로필 편집</string>
+    <string name="mypage_category_add">새 카테고리</string>
 </resources>

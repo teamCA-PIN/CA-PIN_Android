@@ -6,8 +6,10 @@
 
     <ImageView
         android:id="@+id/mypage_tab_icon"
-        android:layout_width="28dp"
-        android:layout_height="28dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.156"
+        app:layout_constraintDimensionRatio="1:1"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
