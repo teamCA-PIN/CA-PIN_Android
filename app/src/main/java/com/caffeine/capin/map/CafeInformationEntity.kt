@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.map
 
 data class CafeInformationEntity(
     val latitude: Double,
