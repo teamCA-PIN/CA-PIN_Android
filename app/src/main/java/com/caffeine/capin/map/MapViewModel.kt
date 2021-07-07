@@ -1,13 +1,27 @@
 package com.caffeine.capin.map
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.naver.maps.map.overlay.Marker
+import java.util.*
+import kotlin.collections.ArrayList
 
 class MapViewModel : ViewModel() {
     private val _cafeInformation = MutableLiveData<List<CafeInformationEntity>>()
     val cafeInformation: LiveData<List<CafeInformationEntity>>
         get() = _cafeInformation
+
+    private val markerList = ArrayList<Marker>()
+
+    private val _exposedMarker = MutableLiveData<ArrayList<Marker>>()
+    val exposedMarker: LiveData<ArrayList<Marker>>
+        get() = _exposedMarker
+
+    private val _selectedMarker = MutableLiveData<Marker>()
+    val selectedMarker: LiveData<Marker>
+        get() = _selectedMarker
 
     fun switchToCapinMap() {
         _cafeInformation.value = capinMapInfo
@@ -15,6 +29,19 @@ class MapViewModel : ViewModel() {
 
     fun switchToMyMap() {
         _cafeInformation.value = myMapInfo
+    }
+
+    fun addExposedMarker(marker: Marker) {
+        markerList.add(marker)
+        _exposedMarker.value = markerList
+    }
+
+    fun clearExposedMarker() {
+        _exposedMarker.value?.clear()
+    }
+
+    fun changeSelectedMarker(marker: Marker) {
+        _selectedMarker.value = marker
     }
 
     companion object {
