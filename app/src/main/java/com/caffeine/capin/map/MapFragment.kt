@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng

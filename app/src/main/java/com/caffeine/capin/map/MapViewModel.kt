@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.map
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

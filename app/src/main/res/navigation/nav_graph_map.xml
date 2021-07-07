@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.caffeine.capin.MapFragment"
+        android:name="com.caffeine.capin.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" />
 

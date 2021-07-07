@@ -5,4 +5,5 @@
     <string name="mypage_hello">안녕하세요!</string>
     <string name="mypage_dear">님</string>
     <string name="mypage_profile_edit">프로필 편집</string>
+    <string name="tagfilter_find_cafe">어떤 카페를 찾고 계신가요?</string>
 </resources>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_find_cafe"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Headline1"
+            android:textColor="@color/black"
+            android:textSize="20sp"
+            app:layout_constraintVertical_bias="0.046"
+            android:text="@string/tagfilter_find_cafe"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/ic_icon_close_black"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintTop_toTopOf="@id/textview_find_cafe"
+            app:layout_constraintBottom_toBottomOf="@id/textview_find_cafe"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="16dp"/>
+
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_select_filter"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Body2"
+            android:textColor="@color/gray_4"
+            android:textSize="14sp"
+            app:layout_constraintVertical_bias="0.0886"
+            android:text="@string/tagfilter_find_cafe"
+            app:layout_constraintTop_toBottomOf="@id/textview_find_cafe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.caffeine.capin.customview.TagFilterCheckbox
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.614"
+            android:text="커피 맛집"
+            app:layout_constraintDimensionRatio="1:0.23"
+            app:layout_constraintTop_toBottomOf="@id/textview_select_filter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>
