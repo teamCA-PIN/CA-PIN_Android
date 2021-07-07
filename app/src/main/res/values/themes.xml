@@ -26,4 +26,17 @@
         <item name="cornerSizeBottomRight">10dp</item>
 
     </style>
+
+    <style name="mypage_profile_circle">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="MyPageTabTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <item name="colorPrimary">@color/white</item>                                <!-- 배경 -->
+
+        <item name="android:textColorPrimary">@color/pointcolor_1</item>       <!-- 탭바 선택된 텍스트 -->
+        <item name="android:textColorSecondary">@color/gray_2</item>     <!-- 탭바 텍스트 -->
+
+        <item name="colorAccent">@color/pointcolor_1</item>                    <!-- 하단 움직이는 바 색-->
+    </style>
 </resources>

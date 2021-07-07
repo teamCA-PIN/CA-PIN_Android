@@ -5,4 +5,7 @@
     <string name="terms_and_policy">약관 및 정책</string>
     <string name="logout">로그아웃</string>
     <string name="copyright">Copyright 2021. capin. All rights reserved.</string>
+    <string name="mypage_hello">안녕하세요!</string>
+    <string name="mypage_dear">님</string>
+    <string name="mypage_profile_edit">프로필 편집</string>
 </resources>
