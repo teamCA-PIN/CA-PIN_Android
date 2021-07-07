@@ -6,10 +6,24 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mypage.MyPageCategoryFragment">
 
+    <TextView
+        android:id="@+id/if_basic_category_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/if_basic_category"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="276dp"
+        android:theme="@style/Body2"
+        android:textColor="@color/gray_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.caffeine.capin.NestedScrollableHost
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintVertical_bias="0.0"
+        android:layout_marginTop="12dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -56,6 +70,7 @@
                        app:layout_constraintTop_toTopOf="@id/mypage_category_add_cl"/>
 
                </androidx.constraintlayout.widget.ConstraintLayout>
+
 
                <include
                    android:id="@+id/mypage_category_rcv_include"

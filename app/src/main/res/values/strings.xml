@@ -9,4 +9,6 @@
     <string name="mypage_dear">님</string>
     <string name="mypage_profile_edit">프로필 편집</string>
     <string name="mypage_category_add">새 카테고리</string>
+    <string name="if_basic_category">원하는 장소에 핀하면\n
+        카테고리 별로 모아볼 수 있어요</string>
 </resources>

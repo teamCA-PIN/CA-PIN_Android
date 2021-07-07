@@ -1,7 +1,9 @@
 package com.caffeine.capin.category
 
+import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemRecyclerviewCategoryBinding
 
@@ -30,8 +32,13 @@ class CategoryAdapter : RecyclerView.Adapter<CategoryAdapter.CategoryViewHolder>
         private val binding: ItemRecyclerviewCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(category: Category){
+            binding.rcvCategoryColorIv.setBackgroundColor(Color.parseColor("#${category.color}"))
             binding.rcvCategoryNameTv.text = category.name
             binding.rcvCategoryPinNumTv.text = category.cafeNum.toString()
+
+            if (category.name == "기본 카테고리") {
+                binding.rcvCategoryEditBtn.isVisible = false
+            }
         }
     }
 }
