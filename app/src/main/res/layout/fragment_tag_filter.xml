@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -38,22 +39,41 @@
             android:textColor="@color/gray_4"
             android:textSize="14sp"
             app:layout_constraintVertical_bias="0.0886"
-            android:text="@string/tagfilter_find_cafe"
+            android:text="@string/select_tag_filter"
             app:layout_constraintTop_toBottomOf="@id/textview_find_cafe"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
 
-        <com.caffeine.capin.customview.TagFilterCheckbox
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.614"
-            android:text="커피 맛집"
-            app:layout_constraintDimensionRatio="1:0.23"
-            app:layout_constraintTop_toBottomOf="@id/textview_select_filter"
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerview_tag_filter"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:itemCount="6"
+            app:layout_constraintVertical_bias="0.37"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toTopOf="@+id/button_result"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toBottomOf="@id/textview_select_filter"
+            tools:listitem="@layout/item_tag_filter" />
 
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/button_result"
+            style="@style/Headline1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="42dp"
+            android:paddingVertical="22dp"
+            android:background="@color/gray_1"
+            android:textAlignment="center"
+            android:text="@string/tagfilter_button"
+            android:textColor="@color/gray_4"
+            android:textSize="20sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

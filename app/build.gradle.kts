@@ -1,6 +1,8 @@
 import org.gradle.internal.impldep.com.jcraft.jsch.ConfigRepository.defaultConfig
 import java.util.Properties
 import java.io.FileInputStream
+import extensions.implementation
+import extensions.kapt
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)

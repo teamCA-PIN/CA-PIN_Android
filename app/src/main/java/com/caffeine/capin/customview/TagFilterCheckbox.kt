@@ -18,7 +18,7 @@ class TagFilterCheckbox @JvmOverloads constructor(
     init {
         setBackgroundResource(R.drawable.selector_tagfilter)
         buttonDrawable = null
-        gravity = Gravity.CENTER_VERTICAL
+        gravity = Gravity.CENTER
         setFontFamily()
         setOnClickListener { }
         setTextColor()
