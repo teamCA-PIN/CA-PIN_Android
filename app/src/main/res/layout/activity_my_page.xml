@@ -74,7 +74,7 @@
 
         <ImageView
             android:id="@+id/mypage_cafeti_iv"
-            android:layout_width="52dp"
+            android:layout_width="53dp"
             android:layout_height="17dp"
             android:layout_marginTop="12dp"
             app:layout_constraintStart_toStartOf="@+id/mypage_username_tv"
@@ -85,12 +85,15 @@
             android:id="@+id/mypage_cafeti_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:includeFontPadding="false"
             android:text="WBFJ"
             android:textColor="@color/white"
-            android:theme="@style/Body3"
-            app:layout_constraintEnd_toEndOf="@+id/mypage_cafeti_iv"
-            app:layout_constraintStart_toStartOf="@+id/mypage_cafeti_iv"
-            app:layout_constraintTop_toTopOf="@+id/mypage_cafeti_iv" />
+            android:textSize="12dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintEnd_toEndOf="@id/mypage_cafeti_iv"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_cafeti_iv"
+            app:layout_constraintStart_toStartOf="@+id/mypage_cafeti_iv" />
 
         <ImageView
             android:id="@+id/mypage_profile_edit_btn"
@@ -116,11 +119,13 @@
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/mypage_tab_layout"
             android:layout_width="0dp"
-            android:layout_height="35dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.043"
             android:layout_marginTop="32dp"
             app:tabSelectedTextColor="@color/pointcolor_1"
             app:tabIndicatorColor="@color/pointcolor_1"
             app:tabRippleColor="#ffffffff"
+            android:background="@drawable/mypage_tab_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mypage_profile_iv">
