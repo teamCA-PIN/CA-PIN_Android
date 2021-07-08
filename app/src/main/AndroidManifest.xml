@@ -14,13 +14,12 @@
         android:theme="@style/Theme.Capin"
         android:usesCleartextTraffic="true">
         <activity android:name=".mypage.MyPageActivity" />
-        <activity android:name=".detail.CafeDetailsActivity"></activity>
         <activity android:name=".MainActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <!--            <intent-filter>-->
+            <!--                <action android:name="android.intent.action.MAIN" />-->
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+            <!--                <category android:name="android.intent.category.LAUNCHER" />-->
+            <!--            </intent-filter>-->
         </activity>
 
         <activity android:name=".LoginActivity">
@@ -30,10 +29,11 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".FindPasswordActivity">
-        </activity>
-        <activity android:name=".LoginPwActivity"/>
-        <activity android:name=".SignUpActivity"/>
-        <activity android:name=".SplashActivity"/>
+        <activity android:name=".FindPasswordActivity"></activity>
+        <activity android:name=".LoginPwActivity" />
+        <activity android:name=".SignUpActivity" />
+        <activity android:name=".SplashActivity" />
+        <activity android:name=".detail.CafeDetailsActivity" />
     </application>
+
 </manifest>

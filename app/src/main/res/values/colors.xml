@@ -40,5 +40,6 @@
     <color name="background_cover">#99000000</color>
     <color name="logo_brown">#927865</color>
     <color name="logo_white">#ccffffff</color>
->>>>>>> develop
+
+    <color name="mask_">#AAf9f9f9</color>
 </resources>
