@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.map
 
 data class CafetiEntity(
     val _id: String,

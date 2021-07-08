@@ -6,14 +6,14 @@
     <data>
         <variable
             name="viewModel"
-            type="com.caffeine.capin.MapProfileViewModel" />
+            type="com.caffeine.capin.profile.MapProfileViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/subcolor_blue_1"
-        tools:context=".MapProfileFragment">
+        tools:context=".profile.MapProfileFragment">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:layout_width="wrap_content"

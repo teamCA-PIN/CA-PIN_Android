@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.profile
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -30,5 +30,4 @@ class MapProfileFragment : Fragment() {
         binding.viewModel = viewModel
         viewModel.fetchUserInfo()
     }
-
 }
