@@ -6,6 +6,8 @@ import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.caffeine.capin.customview.CapinChip
+import com.google.android.material.chip.ChipGroup
 
 object BindingAdapter {
     @BindingAdapter("load_url")
@@ -28,5 +30,13 @@ object BindingAdapter {
             .load(imageUrl)
             .transform(RoundedCorners(5.toPx()), CenterCrop())
             .into(imageView)
+    }
+
+    @BindingAdapter("app:chipTitles")
+    fun bindingChipsToChipGroup(chipGroup: ChipGroup, chipTitles: List<String>?) {
+        if (chipTitles.isNullOrEmpty()) return
+        chipGroup.removeAllViews()
+        chipTitles.map { CapinChip.create(chipGroup.context).apply { text = it } }
+            .forEach { chipGroup.addView(it) }
     }
 }
