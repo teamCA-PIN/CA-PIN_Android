@@ -15,12 +15,25 @@
         android:usesCleartextTraffic="true">
         <activity android:name=".mypage.MyPageActivity"></activity>
         <activity android:name=".MainActivity">
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
+
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
+        </activity>
+
+        <activity android:name=".LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".FindPasswordActivity">
+        </activity>
+        <activity android:name=".LoginPwActivity"/>
+        <activity android:name=".SignUpActivity"/>
+        <activity android:name=".SplashActivity"/>
     </application>
 
 </manifest>
