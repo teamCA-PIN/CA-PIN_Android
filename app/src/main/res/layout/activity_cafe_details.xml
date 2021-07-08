@@ -291,7 +291,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/textView9"
                     tools:itemCount="3"
-                    tools:listitem="@layout/item_review" />
+                    tools:listitem="@layout/item_cafe_review" />
 
                 <TextView
                     android:id="@+id/text_review_empty"
