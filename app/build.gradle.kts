@@ -107,5 +107,7 @@ android {
         testImplementation(TestDependencies.JUNIT)
         androidTestImplementation(TestDependencies.EXT)
         androidTestImplementation(TestDependencies.ESPRESSO)
+        implementation("com.google.android.gms:play-services-location:16.0.0")
+
     }
 }

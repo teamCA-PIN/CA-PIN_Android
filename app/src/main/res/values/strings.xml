@@ -8,6 +8,7 @@
     <string name="mypage_hello">안녕하세요!</string>
     <string name="mypage_dear">님</string>
     <string name="mypage_profile_edit">프로필 편집</string>
+
     <string name="mypage_category_add">새 카테고리</string>
     <string name="if_basic_category">원하는 장소에 핀하면\n카테고리 별로 모아볼 수 있어요</string>
     <string name="tagfilter_find_cafe">어떤 카페를 찾고 계신가요?</string>
@@ -16,9 +17,11 @@
     <string name="show_menu_details">메뉴 상세보기</string>
     <string name="float_0_1">%.1f</string>
     <string name="plus_n">+%d</string>
+
     <string name="profile_edit">프로필 편집</string>
     <string name="cafeti">카페TI 검사</string>
     <string name="edit_name">이름 변경하기</string>
     <string name="profile_edit_description">공백없이 2-10자 내외로, 한글,영문,숫자만 입력 가능합니다.</string>
     <string name="profile_edit_complete">완료</string>
 </resources>
+

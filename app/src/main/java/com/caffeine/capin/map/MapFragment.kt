@@ -1,23 +1,29 @@
 package com.caffeine.capin.map
 
+import android.Manifest
+import android.app.Activity
+import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
+import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.MapView
-import com.naver.maps.map.NaverMap
-import com.naver.maps.map.OnMapReadyCallback
+import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
+import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,6 +33,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var naverMap: NaverMap
     private lateinit var mapView: MapView
     private val selectedMarker = Marker()
+    private lateinit var locationSource: FusedLocationSource
+    private var count = 0
+
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,14 +50,47 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
+        setCafeInformation()
         setToolbar()
+        showCafeCardView()
+        showToast()
     }
 
     override fun onMapReady(naverMap: NaverMap) {
         this.naverMap = naverMap
-        setCafeInformation()
+        naverMap.uiSettings.isZoomControlEnabled = false
+        naverMap.uiSettings.isLocationButtonEnabled = false
+        binding.zoomcontrolview.map = naverMap
+        binding.locationButton.map = naverMap
+
         changeMap()
-        fetchSelectedCafe()
+        setMarker()
+        checkPermissions()
+    }
+
+    private fun checkPermissions() {
+        if (ActivityCompat.checkSelfPermission(requireContext(), LOCATION_PERMISSION)
+            == PackageManager.PERMISSION_GRANTED
+        ) {
+            moveToMyLocation()
+        } else {
+            requestLocationPermission.launch(LOCATION_PERMISSION)
+        }
+    }
+
+    private val requestLocationPermission =
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
+                moveToMyLocation()
+            }
+        }
+
+    private fun moveToMyLocation() {
+        locationSource = FusedLocationSource(this, PERMISSION_FUSED_LOCATION)
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+        naverMap.locationSource = locationSource
+
     }
 
     private fun setToolbar() {
@@ -56,7 +98,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             setMenuButton {
                 findNavController().navigate(R.id.action_mapFragment_to_mapProfileFragment)
             }
-            setTagSearchButton{
+            setTagSearchButton {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
             }
         }
@@ -70,6 +112,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun changeMap() {
+        binding.radiogroupMap.check(binding.radiobuttonCapinMap.id)
         binding.radiogroupMap.setOnCheckedChangeListener { _, checkedId ->
             freeActiveMarkers()
             selectedMarker.map = null
@@ -87,12 +130,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun setCameraChangeListener() {
         naverMap.addOnCameraChangeListener { reason, animated ->
-            freeActiveMarkers()
             setMarkersInsideCamera()
             if (viewModel.selectedMarker.value != null) {
-                selectLocation(viewModel.selectedMarker.value!!.position)
+                setMarker()
             }
-
         }
     }
 
@@ -101,47 +142,65 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val westBound = naverMap.coveringBounds.westLongitude
         val northBound = naverMap.coveringBounds.northLatitude
         val southBound = naverMap.coveringBounds.southLatitude
-
+        viewModel.removeAllCafeCurrentCamera()
         viewModel.cafeInformation.value?.forEach { location ->
             if (location.longtitude in westBound..eastBound) {
                 if (location.latitude in southBound..northBound) {
-                    setMarker(LatLng(location.latitude, location.longtitude))
+                    viewModel.addCafeInsideCurrentCamera(location)
                 }
             }
         }
     }
 
-    private fun setMarker(location: LatLng) {
-        val marker = Marker()
-        marker.position = location
-        marker.icon = OverlayImage.fromResource(R.drawable.marker_capinmap_unselected)
-        marker.map = naverMap
-        viewModel.addExposedMarker(marker)
+    private fun showCafeCardView() {
+        viewModel.selectedCafeInfo.observe(viewLifecycleOwner) { selectedCafe ->
+            if (selectedCafe != null) {
+                binding.cardviewCafeSelected.visibility = View.VISIBLE
+            } else {
+                binding.cardviewCafeSelected.visibility = View.GONE
+            }
+        }
+    }
 
-        viewModel.exposedMarker.value?.forEach { marker ->
-            marker.setOnClickListener(object : Overlay.OnClickListener{
-                override fun onClick(overlay: Overlay): Boolean {
-                    if (overlay is Marker) {
-                        viewModel.changeSelectedMarker(overlay)
-                        return true
-                    }
-                    return false
+    private fun setMarker() {
+        viewModel.cafeSelectedStatus.observe(viewLifecycleOwner) { cafeList ->
+            freeActiveMarkers()
+            cafeList.forEach { cafe ->
+                val marker = Marker()
+                marker.position = LatLng(cafe.key.latitude, cafe.key.longtitude)
+                viewModel.addExposedMarker(marker)
+
+                if (cafe.value) {
+                    marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_active_cate_10)
+                    marker.map = naverMap
+                } else {
+                    marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_inactive_cate_10)
+                    marker.map = naverMap
                 }
-            })
+
+                //Todo: OnClickListener 메서드 분리시키기
+                marker.setOnClickListener(object : Overlay.OnClickListener {
+                    override fun onClick(overlay: Overlay): Boolean {
+                        if (overlay is Marker) {
+                            if (marker.position.latitude == cafe.key.latitude && marker.position.longitude == cafe.key.longtitude) {
+                                viewModel.changeSelectedCafeInfo(cafe.key)
+                                viewModel.changeMapValue(cafe.key, true)
+                            } else {
+                                viewModel.changeMapValue(cafe.key, false)
+                            }
+                            return true
+                        }
+                        return false
+                    }
+                })
+            }
         }
     }
 
-    private fun fetchSelectedCafe() {
-        viewModel.selectedMarker.observe(viewLifecycleOwner) { marker ->
-            selectLocation(marker.position)
+    private fun showToast() {
+        binding.buttonSaveCafe.setOnClickListener {
+            createCapinToast(requireContext(), "카테고리에 저장되었습니다.",325)?.show()
         }
-    }
-
-    private fun selectLocation(location: LatLng) {
-            selectedMarker.map = null
-            selectedMarker.position = location
-            selectedMarker.icon = OverlayImage.fromResource(R.drawable.ic_pin_selected)
-            selectedMarker.map = naverMap
     }
 
     private fun freeActiveMarkers() {
@@ -149,5 +208,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             marker.map = null
         }
         viewModel.clearExposedMarker()
+    }
+
+    companion object {
+        private val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
+        private const val PERMISSION_FUSED_LOCATION = 1000
     }
 }
