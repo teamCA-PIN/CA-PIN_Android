@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.chip.Chip xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/chip_tag"
+    style="@style/Widget.MaterialComponents.Chip.Choice"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:fontFamily="@font/noto_sans_kr"
+    android:textColor="@color/white"
+    app:chipBackgroundColor="@color/pointcolor_1"
+    app:chipCornerRadius="30dp"
+    app:chipMinTouchTargetSize="2dp"
+    app:rippleColor="@android:color/transparent"
+    app:textEndPadding="8dp"
+    app:textStartPadding="8dp"
+    tools:text="공간이넓은" />
