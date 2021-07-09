@@ -5,6 +5,8 @@ import android.widget.ImageView
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
+import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.shape.ShapeAppearanceModel
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
@@ -18,6 +20,12 @@ object BindingAdapter {
     @JvmStatic
     fun ImageView.loadImageView(url: String?) {
         Glide.with(context).load(url).into(this)
+    }
+
+    @BindingAdapter("app:useCircleOutlineRadius")
+    @JvmStatic
+    fun ShapeableImageView.useCircleOutline(radius: Float) {
+        shapeAppearanceModel = ShapeAppearanceModel().withCornerSize(radius)
     }
 
     @BindingAdapter("set_color")
