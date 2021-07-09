@@ -2,6 +2,11 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.caffeine.capin.map.MapViewModel" />
+    </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,6 +29,25 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.naver.maps.map.widget.ZoomControlView
+            android:id="@+id/zoomcontrolview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.356"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.naver.maps.map.widget.LocationButtonView
+            android:id="@+id/location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/zoomcontrolview"
+            app:layout_constraintStart_toStartOf="@id/zoomcontrolview"
+            app:layout_constraintEnd_toEndOf="@id/zoomcontrolview"/>
 
 
         <RadioGroup
@@ -79,6 +103,7 @@
             app:layout_constraintDimensionRatio="1:0.49"
             android:layout_marginBottom="12dp"
             app:cardCornerRadius="10dp"
+            android:visibility="gone"
             app:layout_constraintBottom_toTopOf="@id/radiogroup_map"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -93,6 +118,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     style="@style/Headline1"
+                    android:text="@{viewModel.selectedCafeInfo.name}"
                     android:textColor="@color/black"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="20dp"
@@ -116,6 +142,7 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     style="@style/Body4"
+                    android:text="@{Double.toString(viewModel.selectedCafeInfo.rating)}"
                     android:layout_marginEnd="20dp"
                     android:textColor="@color/pointcolor_yellow"
                     android:layout_marginTop="16dp"
@@ -128,6 +155,7 @@
                     android:id="@+id/imageview_cafe"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
+                    load_url="@{viewModel.selectedCafeInfo.cafeImage}"
                     app:layout_constraintWidth_percent="0.275"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -144,6 +172,7 @@
                     style="@style/Body3"
                     android:textColor="@color/gray_4"
                     android:textSize="12dp"
+                    android:text="@{viewModel.selectedCafeInfo.address}"
                     app:layout_constraintTop_toTopOf="@id/imageview_cafe"
                     app:layout_constraintEnd_toEndOf="@id/textview_cafe_rating"
                     app:layout_constraintStart_toEndOf="@id/imageview_cafe"
@@ -156,6 +185,7 @@
                     android:layout_height="wrap_content"
                     style="@style/Body5"
                     android:textSize="12dp"
+                    android:text="@{viewModel.selectedCafeInfo.tag}"
                     android:paddingVertical="4dp"
                     android:paddingHorizontal="10dp"
                     android:background="@drawable/tagfilter_selected"
@@ -165,6 +195,7 @@
                     tools:text="브런치카페"/>
 
                 <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/button_save_cafe"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:background="@drawable/ic_icon_pinplus"
