@@ -22,4 +22,21 @@ data class CafeReview(
     fun hasPhoto(): Boolean = imageUrls.isNotEmpty()
 
     fun getRecommendStrings(): List<String> = recommend.map { it.description }
+
+    fun getReviewImageUrlFirst(): String? = imageUrls.getOrNull(0)
+
+    fun getReviewImageUrlSecond(): String? = imageUrls.getOrNull(1)
+
+    fun getReviewImageUrlThird(): String? = imageUrls.getOrNull(2)
+
+    fun getReviewImageUrlFourth(): String? = imageUrls.getOrNull(3)
+
+    fun getImageOverCount(): Int {
+        val diffCount = imageUrls.size - MAX_REVIEW_IMAGE_COUNT
+        return if (diffCount < 0) 0 else diffCount
+    }
+
+    companion object {
+        private const val MAX_REVIEW_IMAGE_COUNT = 4
+    }
 }
