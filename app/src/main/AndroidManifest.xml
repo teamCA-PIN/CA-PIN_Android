@@ -23,17 +23,28 @@
         </activity>
 
         <activity android:name=".LoginActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".FindPasswordActivity">
         </activity>
         <activity android:name=".LoginPwActivity"/>
         <activity android:name=".SignUpActivity"/>
         <activity android:name=".SplashActivity"/>
+        <activity android:name=".cafeti.CoffeeTasteActivity"/>
+        <activity android:name=".cafeti.CafeColorActivity"/>
+        <activity android:name=".cafeti.CafeStyleActivity"/>
+        <activity android:name=".cafeti.CoffeeMenuActivity"/>
+        <activity android:name=".cafeti.CafetiActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".cafeti.CafetiResultActivity"/>
+        <activity android:name=".cafeti.CoffeeMostActivity"/>
+
     </application>
 
 </manifest>
