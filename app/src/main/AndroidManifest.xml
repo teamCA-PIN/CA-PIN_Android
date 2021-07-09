@@ -13,17 +13,15 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".mypage.MyPageActivity">
+        <activity android:name=".mypage.MyPageActivity"></activity>
+        <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
+        <activity android:name=".mypage.MyPageProfileEditActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-        <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
-        <activity android:name=".mypage.MyPageProfileEditActivity" />
-        <activity android:name=".MainActivity">
-
         </activity>
     </application>
 
