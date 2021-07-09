@@ -6,29 +6,25 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.caffeine.capin.R
+import com.caffeine.capin.databinding.FragmentMyPageCategoryBinding
 import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
+import com.caffeine.capin.util.AutoClearedValue
 
 
 class MyPageReviewFragment : Fragment() {
 
-    private var _binding: FragmentMyPageReviewBinding? = null
-    private val binding get() = _binding ?: error("View 를 참조하기위해 binding 이 초기화 되지 않았습니다.")
+    private var binding by AutoClearedValue<FragmentMyPageReviewBinding>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        _binding = FragmentMyPageReviewBinding.inflate(
+        binding = FragmentMyPageReviewBinding.inflate(
             inflater,
             container,
             false
         )
         return binding.root
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

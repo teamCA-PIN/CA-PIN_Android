@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="39dp"
+        android:text="회원가입"
+        style="@style/Headline1"
+        android:textColor="#000000"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.004"
+        app:layout_constraintWidth_percent="0.197" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView4"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:text="사용자 이름"
+        android:textColor="#6b503c"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="이메일을 입력하세요."
+        style="@style/Body1"
+        android:paddingVertical="6dp"
+        android:textColorHint="#c4c4c4"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView6" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="사용할 이름을 입력하세요."
+        style="@style/Body1"
+        android:paddingVertical="6dp"
+        android:textColorHint="#c4c4c4"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView4"
+        app:layout_constraintWidth_percent="0.772" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_pw"
+        style="@style/Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="비밀번호를 입력하세요."
+        android:paddingVertical="6dp"
+        android:textColorHint="#c4c4c4"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/textView10" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_pwagain"
+        style="@style/Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="비밀번호를 한번 더 입력하세요"
+        android:paddingVertical="6dp"
+        android:textColorHint="#c4c4c4"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_pw"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="2~10자 이내의 한글, 영문, 숫자 사용가능"
+        style="@style/Body3"
+        android:textColor="#878787"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="이메일 아이디"
+        style="@style/Subhead"
+        android:textColor="#6b503c"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView9"
+        style="@style/Body3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="비밀번호를 잊어버렸을 때 회원가입 시 입력한 이메일로\n임시 비밀번호를 보내드립니다."
+        android:textColor="#878787"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_email" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView10"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="비밀번호"
+        android:textColor="#6b503c"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_pw"
+        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView11"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:text="비밀번호 확인"
+        android:textColor="#6b503c"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_pw"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_pw" />
+
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_signup"
+        style="@style/Body1"
+        android:layout_width="219dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/circle_image_view"
+        android:text="가입하기"
+        android:textSize="16dp"
+        android:textColor="#ffffff"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_pwagain"
+        app:layout_constraintVertical_bias="0.769"
+        app:layout_constraintWidth_percent="0.608" />
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintEnd_toStartOf="@+id/textView"
+
+        app:layout_constraintHorizontal_bias="0.088"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_back_black" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

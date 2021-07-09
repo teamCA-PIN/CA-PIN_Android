@@ -1,5 +1,6 @@
 package com.caffeine.capin.util
 
+import android.graphics.Color
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
@@ -17,5 +18,12 @@ object BindingAdapter {
     @JvmStatic
     fun ShapeableImageView.useCircleOutline(radius: Float) {
         shapeAppearanceModel = ShapeAppearanceModel().withCornerSize(radius)
+    }
+
+    @BindingAdapter("set_color")
+    @JvmStatic
+    fun ImageView.getCategoryColor(color: String) {
+        val hexCode = "#${color}"
+        setBackgroundColor(Color.parseColor(hexCode))
     }
 }
