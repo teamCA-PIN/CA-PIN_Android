@@ -22,14 +22,6 @@
 <!--            </intent-filter>-->
         </activity>
 
-        <activity android:name=".LoginActivity">
-
-        </activity>
-        <activity android:name=".FindPasswordActivity">
-        </activity>
-        <activity android:name=".LoginPwActivity"/>
-        <activity android:name=".SignUpActivity"/>
-        <activity android:name=".SplashActivity"/>
         <activity android:name=".cafeti.CoffeeTasteActivity"/>
         <activity android:name=".cafeti.CafeColorActivity"/>
         <activity android:name=".cafeti.CafeStyleActivity"/>
@@ -41,7 +33,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".cafeti.CafetiResultActivity"/>
         <activity android:name=".cafeti.CoffeeMostActivity"/>
 
