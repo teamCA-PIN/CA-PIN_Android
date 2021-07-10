@@ -1,5 +1,6 @@
 package com.caffeine.capin.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -20,6 +21,8 @@ class MyPageActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        profileEditButtonClickEvent()
 
         viewPager = binding.mypageViewpager
 
@@ -44,5 +47,12 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         return tabView.root
+    }
+
+    private fun profileEditButtonClickEvent() {
+        binding.mypageProfileEditBtn.setOnClickListener {
+            val intent = Intent(this@MyPageActivity, MyPageProfileEditActivity::class.java)
+            startActivity(intent)
+        }
     }
 }
