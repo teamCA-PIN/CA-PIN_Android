@@ -1,0 +1,180 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".mypage.MyPageProfileEditActivity">
+
+        <ImageView
+            android:id="@+id/profile_edit_back_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="38dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/icon_back_black" />
+
+        <TextView
+            android:id="@+id/profile_edit_headlin_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="39dp"
+            android:text="@string/profile_edit"
+            android:textColor="@color/black"
+            android:theme="@style/Headline1"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/profile_edit_cafeti_btn"
+            android:layout_width="96dp"
+            android:layout_height="32dp"
+            android:layout_marginTop="112dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/mypage_border_round_rectangle_skyblue_39dp" />
+
+        <TextView
+            android:id="@+id/profile_edit_dafeti_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/cafeti"
+            android:textColor="@color/subcolor_blue_3"
+            android:theme="@style/BtnText"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_cafeti_btn"
+            app:layout_constraintEnd_toEndOf="@+id/profile_edit_cafeti_btn"
+            app:layout_constraintStart_toStartOf="@+id/profile_edit_cafeti_btn"
+            app:layout_constraintTop_toTopOf="@+id/profile_edit_cafeti_btn" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_edit_profile_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.417"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginTop="94dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/profile_edit_headlin_tv"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/mypage_profile_circle"
+            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/profile_edit_profile_edit_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.106"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintEnd_toEndOf="@id/profile_edit_profile_iv"
+            app:layout_constraintBottom_toBottomOf="@id/profile_edit_profile_iv"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/mypage_profile_circle"
+            android:background="@color/gray_2"/>
+
+        <ImageView
+            android:id="@+id/profile_edit_camera_iv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_profile_edit_btn"
+            app:layout_constraintEnd_toEndOf="@+id/profile_edit_profile_edit_btn"
+            app:layout_constraintStart_toStartOf="@+id/profile_edit_profile_edit_btn"
+            app:layout_constraintTop_toTopOf="@+id/profile_edit_profile_edit_btn"
+            app:srcCompat="@drawable/icon_camera" />
+
+        <TextView
+            android:id="@+id/profile_edit_name_headline_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="43dp"
+            android:text="@string/edit_name"
+            android:textColor="@color/black"
+            android:theme="@style/Headline1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_edit_profile_iv" />
+
+        <TextView
+            android:id="@+id/profile_Edit_description_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="@string/profile_edit_description"
+            android:textColor="@color/gray_4"
+            android:theme="@style/Body3"
+            app:layout_constraintStart_toStartOf="@+id/profile_edit_name_headline_tv"
+            app:layout_constraintTop_toBottomOf="@+id/profile_edit_name_headline_tv" />
+
+        <ImageView
+            android:id="@+id/profile_edit_complete_btn"
+            android:layout_width="154dp"
+            android:layout_height="48dp"
+            android:layout_marginBottom="57dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:srcCompat="@drawable/round_rectangle_brown_24dp" />
+
+        <TextView
+            android:id="@+id/profile_edit_complete_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/profile_edit_complete"
+            android:textColor="@color/white"
+            android:theme="@style/Subhead"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_complete_btn"
+            app:layout_constraintEnd_toEndOf="@+id/profile_edit_complete_btn"
+            app:layout_constraintStart_toStartOf="@+id/profile_edit_complete_btn"
+            app:layout_constraintTop_toTopOf="@+id/profile_edit_complete_btn" />
+
+        <EditText
+            android:id="@+id/profile_edit_name_edt"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginEnd="11dp"
+            android:ems="10"
+            android:theme="@style/Body1"
+            android:textColor="@color/black"
+            android:backgroundTint="@color/gray_4"
+            android:cursorVisible="false"
+            android:maxLength="10"
+            android:singleLine="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/profile_Edit_description_tv" />
+
+        <ImageView
+            android:id="@+id/profile_edit_name_delete_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:visibility="invisible"
+            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_name_edt"
+            app:layout_constraintEnd_toEndOf="@+id/profile_edit_name_edt"
+            app:layout_constraintTop_toTopOf="@+id/profile_edit_name_edt"
+            app:srcCompat="@drawable/icon_delete_1616" />
+
+        <TextView
+            android:id="@+id/profile_edit_name_length_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="0/10"
+            android:theme="@style/Body3"
+            android:textColor="@color/gray_4"
+            android:layout_marginEnd="3dp"
+            app:layout_constraintEnd_toEndOf="@+id/profile_edit_name_edt"
+            app:layout_constraintTop_toBottomOf="@+id/profile_edit_name_edt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

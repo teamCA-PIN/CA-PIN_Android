@@ -1,3 +1,4 @@
+.idea/
 *.iml
 .gradle
 /local.properties
@@ -103,3 +104,9 @@ lint/tmp/
 # Android Profiling
 *.hprof
 
+# SonarQube
+.sonar/
+.scannerwork/
+.sonarlint/
+.idea/sonarlint/
+.idea/sonarIssues.xml

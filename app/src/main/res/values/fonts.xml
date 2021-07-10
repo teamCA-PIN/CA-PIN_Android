@@ -3,71 +3,71 @@
     <style name="Display1">
         <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">26dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
     <style name="Display2">
         <item name="android:fontFamily">@font/noto_sans_kr</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">26sp</item>
+        <item name="android:textSize">26dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
     <style name="Headline1">
         <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
     <style name="Headline2">
         <item name="android:fontFamily">@font/noto_sans_kr</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">20sp</item>
+        <item name="android:textSize">20dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
     <style name="BtnText">
         <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
     <style name="Subhead">
         <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
     <style name="Body1">
         <item name="android:fontFamily">@font/noto_sans_kr</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">16sp</item>
+        <item name="android:textSize">16dp</item>
         <item name="android:letterSpacing">-0.03</item>
     </style>
     <style name="Body4">
         <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
     </style>
     <style name="Body2">
         <item name="android:fontFamily">@font/noto_sans_kr</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">14sp</item>
+        <item name="android:textSize">14dp</item>
         <item name="android:letterSpacing">-0.05</item>
-        <item name="android:lineSpacingExtra">7sp</item>
+        <item name="android:lineSpacingExtra">7dp</item>
     </style>
     <style name="Body5">
         <item name="android:fontFamily">@font/noto_sans_kr_medium</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">12dp</item>
     </style>
     <style name="Body3">
         <item name="android:fontFamily">@font/noto_sans_kr</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">12sp</item>
+        <item name="android:textSize">12dp</item>
     </style>
     <style name="Sub">
         <item name="android:fontFamily">@font/noto_sans_kr</item>
         <item name="android:textStyle">normal</item>
-        <item name="android:textSize">8sp</item>
+        <item name="android:textSize">8dp</item>
         <item name="android:letterSpacing">-0.05</item>
     </style>
 </resources>

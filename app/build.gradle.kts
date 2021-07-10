@@ -1,6 +1,8 @@
 import org.gradle.internal.impldep.com.jcraft.jsch.ConfigRepository.defaultConfig
 import java.util.Properties
 import java.io.FileInputStream
+import extensions.implementation
+import extensions.kapt
 
 plugins {
     id(BuildPlugins.ANDROID_APPLICATION)
@@ -105,6 +107,7 @@ android {
         testImplementation(TestDependencies.JUNIT)
         androidTestImplementation(TestDependencies.EXT)
         androidTestImplementation(TestDependencies.ESPRESSO)
+        implementation("com.google.android.gms:play-services-location:16.0.0")
+
     }
 }
-

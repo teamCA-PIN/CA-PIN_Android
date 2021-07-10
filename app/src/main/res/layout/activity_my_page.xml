@@ -10,7 +10,135 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MyPageActivity">
+        tools:context=".mypage.MyPageActivity">
+
+        <ImageView
+            android:id="@+id/mypage_close_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.083"
+            app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.046"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:srcCompat="@drawable/icon_close_black" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/mypage_profile_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.243"
+            app:layout_constraintDimensionRatio="1:1.031"
+            app:layout_constraintVertical_bias="0.105"
+            android:layout_marginStart="17dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:scaleType="centerCrop"
+            app:shapeAppearanceOverlay="@style/mypage_profile_circle"
+            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+
+        <TextView
+            android:id="@+id/mypage_hello_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="15dp"
+            android:layout_marginTop="7dp"
+            android:text="@string/mypage_hello"
+            android:textColor="@color/gray_3"
+            android:theme="@style/Body1"
+            app:layout_constraintStart_toEndOf="@+id/mypage_profile_iv"
+            app:layout_constraintTop_toTopOf="@+id/mypage_profile_iv" />
+
+        <TextView
+            android:id="@+id/mypage_username_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="김카핀"
+            android:textColor="@color/subcolor_brown_4"
+            android:theme="@style/Headline1"
+            app:layout_constraintStart_toStartOf="@+id/mypage_hello_tv"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_hello_tv" />
+
+        <TextView
+            android:id="@+id/mypage_dear_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_dear"
+            android:textColor="@color/gray_3"
+            android:theme="@style/Headline2"
+            app:layout_constraintStart_toEndOf="@+id/mypage_username_tv"
+            app:layout_constraintTop_toTopOf="@id/mypage_username_tv" />
+
+        <ImageView
+            android:id="@+id/mypage_cafeti_iv"
+            android:layout_width="53dp"
+            android:layout_height="17dp"
+            android:layout_marginTop="12dp"
+            app:layout_constraintStart_toStartOf="@+id/mypage_username_tv"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_username_tv"
+            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+
+        <TextView
+            android:id="@+id/mypage_cafeti_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/noto_sans_kr_regular"
+            android:includeFontPadding="false"
+            android:text="WBFJ"
+            android:textColor="@color/white"
+            android:textSize="12dp"
+            android:layout_marginBottom="1dp"
+            app:layout_constraintEnd_toEndOf="@id/mypage_cafeti_iv"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_cafeti_iv"
+            app:layout_constraintStart_toStartOf="@+id/mypage_cafeti_iv" />
+
+        <ImageView
+            android:id="@+id/mypage_profile_edit_btn"
+            android:layout_width="80dp"
+            android:layout_height="28dp"
+            android:layout_marginTop="25dp"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_close_btn"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_close_btn"
+            app:srcCompat="@drawable/mypage_border_round_rectangle_gray_35dp" />
+
+        <TextView
+            android:id="@+id/mypage_profile_edit_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/mypage_profile_edit"
+            android:textColor="@color/gray_3"
+            android:theme="@style/Body2"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_profile_edit_btn"
+            app:layout_constraintEnd_toEndOf="@+id/mypage_profile_edit_btn"
+            app:layout_constraintStart_toStartOf="@+id/mypage_profile_edit_btn"
+            app:layout_constraintTop_toTopOf="@+id/mypage_profile_edit_btn" />
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/mypage_tab_layout"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintHeight_percent="0.043"
+            android:layout_marginTop="32dp"
+            app:tabSelectedTextColor="@color/pointcolor_1"
+            app:tabIndicatorColor="@color/pointcolor_1"
+            app:tabRippleColor="#ffffffff"
+            android:background="@drawable/mypage_tab_layout"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profile_iv">
+        </com.google.android.material.tabs.TabLayout>
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/mypage_viewpager"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/mypage_tab_layout" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

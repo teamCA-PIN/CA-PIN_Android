@@ -2,4 +2,26 @@
     <string name="app_name">Capin</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_and_policy">약관 및 정책</string>
+    <string name="logout">로그아웃</string>
+    <string name="copyright">Copyright 2021. capin. All rights reserved.</string>
+    <string name="mypage_hello">안녕하세요!</string>
+    <string name="mypage_dear">님</string>
+    <string name="mypage_profile_edit">프로필 편집</string>
+
+    <string name="mypage_category_add">새 카테고리</string>
+    <string name="if_basic_category">원하는 장소에 핀하면\n카테고리 별로 모아볼 수 있어요</string>
+    <string name="tagfilter_find_cafe">어떤 카페를 찾고 계신가요?</string>
+    <string name="select_tag_filter">원하시는 카페 태그를 선택해주세요.</string>
+    <string name="tagfilter_button">-건의 검색결과 보기</string>
+    <string name="show_menu_details">메뉴 상세보기</string>
+    <string name="float_0_1">%.1f</string>
+    <string name="plus_n">+%d</string>
+
+    <string name="profile_edit">프로필 편집</string>
+    <string name="cafeti">카페TI 검사</string>
+    <string name="edit_name">이름 변경하기</string>
+    <string name="profile_edit_description">공백없이 2-10자 내외로, 한글,영문,숫자만 입력 가능합니다.</string>
+    <string name="profile_edit_complete">완료</string>
 </resources>
+
