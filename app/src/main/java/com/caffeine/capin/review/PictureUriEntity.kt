@@ -1,4 +1,5 @@
 package com.caffeine.capin.review
 
-class PictureUriEntity {
-}
+data class PictureUriEntity(
+    val uri: String
+)

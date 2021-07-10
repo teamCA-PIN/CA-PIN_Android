@@ -12,7 +12,7 @@
         android:layout_height="match_parent"
         tools:context=".map.MapFragment">
 
-        <com.caffeine.capin.customview.CapinToolbar
+        <com.caffeine.capin.customview.CapinMapToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

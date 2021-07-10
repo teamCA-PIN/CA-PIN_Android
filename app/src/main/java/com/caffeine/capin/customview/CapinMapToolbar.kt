@@ -6,7 +6,7 @@ import android.view.LayoutInflater
 import androidx.constraintlayout.widget.ConstraintLayout
 import com.caffeine.capin.databinding.MapToolbarCapinBinding
 
-class CapinToolbar @JvmOverloads constructor(
+class CapinMapToolbar @JvmOverloads constructor(
     context: Context,
     attrs: AttributeSet? = null,
     defStyleAttr: Int = 0): ConstraintLayout(context, attrs, defStyleAttr) {

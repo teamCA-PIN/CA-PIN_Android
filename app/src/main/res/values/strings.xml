@@ -17,4 +17,10 @@
     <string name="show_menu_details">메뉴 상세보기</string>
     <string name="float_0_1">%.1f</string>
     <string name="plus_n">+%d</string>
+    <string name="write_review_notice_picture">방문한 카페와 관련된 사진을 공유해주세요.</string>
+    <string name="write_review_notice_recommendation">나와 취향이 비슷한 사람들에게 이곳을 추천하시겠어요?</string>
+    <string name="write_review_notice_write">방문한 카페와 메뉴에 대해 리뷰를 작성해주세요.</string>
+    <string name="write_review_notice_rating">방문한 카페의 별점은 몇점인가요?</string>
+
+
 </resources>
