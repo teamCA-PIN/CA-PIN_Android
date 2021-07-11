@@ -60,12 +60,11 @@
                     app:layout_constraintStart_toStartOf="@id/scrollview_picture"
                     app:layout_constraintTop_toBottomOf="@id/textview_picture" />
 
-                <androidx.core.widget.NestedScrollView
+                <HorizontalScrollView
                     android:id="@+id/scrollview_picture"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="15dp"
-                    android:orientation="horizontal"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="@id/linearlayout_checkbox"
                     app:layout_constraintTop_toBottomOf="@id/textview_notice_picture">
@@ -83,10 +82,11 @@
 
                         <androidx.recyclerview.widget.RecyclerView
                             android:id="@+id/recyclerview_picture"
-                            android:layout_width="0dp"
+                            android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="5dp"
                             android:orientation="horizontal"
+                            android:scrollbars="none"
                             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -94,7 +94,7 @@
                             app:layout_constraintTop_toTopOf="parent"
                             tools:listitem="@layout/item_review_picture" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-                </androidx.core.widget.NestedScrollView>
+                </HorizontalScrollView>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textview_recommandation"
@@ -204,6 +204,7 @@
                     android:paddingVertical="15dp"
                     android:text="@={viewModel.contentsOfReview}"
                     android:gravity="top"
+                    android:maxLength="150"
                     android:background="@drawable/background_write_review_edittext"
                     app:layout_constraintDimensionRatio="1:0.485"
                     app:layout_constraintTop_toBottomOf="@id/textview_notice_write_review"

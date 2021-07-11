@@ -1,6 +1,7 @@
 package com.caffeine.capin.util
 
 import android.graphics.Color
+import android.net.Uri
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
@@ -71,5 +72,11 @@ object BindingAdapter {
         if (date == null) return
         val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.KOREA)
         textView.text = dateFormat.format(date)
+    }
+
+    @JvmStatic
+    @BindingAdapter("load_uri")
+    fun ImageView.setImageUri(uri: Uri) {
+        Glide.with(context).load(uri).into(this)
     }
 }

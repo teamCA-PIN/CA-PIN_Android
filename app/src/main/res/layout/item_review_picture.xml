@@ -8,22 +8,15 @@
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="80dp"
         android:layout_height="80dp"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:background="@drawable/background_review_picture">
-
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/imageview_cafe_picture"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+        xmlns:app="http://schemas.android.com/apk/res-auto">
 
         <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageview_cafe"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             app:layout_constraintTop_toTopOf="parent"
+            load_uri="@{data.uri}"
+            android:scaleType="centerCrop"
             app:useCircleOutlineRadius="@{@dimen/radius_review_picture}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
