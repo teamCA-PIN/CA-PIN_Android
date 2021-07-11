@@ -174,7 +174,7 @@
             android:gravity="center"
             android:text="@{@string/plus_n(review.getImageOverCount(4))}"
             android:textColor="@color/white"
-            android:visibility="@{review.getImageOverCount() &lt;= 0 ? View.GONE : View.VISIBLE}"
+            android:visibility="@{review.getImageOverCount(4) &lt;= 0 ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
             app:layout_constraintStart_toStartOf="@+id/imageView13"

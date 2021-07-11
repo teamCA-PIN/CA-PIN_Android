@@ -33,6 +33,12 @@ android {
             "NAVER_MAP_CLIENT_ID",
             properties["NAVER_MAP_CLIENT_ID"] as String
         )
+
+        buildConfigField(
+            "String",
+            "BASE_URL",
+            properties["BASE_URL"] as String
+        )
     }
 
     buildTypes {
@@ -43,8 +49,8 @@ android {
 
         getByName("debug"){
             buildConfigField("String", "NAVER_MAP_CLIENT_ID", properties["NAVER_MAP_CLIENT_ID"] as String)
+            buildConfigField("String", "BASE_URL", properties["BASE_URL"] as String)
         }
-
     }
 
     buildFeatures {

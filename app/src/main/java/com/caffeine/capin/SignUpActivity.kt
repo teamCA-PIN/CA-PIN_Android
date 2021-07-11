@@ -1,16 +1,24 @@
 package com.caffeine.capin
 
 
+import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivitySignupBinding
+import com.caffeine.capin.login.*
+import com.caffeine.capin.login.ServiceCreator.signUpService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 class SignUpActivity : AppCompatActivity() {
 
@@ -88,25 +96,35 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-
-
-
     private fun signUpButtonClickEvent() {
         binding.btnSignup.setOnClickListener() {
-            val username = binding.edittextName.text
-            val email = binding.edittextEmail.text
-            val password = binding.edittextPw.text
-            val newpassword = binding.edittextPwagain.text
-            if (username.isNullOrBlank() || email.isNullOrBlank() || password.isNullOrBlank() || newpassword.isNullOrBlank()) {
-                Toast.makeText(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", LENGTH_SHORT).show()
-            }
-            else{
+            val requestSignUpData = RequestSignUpData(
+                email = binding.edittextEmail.text.toString(),
+                password = binding.edittextPw.text.toString(),
+                nickname = binding.edittextName.text.toString()
+            )
+            val call: Call<ResponseSignUpData> = signUpService.postSignUp(requestSignUpData)
+            call.enqueue(object : Callback<ResponseSignUpData> {
+                override fun onResponse(
+                    call: Call<ResponseSignUpData>,
+                    response: Response<ResponseSignUpData>
+                ) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@SignUpActivity, "회원 가입 및 기본카테고리 생성 성공.", LENGTH_SHORT)
+                        intent = Intent(this@SignUpActivity, CafetiActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", LENGTH_SHORT).show()
+                    }
+                }
 
-            }
+                override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                    Log.d("NetworkTest", "error:$t")
+                }
+            })
+
         }
-
-
-}
+    }
 
 
 
