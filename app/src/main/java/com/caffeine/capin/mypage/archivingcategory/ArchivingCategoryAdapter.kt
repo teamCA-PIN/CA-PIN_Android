@@ -17,18 +17,35 @@ class ArchivingCategoryAdapter : RecyclerView.Adapter<ArchivingCategoryAdapter.A
             parent,
             false
         )
-        return ArchivingCategoryAdapter.ArchivingCategoryViewHolder(
-            binding
-        )
+        return ArchivingCategoryViewHolder(binding)
     }
-
     override fun getItemCount(): Int  = archivingCategoryList.size
 
     override fun onBindViewHolder(holder: ArchivingCategoryViewHolder, position: Int) {
         holder.onBind(archivingCategoryList[position])
     }
 
-    class ArchivingCategoryViewHolder(
+    interface OnCategoryClickListener {
+        fun onCategoryClick(archivingCategory: ArchivingCategory)
+    }
+
+    private lateinit var categoryClickListener: OnCategoryClickListener
+
+    fun setOnCategoryClickListener(listener: OnCategoryClickListener) {
+        this.categoryClickListener = listener
+    }
+
+    interface OnEditButtonClickListener {
+        fun onEditButtonClick()
+    }
+
+    private lateinit var editButtonClickListener: OnEditButtonClickListener
+
+    fun setOnEditButtonClickListener(listener: OnEditButtonClickListener) {
+        this.editButtonClickListener = listener
+    }
+
+    inner class ArchivingCategoryViewHolder(
         private val binding: ItemRecyclerviewCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(archivingCategory: ArchivingCategory){
@@ -38,6 +55,18 @@ class ArchivingCategoryAdapter : RecyclerView.Adapter<ArchivingCategoryAdapter.A
 
             if (archivingCategory.name == "기본 카테고리") {
                 binding.rcvCategoryEditBtn.isVisible = false
+            }
+
+            binding.rcvCategoryNameTv.setOnClickListener {
+                categoryClickListener.onCategoryClick(archivingCategory)
+            }
+
+            binding.rcvCategoryColorIv.setOnClickListener {
+                categoryClickListener.onCategoryClick(archivingCategory)
+            }
+
+            binding.rcvCategoryEditBtn.setOnClickListener {
+                editButtonClickListener.onEditButtonClick()
             }
         }
     }

@@ -1,5 +1,6 @@
 package com.caffeine.capin.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -9,6 +10,8 @@ import androidx.core.view.isVisible
 import com.caffeine.capin.mypage.archivingcategory.ArchivingCategory
 import com.caffeine.capin.mypage.archivingcategory.ArchivingCategoryAdapter
 import com.caffeine.capin.databinding.FragmentMyPageCategoryBinding
+import com.caffeine.capin.mypage.archivingcategory.MyPageCategoryEditActivity
+import com.caffeine.capin.mypage.pin.MyPagePinDetailActivity
 import com.caffeine.capin.util.AutoClearedValue
 
 class MyPageCategoryFragment : Fragment() {
@@ -32,9 +35,26 @@ class MyPageCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
         archivingCategoryAdapter = ArchivingCategoryAdapter()
         binding.mypageCategoryRcvInclude.categoryRcv.adapter = archivingCategoryAdapter
+
+        archivingCategoryAdapter.setOnCategoryClickListener(object :
+            ArchivingCategoryAdapter.OnCategoryClickListener{
+            override fun onCategoryClick(archivingCategory: ArchivingCategory) {
+                val intent = Intent(this@MyPageCategoryFragment.activity, MyPagePinDetailActivity::class.java)
+                val cafeName = archivingCategory.name
+                intent.putExtra("name", cafeName)
+                startActivity(intent)
+            }
+        })
+
+        archivingCategoryAdapter.setOnEditButtonClickListener(object :
+            ArchivingCategoryAdapter.OnEditButtonClickListener {
+            override fun onEditButtonClick() {
+                val intent = Intent(this@MyPageCategoryFragment.activity, MyPageCategoryEditActivity::class.java)
+                startActivity(intent)
+            }
+        })
 
         archivingCategoryAdapter.archivingCategoryList.addAll(
             listOf<ArchivingCategory>(

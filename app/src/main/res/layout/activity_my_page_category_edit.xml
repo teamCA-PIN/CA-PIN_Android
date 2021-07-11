@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mypage.archivingcategory.MyPageCategoryEditActivity">
+
+    <ImageView
+        android:id="@+id/mypage_category_edit_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_back_black" />
+
+    <TextView
+        android:id="@+id/mypage_category_edit_header_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="아아아"
+        android:textColor="@color/black"
+        android:theme="@style/Headline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mypage_category_edit_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="101dp"
+        android:text="@string/category_edit_name"
+        android:textColor="@color/black"
+        android:theme="@style/Headline1"
+        app:layout_constraintStart_toStartOf="@+id/mypage_category_edit_back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_back_btn" />
+
+    <EditText
+        android:id="@+id/mypage_category_edit_edt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/gray_4"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="@string/new_category_name"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:theme="@style/Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_name_tv" />
+
+    <ImageView
+        android:id="@+id/mypage_category_edit_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/mypage_category_edit_edt"
+        app:layout_constraintEnd_toEndOf="@+id/mypage_category_edit_edt"
+        app:layout_constraintTop_toTopOf="@+id/mypage_category_edit_edt"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+    <TextView
+        android:id="@+id/mypage_category_edit_length_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:text="0/10"
+        android:textColor="@color/gray_4"
+        android:theme="@style/Body3"
+        app:layout_constraintEnd_toEndOf="@+id/mypage_category_edit_edt"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_edt" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/mypage_category_color_rcv"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="34dp"
+        android:layout_marginHorizontal="14dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:overScrollMode="never"
+        android:nestedScrollingEnabled="false"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_length_tv"
+        app:spanCount="5"
+        tools:listitem="@layout/item_mypage_category_color" />
+
+    <ImageView
+        android:id="@+id/mypage_category_color_done_btn"
+        android:layout_width="154dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="27dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_color_rcv"
+        app:srcCompat="@drawable/round_rectangle_brown_24dp" />
+
+    <TextView
+        android:id="@+id/mypage_category_color_done_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:theme="@style/Subhead"
+        app:layout_constraintBottom_toBottomOf="@+id/mypage_category_color_done_btn"
+        app:layout_constraintEnd_toEndOf="@+id/mypage_category_color_done_btn"
+        app:layout_constraintStart_toStartOf="@+id/mypage_category_color_done_btn"
+        app:layout_constraintTop_toTopOf="@+id/mypage_category_color_done_btn" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
