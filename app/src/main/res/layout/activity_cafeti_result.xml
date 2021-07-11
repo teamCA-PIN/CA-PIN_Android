@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView21"
+        style="@style/Headline1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Question.01"
+        android:textColor="@color/subcolor_blue_4"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.529"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.047" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageView8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.171"
+        app:srcCompat="@drawable/component_5" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView12"
+        style="@style/Display1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="차분한 기린씨"
+        android:textColor="@color/subcolor_brown_4"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.578" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView15"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이제 카핀맵에서 '나를 위한'버튼을 통해\n내 CAFETI에 딱 맞는 카페를 모아보세요!"
+        android:textAlignment="center"
+        android:textColor="@color/subcolor_blue_4"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.561"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.667" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView19"
+        style="@style/Body3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAFETI는 프로필 수정페이지에서\n다시 검사하실 수 있습니다."
+        android:textAlignment="center"
+        android:textColor="@color/gray_3"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.556"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.751" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cafetitestfinish"
+        style="@style/BtnText"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:background="@drawable/circle_image_view4"
+        android:text="검사종료"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.493"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.87" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView22"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/textview_image_view"
+        android:paddingLeft="12dp"
+        android:paddingTop="1dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="1dp"
+        android:text="WBFJ"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.521" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
