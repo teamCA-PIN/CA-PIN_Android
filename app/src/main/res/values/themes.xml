@@ -39,4 +39,12 @@
 
         <item name="colorAccent">@color/pointcolor_1</item>                    <!-- 하단 움직이는 바 색-->
     </style>
+
+
+    <style name="CapinRatingBarStyle" parent="Widget.AppCompat.RatingBar">
+        <item name="android:progressDrawable">@drawable/layerlist_rating</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">45dp</item>
+
+    </style>
 </resources>

@@ -1,4 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <dimen name="radius_mapview_cafe_iamge">10dp</dimen>
+    <dimen name="radius_review_picture">5dp</dimen>
 </resources>

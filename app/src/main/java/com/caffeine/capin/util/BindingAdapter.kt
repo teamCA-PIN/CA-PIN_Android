@@ -2,6 +2,7 @@ package com.caffeine.capin.util
 
 import android.graphics.Color
 import android.widget.ImageView
+import android.widget.RatingBar
 import android.widget.TextView
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
