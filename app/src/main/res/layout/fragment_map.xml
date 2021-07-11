@@ -64,6 +64,7 @@
             android:gravity="center"
             android:paddingVertical="6dp"
             android:paddingHorizontal="6dp"
+            android:elevation="2dp"
             android:background="@drawable/background_map_radio_group"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">

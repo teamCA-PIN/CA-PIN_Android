@@ -26,5 +26,7 @@
     <string name="edit_name">이름 변경하기</string>
     <string name="profile_edit_description">공백없이 2-10자 내외로, 한글,영문,숫자만 입력 가능합니다.</string>
     <string name="profile_edit_complete">완료</string>
+    <string name="review_rating_format">%.1f점/5.0점</string>
+    <string name="count_of_review_contents">%d/150</string>
 </resources>
 

@@ -28,6 +28,5 @@
             app:layout_constraintEnd_toEndOf="parent"
             tools:text="Capin Tool bar"/>
 
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

@@ -43,8 +43,8 @@
 
     <style name="CapinRatingBarStyle" parent="Widget.AppCompat.RatingBar">
         <item name="android:progressDrawable">@drawable/layerlist_rating</item>
-        <item name="android:minHeight">15dip</item>
-        <item name="android:maxHeight">47dip</item>
+        <item name="android:minHeight">20dp</item>
+        <item name="android:maxHeight">45dp</item>
 
     </style>
 </resources>
