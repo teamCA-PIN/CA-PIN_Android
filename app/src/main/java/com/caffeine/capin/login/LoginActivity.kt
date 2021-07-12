@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +8,14 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.FindPasswordActivity
+import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityLoginBinding
-import com.caffeine.capin.login.LoginService
-import com.caffeine.capin.login.RequestLoginData
-import com.caffeine.capin.login.ResponseLoginData
-import com.caffeine.capin.login.ServiceCreator
-import com.caffeine.capin.login.ServiceCreator.loginService
+import com.caffeine.capin.ServiceCreator.loginService
+import com.caffeine.capin.signup.SignUpActivity
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,10 +63,14 @@ class LoginActivity : AppCompatActivity() {
                 override fun afterTextChanged(text: Editable?) {
                     if(text.isNullOrEmpty()) {
                         edittextCount--
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
+                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
+                            R.color.gray_3
+                        ))
                     } else {
                         edittextCount++
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.black))
+                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
+                            R.color.black
+                        ))
                     }
                     checkEditTextEmpty()
                 }
@@ -81,13 +83,17 @@ class LoginActivity : AppCompatActivity() {
         if (edittextCount >= 2) {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.pointcolor_1))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,R.drawable.circle_image_view2))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
+                    R.drawable.circle_image_view2
+                ))
                 isClickable = true
             }
         } else {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,R.drawable.circle_image_view))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
+                    R.drawable.circle_image_view
+                ))
                 isClickable = false
             }
         }

@@ -10,6 +10,7 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.caffeine.capin.databinding.ActivityFindPasswordBinding
+import com.caffeine.capin.login.LoginActivity
 
 class FindPasswordActivity : AppCompatActivity() {
 
