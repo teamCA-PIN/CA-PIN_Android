@@ -15,6 +15,7 @@ import androidx.core.content.ContextCompat
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
+import com.caffeine.capin.login.ServiceCreator.loginService
 import com.caffeine.capin.login.ServiceCreator.signUpService
 import retrofit2.Call
 import retrofit2.Callback
@@ -103,7 +104,7 @@ class SignUpActivity : AppCompatActivity() {
                 password = binding.edittextPw.text.toString(),
                 nickname = binding.edittextName.text.toString()
             )
-            val call: Call<ResponseSignUpData> = signUpService.postSignUp(requestSignUpData)
+            val call: Call<ResponseSignUpData> = loginService.postSignUp(requestSignUpData)
             call.enqueue(object : Callback<ResponseSignUpData> {
                 override fun onResponse(
                     call: Call<ResponseSignUpData>,
