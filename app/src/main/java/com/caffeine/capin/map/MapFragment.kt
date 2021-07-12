@@ -2,6 +2,7 @@ package com.caffeine.capin.map
 
 import android.Manifest
 import android.app.Activity
+import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
 import android.util.Log
@@ -15,6 +16,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
+import com.caffeine.capin.category.SelectCategoryActivity
 import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
@@ -34,16 +36,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var mapView: MapView
     private val selectedMarker = Marker()
     private lateinit var locationSource: FusedLocationSource
-    private var count = 0
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
         binding = FragmentMapBinding.inflate(layoutInflater, container, false)
-        mapView = binding.mapview
-        mapView.getMapAsync(this)
         return binding.root
     }
 
@@ -51,10 +49,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
+        mapView = binding.mapview
+        mapView.getMapAsync(this)
         setCafeInformation()
         setToolbar()
         showCafeCardView()
-        showToast()
+        archiveCafeToMyMap()
+        viewModel.switchToCapinMap()
     }
 
     override fun onMapReady(naverMap: NaverMap) {
@@ -197,11 +198,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun showToast() {
+    private fun archiveCafeToMyMap() {
         binding.buttonSaveCafe.setOnClickListener {
-            createCapinToast(requireContext(), "카테고리에 저장되었습니다.",325)?.show()
+            val intent = Intent(requireContext(),SelectCategoryActivity::class.java)
+            intent.putExtra(CAFE_NAME, binding.textviewCafeName.text)
+            startActivity(intent)
         }
     }
+//
+//    private fun showToast() {
+//        binding.buttonSaveCafe.setOnClickListener {
+//            createCapinToast(requireContext(), "카테고리에 저장되었습니다.",325)?.show()
+//        }
+//    }
 
     private fun freeActiveMarkers() {
         viewModel.exposedMarker.value?.forEach { marker ->
@@ -213,5 +222,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     companion object {
         private val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
         private const val PERMISSION_FUSED_LOCATION = 1000
+        private const val CAFE_NAME = "CafeName"
     }
 }
