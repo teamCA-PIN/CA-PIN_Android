@@ -1,16 +1,24 @@
-package com.caffeine.capin
+package com.caffeine.capin.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.FindPasswordActivity
+import com.caffeine.capin.R
+import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityLoginBinding
+import com.caffeine.capin.ServiceCreator.loginService
+import com.caffeine.capin.signup.SignUpActivity
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
@@ -55,10 +63,14 @@ class LoginActivity : AppCompatActivity() {
                 override fun afterTextChanged(text: Editable?) {
                     if(text.isNullOrEmpty()) {
                         edittextCount--
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
+                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
+                            R.color.gray_3
+                        ))
                     } else {
                         edittextCount++
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.black))
+                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
+                            R.color.black
+                        ))
                     }
                     checkEditTextEmpty()
                 }
@@ -71,13 +83,17 @@ class LoginActivity : AppCompatActivity() {
         if (edittextCount >= 2) {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.pointcolor_1))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,R.drawable.circle_image_view2))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
+                    R.drawable.circle_image_view2
+                ))
                 isClickable = true
             }
         } else {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,R.drawable.circle_image_view))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
+                    R.drawable.circle_image_view
+                ))
                 isClickable = false
             }
         }
@@ -87,17 +103,30 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener() {
-            val email = binding.loginEdittextEmail.text
-            val password = binding.loginEdittextPw.text
+            val requestLoginData = RequestLoginData(
+                email = binding.loginEdittextEmail.text.toString(),
+                password = binding.loginEdittextPw.text.toString()
+            )
+            val call: Call<ResponseLoginData> = loginService.postLogin(requestLoginData)
+            call.enqueue(object : Callback<ResponseLoginData> {
+                override fun onResponse(
+                    call: Call<ResponseLoginData>,
+                    response: Response<ResponseLoginData>
+                ) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@LoginActivity, "로그인 성공.", LENGTH_SHORT)
+                        intent = Intent(this@LoginActivity, CafetiActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", LENGTH_SHORT).show()
+                    }
+                }
 
+                override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+                    Log.d("NetworkTest", "error:$t")
+                }
+            })
 
-            if (email.isNullOrBlank() || password.isNullOrBlank()) {
-                Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.",LENGTH_SHORT).show()
-            }
-            else{
-                //회원가입 서버 통신
-
-            }
         }
     }
 

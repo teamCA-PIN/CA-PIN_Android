@@ -1,11 +1,9 @@
 package com.caffeine.capin.map
 
-import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.naver.maps.map.overlay.Marker
-import java.util.*
 import kotlin.collections.ArrayList
 
 class MapViewModel : ViewModel() {
@@ -33,7 +31,7 @@ class MapViewModel : ViewModel() {
     val selectedCafeInfo: LiveData<CafeInformationEntity>
         get() = _selectedCafeInfo
 
-    private val cafeList111 = mutableMapOf<CafeInformationEntity, Boolean>()
+    private val cafeList = mutableMapOf<CafeInformationEntity, Boolean>()
 
     private val _cafeSelectedStatus = MutableLiveData<MutableMap<CafeInformationEntity, Boolean>>()
     val cafeSelectedStatus: LiveData<MutableMap<CafeInformationEntity, Boolean>>
@@ -44,29 +42,27 @@ class MapViewModel : ViewModel() {
     }
 
     fun switchToCapinMap() {
-        cafeList111.clear()
+        cafeList.clear()
         capinMapInfo.forEach { cafe ->
-            cafeList111[cafe] = false
+            cafeList[cafe] = false
         }
-        _cafeSelectedStatus.value = cafeList111
-//        _cafeInformation.value = capinMapInfo
+        _cafeSelectedStatus.value = cafeList
     }
 
     fun changeMapValue(key: CafeInformationEntity, isSelected: Boolean) {
-        cafeList111.forEach{ cafeInfo ->
-            cafeList111[cafeInfo.key] = false
+        cafeList.forEach{ cafeInfo ->
+            cafeList[cafeInfo.key] = false
         }
-        cafeList111[key] = isSelected
-        _cafeSelectedStatus.value = cafeList111
+        cafeList[key] = isSelected
+        _cafeSelectedStatus.value = cafeList
     }
 
     fun switchToMyMap() {
-        cafeList111.clear()
+        cafeList.clear()
         myMapInfo.forEach { cafe ->
-            cafeList111[cafe] = false
+            cafeList[cafe] = false
         }
-        _cafeSelectedStatus.value = cafeList111
-//        _cafeInformation.value = myMapInfo
+        _cafeSelectedStatus.value = cafeList
     }
 
     fun addExposedMarker(marker: Marker) {
@@ -82,14 +78,6 @@ class MapViewModel : ViewModel() {
         _selectedCafeInfo.value = cafe
     }
 
-    fun changeSelectedMarker(marker: Marker?) {
-        if (marker != null) {
-            _selectedMarker.value = marker!!
-        } else {
-            _selectedMarker.value?.map = null
-        }
-    }
-
     fun addCafeInsideCurrentCamera(cafe: CafeInformationEntity) {
         currentCafeList.add(cafe)
         _cafeInsideCurrentCamera.value = currentCafeList
@@ -99,7 +87,6 @@ class MapViewModel : ViewModel() {
         currentCafeList.clear()
         _cafeInsideCurrentCamera.value = currentCafeList
     }
-
 
     companion object {
         private val capinMapInfo: List<CafeInformationEntity> = listOf(

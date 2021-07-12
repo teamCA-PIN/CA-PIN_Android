@@ -22,7 +22,7 @@ class CoffeeMenuActivity : AppCompatActivity() {
 
     private fun beforeButtonClickEvent() {
         binding.btnBefore.setOnClickListener() {
-            val intent = Intent(this@CoffeeMenuActivity, CoffeeTasteActivity::class.java)
+            val intent = Intent(this@CoffeeMenuActivity, CoffeeMostActivity::class.java)
             startActivity(intent)
         }
     }

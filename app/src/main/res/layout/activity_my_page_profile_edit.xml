@@ -67,7 +67,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/profile_edit_headlin_tv"
             android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/mypage_profile_circle"
+            app:shapeAppearanceOverlay="@style/shapeapperance_circle"
             app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -79,7 +79,7 @@
             app:layout_constraintEnd_toEndOf="@id/profile_edit_profile_iv"
             app:layout_constraintBottom_toBottomOf="@id/profile_edit_profile_iv"
             android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/mypage_profile_circle"
+            app:shapeAppearanceOverlay="@style/shapeapperance_circle"
             android:background="@color/gray_2"/>
 
         <ImageView

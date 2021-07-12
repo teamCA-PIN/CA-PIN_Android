@@ -12,10 +12,11 @@
         android:layout_height="match_parent"
         tools:context=".map.MapFragment">
 
-        <com.caffeine.capin.customview.CapinToolbar
+        <com.caffeine.capin.customview.CapinMapToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintHeight_percent="0.12"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +65,7 @@
             android:gravity="center"
             android:paddingVertical="6dp"
             android:paddingHorizontal="6dp"
+            android:elevation="2dp"
             android:background="@drawable/background_map_radio_group"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">

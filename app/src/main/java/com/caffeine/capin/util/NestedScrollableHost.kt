@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.util
 
 import android.content.Context
 import android.util.AttributeSet

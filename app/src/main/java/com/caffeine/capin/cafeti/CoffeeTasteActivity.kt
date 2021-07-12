@@ -32,7 +32,7 @@ class CoffeeTasteActivity : AppCompatActivity() {
             Log.e("button", "${binding.radiogroupCoffeeTaste.checkedRadioButtonId}")
             if (binding.radiogroupCoffeeTaste.checkedRadioButtonId != -1) {
                 //Todo: 서버통신 연결 작업
-                val intent = Intent(this@CoffeeTasteActivity, CoffeeMenuActivity::class.java)
+                val intent = Intent(this@CoffeeTasteActivity, CafeStyleActivity::class.java)
                 startActivity(intent)
             }
             else {

@@ -37,7 +37,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/mypage_profile_circle"
+            app:shapeAppearanceOverlay="@style/shapeapperance_circle"
             app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
 
         <TextView

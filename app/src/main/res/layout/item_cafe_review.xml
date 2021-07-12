@@ -156,6 +156,10 @@
             android:backgroundTint="@color/mask_"
             android:gravity="center"
             android:textColor="@color/white"
+<<<<<<< HEAD
+=======
+            android:visibility="@{review.getImageOverCount(4) &lt;= 0 ? View.GONE : View.VISIBLE}"
+>>>>>>> 4083764faed7f2c0704b393fd8181fffba5c144c
             app:layout_constraintBottom_toBottomOf="@+id/imageView13"
             app:layout_constraintEnd_toEndOf="@+id/imageView13"
             app:layout_constraintStart_toStartOf="@+id/imageView13"

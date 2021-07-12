@@ -6,6 +6,10 @@
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA"/>
+    <uses-feature android:name="android.hardware.camera" android:required="true" />
+
 
     <application
         android:name=".CapinApplication"
@@ -16,20 +20,24 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".mypage.MyPageActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-        </activity>
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity android:name=".mypage.MyPageActivity"></activity>
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".mypage.archivingcategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".LoginActivity"></activity>
         <activity android:name=".cafeti.CoffeeTasteActivity"/>
         <activity android:name=".cafeti.CafeColorActivity"/>
         <activity android:name=".cafeti.CafeStyleActivity"/>
@@ -38,10 +46,21 @@
         <activity android:name=".cafeti.CafetiResultActivity"/>
         <activity android:name=".cafeti.CoffeeMostActivity"/>
         <activity android:name=".FindPasswordActivity"></activity>
-        <activity android:name=".LoginPwActivity" />
-        <activity android:name=".SignUpActivity" />
+        <activity android:name=".signup.SignUpActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".login.LoginPwActivity" />
+        <activity android:name=".login.LoginActivity"/>
         <activity android:name=".SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
-    </application>
+        <activity android:name=".review.WriteReviewActivity">
+        </activity>
+        <activity android:name=".category.SelectCategoryActivity">
 
+        </activity>
+    </application>
 </manifest>

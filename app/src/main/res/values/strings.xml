@@ -17,16 +17,23 @@
     <string name="show_menu_details">메뉴 상세보기</string>
     <string name="float_0_1">%.1f</string>
     <string name="plus_n">+%d</string>
-
+    <string name="write_review_notice_picture">방문한 카페와 관련된 사진을 공유해주세요.</string>
+    <string name="write_review_notice_recommendation">나와 취향이 비슷한 사람들에게 이곳을 추천하시겠어요?</string>
+    <string name="write_review_notice_write">방문한 카페와 메뉴에 대해 리뷰를 작성해주세요.</string>
+    <string name="write_review_notice_rating">방문한 카페의 별점은 몇점인가요?</string>
     <string name="profile_edit">프로필 편집</string>
     <string name="cafeti">카페TI 검사</string>
     <string name="edit_name">이름 변경하기</string>
     <string name="profile_edit_description">공백없이 2-10자 내외로, 한글,영문,숫자만 입력 가능합니다.</string>
     <string name="profile_edit_complete">완료</string>
+
     <string name="recommend_flavor">맛 추천</string>
     <string name="recommend_mood">분위기 추천</string>
     <string name="category_edit_name">이름</string>
     <string name="new_category_name">새 카테고리 이름</string>
     <string name="done">완료</string>
+    <string name="review_rating_format">%.1f점/5.0점</string>
+    <string name="count_of_review_contents">%d/150</string>
+
 </resources>
 

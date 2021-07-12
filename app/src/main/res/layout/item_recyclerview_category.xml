@@ -23,7 +23,7 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
             android:scaleType="centerCrop"
-            app:shapeAppearanceOverlay="@style/mypage_profile_circle" />
+            app:shapeAppearanceOverlay="@style/shapeapperance_circle" />
 
         <TextView
             android:id="@+id/rcv_category_name_tv"
