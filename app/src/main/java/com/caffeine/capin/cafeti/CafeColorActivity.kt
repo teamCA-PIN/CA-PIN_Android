@@ -32,6 +32,9 @@ class CafeColorActivity : AppCompatActivity() {
             Log.e("button", "${binding.radiogroupCafeColor.checkedRadioButtonId}")
             if (binding.radiogroupCafeColor.checkedRadioButtonId != -1) {
                 //Todo: 서버통신 연결 작업
+                    val requestCafetiData = RequestCafetiData(
+                        answers = binding.
+                    )
                 val intent = Intent(this@CafeColorActivity, CafetiResultActivity::class.java)
                 startActivity(intent)
             }

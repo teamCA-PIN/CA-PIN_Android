@@ -32,9 +32,16 @@ class CoffeeMostActivity : AppCompatActivity() {
         binding.btnNext.setOnClickListener() {
             Log.e("button", "${binding.radiogroupCoffeeMost.checkedRadioButtonId}")
             if(binding.radiogroupCoffeeMost.checkedRadioButtonId != -1) {
-                //Todo: 서버통신 연결 작업
-                val intent = Intent(this@CoffeeMostActivity, CoffeeTasteActivity::class.java)
-                startActivity(intent)
+                when(binding.radiogroupCoffeeMost.checkedRadioButtonId) {
+                    binding.radiobtnCoffee.id -> {
+                        val intent = Intent(this@CoffeeMostActivity, CoffeeTasteActivity::class.java)
+                        startActivity(intent)
+                    }
+                    binding.radiobtnNoncoffee.id -> {
+                        val intent = Intent(this@CoffeeMostActivity, CoffeeMenuActivity::class.java)
+                        startActivity(intent)
+                    }
+                }
             } else {
 
             }

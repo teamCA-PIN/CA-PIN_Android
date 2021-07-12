@@ -4,13 +4,23 @@ import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
+import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityLoginBinding
+import com.caffeine.capin.login.LoginService
+import com.caffeine.capin.login.RequestLoginData
+import com.caffeine.capin.login.ResponseLoginData
+import com.caffeine.capin.login.ServiceCreator
+import com.caffeine.capin.login.ServiceCreator.loginService
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 
 
 class LoginActivity : AppCompatActivity() {
@@ -87,17 +97,30 @@ class LoginActivity : AppCompatActivity() {
 
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener() {
-            val email = binding.loginEdittextEmail.text
-            val password = binding.loginEdittextPw.text
+            val requestLoginData = RequestLoginData(
+                email = binding.loginEdittextEmail.text.toString(),
+                password = binding.loginEdittextPw.text.toString()
+            )
+            val call: Call<ResponseLoginData> = loginService.postLogin(requestLoginData)
+            call.enqueue(object : Callback<ResponseLoginData> {
+                override fun onResponse(
+                    call: Call<ResponseLoginData>,
+                    response: Response<ResponseLoginData>
+                ) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@LoginActivity, "로그인 성공.", LENGTH_SHORT)
+                        intent = Intent(this@LoginActivity, CafetiActivity::class.java)
+                        startActivity(intent)
+                    } else {
+                        Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", LENGTH_SHORT).show()
+                    }
+                }
 
+                override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+                    Log.d("NetworkTest", "error:$t")
+                }
+            })
 
-            if (email.isNullOrBlank() || password.isNullOrBlank()) {
-                Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.",LENGTH_SHORT).show()
-            }
-            else{
-                //회원가입 서버 통신
-
-            }
         }
     }
 
