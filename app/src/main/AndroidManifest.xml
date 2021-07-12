@@ -34,13 +34,13 @@
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
+<!--            <intent-filter>-->
+<!--                <action android:name="android.intent.action.MAIN" />-->
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+<!--                <category android:name="android.intent.category.LAUNCHER" />-->
+<!--            </intent-filter>-->
         </activity>
-        <activity android:name=".LoginActivity">
+        <activity android:name=".login.LoginActivity">
 
         </activity>
 
@@ -52,7 +52,7 @@
         <activity android:name=".cafeti.CafetiResultActivity"/>
         <activity android:name=".cafeti.CoffeeMostActivity"/>
         <activity android:name=".FindPasswordActivity"></activity>
-        <activity android:name=".SignUpActivity">
+        <activity android:name=".signup.SignUpActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -60,8 +60,9 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".LoginPwActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".login.LoginPwActivity" />
+        <activity android:name=".login.LoginActivity"/>
+
         <activity android:name=".SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
         <activity android:name=".review.WriteReviewActivity">

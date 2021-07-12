@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.signup
 
 
 import android.content.Intent
@@ -9,14 +9,13 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
-import com.caffeine.capin.login.ServiceCreator.loginService
-import com.caffeine.capin.login.ServiceCreator.signUpService
+import com.caffeine.capin.ServiceCreator.loginService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -68,10 +67,14 @@ class SignUpActivity : AppCompatActivity() {
                 override fun afterTextChanged(text: Editable?) {
                     if(text.isNullOrEmpty()) {
                         edittextCount--
-                        edittext.setTextColor(ContextCompat.getColor(this@SignUpActivity, R.color.gray_3))
+                        edittext.setTextColor(ContextCompat.getColor(this@SignUpActivity,
+                            R.color.gray_3
+                        ))
                     } else {
                         edittextCount++
-                        edittext.setTextColor(ContextCompat.getColor(this@SignUpActivity, R.color.black))
+                        edittext.setTextColor(ContextCompat.getColor(this@SignUpActivity,
+                            R.color.black
+                        ))
                     }
                     checkEditTextEmpty()
                 }
@@ -84,13 +87,17 @@ class SignUpActivity : AppCompatActivity() {
         if (edittextCount >= 4) {
             binding.btnSignup.apply {
                 setBackgroundColor(ContextCompat.getColor(this@SignUpActivity, R.color.pointcolor_1))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@SignUpActivity,R.drawable.circle_image_view2))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@SignUpActivity,
+                    R.drawable.circle_image_view2
+                ))
                 isClickable = true
             }
         } else {
             binding.btnSignup.apply {
                 setBackgroundColor(ContextCompat.getColor(this@SignUpActivity, R.color.gray_3))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@SignUpActivity,R.drawable.circle_image_view))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@SignUpActivity,
+                    R.drawable.circle_image_view
+                ))
                 isClickable = false
             }
         }

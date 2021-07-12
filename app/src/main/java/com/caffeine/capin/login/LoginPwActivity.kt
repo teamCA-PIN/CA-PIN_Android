@@ -1,10 +1,11 @@
-package com.caffeine.capin
+package com.caffeine.capin.login
 
 import android.content.Intent
 import android.os.Bundle
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
+import com.caffeine.capin.FindPasswordActivity
 import com.caffeine.capin.databinding.ActivityLoginpwBinding
 
 
