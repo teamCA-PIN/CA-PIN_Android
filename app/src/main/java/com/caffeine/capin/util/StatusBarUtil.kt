@@ -7,9 +7,11 @@ import android.view.View
 import android.view.Window
 import android.view.WindowManager
 import android.view.WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS
+import androidx.core.content.ContextCompat
+import com.caffeine.capin.R
 
 fun Activity.transparentStatusAndNavigation(
-    systemUiScrim: Int = Color.parseColor("#40000000") // 25% black
+    systemUiScrim: Int = ContextCompat.getColor(this, R.color.black) // 25% black
 ) {
     var systemUiVisibility = 0
     // Use a dark scrim by default since light status is API 23+

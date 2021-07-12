@@ -1,6 +1,56 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-             android:layout_width="match_parent"
-             android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="data"
+            type="com.caffeine.capin.category.CategoryNameEntity" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bottom_border_gray2"
+        android:paddingVertical="14dp">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/imageview_category_color"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.08"
+            app:layout_constraintDimensionRatio="1:1"
+            android:background="@color/pointcolor_yellow"
+            android:layout_marginStart="26dp"
+            set_background_category="@{data.hexCode}"
+            app:shapeAppearanceOverlay="@style/shapeapperance_circle"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_categoryname"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="22dp"
+            android:theme="@style/Body4"
+            android:text="@{data.name}"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/imageview_category_color"
+            app:layout_constraintBottom_toBottomOf="@id/imageview_category_color"
+            app:layout_constraintStart_toEndOf="@id/imageview_category_color"
+            tools:text="기본 카테고리"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/selector_checkbox"
+            app:layout_constraintDimensionRatio="1:1"
+            android:button="@null"
+            android:layout_marginEnd="18dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textview_categoryname" />
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
