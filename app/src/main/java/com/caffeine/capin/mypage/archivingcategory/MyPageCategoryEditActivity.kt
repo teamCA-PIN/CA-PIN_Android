@@ -6,7 +6,10 @@ import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
+import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityMyPageCategoryEditBinding
+import com.caffeine.capin.mypage.pin.PinInfo
+import com.caffeine.capin.mypage.pin.PinInfoAdapter
 
 class MyPageCategoryEditActivity : AppCompatActivity() {
 
@@ -17,6 +20,14 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPageCategoryEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        binding.mypageCategoryEditBackBtn.setOnClickListener { onBackPressed() }
+
+        if(intent.hasExtra("feature")) {
+            binding.mypageCategoryEditHeaderTv.text = intent.getStringExtra("feature")
+        } else {
+            binding.mypageCategoryEditHeaderTv.text = "카테고리 편집"
+        }
 
         binding.mypageCategoryEditDeleteBtn.setOnClickListener {
             binding.mypageCategoryEditEdt.text.clear()
@@ -44,41 +55,47 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         categoryColorAdapter = CategoryColorAdapter()
         binding.mypageCategoryColorRcv.adapter = categoryColorAdapter
 
+        categoryColorAdapter.setOnSigleCheckListener(object :
+            CategoryColorAdapter.OnSigleCheckListener{
+            override fun onSingleCheck(categoryColor: CategoryColor) {
+                
+            }
+        })
+
         categoryColorAdapter.categoryColorList.addAll(
             listOf<CategoryColor>(
                 CategoryColor(
-                    color = "6492f5"
+                    color = R.drawable.selector_category_color1
                 ),
                 CategoryColor(
-                    color = "6bbc9a"
+                    color = R.drawable.selector_category_color2
                 ),
                 CategoryColor(
-                    color = "ffc24b"
+                    color = R.drawable.selector_category_color3
                 ),
                 CategoryColor(
-                    color = "816f7c"
+                    color = R.drawable.selector_category_color4
                 ),
                 CategoryColor(
-                    color = "ffc2d5"
+                    color = R.drawable.selector_category_color5
                 ),
                 CategoryColor(
-                    color = "c9d776"
+                    color = R.drawable.selector_category_color6
                 ),
                 CategoryColor(
-                    color = "b2b9e5"
+                    color = R.drawable.selector_category_color7
                 ),
                 CategoryColor(
-                    color = "ff8e8e"
+                    color = R.drawable.selector_category_color8
                 ),
                 CategoryColor(
-                    color = "ebeaef"
+                    color = R.drawable.selector_category_color9
                 ),
                 CategoryColor(
-                    color = "9dc5e8"
+                    color = R.drawable.selector_category_color10
                 )
             )
         )
         categoryColorAdapter.notifyDataSetChanged()
-
     }
 }

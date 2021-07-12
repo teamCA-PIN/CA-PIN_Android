@@ -35,6 +35,13 @@ class MyPageCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.mypageCategoryAddCl.setOnClickListener {
+            val intent = Intent(this@MyPageCategoryFragment.activity, MyPageCategoryEditActivity::class.java)
+            intent.putExtra("feature", "새 카테고리")
+            startActivity(intent)
+        }
+
         archivingCategoryAdapter = ArchivingCategoryAdapter()
         binding.mypageCategoryRcvInclude.categoryRcv.adapter = archivingCategoryAdapter
 
@@ -52,6 +59,7 @@ class MyPageCategoryFragment : Fragment() {
             ArchivingCategoryAdapter.OnEditButtonClickListener {
             override fun onEditButtonClick() {
                 val intent = Intent(this@MyPageCategoryFragment.activity, MyPageCategoryEditActivity::class.java)
+                intent.putExtra("feature", "카테고리 수정")
                 startActivity(intent)
             }
         })

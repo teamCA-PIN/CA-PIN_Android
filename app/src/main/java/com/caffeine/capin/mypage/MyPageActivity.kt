@@ -42,8 +42,8 @@ class MyPageActivity : AppCompatActivity() {
         val imageTab = tabView.mypageTabIcon
 
         when (position) {
-            0 -> imageTab.setImageResource(R.drawable.mypage_category_tab_selector)
-            else -> imageTab.setImageResource(R.drawable.mypage_review_tab_selector)
+            0 -> imageTab.setImageResource(R.drawable.selector_mypage_category_tab)
+            else -> imageTab.setImageResource(R.drawable.selector_mypage_review_tab)
         }
 
         return tabView.root

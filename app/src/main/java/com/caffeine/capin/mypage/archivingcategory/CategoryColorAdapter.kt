@@ -26,11 +26,25 @@ class CategoryColorAdapter : RecyclerView.Adapter<CategoryColorAdapter.CategoryC
         holder.onBind(categoryColorList[position])
     }
 
-    class CategoryColorViewHolder(
+    interface OnSigleCheckListener {
+        fun onSingleCheck(categoryColor: CategoryColor)
+    }
+
+    private lateinit var singleCheckListener: OnSigleCheckListener
+
+    fun setOnSigleCheckListener(listener: OnSigleCheckListener) {
+        this.singleCheckListener = listener
+    }
+
+    inner class CategoryColorViewHolder(
         private val binding: ItemMypageCategoryColorBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(categoryColor: CategoryColor){
-            binding.categoryColorSelectedIv.setBackgroundColor(Color.parseColor("#${categoryColor.color}"))
+            binding.categoryColorRadioBtn.setBackgroundResource(categoryColor.color)
+
+            binding.categoryColorRadioBtn.setOnClickListener {
+                singleCheckListener.onSingleCheck(categoryColor)
+            }
         }
     }
 }
