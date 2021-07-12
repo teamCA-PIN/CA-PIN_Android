@@ -9,14 +9,12 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
 import com.caffeine.capin.login.ServiceCreator.loginService
-import com.caffeine.capin.login.ServiceCreator.signUpService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
