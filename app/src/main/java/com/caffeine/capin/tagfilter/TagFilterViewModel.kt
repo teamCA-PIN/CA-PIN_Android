@@ -5,6 +5,7 @@ import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.map.repository.CafeListRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -28,6 +29,10 @@ class TagFilterViewModel @Inject constructor(
     private val _countCafeResult = MutableLiveData<Int?>()
     val countCafeResult: LiveData<Int?>
         get() = _countCafeResult
+
+    private val _tagResult = MutableLiveData<List<CafeInformationEntity>>()
+    val tagResult: LiveData<List<CafeInformationEntity>>
+        get() = _tagResult
 
 
     fun updateCountCafeResult(count: Int?) {
@@ -65,6 +70,7 @@ class TagFilterViewModel @Inject constructor(
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
+                _tagResult.postValue(it)
                 _countCafeResult.postValue(it.size)
             }, {
                 it.printStackTrace()

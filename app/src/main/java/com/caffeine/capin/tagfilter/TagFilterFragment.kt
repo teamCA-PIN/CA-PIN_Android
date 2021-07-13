@@ -9,6 +9,7 @@ import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
 import com.caffeine.capin.util.AutoClearedValue
@@ -37,6 +38,7 @@ class TagFilterFragment : Fragment() {
         setTagFilterButton()
         activeGetResultButton()
         getFilterCafe()
+        showResultInMapView()
     }
 
     private fun setTagFilterButton() {
@@ -73,6 +75,13 @@ class TagFilterFragment : Fragment() {
             } else {
                 viewModel.getCafeSize()
             }
+        }
+    }
+
+    private fun showResultInMapView() {
+        binding.buttonResult.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("tagResult", viewModel.tagResult.value)
+            findNavController().popBackStack()
         }
     }
 

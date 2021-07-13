@@ -16,6 +16,7 @@ import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.category.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
+import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -65,6 +66,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         changeMap()
         setMarker()
         checkPermissions()
+        getTagResult()
+    }
+
+    private fun getTagResult() {
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<List<CafeInformationEntity>>("tagResult")
+            ?.observe(viewLifecycleOwner){
+                Log.e("hello", "$it")
+            }
     }
 
     private fun checkPermissions() {
