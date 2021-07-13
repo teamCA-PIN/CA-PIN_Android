@@ -32,20 +32,25 @@ class TagFilterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerviewTagFilter.isNestedScrollingEnabled = false
         setTagFilterButton()
         activeGetResultButton()
+        getFilterCafe()
     }
 
     private fun setTagFilterButton() {
         binding.recyclerviewTagFilter.apply {
             adapter = TagFilterAdapter(object : TagFilterAdapter.FilterClickListener {
-                override fun selectFilter(checkbox: CompoundButton) {
+                override fun selectFilter(checkbox: CompoundButton, tag: TagFilterEntity) {
                     viewModel.addFilterChecked(checkbox)
+                    viewModel.addTagList(tag)
                 }
 
-                override fun unSelectFilter(checkbox: CompoundButton) {
+                override fun unSelectFilter(checkbox: CompoundButton, tag: TagFilterEntity) {
                     viewModel.removeFilterChecked(checkbox)
+                    viewModel.removeTagList(tag)
                 }
             })
             addItemDecoration(VerticalItemDecoration(16))
@@ -58,6 +63,21 @@ class TagFilterFragment : Fragment() {
                 changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
             } else {
                 changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
+            }
+        }
+    }
+
+    private fun getFilterCafe() {
+        viewModel.checkedTagList.observe(viewLifecycleOwner) {
+            if (!it.isNullOrEmpty()) {
+                if (it.all { it == null }) {
+                    viewModel.updateCountCafeResult(0)
+                } else {
+                    Log.e("checkedTagList","${it}}")
+                    viewModel.getCafeSize()
+                }
+            } else {
+                viewModel.updateCountCafeResult(0)
             }
         }
     }

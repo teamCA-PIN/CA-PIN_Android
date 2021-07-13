@@ -13,7 +13,7 @@
     <string name="if_basic_category">원하는 장소에 핀하면\n카테고리 별로 모아볼 수 있어요</string>
     <string name="tagfilter_find_cafe">어떤 카페를 찾고 계신가요?</string>
     <string name="select_tag_filter">원하시는 카페 태그를 선택해주세요.</string>
-    <string name="tagfilter_button">-건의 검색결과 보기</string>
+    <string name="tagfilter_button">%d건의 검색결과 보기</string>
     <string name="show_menu_details">메뉴 상세보기</string>
     <string name="float_0_1">%.1f</string>
     <string name="plus_n">+%d</string>
