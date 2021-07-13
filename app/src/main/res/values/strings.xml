@@ -28,5 +28,8 @@
     <string name="profile_edit_complete">완료</string>
     <string name="review_rating_format">%.1f점/5.0점</string>
     <string name="count_of_review_contents">%d/150</string>
+
+
+    <string name="error_cafe_name">카페정보없음</string>
 </resources>
 

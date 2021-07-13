@@ -30,15 +30,17 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".mypage.MyPageActivity"></activity>
+        <activity android:name=".mypage.MyPageActivity">
+
+        </activity>
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".MainActivity">
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".login.LoginActivity">
 
@@ -53,11 +55,7 @@
         <activity android:name=".cafeti.CoffeeMostActivity"/>
         <activity android:name=".FindPasswordActivity"></activity>
         <activity android:name=".signup.SignUpActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".login.LoginPwActivity" />
