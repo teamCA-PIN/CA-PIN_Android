@@ -1,15 +1,12 @@
-package com.caffeine.capin.mypage.archivingcategory
+package com.caffeine.capin.mypage.mycategory
 
 import android.os.Bundle
-import android.os.PersistableBundle
 import android.text.Editable
 import android.text.TextWatcher
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityMyPageCategoryEditBinding
-import com.caffeine.capin.mypage.pin.PinInfo
-import com.caffeine.capin.mypage.pin.PinInfoAdapter
 
 class MyPageCategoryEditActivity : AppCompatActivity() {
 

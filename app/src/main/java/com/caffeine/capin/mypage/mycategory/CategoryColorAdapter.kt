@@ -1,12 +1,9 @@
-package com.caffeine.capin.mypage.archivingcategory
+package com.caffeine.capin.mypage.mycategory
 
-import android.graphics.Color
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemMypageCategoryColorBinding
-import com.caffeine.capin.databinding.ItemMypageReviewBinding
-import com.caffeine.capin.mypage.myreview.MyReview
 
 class CategoryColorAdapter : RecyclerView.Adapter<CategoryColorAdapter.CategoryColorViewHolder>() {
 

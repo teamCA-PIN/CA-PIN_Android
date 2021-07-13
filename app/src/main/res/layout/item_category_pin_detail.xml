@@ -19,8 +19,8 @@
 
     <ImageView
         android:id="@+id/pin_detail_star_iv"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="11dp"
+        android:layout_height="11dp"
         android:layout_marginStart="8dp"
         app:layout_constraintBottom_toBottomOf="@id/pin_detail_name_tv"
         app:layout_constraintStart_toEndOf="@+id/pin_detail_name_tv"

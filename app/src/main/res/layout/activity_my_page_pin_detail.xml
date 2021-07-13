@@ -6,7 +6,7 @@
     <data>
         <variable
             name="category"
-            type="com.caffeine.capin.mypage.archivingcategory.ArchivingCategory" />
+            type="com.caffeine.capin.mypage.mycategory.MyCategory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -36,16 +36,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <CheckBox
-            android:id="@+id/pin_detail_delete_checkbox"
+        <ImageView
+            android:id="@+id/pin_detail_edit_or_delete_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintWidth_percent="0.078"
             android:layout_marginTop="38dp"
             android:layout_marginEnd="16dp"
-            android:background="@drawable/selector_pin_detail_delete"
-            android:button="@null"
+            android:src="@drawable/icon_edit_ver_2"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 

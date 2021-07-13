@@ -5,26 +5,25 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemCategoryPinDetailBinding
-import com.caffeine.capin.mypage.archivingcategory.ArchivingCategory
 
-class PinInfoAdapter : RecyclerView.Adapter<PinInfoAdapter.PinInfoViewHolder>() {
+class MyPinInfoAdapter : RecyclerView.Adapter<MyPinInfoAdapter.MyPinInfoViewHolder>() {
 
-    val pinInfoList = mutableListOf<PinInfo>()
+    val myPinInfoList = mutableListOf<MyPinInfo>()
     private var isVisible: Boolean = false
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PinInfoViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPinInfoViewHolder {
         val binding = ItemCategoryPinDetailBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
             false
         )
-        return PinInfoViewHolder(binding)
+        return MyPinInfoViewHolder(binding)
     }
 
-    override fun getItemCount(): Int = pinInfoList.size
+    override fun getItemCount(): Int = myPinInfoList.size
 
-    override fun onBindViewHolder(holder: PinInfoViewHolder, position: Int) {
-        holder.onBind(pinInfoList[position])
+    override fun onBindViewHolder(holder: MyPinInfoViewHolder, position: Int) {
+        holder.onBind(myPinInfoList[position])
 
         holder.binding.pinDetailChoiceCheckbox.visibility =
             if (isVisible) View.VISIBLE else View.GONE
@@ -32,7 +31,7 @@ class PinInfoAdapter : RecyclerView.Adapter<PinInfoAdapter.PinInfoViewHolder>() 
         val pinInfoTagAdapter = PinInfoTagAdapter()
         holder.binding.pinDetailTagRcv.adapter = pinInfoTagAdapter
         pinInfoTagAdapter.pinInfoTagList.addAll(
-            pinInfoList[position].tags
+            myPinInfoList[position].tags
         )
         pinInfoTagAdapter.notifyDataSetChanged()
     }
@@ -43,7 +42,7 @@ class PinInfoAdapter : RecyclerView.Adapter<PinInfoAdapter.PinInfoViewHolder>() 
     }
 
     interface OnCheckboxClickListener {
-        fun onCheckboxClick(pinInfo: PinInfo)
+        fun onCheckboxClick(myPinInfo: MyPinInfo)
     }
 
     private lateinit var checkboxClickListener: OnCheckboxClickListener
@@ -52,15 +51,15 @@ class PinInfoAdapter : RecyclerView.Adapter<PinInfoAdapter.PinInfoViewHolder>() 
         this.checkboxClickListener = listener
     }
 
-    inner class PinInfoViewHolder(
+    inner class MyPinInfoViewHolder(
         val binding: ItemCategoryPinDetailBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(pinInfo: PinInfo) {
-            binding.pinDetailNameTv.text = pinInfo.name
-            binding.pinDetailAddressTv.text = pinInfo.address
+        fun onBind(myPinInfo: MyPinInfo) {
+            binding.pinDetailNameTv.text = myPinInfo.name
+            binding.pinDetailAddressTv.text = myPinInfo.address
 
             binding.pinDetailChoiceCheckbox.setOnClickListener {
-                checkboxClickListener.onCheckboxClick(pinInfo)
+                checkboxClickListener.onCheckboxClick(myPinInfo)
             }
         }
     }

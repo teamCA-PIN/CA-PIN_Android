@@ -1,4 +1,4 @@
-package com.caffeine.capin.mypage.archivingcategory
+package com.caffeine.capin.mypage.mycategory
 
 import android.graphics.Color
 import android.view.LayoutInflater
@@ -7,11 +7,11 @@ import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemRecyclerviewCategoryBinding
 
-class ArchivingCategoryAdapter : RecyclerView.Adapter<ArchivingCategoryAdapter.ArchivingCategoryViewHolder>() {
+class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCategoryViewHolder>() {
 
-    val archivingCategoryList = mutableListOf<ArchivingCategory>()
+    val myCategoryList = mutableListOf<MyCategory>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ArchivingCategoryAdapter.ArchivingCategoryViewHolder {
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyCategoryAdapter.ArchivingCategoryViewHolder {
         val binding = ItemRecyclerviewCategoryBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -19,14 +19,14 @@ class ArchivingCategoryAdapter : RecyclerView.Adapter<ArchivingCategoryAdapter.A
         )
         return ArchivingCategoryViewHolder(binding)
     }
-    override fun getItemCount(): Int  = archivingCategoryList.size
+    override fun getItemCount(): Int  = myCategoryList.size
 
     override fun onBindViewHolder(holder: ArchivingCategoryViewHolder, position: Int) {
-        holder.onBind(archivingCategoryList[position])
+        holder.onBind(myCategoryList[position])
     }
 
     interface OnCategoryClickListener {
-        fun onCategoryClick(archivingCategory: ArchivingCategory)
+        fun onCategoryClick(myCategory: MyCategory)
     }
 
     private lateinit var categoryClickListener: OnCategoryClickListener
@@ -36,7 +36,7 @@ class ArchivingCategoryAdapter : RecyclerView.Adapter<ArchivingCategoryAdapter.A
     }
 
     interface OnEditButtonClickListener {
-        fun onEditButtonClick()
+        fun onEditButtonClick(myCategory: MyCategory)
     }
 
     private lateinit var editButtonClickListener: OnEditButtonClickListener
@@ -48,25 +48,25 @@ class ArchivingCategoryAdapter : RecyclerView.Adapter<ArchivingCategoryAdapter.A
     inner class ArchivingCategoryViewHolder(
         private val binding: ItemRecyclerviewCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(archivingCategory: ArchivingCategory){
-            binding.rcvCategoryColorIv.setBackgroundColor(Color.parseColor("#${archivingCategory.color}"))
-            binding.rcvCategoryNameTv.text = archivingCategory.name
-            binding.rcvCategoryPinNumTv.text = archivingCategory.cafeNum.toString()
+        fun onBind(myCategory: MyCategory){
+            binding.rcvCategoryColorIv.setBackgroundColor(Color.parseColor("#${myCategory.color}"))
+            binding.rcvCategoryNameTv.text = myCategory.name
+            binding.rcvCategoryPinNumTv.text = myCategory.cafeNum.toString()
 
-            if (archivingCategory.name == "기본 카테고리") {
+            if (myCategory.name == "기본 카테고리") {
                 binding.rcvCategoryEditBtn.isVisible = false
             }
 
             binding.rcvCategoryNameTv.setOnClickListener {
-                categoryClickListener.onCategoryClick(archivingCategory)
+                categoryClickListener.onCategoryClick(myCategory)
             }
 
             binding.rcvCategoryColorIv.setOnClickListener {
-                categoryClickListener.onCategoryClick(archivingCategory)
+                categoryClickListener.onCategoryClick(myCategory)
             }
 
             binding.rcvCategoryEditBtn.setOnClickListener {
-                editButtonClickListener.onEditButtonClick()
+                editButtonClickListener.onEditButtonClick(myCategory)
             }
         }
     }

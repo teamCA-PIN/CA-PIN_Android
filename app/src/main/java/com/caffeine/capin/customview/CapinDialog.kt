@@ -66,6 +66,7 @@ class CapinDialog(
                 }
                 capinDialogBinding.textviewOkButton.setOnClickListener {
                     listener?.onClick()
+                    dismiss()
                 }
             }
         }

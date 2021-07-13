@@ -24,8 +24,8 @@
 
         <ImageView
             android:id="@+id/mypage_review_star_iv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
             android:layout_marginStart="8dp"
             app:layout_constraintBottom_toBottomOf="@+id/mypage_review_cafename_tv"
             app:layout_constraintStart_toEndOf="@+id/mypage_review_cafename_tv"

@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mypage.MyPageReviewFragment">
 
-    <com.caffeine.capin.NestedScrollableHost
+    <com.caffeine.capin.util.NestedScrollableHost
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
@@ -49,6 +49,6 @@
 
         </androidx.core.widget.NestedScrollView>
 
-    </com.caffeine.capin.NestedScrollableHost>
+    </com.caffeine.capin.util.NestedScrollableHost>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
