@@ -24,7 +24,7 @@ class MainActivity: AppCompatActivity() {
         setContentView(binding.root)
         setNavController()
         transparentStatusAndNavigation()
-        preference.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVkNDM0YmUxMGI5ZDA3ZWQ1MmRiNzkiLCJpYXQiOjE2MjYxNjIwMjQsImV4cCI6MTYyNjI0ODQyNH0.VeBiuGOBIy3u8ouhDqLi5dkza0XPmQvqaW4FuvFYca0")
+        preference.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVkNDM0YmUxMGI5ZDA3ZWQ1MmRiNzkiLCJpYXQiOjE2MjYxOTI5MDYsImV4cCI6MTYyNjI3OTMwNn0.X3DikJditPdxUbQlVk1-vjrwEmcQqcxCKWOVkVy6mr4")
     }
 
     private fun setNavController() {

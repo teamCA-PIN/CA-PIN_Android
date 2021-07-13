@@ -14,8 +14,10 @@ import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
 import com.caffeine.capin.util.AutoClearedValue
 import com.caffeine.capin.util.VerticalItemDecoration
+import dagger.hilt.android.AndroidEntryPoint
 
-class TagFilterFragment:Fragment() {
+@AndroidEntryPoint
+class TagFilterFragment : Fragment() {
     private var binding by AutoClearedValue<FragmentTagFilterBinding>()
     private val viewModel by viewModels<TagFilterViewModel>()
 
@@ -37,7 +39,7 @@ class TagFilterFragment:Fragment() {
 
     private fun setTagFilterButton() {
         binding.recyclerviewTagFilter.apply {
-            adapter = TagFilterAdapter(object : TagFilterAdapter.FilterClickListener{
+            adapter = TagFilterAdapter(object : TagFilterAdapter.FilterClickListener {
                 override fun selectFilter(checkbox: CompoundButton) {
                     viewModel.addFilterChecked(checkbox)
                 }

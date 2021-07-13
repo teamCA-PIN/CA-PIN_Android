@@ -1,4 +1,6 @@
-package com.caffeine.capin.map
+package com.caffeine.capin.map.dto
+
+import com.caffeine.capin.map.dto.CafeLocationDTO
 
 data class ResponseCafeList(
     val message: String,

@@ -144,6 +144,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 }
             }
         }
+
         if(viewModel.cafeCurrentChecked.value != null) {
             viewModel.addCafeInsideCurrentCamera(viewModel.cafeCurrentChecked.value!!, true)
         }

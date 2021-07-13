@@ -1,7 +1,7 @@
 package com.caffeine.capin.di
 
-import com.caffeine.capin.map.CafeListDataSource
-import com.caffeine.capin.map.CafeListDataSourceImpl
+import com.caffeine.capin.map.datasource.CafeListDataSource
+import com.caffeine.capin.map.datasource.CafeListDataSourceImpl
 import com.caffeine.capin.network.CapinApiService
 import dagger.Module
 import dagger.Provides

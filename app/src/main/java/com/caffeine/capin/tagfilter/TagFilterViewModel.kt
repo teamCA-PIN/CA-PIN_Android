@@ -4,8 +4,14 @@ import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.map.repository.CafeListRepository
+import dagger.hilt.android.lifecycle.HiltViewModel
+import javax.inject.Inject
 
-class TagFilterViewModel:ViewModel() {
+@HiltViewModel
+class TagFilterViewModel @Inject constructor(
+    private val cafeListRepository: CafeListRepository
+):ViewModel() {
     private val _filterChecked = MutableLiveData<ArrayList<CompoundButton>>()
     val filterChecked: LiveData<ArrayList<CompoundButton>>
         get() = _filterChecked
@@ -21,4 +27,5 @@ class TagFilterViewModel:ViewModel() {
         checkedTagFilter.remove(checkbox)
         _filterChecked.value = checkedTagFilter
     }
+
 }

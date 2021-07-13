@@ -1,4 +1,4 @@
-package com.caffeine.capin.review
+package com.caffeine.capin.review.write
 
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -13,14 +13,13 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
-import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.ActivityWriteReviewBinding
+import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.util.HorizontalItemDecoration
 import java.io.File
 
@@ -157,7 +156,7 @@ class WriteReviewActivity : AppCompatActivity() {
     private fun stagePictures() {
         binding.recyclerviewPicture.apply {
             isNestedScrollingEnabled = false
-            adapter = WriteReviewPictureAdapter(object: WriteReviewPictureAdapter.DeleteListener{
+            adapter = WriteReviewPictureAdapter(object: WriteReviewPictureAdapter.DeleteListener {
                 override fun delete(pictureUriEntity: PictureUriEntity) {
                     viewModel.deleteImageOfCafe(pictureUriEntity)
                 }
