@@ -7,7 +7,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.caffeine.capin.R
@@ -68,16 +67,11 @@ class TagFilterFragment : Fragment() {
     }
 
     private fun getFilterCafe() {
-        viewModel.checkedTagList.observe(viewLifecycleOwner) {
-            if (!it.isNullOrEmpty()) {
-                if (it.all { it == null }) {
-                    viewModel.updateCountCafeResult(0)
-                } else {
-                    Log.e("checkedTagList","${it}}")
-                    viewModel.getCafeSize()
-                }
+        viewModel.checkedTagList.observe(viewLifecycleOwner) { checkedList ->
+            if (checkedList.all { it == null }) {
+                viewModel.updateCountCafeResult(null)
             } else {
-                viewModel.updateCountCafeResult(0)
+                viewModel.getCafeSize()
             }
         }
     }

@@ -25,12 +25,12 @@ class TagFilterViewModel @Inject constructor(
     val checkedTagList: LiveData<ArrayList<TagFilterEntity?>>
         get() = _checkedTagList
 
-    private val _countCafeResult = MutableLiveData<Int>()
-    val countCafeResult: LiveData<Int>
+    private val _countCafeResult = MutableLiveData<Int?>()
+    val countCafeResult: LiveData<Int?>
         get() = _countCafeResult
 
 
-    fun updateCountCafeResult(count: Int) {
+    fun updateCountCafeResult(count: Int?) {
         _countCafeResult.postValue(count)
     }
 
@@ -56,12 +56,12 @@ class TagFilterViewModel @Inject constructor(
 
     fun getCafeSize() {
         cafeListRepository.getCafeList(
-            checkedTagList?.value?.get(0)?.tagIndex,
-            checkedTagList?.value?.get(1)?.tagIndex,
-            checkedTagList?.value?.get(2)?.tagIndex,
-            null,
-            null,
-            null
+            checkedTagList.value?.get(0)?.tagIndex,
+            checkedTagList.value?.get(1)?.tagIndex,
+            checkedTagList.value?.get(2)?.tagIndex,
+            checkedTagList.value?.get(3)?.tagIndex,
+            checkedTagList.value?.get(4)?.tagIndex,
+            checkedTagList.value?.get(5)?.tagIndex
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
