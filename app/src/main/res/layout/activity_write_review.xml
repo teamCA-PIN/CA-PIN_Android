@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.caffeine.capin.review.WriteReviewViewModel" />
+            type="com.caffeine.capin.review.write.WriteReviewViewModel" />
 
     </data>
 

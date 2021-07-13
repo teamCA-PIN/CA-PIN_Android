@@ -1,9 +1,9 @@
-package com.caffeine.capin.review
+package com.caffeine.capin.review.write
 
-import android.graphics.Picture
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.PictureUriEntity
 
 class WriteReviewViewModel: ViewModel() {
     val rateOfReview = MutableLiveData<Float>(0.0f)

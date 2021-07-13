@@ -1,4 +1,4 @@
-package com.caffeine.capin.map
+package com.caffeine.capin.map.dto
 
 import com.google.gson.annotations.SerializedName
 

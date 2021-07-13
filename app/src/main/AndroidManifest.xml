@@ -63,7 +63,7 @@
 
         <activity android:name=".SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.WriteReviewActivity">
+        <activity android:name=".review.write.WriteReviewActivity">
         </activity>
         <activity android:name=".category.SelectCategoryActivity">
 

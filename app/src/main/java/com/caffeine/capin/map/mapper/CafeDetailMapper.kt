@@ -1,5 +1,7 @@
-package com.caffeine.capin.map
+package com.caffeine.capin.map.mapper
 
+import com.caffeine.capin.map.dto.ResponseCafeDetail
+import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.network.DTOMapper
 
 class CafeDetailMapper:DTOMapper<ResponseCafeDetail, CafeDetailEntity> {

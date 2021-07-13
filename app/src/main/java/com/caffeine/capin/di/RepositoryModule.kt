@@ -1,9 +1,10 @@
 package com.caffeine.capin.di
 
-import com.caffeine.capin.map.CafeDetailMapper
-import com.caffeine.capin.map.CafeListDataSource
+import com.caffeine.capin.map.mapper.CafeDetailMapper
+import com.caffeine.capin.map.datasource.CafeListDataSource
 import com.caffeine.capin.map.CafeListMapper
-import com.caffeine.capin.map.CafeListRepository
+import com.caffeine.capin.map.repository.CafeListRepository
+import com.caffeine.capin.map.repository.CafeListRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -28,7 +29,7 @@ object RepositoryModule {
         datasource: CafeListDataSource,
         cafeListMapper: CafeListMapper,
         cafeDetailMapper: CafeDetailMapper
-        ): CafeListRepository = CafeListRepository(datasource,cafeListMapper, cafeDetailMapper)
+        ): CafeListRepository = CafeListRepositoryImpl(datasource,cafeListMapper, cafeDetailMapper)
 
 
 }

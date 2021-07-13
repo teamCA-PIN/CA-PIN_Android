@@ -40,7 +40,7 @@ object NetworkModule {
         val interceptor = object : Interceptor{
             override fun intercept(chain: Interceptor.Chain): Response {
                 val request = chain.request()
-                    .newBuilder().addHeader("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVkNDM0YmUxMGI5ZDA3ZWQ1MmRiNzkiLCJpYXQiOjE2MjYxNjIwMjQsImV4cCI6MTYyNjI0ODQyNH0.VeBiuGOBIy3u8ouhDqLi5dkza0XPmQvqaW4FuvFYca0")
+                    .newBuilder().addHeader("token",userPreferenceManager.getUserToken())
                     .build()
                 return chain.proceed(request)
             }

@@ -4,6 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.map.entity.CafeDetailEntity
+import com.caffeine.capin.map.entity.CafeInformationEntity
+import com.caffeine.capin.map.repository.CafeListRepository
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -48,7 +51,7 @@ class MapViewModel @Inject constructor(
         get() = _capinMapCafeLocations
 
     fun getCapinMapCafeLocations() {
-        cafeListRepository.getCafeList(null)
+        cafeListRepository.getCafeList(null,null,null,null,null,null)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({ cafes ->
@@ -105,7 +108,6 @@ class MapViewModel @Inject constructor(
         }
         cafeList[key] = isSelected
         _cafeInsideCurrentCamera.value = cafeList
-        Log.e("cafeList", "${cafeInsideCurrentCamera.value}")
     }
 
     fun removeAllCafeCurrentCamera() {
