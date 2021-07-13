@@ -31,7 +31,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel>()
     private lateinit var naverMap: NaverMap
     private lateinit var mapView: MapView
-    private val selectedMarker = Marker()
     private lateinit var locationSource: FusedLocationSource
 
     override fun onCreateView(
@@ -113,7 +112,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.radiogroupMap.check(binding.radiobuttonCapinMap.id)
         binding.radiogroupMap.setOnCheckedChangeListener { _, checkedId ->
             removeActiveMarkers()
-            selectedMarker.map = null
 
             when (checkedId) {
                 binding.radiobuttonMyMap.id -> {
