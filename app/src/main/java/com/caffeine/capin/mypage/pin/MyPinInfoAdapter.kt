@@ -3,6 +3,7 @@ package com.caffeine.capin.mypage.pin
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.CheckBox
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemCategoryPinDetailBinding
 
@@ -10,6 +11,7 @@ class MyPinInfoAdapter : RecyclerView.Adapter<MyPinInfoAdapter.MyPinInfoViewHold
 
     val myPinInfoList = mutableListOf<MyPinInfo>()
     private var isVisible: Boolean = false
+    var checkboxList = mutableListOf<CheckBox>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyPinInfoViewHolder {
         val binding = ItemCategoryPinDetailBinding.inflate(
@@ -60,6 +62,11 @@ class MyPinInfoAdapter : RecyclerView.Adapter<MyPinInfoAdapter.MyPinInfoViewHold
 
             binding.pinDetailChoiceCheckbox.setOnClickListener {
                 checkboxClickListener.onCheckboxClick(myPinInfo)
+                if (binding.pinDetailChoiceCheckbox.isChecked) {
+                    checkboxList.add(binding.pinDetailChoiceCheckbox)
+                } else {
+                    checkboxList.remove(binding.pinDetailChoiceCheckbox)
+                }
             }
         }
     }

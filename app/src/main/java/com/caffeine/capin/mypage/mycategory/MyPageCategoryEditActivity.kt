@@ -12,6 +12,7 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyPageCategoryEditBinding
     private lateinit var categoryColorAdapter: CategoryColorAdapter
+    private lateinit var checkedColor: CategoryColor
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,7 +56,10 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         categoryColorAdapter.setOnSigleCheckListener(object :
             CategoryColorAdapter.OnSigleCheckListener{
             override fun onSingleCheck(categoryColor: CategoryColor) {
-                
+                checkedColor = categoryColor
+                if(checkedColor in categoryColorAdapter.categoryColorList) {
+
+                }
             }
         })
 

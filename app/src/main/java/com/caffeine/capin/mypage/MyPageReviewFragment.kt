@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.*
 import com.caffeine.capin.databinding.FragmentMyPageCategoryBinding
@@ -131,6 +132,10 @@ class MyPageReviewFragment : Fragment() {
 
         myReviewAdapter.notifyDataSetChanged()
         binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
+
+        if(myReviewAdapter.myReviewList.size > 1) {
+            binding.ifBasicReviewTv.isVisible = false
+        }
     }
 
     private fun showEditReviewDialog() {

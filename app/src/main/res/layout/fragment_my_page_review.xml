@@ -6,13 +6,26 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".mypage.MyPageReviewFragment">
 
+    <TextView
+        android:id="@+id/if_basic_review_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="리뷰를 작성해서\n방문한 곳의 기록을 남겨보세요"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="276dp"
+        android:theme="@style/Body2"
+        android:textColor="@color/gray_4"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
     <com.caffeine.capin.util.NestedScrollableHost
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent">
+        >
 
         <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
@@ -39,10 +52,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="0dp"
                     app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-                    app:layout_constraintTop_toBottomOf="@+id/mypage_review_num_tv"
+                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="63dp"
                     tools:listitem="@layout/item_mypage_review" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>

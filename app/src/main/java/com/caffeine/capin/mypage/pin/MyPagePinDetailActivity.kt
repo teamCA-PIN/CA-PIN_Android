@@ -2,6 +2,7 @@ package com.caffeine.capin.mypage.pin
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -30,11 +31,16 @@ class MyPagePinDetailActivity : AppCompatActivity() {
 
         binding.pinDetailBackBtn.setOnClickListener { onBackPressed() }
 
-        binding.pinDetailEditOrDeleteBtn.setOnClickListener {
-//            if(binding.pinDetailEditOrDeleteBtn.drawable == R.drawable.icon_edit_ver_2) {
-//                myPinInfoAdapter.switchDeleteMode(true)
-//                binding.pinDetailEditOrDeleteBtn.setImageResource(R.drawable.icon_delete_red)
-//            }
+        binding.pinDetailEditBtn.setOnClickListener {
+            myPinInfoAdapter.switchDeleteMode(true)
+            binding.pinDetailEditBtn.isGone = true
+            binding.pinDetailDeleteBtn.isVisible = true
+        }
+
+        binding.pinDetailDeleteBtn.setOnClickListener {
+            showDeletePinConfirmDialog()
+            binding.pinDetailEditBtn.isVisible = true
+            binding.pinDetailDeleteBtn.isGone = true
         }
 
         myPinInfoAdapter = MyPinInfoAdapter()
@@ -49,7 +55,8 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                         binding.pinDetailHeaderTv.text = "${removePinInfoList.size}개 선택됨"
                     } else {
                         myPinInfoAdapter.switchDeleteMode(false)
-                        binding.pinDetailEditOrDeleteBtn.setImageResource(R.drawable.icon_edit_ver_2)
+                        binding.pinDetailEditBtn.isVisible = true
+                        binding.pinDetailDeleteBtn.isGone = true
                         binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
                     }
                 } else {
@@ -153,6 +160,12 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             )
         )
         myPinInfoAdapter.notifyDataSetChanged()
+        binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
+
+        if(myPinInfoAdapter.myPinInfoList.size > 1) {
+            binding.pinDetailBasicIv.isVisible = false
+            binding.pinDetailBasicTv.isVisible = false
+        }
     }
 
     private fun showDeletePinConfirmDialog() {
@@ -162,8 +175,17 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 override fun onClick() {
                     for (i in 0 until removePinInfoList.size) {
                         myPinInfoAdapter.myPinInfoList.remove(removePinInfoList[i])
+                        myPinInfoAdapter.checkboxList.forEach{
+                            it.isChecked = false
+                        }
                     }
+                    myPinInfoAdapter.checkboxList.clear()
+
+                    removePinInfoList.clear()
+                    myPinInfoAdapter.switchDeleteMode(false)
                     myPinInfoAdapter.notifyDataSetChanged()
+                    binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
+                    binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
                 }
             }).build()
         dialog.show(supportFragmentManager, "DeleteReview")
