@@ -1,4 +1,4 @@
-package com.caffeine.capin.mypage.api
+package com.caffeine.capin.mypage.api.response
 
 import com.caffeine.capin.mypage.myreview.MyReview
 import java.util.*

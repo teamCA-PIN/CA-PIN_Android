@@ -12,13 +12,26 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityMyPageCategoryEditBinding
+import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
+import com.caffeine.capin.network.BaseResponse
+import com.caffeine.capin.network.ServiceCreator
+import com.caffeine.capin.preference.UserPreferenceManager
+import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class MyPageCategoryEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyPageCategoryEditBinding
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     lateinit var categoryName : String
-    lateinit var selectedColor : String
+    var selectedColor : Int = 0
+
+    lateinit var categoryId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -27,8 +40,12 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
 
         binding.mypageCategoryEditBackBtn.setOnClickListener { onBackPressed() }
 
+        categoryId = intent.getStringExtra("categoryId").toString()
+        val header = intent.getStringExtra("feature").toString()
+        Log.d("리미", header)
+
         if(intent.hasExtra("feature")) {
-            binding.mypageCategoryEditHeaderTv.text = intent.getStringExtra("feature")
+            binding.mypageCategoryEditHeaderTv.text = header
         } else {
             binding.mypageCategoryEditHeaderTv.text = "카테고리 편집"
         }
@@ -59,13 +76,11 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         selectSingleColor()
 
         binding.mypageCategoryColorDoneBtn.setOnClickListener {
-            val intent = Intent()
-            intent.putExtra("categoryName", categoryName)
-            intent.putExtra("categoryColor", selectedColor)
-            Log.d("리미-edit",categoryName)
-            Log.d("리미-edit",selectedColor)
-            setResult(Activity.RESULT_OK, intent)
-            finish()
+            if(intent.getStringExtra("feature") == "새 카테고리") {
+                postNewCategoryToServer()
+            } else {
+                putMyCategoryToServer()
+            }
         }
     }
 
@@ -92,26 +107,75 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
                 currentColor.isChecked = true
 
                 when (it) {
-                    binding.categoryColor1Iv -> selectedColor = "6492f5"
-                    binding.categoryColor2Iv -> selectedColor = "6bbc9a"
-                    binding.categoryColor3Iv -> selectedColor = "ffc24b"
-                    binding.categoryColor4Iv -> selectedColor = "816f7c"
-                    binding.categoryColor5Iv -> selectedColor = "ffc2d5"
-                    binding.categoryColor6Iv -> selectedColor = "c9d776"
-                    binding.categoryColor7Iv -> selectedColor = "b2b9e5"
-                    binding.categoryColor8Iv -> selectedColor = "ff8e8e"
-                    binding.categoryColor9Iv -> selectedColor = "ebeaef"
-                    binding.categoryColor10Iv -> selectedColor = "9dc5e8"
+                    binding.categoryColor1Iv -> selectedColor = 0
+                    binding.categoryColor2Iv -> selectedColor = 1
+                    binding.categoryColor3Iv -> selectedColor = 2
+                    binding.categoryColor4Iv -> selectedColor = 3
+                    binding.categoryColor5Iv -> selectedColor = 4
+                    binding.categoryColor6Iv -> selectedColor = 5
+                    binding.categoryColor7Iv -> selectedColor = 6
+                    binding.categoryColor8Iv -> selectedColor = 7
+                    binding.categoryColor9Iv -> selectedColor = 8
+                    binding.categoryColor10Iv -> selectedColor = 9
                 }
 
                 categoryName = binding.mypageCategoryEditEdt.text.toString()
 
-                if (categoryName.isNullOrBlank() || selectedColor.isNullOrBlank()) {
+                if (categoryName.isNullOrBlank() || selectedColor.toString().isNullOrBlank()) {
                     binding.mypageCategoryColorDoneBtn.setImageResource(R.drawable.round_rectangle_gray_24dp)
                 } else {
                     binding.mypageCategoryColorDoneBtn.setImageResource(R.drawable.round_rectangle_brown_24dp)
                 }
             }
         }
+    }
+
+    private fun postNewCategoryToServer() {
+
+        val requestNewCategoryData = RequestNewCategoryData(
+            categoryName = binding.mypageCategoryEditEdt.text.toString(),
+            colorIdx = selectedColor
+        )
+
+        val capinApiService = ServiceCreator.capinApiService.postNewCategory(
+            userPreferenceManager.getUserToken(),
+            requestNewCategoryData
+        )
+
+        capinApiService.enqueue(object : Callback<BaseResponse> {
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                Log.d("fail", "error:$t")
+            }
+
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                Log.d("success", "성공")
+                finish()
+            }
+        })
+    }
+
+    private fun putMyCategoryToServer() {
+        val requestNewCategoryData = RequestNewCategoryData(
+            categoryName = binding.mypageCategoryEditEdt.text.toString(),
+            colorIdx = selectedColor
+        )
+
+        val capinApiService = ServiceCreator.capinApiService.putMyCategory(
+            userPreferenceManager.getUserToken(),
+            categoryId = categoryId,
+            requestNewCategoryData
+        )
+
+        capinApiService.enqueue(object : Callback<BaseResponse> {
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                Log.d("fail", "error:$t")
+            }
+
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                Log.d("success", "성공")
+                Log.d("리미", "진짜 안되냐")
+                finish()
+            }
+        })
     }
 }
