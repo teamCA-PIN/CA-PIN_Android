@@ -14,7 +14,6 @@ import com.caffeine.capin.R
 import com.caffeine.capin.ServiceCreator
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityLoginBinding
-import com.caffeine.capin.ServiceCreator.capinService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

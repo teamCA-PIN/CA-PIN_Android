@@ -1,8 +1,10 @@
 package com.caffeine.capin.util
 
 import android.graphics.Color
+import android.net.Uri
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
@@ -10,6 +12,7 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.caffeine.capin.category.CategoryNameEntity.CategoryPalette.Companion.findColorResource
 import com.caffeine.capin.customview.CapinChip
 import com.google.android.material.chip.ChipGroup
 import java.text.SimpleDateFormat
@@ -19,13 +22,18 @@ object BindingAdapter {
     @BindingAdapter("load_url")
     @JvmStatic
     fun ImageView.loadImageView(url: String?) {
-        Glide.with(context).load(url).into(this)
+        if(url != null) {
+            Glide.with(context).load(url).into(this)
+
+        }
     }
 
     @BindingAdapter("app:useCircleOutlineRadius")
     @JvmStatic
     fun ShapeableImageView.useCircleOutline(radius: Float) {
-        shapeAppearanceModel = ShapeAppearanceModel().withCornerSize(radius)
+        if (radius != null) {
+            shapeAppearanceModel = ShapeAppearanceModel().withCornerSize(radius)
+        }
     }
 
     @BindingAdapter("set_color")
@@ -70,5 +78,17 @@ object BindingAdapter {
         if (date == null) return
         val dateFormat = SimpleDateFormat("yyyy.MM.dd", Locale.KOREA)
         textView.text = dateFormat.format(date)
+    }
+
+    @JvmStatic
+    @BindingAdapter("load_uri")
+    fun ImageView.setImageUri(uri: Uri) {
+        Glide.with(context).load(uri).into(this)
+    }
+
+    @JvmStatic
+    @BindingAdapter("set_background_category")
+    fun ImageView.setBackgroundCategory(hexCode: String) {
+        setBackgroundColor(ContextCompat.getColor(this.context, findColorResource(hexCode)))
     }
 }

@@ -34,26 +34,26 @@ class LoginPwActivity : AppCompatActivity() {
             binding.loginpwDeleteBtn.isVisible = false
         }
 
-            binding.loginpwEdittextEmail.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
+        binding.loginpwEdittextEmail.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(
+                s: CharSequence?,
+                start: Int,
+                count: Int,
+                after: Int
+            ) {
 
-                }
+            }
 
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
 
-                }
+            }
 
-                override fun afterTextChanged(s: Editable?) {
-                    binding.loginpwDeleteBtn.isVisible = !s.isNullOrEmpty()
-                    checkEditTextEmpty()
+            override fun afterTextChanged(s: Editable?) {
+                binding.loginpwDeleteBtn.isVisible = !s.isNullOrEmpty()
+                checkEditTextEmpty()
 
-                }
-            })
+            }
+        })
 
 
         findPwButtonClickEvent()
@@ -81,7 +81,7 @@ class LoginPwActivity : AppCompatActivity() {
     private fun findPwButtonClickEvent() {
         binding.btnFindpw.setOnClickListener() {
             val requestLoginPwData = RequestLoginPwData(
-               email = binding.loginpwEdittextEmail.text.toString()
+                email = binding.loginpwEdittextEmail.text.toString()
             )
             val call: Call<ResponseLoginPwData> = ServiceCreator.capinService.postLoginPw(requestLoginPwData)
             call.enqueue(object : Callback<ResponseLoginPwData> {

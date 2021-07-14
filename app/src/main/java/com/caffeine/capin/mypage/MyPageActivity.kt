@@ -4,15 +4,17 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityMyPageBinding
 import com.caffeine.capin.databinding.MyPageTabIconBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMyPageBinding
 
     private lateinit var viewPager: ViewPager2
@@ -42,8 +44,8 @@ class MyPageActivity : AppCompatActivity() {
         val imageTab = tabView.mypageTabIcon
 
         when (position) {
-            0 -> imageTab.setImageResource(R.drawable.mypage_category_tab_selector)
-            else -> imageTab.setImageResource(R.drawable.mypage_review_tab_selector)
+            0 -> imageTab.setImageResource(R.drawable.selector_mypage_category_tab)
+            else -> imageTab.setImageResource(R.drawable.selector_mypage_review_tab)
         }
 
         return tabView.root

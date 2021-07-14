@@ -12,6 +12,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityFindPasswordBinding
+import com.caffeine.capin.login.LoginActivity
 
 class FindPasswordActivity : AppCompatActivity() {
 

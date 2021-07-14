@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.caffeine.capin.R
+import com.caffeine.capin.databinding.LayoutRejectToastBinding
 import com.caffeine.capin.databinding.ToastMessageCapinBinding
 
 object CapinToastMessage{
@@ -15,6 +16,25 @@ object CapinToastMessage{
         val inflater = LayoutInflater.from(context)
         val binding: ToastMessageCapinBinding =
             DataBindingUtil.inflate(inflater, R.layout.toast_message_capin, null, false)
+
+        binding.textviewMessage.text = message
+
+        return Toast(context).apply {
+            if (vertical != null) {
+                setGravity(Gravity.BOTTOM or Gravity.CENTER, 0 ,vertical!!.toPx())
+            } else {
+                setGravity(Gravity.BOTTOM or Gravity.CENTER, 0 ,60.toPx())
+
+            }
+            duration = Toast.LENGTH_SHORT
+            view = binding.root
+        }
+    }
+
+    fun createCapinRejectToast(context: Context, message: String, vertical: Int?): Toast? {
+        val inflater = LayoutInflater.from(context)
+        val binding: LayoutRejectToastBinding =
+            DataBindingUtil.inflate(inflater, R.layout.layout_reject_toast, null, false)
 
         binding.textviewMessage.text = message
 

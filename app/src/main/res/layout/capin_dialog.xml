@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <androidx.cardview.widget.CardView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:cardCornerRadius="8dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constriantlayout_dialog"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                style="@style/Subhead"
+                android:textColor="@color/gray_4"
+                android:textSize="16dp"
+                android:paddingVertical="15dp"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="dialog_title"/>
+
+            <View
+                android:id="@+id/view_border_title"
+                android:layout_width="match_parent"
+                android:layout_height="2dp"
+                android:background="@drawable/border_dialog_title"
+                app:layout_constraintTop_toBottomOf="@id/textview_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"/>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_buttons"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                app:layout_constraintTop_toBottomOf="@id/view_border_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+            </LinearLayout>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_exit_button"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/Subhead"
+                android:text="취소"
+                android:textAlignment="center"
+                android:textColor="@color/gray_4"
+                android:textSize="16dp"
+                android:visibility="gone"
+                android:foreground="?android:selectableItemBackground"
+                android:paddingVertical="15dp"
+                app:layout_constraintTop_toBottomOf="@id/linearlayout_buttons"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_content_dialog_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="20dp"
+                android:textAlignment="center"
+                android:paddingTop="26dp"
+                android:paddingBottom="16dp"
+                android:visibility="gone"
+                style="@style/Headline1"
+                android:textColor="@color/black"
+                app:layout_constraintTop_toBottomOf="@id/textview_exit_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="content dialog "/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/textview_content"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                style="@style/Body2"
+                android:paddingBottom="26dp"
+                android:visibility="gone"
+                android:lineSpacingExtra="0dp"
+                android:textSize="14dp"
+                android:textAlignment="center"
+                android:textColor="#6f6f6f"
+                app:layout_constraintTop_toBottomOf="@id/textview_content_dialog_title"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                tools:text="contents"/>
+
+            <LinearLayout
+                android:id="@+id/linearlayout_content_dialog_button"
+                android:layout_width="0dp"
+                android:visibility="gone"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:weightSum="2"
+                app:layout_constraintTop_toBottomOf="@id/textview_content"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintEnd_toEndOf="parent">
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/textview_cancel_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="취소"
+                    android:layout_weight="1"
+                    android:background="@color/gray_2"
+                    style="@style/Body2"
+                    android:textColor="@color/black"/>
+
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/textview_ok_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="확인"
+                    android:layout_weight="1"
+                    android:background="@color/pointcolor_1"
+                    style="@style/Body2"
+                    android:textColor="@color/white"/>
+
+
+            </LinearLayout>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+        
+    </androidx.cardview.widget.CardView>
+</layout>

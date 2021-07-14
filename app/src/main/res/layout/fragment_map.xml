@@ -6,16 +6,20 @@
         <variable
             name="viewModel"
             type="com.caffeine.capin.map.MapViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".map.MapFragment">
 
-        <com.caffeine.capin.customview.CapinToolbar
+        <com.caffeine.capin.customview.CapinMapToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:layout_constraintHeight_percent="0.12"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -64,6 +68,7 @@
             android:gravity="center"
             android:paddingVertical="6dp"
             android:paddingHorizontal="6dp"
+            android:elevation="2dp"
             android:background="@drawable/background_map_radio_group"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -103,7 +108,7 @@
             app:layout_constraintDimensionRatio="1:0.49"
             android:layout_marginBottom="12dp"
             app:cardCornerRadius="10dp"
-            android:visibility="gone"
+            android:visibility="@{viewModel.selectedCafe != null ? view.VISIBLE : view.GONE}"
             app:layout_constraintBottom_toTopOf="@id/radiogroup_map"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent">
@@ -118,7 +123,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
                     style="@style/Headline1"
-                    android:text="@{viewModel.selectedCafeInfo.name}"
                     android:textColor="@color/black"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="20dp"
@@ -142,7 +146,6 @@
                     android:layout_height="wrap_content"
                     android:textSize="14dp"
                     style="@style/Body4"
-                    android:text="@{Double.toString(viewModel.selectedCafeInfo.rating)}"
                     android:layout_marginEnd="20dp"
                     android:textColor="@color/pointcolor_yellow"
                     android:layout_marginTop="16dp"
@@ -155,28 +158,27 @@
                     android:id="@+id/imageview_cafe"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    load_url="@{viewModel.selectedCafeInfo.cafeImage}"
                     app:layout_constraintWidth_percent="0.275"
+                    android:background="@color/pointcolor_1"
+                    app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.0"
-                    app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}"
                     app:layout_constraintTop_toBottomOf="@id/textview_cafe_name"
                     app:layout_constraintStart_toStartOf="@id/textview_cafe_name"
                     app:layout_constraintBottom_toBottomOf="parent"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textview_address"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     style="@style/Body3"
                     android:textColor="@color/gray_4"
                     android:textSize="12dp"
-                    android:text="@{viewModel.selectedCafeInfo.address}"
+                    android:layout_marginStart="15dp"
                     app:layout_constraintTop_toTopOf="@id/imageview_cafe"
                     app:layout_constraintEnd_toEndOf="@id/textview_cafe_rating"
                     app:layout_constraintStart_toEndOf="@id/imageview_cafe"
-                    android:layout_marginStart="16dp"
                     tools:text="서울 마포구 마포대로 11길 118 1층"/>
 
                 <androidx.appcompat.widget.AppCompatTextView
@@ -185,7 +187,6 @@
                     android:layout_height="wrap_content"
                     style="@style/Body5"
                     android:textSize="12dp"
-                    android:text="@{viewModel.selectedCafeInfo.tag}"
                     android:paddingVertical="4dp"
                     android:paddingHorizontal="10dp"
                     android:background="@drawable/tagfilter_selected"

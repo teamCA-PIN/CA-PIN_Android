@@ -3,7 +3,7 @@ package com.caffeine.capin.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.caffeine.capin.map.CafetiEntity
+import com.caffeine.capin.map.entity.CafetiEntity
 
 class MapProfileViewModel: ViewModel() {
     private val _userInfo = MutableLiveData<UserEntity>()

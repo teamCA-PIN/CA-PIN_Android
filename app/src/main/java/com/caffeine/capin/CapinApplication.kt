@@ -10,6 +10,7 @@ class CapinApplication: Application() {
         super.onCreate()
 
         setMapClientId()
+
     }
 
     private fun setMapClientId() {

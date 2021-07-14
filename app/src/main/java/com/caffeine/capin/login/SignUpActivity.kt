@@ -1,6 +1,5 @@
 package com.caffeine.capin.login
 
-
 import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
@@ -13,10 +12,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
-import com.caffeine.capin.cafeti.CafetiActivity
+import com.caffeine.capin.ServiceCreator.capinService
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
-import com.caffeine.capin.ServiceCreator.capinService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response

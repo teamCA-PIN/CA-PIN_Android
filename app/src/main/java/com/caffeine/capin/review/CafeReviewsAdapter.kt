@@ -31,7 +31,7 @@ class CafeReviewsAdapter :
     ) : RecyclerView.ViewHolder(binding.root) {
 
         fun bind(review: CafeReview) {
-            binding.review = review
+//            binding.review = review
         }
     }
 

@@ -3,9 +3,15 @@
     package="com.caffeine.capin">
 
     <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
-    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
 
     <application
         android:name=".CapinApplication"
@@ -16,9 +22,21 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
         android:usesCleartextTraffic="true">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
         <activity android:name=".mypage.MyPageActivity"></activity>
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
+        <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity">
 
         </activity>
@@ -27,6 +45,12 @@
         <activity android:name=".cafeti.CafeStyleActivity"/>
         <activity android:name=".cafeti.CoffeeMenuActivity"/>
         <activity android:name=".cafeti.CafetiActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
 
 
         </activity>
@@ -37,19 +61,19 @@
 
         <activity android:name=".login.FindPasswordActivity"></activity>
         <activity android:name=".login.LoginPwActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            
 
 
         </activity>
-
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
+        <activity android:name=".review.write.WriteReviewActivity"></activity>
+        <activity android:name=".category.SelectCategoryActivity"></activity>
+        <activity android:name=".detail.menus.CafeMenusActivity" />
+
     </application>
 
 </manifest>
