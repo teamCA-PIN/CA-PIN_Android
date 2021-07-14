@@ -48,17 +48,17 @@
         app:layout_constraintTop_toBottomOf="@id/textView_notice"/>
 
     <androidx.appcompat.widget.AppCompatEditText
-        android:id="@+id/findpw_edittext_email"
+        android:id="@+id/loginpw_edittext_email"
         android:layout_width="278dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
         android:background="@null"
         android:foreground="@drawable/login_edittext_border"
-        android:hint="capin@naver.com"
+        android:hint="yourname@example.com"
         style="@style/Body1"
         android:layerType="software"
         android:paddingVertical="6dp"
-        android:textColorHint="#000000"
+        android:textColorHint="@color/gray_3"
         android:textSize="15dp"
         app:layout_constraintEnd_toEndOf="@+id/textView_notice"
         app:layout_constraintHorizontal_bias="0.032"
@@ -74,16 +74,16 @@
         style="@style/Body3"
         android:textColor="#878787"
         android:textSize="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/findpw_edittext_email"
+        app:layout_constraintEnd_toEndOf="@+id/loginpw_edittext_email"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/findpw_edittext_email"
-        app:layout_constraintTop_toBottomOf="@+id/findpw_edittext_email" />
+        app:layout_constraintStart_toStartOf="@+id/loginpw_edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/loginpw_edittext_email" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_findpw"
         android:layout_width="219dp"
         android:layout_height="49dp"
-        android:background="@drawable/circle_image_view2"
+        android:background="@drawable/circle_image_view"
         android:text="비밀번호 찾기"
         android:textSize="16dp"
         style="@style/Body1"
@@ -106,5 +106,17 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_back_black" />
+
+    <ImageView
+        android:id="@+id/loginpw_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="248dp"
+        app:layout_constraintBottom_toBottomOf="@+id/loginpw_edittext_email"
+        app:layout_constraintStart_toStartOf="@+id/loginpw_edittext_email"
+        app:layout_constraintTop_toTopOf="@+id/loginpw_edittext_email"
+        app:layout_constraintVertical_bias="1.0"
+        app:srcCompat="@drawable/icon_delete_1616"
+        android:visibility="invisible" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

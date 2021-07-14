@@ -5,9 +5,7 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.databinding.ActivityCafetiBinding
 
-
 class CafetiActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityCafetiBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -16,7 +14,6 @@ class CafetiActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         cafetiTestStartButtonClickEvent()
-
     }
     private fun cafetiTestStartButtonClickEvent() {
         binding.btnCafetiteststart.setOnClickListener() {

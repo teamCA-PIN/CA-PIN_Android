@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -8,16 +8,13 @@ import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
-import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.R
+import com.caffeine.capin.ServiceCreator
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityLoginBinding
-import com.caffeine.capin.login.LoginService
-import com.caffeine.capin.login.RequestLoginData
-import com.caffeine.capin.login.ResponseLoginData
-import com.caffeine.capin.login.ServiceCreator
-import com.caffeine.capin.login.ServiceCreator.loginService
+import com.caffeine.capin.ServiceCreator.capinService
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -65,10 +62,14 @@ class LoginActivity : AppCompatActivity() {
                 override fun afterTextChanged(text: Editable?) {
                     if(text.isNullOrEmpty()) {
                         edittextCount--
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
+                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
+                            R.color.gray_3
+                        ))
                     } else {
                         edittextCount++
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity, R.color.black))
+                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
+                            R.color.black
+                        ))
                     }
                     checkEditTextEmpty()
                 }
@@ -81,13 +82,17 @@ class LoginActivity : AppCompatActivity() {
         if (edittextCount >= 2) {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.pointcolor_1))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,R.drawable.circle_image_view2))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
+                    R.drawable.circle_image_view2
+                ))
                 isClickable = true
             }
         } else {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,R.drawable.circle_image_view))
+                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
+                    R.drawable.circle_image_view
+                ))
                 isClickable = false
             }
         }
@@ -101,7 +106,8 @@ class LoginActivity : AppCompatActivity() {
                 email = binding.loginEdittextEmail.text.toString(),
                 password = binding.loginEdittextPw.text.toString()
             )
-            val call: Call<ResponseLoginData> = loginService.postLogin(requestLoginData)
+            val call: Call<ResponseLoginData> =
+                ServiceCreator.capinService.postLogin(requestLoginData)
             call.enqueue(object : Callback<ResponseLoginData> {
                 override fun onResponse(
                     call: Call<ResponseLoginData>,
@@ -112,11 +118,36 @@ class LoginActivity : AppCompatActivity() {
                         intent = Intent(this@LoginActivity, CafetiActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", LENGTH_SHORT).show()
+                        Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", LENGTH_SHORT)
+                            .show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+                    Log.d("NetworkTest", "error:$t")
+                }
+            })
+        }
+        binding.btnLogin.setOnClickListener(){
+            val requestFindPwData = RequestFindPwData(
+                email = binding.loginEdittextEmail.text.toString(),
+                password = binding.loginEdittextPw.text.toString()
+            )
+            val call: Call<ResponseFindPwData> = ServiceCreator.capinService.postFindPw(requestFindPwData)
+            call.enqueue(object : Callback<ResponseFindPwData> {
+                override fun onResponse(
+                    call: Call<ResponseFindPwData>,
+                    response: Response<ResponseFindPwData>
+                ) {
+                    if (response.isSuccessful) {
+                        Toast.makeText(this@LoginActivity, "비밀번호가 변경되었습니다.", LENGTH_SHORT).show()
+                    }
+                    else {
+                        Toast.makeText(this@LoginActivity, "존재하지 않는 이메일 입니다.", LENGTH_SHORT)
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseFindPwData>, t: Throwable) {
                     Log.d("NetworkTest", "error:$t")
                 }
             })
