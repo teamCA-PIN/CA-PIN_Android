@@ -22,7 +22,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
         android:usesCleartextTraffic="true">
-        <activity android:name=".detail.menus.CafeMenusActivity"></activity>
+        <activity android:name=".detail.menus.CafeMenusActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -39,11 +45,7 @@
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
         <activity android:name=".cafeti.CoffeeTasteActivity" />
         <activity android:name=".cafeti.CafeColorActivity" />

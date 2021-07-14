@@ -1,52 +1,74 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".detail.menus.CafeMenusActivity">
+<layout>
 
-    <TextView
-        android:id="@+id/textView23"
-        style="@style/Headline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="14dp"
-        android:text="메뉴 전체보기"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.498"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <data>
 
-    <ImageView
-        android:id="@+id/button_close"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView23"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView23"
-        app:srcCompat="@drawable/ic_icon_close_black" />
+        <variable
+            name="viewModel"
+            type="com.caffeine.capin.detail.menus.CafeMenusViewModel" />
+    </data>
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/list_menus"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="13dp"
-        android:layout_marginTop="27dp"
-        android:layout_marginEnd="13dp"
-        android:layout_marginBottom="56dp"
-        android:background="@drawable/round_rectangle_10dp"
-        android:backgroundTint="@color/gray_1"
-        android:overScrollMode="never"
-        android:paddingTop="25dp"
-        android:paddingBottom="25dp"
-        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23"
-        tools:itemCount="8"
-        tools:listitem="@layout/item_cafe_menu" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".detail.menus.CafeMenusActivity">
+
+        <TextView
+            android:id="@+id/textView23"
+            style="@style/Headline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:text="메뉴 전체보기"
+            android:textColor="@color/black"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/button_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textView23"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@+id/textView23"
+            app:srcCompat="@drawable/ic_icon_close_black" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/list_menus"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="13dp"
+            android:layout_marginTop="27dp"
+            android:layout_marginEnd="13dp"
+            android:layout_marginBottom="56dp"
+            android:background="@drawable/round_rectangle_10dp"
+            android:backgroundTint="@color/gray_1"
+            android:overScrollMode="never"
+            android:paddingTop="25dp"
+            android:paddingBottom="25dp"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/textView23"
+            tools:itemCount="8"
+            tools:listitem="@layout/item_cafe_menu" />
+
+        <include
+            android:id="@+id/window_loading"
+            layout="@layout/window_loading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:isLoading="@{viewModel.isLoading()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="visible" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>
