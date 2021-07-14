@@ -8,6 +8,10 @@ import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
 import retrofit2.http.*
+import com.caffeine.capin.network.response.CafeMenusResponse
+import retrofit2.http.GET
+import retrofit2.http.Path
+import retrofit2.http.Query
 
 interface CapinApiService {
     @GET("/cafes")
@@ -22,6 +26,12 @@ interface CapinApiService {
 
     @GET("/cafes/detail/{cafeId}")
     fun getCafeDetail(@Path("cafeId") cafeId: String): Single<ResponseCafeDetail>
+
+    @GET("/cafes/{cafeId}/menus")
+    fun getCafeMenus(
+        @Path("cafeId") cafeId: String
+    ): Call<CafeMenusResponse>
+
 
     //mypage
     @GET("/user/reviews")

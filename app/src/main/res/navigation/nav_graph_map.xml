@@ -14,6 +14,7 @@
             android:id="@+id/action_mapFragment_to_mapProfileFragment"
             app:destination="@id/mapProfileFragment"
             app:enterAnim="@anim/animation_slide_right_to_left"/>
+
         <action
             android:id="@+id/action_mapFragment_to_tagFilterFragment"
             app:destination="@id/tagFilterFragment" />
@@ -29,6 +30,8 @@
         android:id="@+id/tagFilterFragment"
         android:name="com.caffeine.capin.tagfilter.TagFilterFragment"
         android:label="TagFilterFragment"
-        tools:layout="@layout/fragment_tag_filter"/>
+        tools:layout="@layout/fragment_tag_filter">
+
+    </fragment>
 
 </navigation>
