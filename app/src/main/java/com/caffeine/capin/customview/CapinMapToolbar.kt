@@ -25,6 +25,10 @@ class CapinMapToolbar @JvmOverloads constructor(
         }
     }
 
+    fun changeTagSearchBackground(background: Int) {
+        binding.buttonTag.setBackgroundResource(background)
+    }
+
     fun setMenuButton(listener: OnClickListener) {
         binding.buttonMenu.setOnClickListener {
             listener.onClick(this)
