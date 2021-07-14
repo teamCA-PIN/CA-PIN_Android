@@ -18,6 +18,7 @@ import kotlin.collections.ArrayList
 class MapViewModel @Inject constructor(
     private val cafeListRepository: CafeListRepository
 ) : ViewModel() {
+    private var count = 0
     private val markerList = ArrayList<Marker>()
 
     private val _exposedMarker = MutableLiveData<ArrayList<Marker>>()
@@ -50,6 +51,14 @@ class MapViewModel @Inject constructor(
     val capinMapCafeLocation: LiveData<List<CafeInformationEntity>>
         get() = _capinMapCafeLocations
 
+    fun changeCapinMapLocations(mapList: List<CafeInformationEntity>) {
+        _capinMapCafeLocations.value = mapList
+        mapList.forEach { cafe ->
+            cafeList[cafe] = false
+        }
+        _cafeInsideCurrentCamera.postValue(cafeList)
+    }
+
     fun getCapinMapCafeLocations() {
         cafeListRepository.getCafeList(null,null,null,null,null,null)
             .subscribeOn(Schedulers.io())
@@ -81,6 +90,8 @@ class MapViewModel @Inject constructor(
     }
 
     fun switchToCapinMap() {
+        count++
+        Log.e("switch capinmap","$count")
         cafeList.clear()
         getCapinMapCafeLocations()
     }

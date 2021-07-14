@@ -49,11 +49,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
-        viewModel.switchToCapinMap()
+//        viewModel.switchToCapinMap()
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDeatail()
+        changeMap()
+
     }
 
     override fun onMapReady(naverMap: NaverMap) {
@@ -63,15 +65,19 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.zoomcontrolview.map = naverMap
         binding.locationButton.map = naverMap
 
-        changeMap()
         setMarker()
         checkPermissions()
         getTagResult()
     }
 
     private fun getTagResult() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<List<CafeInformationEntity>>("tagResult")
-            ?.observe(viewLifecycleOwner){
+        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<List<CafeInformationEntity>>(
+            "tagResult"
+        )
+            ?.observe(viewLifecycleOwner) {
+                removeActiveMarkers()
+
+                viewModel.changeCapinMapLocations(it)
                 Log.e("hello", "$it")
             }
     }
@@ -118,16 +124,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun changeMap() {
-        binding.radiogroupMap.check(binding.radiobuttonCapinMap.id)
-        binding.radiogroupMap.setOnCheckedChangeListener { _, checkedId ->
-            removeActiveMarkers()
-
-            when (checkedId) {
-                binding.radiobuttonMyMap.id -> {
-                    viewModel.switchToMyMap()
-                }
-                binding.radiobuttonCapinMap.id -> {
-                    viewModel.switchToCapinMap()
+        binding.radiogroupMap.apply {
+            check(binding.radiobuttonCapinMap.id)
+            setOnCheckedChangeListener { _, checkedId ->
+                removeActiveMarkers()
+                when (checkedId) {
+                    binding.radiobuttonMyMap.id -> {
+                        viewModel.switchToMyMap()
+                    }
+                    binding.radiobuttonCapinMap.id -> {
+                        viewModel.switchToCapinMap()
+                    }
                 }
             }
         }
@@ -154,7 +161,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
-        if(viewModel.cafeCurrentChecked.value != null) {
+        if (viewModel.cafeCurrentChecked.value != null) {
             viewModel.addCafeInsideCurrentCamera(viewModel.cafeCurrentChecked.value!!, true)
         }
     }
