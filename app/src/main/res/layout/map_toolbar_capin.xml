@@ -28,7 +28,7 @@
             android:id="@+id/imageview_capin_logo"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_ca_logo_frame"
+            android:background="@drawable/ic_capin_logo"
             app:layout_constraintBottom_toBottomOf="@+id/button_tag"
             app:layout_constraintEnd_toStartOf="@+id/button_menu"
             app:layout_constraintHorizontal_bias="0.47"

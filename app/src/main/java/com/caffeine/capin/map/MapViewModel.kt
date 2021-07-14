@@ -7,6 +7,8 @@ import androidx.lifecycle.ViewModel
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.map.repository.CafeListRepository
+import com.caffeine.capin.tagfilter.TagFilterEntity
+import com.caffeine.capin.tagfilter.TagFilterList
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -18,7 +20,6 @@ import kotlin.collections.ArrayList
 class MapViewModel @Inject constructor(
     private val cafeListRepository: CafeListRepository
 ) : ViewModel() {
-    private var count = 0
     private val markerList = ArrayList<Marker>()
 
     private val _exposedMarker = MutableLiveData<ArrayList<Marker>>()
@@ -39,12 +40,24 @@ class MapViewModel @Inject constructor(
     val cafeCurrentChecked: LiveData<CafeInformationEntity>
         get() = _cafeCurrentChecked
 
+    private val _tagList = MutableLiveData<ArrayList<TagFilterEntity?>>()
+    val tagList: LiveData<ArrayList<TagFilterEntity?>>
+        get() = _tagList
+
+    fun changeTagList(selectedTagList: ArrayList<TagFilterEntity?>) {
+        _tagList.value = selectedTagList
+    }
+
     fun changeCafeCurrentChecked(cafe: CafeInformationEntity) {
         _cafeCurrentChecked.value = cafe
     }
 
     fun changeSelectedCafe(cafe: CafeDetailEntity) {
         _selectedCafe.value = cafe
+    }
+
+    init {
+        switchToCapinMap()
     }
 
     private val _capinMapCafeLocations = MutableLiveData<List<CafeInformationEntity>>()
@@ -57,6 +70,13 @@ class MapViewModel @Inject constructor(
             cafeList[cafe] = false
         }
         _cafeInsideCurrentCamera.postValue(cafeList)
+    }
+
+    fun unselectAllLocation() {
+        cafeList.forEach{ cafe ->
+            cafeList[cafe.key] = false
+        }
+        _cafeInsideCurrentCamera.value = cafeList
     }
 
     fun getCapinMapCafeLocations() {
@@ -90,8 +110,6 @@ class MapViewModel @Inject constructor(
     }
 
     fun switchToCapinMap() {
-        count++
-        Log.e("switch capinmap","$count")
         cafeList.clear()
         getCapinMapCafeLocations()
     }

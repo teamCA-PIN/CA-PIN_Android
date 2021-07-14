@@ -34,6 +34,9 @@ class TagFilterViewModel @Inject constructor(
     val tagResult: LiveData<List<CafeInformationEntity>>
         get() = _tagResult
 
+    private val _isTagApplied = MutableLiveData<Boolean>()
+    val isTagApplied: LiveData<Boolean>
+        get() = _isTagApplied
 
     fun updateCountCafeResult(count: Int?) {
         _countCafeResult.postValue(count)
@@ -76,5 +79,4 @@ class TagFilterViewModel @Inject constructor(
                 it.printStackTrace()
             })
     }
-
 }

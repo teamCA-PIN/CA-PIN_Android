@@ -1,7 +1,6 @@
 package com.caffeine.capin.tagfilter
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -39,6 +38,7 @@ class TagFilterFragment : Fragment() {
         activeGetResultButton()
         getFilterCafe()
         showResultInMapView()
+        closeTagFilterFragment()
     }
 
     private fun setTagFilterButton() {
@@ -62,25 +62,31 @@ class TagFilterFragment : Fragment() {
         viewModel.filterChecked.observe(viewLifecycleOwner) { tagFilter ->
             if (!tagFilter.isNullOrEmpty()) {
                 changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
+                binding.buttonResult.isClickable = true
             } else {
                 changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
+                binding.buttonResult.isClickable = false
             }
         }
     }
 
     private fun getFilterCafe() {
         viewModel.checkedTagList.observe(viewLifecycleOwner) { checkedList ->
-            if (checkedList.all { it == null }) {
-                viewModel.updateCountCafeResult(null)
-            } else {
-                viewModel.getCafeSize()
-            }
+            viewModel.getCafeSize()
         }
     }
 
     private fun showResultInMapView() {
         binding.buttonResult.setOnClickListener {
             findNavController().previousBackStackEntry?.savedStateHandle?.set("tagResult", viewModel.tagResult.value)
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("tagList", viewModel.checkedTagList.value)
+            findNavController().popBackStack()
+        }
+    }
+
+    private fun closeTagFilterFragment() {
+        binding.imageviewButtonClose.setOnClickListener {
+            findNavController().previousBackStackEntry?.savedStateHandle?.set("tagList", viewModel.checkedTagList.value)
             findNavController().popBackStack()
         }
     }
