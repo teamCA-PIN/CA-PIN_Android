@@ -7,15 +7,16 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
 import com.caffeine.capin.util.AutoClearedValue
 import com.caffeine.capin.util.VerticalItemDecoration
+import dagger.hilt.android.AndroidEntryPoint
 
-class TagFilterFragment:Fragment() {
+@AndroidEntryPoint
+class TagFilterFragment : Fragment() {
     private var binding by AutoClearedValue<FragmentTagFilterBinding>()
     private val viewModel by viewModels<TagFilterViewModel>()
 
@@ -30,20 +31,25 @@ class TagFilterFragment:Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        binding.viewModel = viewModel
+        binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerviewTagFilter.isNestedScrollingEnabled = false
         setTagFilterButton()
         activeGetResultButton()
+        getFilterCafe()
     }
 
     private fun setTagFilterButton() {
         binding.recyclerviewTagFilter.apply {
-            adapter = TagFilterAdapter(object : TagFilterAdapter.FilterClickListener{
-                override fun selectFilter(checkbox: CompoundButton) {
+            adapter = TagFilterAdapter(object : TagFilterAdapter.FilterClickListener {
+                override fun selectFilter(checkbox: CompoundButton, tag: TagFilterEntity) {
                     viewModel.addFilterChecked(checkbox)
+                    viewModel.addTagList(tag)
                 }
 
-                override fun unSelectFilter(checkbox: CompoundButton) {
+                override fun unSelectFilter(checkbox: CompoundButton, tag: TagFilterEntity) {
                     viewModel.removeFilterChecked(checkbox)
+                    viewModel.removeTagList(tag)
                 }
             })
             addItemDecoration(VerticalItemDecoration(16))
@@ -56,6 +62,16 @@ class TagFilterFragment:Fragment() {
                 changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
             } else {
                 changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
+            }
+        }
+    }
+
+    private fun getFilterCafe() {
+        viewModel.checkedTagList.observe(viewLifecycleOwner) { checkedList ->
+            if (checkedList.all { it == null }) {
+                viewModel.updateCountCafeResult(null)
+            } else {
+                viewModel.getCafeSize()
             }
         }
     }

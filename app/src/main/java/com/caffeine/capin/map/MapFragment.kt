@@ -1,7 +1,6 @@
 package com.caffeine.capin.map
 
 import android.Manifest
-import android.app.Activity
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
@@ -13,11 +12,9 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
-import androidx.navigation.findNavController
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.category.SelectCategoryActivity
-import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng
@@ -34,7 +31,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private val viewModel by viewModels<MapViewModel>()
     private lateinit var naverMap: NaverMap
     private lateinit var mapView: MapView
-    private val selectedMarker = Marker()
     private lateinit var locationSource: FusedLocationSource
 
     override fun onCreateView(
@@ -51,11 +47,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.viewModel = viewModel
         mapView = binding.mapview
         mapView.getMapAsync(this)
+
+        viewModel.switchToCapinMap()
         setCafeInformation()
         setToolbar()
-        showCafeCardView()
         archiveCafeToMyMap()
-        viewModel.switchToCapinMap()
+        updateCafeDeatail()
     }
 
     override fun onMapReady(naverMap: NaverMap) {
@@ -91,7 +88,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         locationSource = FusedLocationSource(this, PERMISSION_FUSED_LOCATION)
         naverMap.locationTrackingMode = LocationTrackingMode.Follow
         naverMap.locationSource = locationSource
-
     }
 
     private fun setToolbar() {
@@ -106,7 +102,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setCafeInformation() {
-        viewModel.cafeInformation.observe(viewLifecycleOwner) {
+        viewModel.capinMapCafeLocation.observe(viewLifecycleOwner) {
             setMarkersInsideCamera()
             setCameraChangeListener()
         }
@@ -115,8 +111,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun changeMap() {
         binding.radiogroupMap.check(binding.radiobuttonCapinMap.id)
         binding.radiogroupMap.setOnCheckedChangeListener { _, checkedId ->
-            freeActiveMarkers()
-            selectedMarker.map = null
+            removeActiveMarkers()
 
             when (checkedId) {
                 binding.radiobuttonMyMap.id -> {
@@ -132,9 +127,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun setCameraChangeListener() {
         naverMap.addOnCameraChangeListener { reason, animated ->
             setMarkersInsideCamera()
-            if (viewModel.selectedMarker.value != null) {
-                setMarker()
-            }
         }
     }
 
@@ -143,76 +135,77 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         val westBound = naverMap.coveringBounds.westLongitude
         val northBound = naverMap.coveringBounds.northLatitude
         val southBound = naverMap.coveringBounds.southLatitude
+
         viewModel.removeAllCafeCurrentCamera()
-        viewModel.cafeInformation.value?.forEach { location ->
-            if (location.longtitude in westBound..eastBound) {
+        viewModel.capinMapCafeLocation.value?.forEach { location ->
+            if (location.longitude in westBound..eastBound) {
                 if (location.latitude in southBound..northBound) {
-                    viewModel.addCafeInsideCurrentCamera(location)
+                    viewModel.addCafeInsideCurrentCamera(location, false)
                 }
             }
         }
-    }
 
-    private fun showCafeCardView() {
-        viewModel.selectedCafeInfo.observe(viewLifecycleOwner) { selectedCafe ->
-            if (selectedCafe != null) {
-                binding.cardviewCafeSelected.visibility = View.VISIBLE
-            } else {
-                binding.cardviewCafeSelected.visibility = View.GONE
-            }
+        if(viewModel.cafeCurrentChecked.value != null) {
+            viewModel.addCafeInsideCurrentCamera(viewModel.cafeCurrentChecked.value!!, true)
         }
     }
 
     private fun setMarker() {
-        viewModel.cafeSelectedStatus.observe(viewLifecycleOwner) { cafeList ->
-            freeActiveMarkers()
-            cafeList.forEach { cafe ->
-                val marker = Marker()
-                marker.position = LatLng(cafe.key.latitude, cafe.key.longtitude)
-                viewModel.addExposedMarker(marker)
+        viewModel.cafeInsideCurrentCamera.observe(viewLifecycleOwner) { cafeList ->
+            removeActiveMarkers()
+            initSelectMarker()
+        }
+    }
 
-                if (cafe.value) {
-                    marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_active_cate_10)
-                    marker.map = naverMap
-                } else {
-                    marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_inactive_cate_10)
-                    marker.map = naverMap
-                }
+    private fun initSelectMarker() {
+        viewModel.cafeInsideCurrentCamera.value?.forEach { cafe ->
+            val marker = Marker()
+            marker.position = LatLng(cafe.key.latitude, cafe.key.longitude)
+            viewModel.addExposedMarker(marker)
 
-                //Todo: OnClickListener 메서드 분리시키기
-                marker.setOnClickListener(object : Overlay.OnClickListener {
-                    override fun onClick(overlay: Overlay): Boolean {
-                        if (overlay is Marker) {
-                            if (marker.position.latitude == cafe.key.latitude && marker.position.longitude == cafe.key.longtitude) {
-                                viewModel.changeSelectedCafeInfo(cafe.key)
-                                viewModel.changeMapValue(cafe.key, true)
-                            } else {
-                                viewModel.changeMapValue(cafe.key, false)
-                            }
-                            return true
-                        }
-                        return false
+            if (cafe.value) {
+                marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_active_cate_10)
+                marker.map = naverMap
+            } else {
+                marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_inactive_default)
+                marker.map = naverMap
+            }
+
+            //Todo: OnClickListener 메서드 분리시키기
+            marker.setOnClickListener(object : Overlay.OnClickListener {
+                override fun onClick(overlay: Overlay): Boolean {
+                    if (overlay is Marker) {
+                        viewModel.changeCafeCurrentChecked(cafe.key)
+                        viewModel.addCafeInsideCurrentCamera(cafe.key, true)
+                        viewModel.getSelectedCafeDetailInfo()
+                        return true
                     }
-                })
+                    return false
+                }
+            })
+        }
+    }
+
+    private fun updateCafeDeatail() {
+        viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
+            binding.apply {
+                textviewAddress.text = cafeDetail.address
+                textviewCafeName.text = cafeDetail.name
+                textviewCafeRating.text = cafeDetail.average.toString()
+                textviewCafeTag.text = cafeDetail.tags[0].name
             }
         }
     }
 
     private fun archiveCafeToMyMap() {
         binding.buttonSaveCafe.setOnClickListener {
-            val intent = Intent(requireContext(),SelectCategoryActivity::class.java)
+            val intent = Intent(requireContext(), SelectCategoryActivity::class.java)
             intent.putExtra(CAFE_NAME, binding.textviewCafeName.text)
             startActivity(intent)
         }
     }
-//
-//    private fun showToast() {
-//        binding.buttonSaveCafe.setOnClickListener {
-//            createCapinToast(requireContext(), "카테고리에 저장되었습니다.",325)?.show()
-//        }
-//    }
 
-    private fun freeActiveMarkers() {
+    private fun removeActiveMarkers() {
         viewModel.exposedMarker.value?.forEach { marker ->
             marker.map = null
         }

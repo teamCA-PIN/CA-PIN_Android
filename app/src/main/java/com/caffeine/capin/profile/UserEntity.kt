@@ -1,6 +1,6 @@
 package com.caffeine.capin.profile
 
-import com.caffeine.capin.map.CafetiEntity
+import com.caffeine.capin.map.entity.CafetiEntity
 
 data class UserEntity(
     val nickName: String,

@@ -14,7 +14,7 @@ import com.caffeine.capin.FindPasswordActivity
 import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityLoginBinding
-import com.caffeine.capin.ServiceCreator.loginService
+import com.caffeine.capin.network.ServiceCreator.loginService
 import com.caffeine.capin.signup.SignUpActivity
 import retrofit2.Call
 import retrofit2.Callback

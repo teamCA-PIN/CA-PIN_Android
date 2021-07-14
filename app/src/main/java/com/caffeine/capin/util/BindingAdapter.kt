@@ -22,13 +22,18 @@ object BindingAdapter {
     @BindingAdapter("load_url")
     @JvmStatic
     fun ImageView.loadImageView(url: String?) {
-        Glide.with(context).load(url).into(this)
+        if(url != null) {
+            Glide.with(context).load(url).into(this)
+
+        }
     }
 
     @BindingAdapter("app:useCircleOutlineRadius")
     @JvmStatic
     fun ShapeableImageView.useCircleOutline(radius: Float) {
-        shapeAppearanceModel = ShapeAppearanceModel().withCornerSize(radius)
+        if (radius != null) {
+            shapeAppearanceModel = ShapeAppearanceModel().withCornerSize(radius)
+        }
     }
 
     @BindingAdapter("set_color")
@@ -84,7 +89,6 @@ object BindingAdapter {
     @JvmStatic
     @BindingAdapter("set_background_category")
     fun ImageView.setBackgroundCategory(hexCode: String) {
-
         setBackgroundColor(ContextCompat.getColor(this.context, findColorResource(hexCode)))
     }
 }

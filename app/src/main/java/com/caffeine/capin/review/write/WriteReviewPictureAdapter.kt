@@ -1,4 +1,4 @@
-package com.caffeine.capin.review
+package com.caffeine.capin.review.write
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemReviewPictureBinding
+import com.caffeine.capin.PictureUriEntity
 
 class WriteReviewPictureAdapter(private val listener: DeleteListener) : ListAdapter<PictureUriEntity, WriteReviewPictureAdapter.WriteReviewPictureViewHolder>(
         diffCallback

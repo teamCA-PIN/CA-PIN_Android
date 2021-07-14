@@ -1,4 +1,4 @@
-package com.caffeine.capin.review
+package com.caffeine.capin
 
 import android.net.Uri
 
