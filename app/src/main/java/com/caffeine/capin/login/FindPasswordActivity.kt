@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.login
 
 import android.content.Intent
 import android.os.Bundle
@@ -9,6 +9,8 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import androidx.core.view.isVisible
+import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityFindPasswordBinding
 import com.caffeine.capin.login.LoginActivity
 
@@ -66,6 +68,41 @@ class FindPasswordActivity : AppCompatActivity() {
                 }
             })
         }
+
+        binding.pwDeleteBtn.setOnClickListener {
+            binding.pwDeleteBtn.isVisible = false
+        }
+
+        binding.edittextNewpw.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.pwDeleteBtn.isVisible = true
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                binding.pwDeleteBtn.isVisible = true
+            }
+        })
+
+        binding.pwagainDeleteBtn.setOnClickListener {
+            binding.pwagainDeleteBtn.isVisible = false
+        }
+
+        binding.edittextNewpwcheck.addTextChangedListener(object : TextWatcher{
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                binding.pwagainDeleteBtn.isVisible = true
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                binding.pwagainDeleteBtn.isVisible = true
+            }
+        })
+
     }
 
 
@@ -73,7 +110,7 @@ class FindPasswordActivity : AppCompatActivity() {
         binding.btnProve.setOnClickListener() {
             val number = binding.edittextNumber.text
             if (number.isNullOrBlank()) {
-              //인증번호가 틀리다면
+                //인증번호가 틀리다면
             }
             else { //인증번호가 맞다면
                 Toast.makeText(this@FindPasswordActivity, "인증되었습니다.", LENGTH_SHORT).show()

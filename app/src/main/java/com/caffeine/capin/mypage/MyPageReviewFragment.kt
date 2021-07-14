@@ -12,7 +12,6 @@ import com.caffeine.capin.R
 import com.caffeine.capin.customview.*
 import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
-import com.caffeine.capin.mypage.api.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
 import com.caffeine.capin.network.ServiceCreator
