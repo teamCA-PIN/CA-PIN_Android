@@ -55,6 +55,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDeatail()
+        showCafeDetail()
     }
 
     override fun onResume() {
@@ -70,7 +71,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.zoomcontrolview.map = naverMap
         binding.locationButton.map = naverMap
 
-
         setMarker()
         checkPermissions()
         getTagResult()
@@ -78,15 +78,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun getTagResult() {
-
         if (viewModel.checkedTagList.value != null) {
             if ( viewModel.checkedTagList.value!!.all { it == null }) {
-                Log.e("checkedTagList", "${viewModel.checkedTagList.value}")
-
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
             } else {
-                Log.e("checkedTagList else", "${viewModel.checkedTagList.value}")
-
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
             }
         }
@@ -123,6 +118,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             setTagSearchButton {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
             }
+        }
+    }
+
+    private fun showCafeDetail() {
+        viewModel.selectedCafe.observe(viewLifecycleOwner) {
+            binding.cardviewCafeSelected.visibility = View.VISIBLE
         }
     }
 

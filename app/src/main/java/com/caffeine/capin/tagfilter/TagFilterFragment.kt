@@ -47,8 +47,6 @@ class TagFilterFragment : Fragment() {
 
     private fun initializeTag() {
         if (!viewModel.checkedTagList.value.isNullOrEmpty()) {
-            Log.e("initial", "${(binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList}")
-            Log.e("checkedList", "${viewModel.checkedTagList.value}")
             (binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList = viewModel.checkedTagList.value!!
             viewModel.getCafeLocations()
         }

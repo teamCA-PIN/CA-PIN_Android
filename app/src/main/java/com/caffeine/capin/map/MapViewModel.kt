@@ -41,20 +41,8 @@ class MapViewModel @Inject constructor(
     val cafeCurrentChecked: LiveData<CafeInformationEntity>
         get() = _cafeCurrentChecked
 
-    private val _tagList = MutableLiveData<ArrayList<TagFilterEntity?>>()
-    val tagList: LiveData<ArrayList<TagFilterEntity?>>
-        get() = _tagList
-
-    fun changeTagList(selectedTagList: ArrayList<TagFilterEntity?>) {
-        _tagList.value = selectedTagList
-    }
-
     fun changeCafeCurrentChecked(cafe: CafeInformationEntity) {
         _cafeCurrentChecked.value = cafe
-    }
-
-    fun changeSelectedCafe(cafe: CafeDetailEntity) {
-        _selectedCafe.value = cafe
     }
 
     init {
@@ -73,28 +61,6 @@ class MapViewModel @Inject constructor(
         _cafeInsideCurrentCamera.postValue(cafeList)
     }
 
-    fun unselectAllLocation() {
-        cafeList.forEach{ cafe ->
-            cafeList[cafe.key] = false
-        }
-        _cafeInsideCurrentCamera.value = cafeList
-    }
-
-//    fun getCapinMapCafeLocations() {
-//        cafeListRepository.getCafeList(null,null,null,null,null,null)
-//            .subscribeOn(Schedulers.io())
-//            .observeOn(AndroidSchedulers.mainThread())
-//            .subscribe({ cafes ->
-//                _capinMapCafeLocations.postValue(cafes)
-//                cafes.forEach { cafe ->
-//                    cafeList[cafe] = false
-//                }
-//                _cafeInsideCurrentCamera.postValue(cafeList)
-//            }, {
-//                it.printStackTrace()
-//            })
-//    }
-
     fun getSelectedCafeDetailInfo() {
         cafeInsideCurrentCamera.value?.forEach { isSelectedCafe ->
             if (isSelectedCafe.value) {
@@ -112,8 +78,7 @@ class MapViewModel @Inject constructor(
 
     fun switchToCapinMap() {
         cafeList.clear()
-        initializeCapinMap()
-//        getCafeLocations()
+        getCafeLocations()
     }
 
     fun switchToMyMap() {
@@ -134,7 +99,7 @@ class MapViewModel @Inject constructor(
     }
 
     fun addCafeInsideCurrentCamera(key: CafeInformationEntity, isSelected: Boolean) {
-        cafeList.forEach{
+        cafeList.forEach {
             cafeList[it.key] = false
         }
         cafeList[key] = isSelected
@@ -152,7 +117,7 @@ class MapViewModel @Inject constructor(
     val filterChecked: LiveData<ArrayList<CompoundButton>>
         get() = _filterChecked
 
-    private val taglist = arrayListOf<TagFilterEntity?>(null,null,null,null,null,null)
+    private val taglist = arrayListOf<TagFilterEntity?>()
     private val _checkedTagList = MutableLiveData<ArrayList<TagFilterEntity?>>()
     val checkedTagList: LiveData<ArrayList<TagFilterEntity?>>
         get() = _checkedTagList
@@ -172,7 +137,7 @@ class MapViewModel @Inject constructor(
     }
 
     fun addTagList(tag: TagFilterEntity) {
-        taglist[tag.tagIndex] = tag
+        taglist.add(tag)
         _checkedTagList.value = taglist
     }
 
@@ -181,41 +146,21 @@ class MapViewModel @Inject constructor(
     }
 
     fun removeTagList(tag: TagFilterEntity) {
-        taglist[tag.tagIndex] = null
+        taglist.remove(tag)
         _checkedTagList.value = taglist
     }
 
     fun getCafeLocations() {
-        cafeListRepository.getCafeList(
-            taglist[0]?.tagIndex,
-            taglist[1]?.tagIndex,
-            taglist[2]?.tagIndex,
-            taglist[3]?.tagIndex,
-            taglist[4]?.tagIndex,
-            taglist[5]?.tagIndex
-        ).subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({
-                cafeList.clear()
-                it.forEach { cafe ->
-                    cafeList[cafe] = false
-                }
-                _cafeInsideCurrentCamera.postValue(cafeList)
-                _countCafeResult.postValue(it.size)
-            }, {
-                it.printStackTrace()
-            })
-    }
+        val tags = mutableMapOf<String, Int?>()
+        if (!taglist.isNullOrEmpty()){
+            taglist.forEach {
+                tags["tags"] = it?.tagIndex
+            }
+        }
+        Log.e("tags", "${tags}")
 
-    fun initializeCapinMap() {
-        cafeListRepository.getCafeList(
-            null,
-            null,
-            null,
-            null,
-            null,
-            null
-        ).subscribeOn(Schedulers.io())
+        cafeListRepository.getCafeList(tags)
+            .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 cafeList.clear()
