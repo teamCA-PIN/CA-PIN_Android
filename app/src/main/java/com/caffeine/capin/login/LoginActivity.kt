@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import com.caffeine.capin.R
 import com.caffeine.capin.ServiceCreator
 import com.caffeine.capin.cafeti.CafetiActivity
+import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityLoginBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -117,42 +118,20 @@ class LoginActivity : AppCompatActivity() {
                         intent = Intent(this@LoginActivity, CafetiActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", LENGTH_SHORT)
-                            .show()
+                        createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 200)?.show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
+                    createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 200)?.show()
+
                     Log.d("NetworkTest", "error:$t")
                 }
             })
         }
-        binding.btnLogin.setOnClickListener(){
-            val requestFindPwData = RequestFindPwData(
-                email = binding.loginEdittextEmail.text.toString(),
-                password = binding.loginEdittextPw.text.toString()
-            )
-            val call: Call<ResponseFindPwData> = ServiceCreator.capinService.postFindPw(requestFindPwData)
-            call.enqueue(object : Callback<ResponseFindPwData> {
-                override fun onResponse(
-                    call: Call<ResponseFindPwData>,
-                    response: Response<ResponseFindPwData>
-                ) {
-                    if (response.isSuccessful) {
-                        Toast.makeText(this@LoginActivity, "비밀번호가 변경되었습니다.", LENGTH_SHORT).show()
-                    }
-                    else {
-                        Toast.makeText(this@LoginActivity, "존재하지 않는 이메일 입니다.", LENGTH_SHORT)
-                    }
-                }
-
-                override fun onFailure(call: Call<ResponseFindPwData>, t: Throwable) {
-                    Log.d("NetworkTest", "error:$t")
-                }
-            })
 
         }
-    }
+
 
     private fun signupTextClickEvent() {
         binding.loginTextviewSignup.setOnClickListener() {

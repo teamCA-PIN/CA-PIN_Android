@@ -13,6 +13,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.ServiceCreator.capinService
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
 import retrofit2.Call
@@ -32,15 +33,14 @@ class SignUpActivity : AppCompatActivity() {
 
         signUpButtonClickEvent()
 
-        lateinit var username : EditText
-        lateinit var email : EditText
-        lateinit var password : EditText
-        lateinit var newpassword : EditText
+        lateinit var username: EditText
+        lateinit var email: EditText
+        lateinit var password: EditText
+        lateinit var newpassword: EditText
         username = binding.edittextName
         email = binding.edittextEmail
         password = binding.edittextPw
         newpassword = binding.edittextPwagain
-
 
 
         val edittextList = listOf<EditText>(
@@ -50,8 +50,8 @@ class SignUpActivity : AppCompatActivity() {
             newpassword
         )
 
-        edittextList.forEach{ edittext ->
-            edittext.addTextChangedListener(object : TextWatcher{
+        edittextList.forEach { edittext ->
+            edittext.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -66,16 +66,22 @@ class SignUpActivity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(text: Editable?) {
-                    if(text.isNullOrEmpty()) {
+                    if (text.isNullOrEmpty()) {
                         edittextCount--
-                        edittext.setTextColor(ContextCompat.getColor(this@SignUpActivity,
-                            R.color.gray_3
-                        ))
+                        edittext.setTextColor(
+                            ContextCompat.getColor(
+                                this@SignUpActivity,
+                                R.color.gray_3
+                            )
+                        )
                     } else {
                         edittextCount++
-                        edittext.setTextColor(ContextCompat.getColor(this@SignUpActivity,
-                            R.color.black
-                        ))
+                        edittext.setTextColor(
+                            ContextCompat.getColor(
+                                this@SignUpActivity,
+                                R.color.black
+                            )
+                        )
                     }
                     checkEditTextEmpty()
                 }
@@ -86,35 +92,37 @@ class SignUpActivity : AppCompatActivity() {
             binding.pwDeleteBtn.isVisible = false
         }
 
-        binding.edittextPw.addTextChangedListener(object : TextWatcher{
+        binding.edittextPw.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.pwDeleteBtn.isVisible = false
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.pwDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.pwDeleteBtn.isVisible = true
+                binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
+
             }
         })
 
         binding.emailidDeleteBtn.setOnClickListener {
-            binding.pwDeleteBtn.isVisible = false
+            binding.emailidDeleteBtn.isVisible = false
         }
 
-        binding.edittextEmail.addTextChangedListener(object : TextWatcher{
+        binding.edittextEmail.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.pwDeleteBtn.isVisible = false
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.emailidDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.emailidDeleteBtn.isVisible = true
+                binding.emailidDeleteBtn.isVisible = !s.isNullOrEmpty()
+
             }
         })
 
@@ -122,17 +130,18 @@ class SignUpActivity : AppCompatActivity() {
             binding.pwagainDeleteBtn.isVisible = false
         }
 
-        binding.edittextPwagain.addTextChangedListener(object : TextWatcher{
+        binding.edittextPwagain.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.pwagainDeleteBtn.isVisible = false
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.pwagainDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.pwagainDeleteBtn.isVisible = true
+                binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
+
             }
         })
 
@@ -140,21 +149,20 @@ class SignUpActivity : AppCompatActivity() {
             binding.usernameDeleteBtn.isVisible = false
         }
 
-        binding.edittextName.addTextChangedListener(object : TextWatcher{
+        binding.edittextName.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.usernameDeleteBtn.isVisible = false
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.usernameDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.usernameDeleteBtn.isVisible = true
+                binding.usernameDeleteBtn.isVisible = !s.isNullOrEmpty()
+
             }
         })
-
-
 
 
     }
@@ -198,11 +206,13 @@ class SignUpActivity : AppCompatActivity() {
                         intent = Intent(this@SignUpActivity, LoginActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", LENGTH_SHORT).show()
+
+                        CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.",  200)?.show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                    CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.",  200)?.show()
                     Log.d("NetworkTest", "error:$t")
                 }
             })

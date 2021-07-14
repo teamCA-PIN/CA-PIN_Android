@@ -78,11 +78,11 @@ class FindPasswordActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.pwDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.pwDeleteBtn.isVisible = true
+                binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
             }
         })
 
@@ -95,11 +95,11 @@ class FindPasswordActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.pwagainDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.pwagainDeleteBtn.isVisible = true
+                binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
             }
         })
 

@@ -7,6 +7,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityCoffeeMostBinding
 
 
@@ -68,7 +69,7 @@ class CoffeeMostActivity : AppCompatActivity() {
                 }
             }
             else {
-                Toast.makeText(this@CoffeeMostActivity,"한가지 항목을 선택해주세요",LENGTH_SHORT).show()
+                CapinToastMessage.createCapinRejectToast(this@CoffeeMostActivity,"한가지 항목을 선택해주세요", 200)?.show()
             }
         }
     }

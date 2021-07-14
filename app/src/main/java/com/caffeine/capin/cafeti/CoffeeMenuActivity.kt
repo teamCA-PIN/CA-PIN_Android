@@ -7,6 +7,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityCoffeeMenuBinding
 
 class CoffeeMenuActivity : AppCompatActivity() {
@@ -81,7 +82,7 @@ class CoffeeMenuActivity : AppCompatActivity() {
                 }
             }
             else {
-                Toast.makeText(this@CoffeeMenuActivity,"한가지 항목을 선택해주세요", Toast.LENGTH_SHORT).show()
+                CapinToastMessage.createCapinRejectToast(this@CoffeeMenuActivity,"한가지 항목을 선택해주세요", 200)?.show()
             }
         }
     }
