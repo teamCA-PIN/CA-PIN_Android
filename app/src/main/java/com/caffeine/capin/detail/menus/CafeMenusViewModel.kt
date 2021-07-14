@@ -1,8 +1,13 @@
 package com.caffeine.capin.detail.menus
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
+import com.caffeine.capin.network.CapinApiService
+import com.caffeine.capin.network.enqueue
+import com.caffeine.capin.network.response.CafeMenusResponse
+import com.caffeine.capin.network.response.CapinFailResponse
+import com.caffeine.capin.util.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -13,19 +18,28 @@ import javax.inject.Inject
 
 @HiltViewModel
 class CafeMenusViewModel @Inject constructor(
-
-) : ViewModel() {
-
-    private val _isLoading = MutableLiveData<Boolean>()
-    val isLoading: LiveData<Boolean> = _isLoading
+    private val capinService: CapinApiService
+) : BaseViewModel() {
 
     private val _cafeMenus = MutableLiveData<List<CafeMenu>>()
     val cafeMenus: LiveData<List<CafeMenu>> = _cafeMenus
 
     fun loadCafeMenus(cafeId: String) {
         _isLoading.value = true
-        _cafeMenus.value = STUB_CAFE_MENUS
-        _isLoading.value = false
+        capinService.getCafeMenus(cafeId).enqueue(
+            onSuccess = ::onLoadCafeMenuSuccess,
+            onFailure = ::onLoadCafeMenuFailure,
+        )
+    }
+
+    private fun onLoadCafeMenuSuccess(response: CafeMenusResponse) {
+        _cafeMenus.value = response.getCafeMenus()
+        changeLoading(false)
+    }
+
+    private fun onLoadCafeMenuFailure(response: CapinFailResponse) {
+        changeLoading(false)
+        Log.d("MalibinDebug", "onLoadCafeMenuFailure resposen : $response")
     }
 
     companion object {

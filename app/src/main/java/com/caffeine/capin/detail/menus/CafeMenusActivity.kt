@@ -30,7 +30,7 @@ class CafeMenusActivity : AppCompatActivity() {
     }
 
     private fun getCafeId(): String {
-        return if (BuildConfig.DEBUG) ""
+        return if (BuildConfig.DEBUG) "60e96789868b7d75f394b00b"
         else intent.getStringExtra(KEY_CAFE_ID) ?: error("cafe id must be put in intent")
     }
 
