@@ -20,6 +20,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
         android:usesCleartextTraffic="true">
+
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -31,10 +32,10 @@
         </provider>
 
         <activity android:name=".mypage.MyPageActivity">
-
         </activity>
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
+        <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -42,10 +43,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".login.LoginActivity">
-
-        </activity>
-
         <activity android:name=".cafeti.CoffeeTasteActivity"/>
         <activity android:name=".cafeti.CafeColorActivity"/>
         <activity android:name=".cafeti.CafeStyleActivity"/>
@@ -54,13 +51,9 @@
         <activity android:name=".cafeti.CafetiResultActivity"/>
         <activity android:name=".cafeti.CoffeeMostActivity"/>
         <activity android:name=".FindPasswordActivity"></activity>
-        <activity android:name=".signup.SignUpActivity">
-
-        </activity>
-
+        <activity android:name=".signup.SignUpActivity"></activity>
         <activity android:name=".login.LoginPwActivity" />
         <activity android:name=".login.LoginActivity"/>
-
         <activity android:name=".SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
         <activity android:name=".review.write.WriteReviewActivity">

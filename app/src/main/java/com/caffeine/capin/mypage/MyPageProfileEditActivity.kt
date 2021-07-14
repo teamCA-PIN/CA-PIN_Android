@@ -8,10 +8,15 @@ import android.text.TextWatcher
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil.setContentView
+import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinDialog
+import com.caffeine.capin.customview.CapinDialogBuilder
+import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.databinding.ActivityMyPageProfileEditBinding
 
 class MyPageProfileEditActivity : AppCompatActivity() {
@@ -31,10 +36,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         binding.profileEditBackBtn.setOnClickListener { onBackPressed() }
 
         binding.profileEditProfileEditBtn.setOnClickListener {
-            val intent = Intent(Intent.ACTION_PICK)
-            intent.type = MediaStore.Images.Media.CONTENT_TYPE
-            intent.type = "image/*"
-            getImageLancher.launch(intent)
+            showEditProfileialog()
         }
 
         binding.profileEditNameDeleteBtn.setOnClickListener {
@@ -59,5 +61,40 @@ class MyPageProfileEditActivity : AppCompatActivity() {
                 binding.profileEditNameDeleteBtn.isVisible = true
             }
         })
+    }
+
+    private fun showEditProfileialog() {
+        val profileEditList = ArrayList<CapinDialogButton>()
+        val dialog: CapinDialog = CapinDialogBuilder("프로필 사진 설정")
+            .setButtonArray(profileEditList)
+            .setExitButton(true)
+            .build()
+
+        profileEditList.apply {
+            add(
+                CapinDialogButton("앨범에서 사진 선택",
+                    ContextCompat.getColor(this@MyPageProfileEditActivity, R.color.maincolor_1), this@MyPageProfileEditActivity,
+                    object : CapinDialogButton.OnClickListener {
+                        override fun onClick() {
+                            val intent = Intent(Intent.ACTION_PICK)
+                            intent.type = MediaStore.Images.Media.CONTENT_TYPE
+                            intent.type = "image/*"
+                            getImageLancher.launch(intent)
+                            dialog.dismiss()
+                        }
+                    })
+            )
+            add(
+                CapinDialogButton("기본 이미지로 변경",
+                    ContextCompat.getColor(this@MyPageProfileEditActivity, R.color.maincolor_1), this@MyPageProfileEditActivity,
+                    object : CapinDialogButton.OnClickListener {
+                        override fun onClick() {
+                            dialog.dismiss()
+                        }
+                    })
+            )
+        }
+
+        dialog.show(supportFragmentManager, "picture")
     }
 }

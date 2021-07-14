@@ -33,6 +33,10 @@
         <item name="cornerSize">50%</item>
     </style>
 
+    <style name="mypage_review_cafe_image">
+        <item name="cornerSize">5%</item>
+    </style>
+
     <style name="MyPageTabTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <item name="colorPrimary">@color/white</item>                                <!-- 배경 -->
 
