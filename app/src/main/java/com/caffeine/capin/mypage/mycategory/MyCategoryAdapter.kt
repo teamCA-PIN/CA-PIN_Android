@@ -8,8 +8,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemRecyclerviewCategoryBinding
 
 class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCategoryViewHolder>() {
-
-    val myCategoryList = mutableListOf<MyCategory>()
+    var myCategoryList = mutableListOf<MyCategory>()
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyCategoryAdapter.ArchivingCategoryViewHolder {
         val binding = ItemRecyclerviewCategoryBinding.inflate(
@@ -48,10 +47,11 @@ class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCatego
     inner class ArchivingCategoryViewHolder(
         private val binding: ItemRecyclerviewCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
+
         fun onBind(myCategory: MyCategory){
             binding.rcvCategoryColorIv.setBackgroundColor(Color.parseColor("#${myCategory.color}"))
             binding.rcvCategoryNameTv.text = myCategory.name
-            binding.rcvCategoryPinNumTv.text = myCategory.cafeNum.toString()
+            binding.rcvCategoryPinNumTv.text = myCategory.cafes.size.toString()
 
             if (myCategory.name == "기본 카테고리") {
                 binding.rcvCategoryEditBtn.isVisible = false

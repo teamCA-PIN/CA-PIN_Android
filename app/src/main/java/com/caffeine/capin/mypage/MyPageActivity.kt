@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.caffeine.capin.R
@@ -14,7 +15,6 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MyPageActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMyPageBinding
 
     private lateinit var viewPager: ViewPager2

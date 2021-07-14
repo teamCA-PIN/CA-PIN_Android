@@ -16,7 +16,7 @@ import javax.inject.Inject
 class MainActivity: AppCompatActivity() {
     private lateinit var binding: ActivityMainBinding
     private lateinit var navController: NavController
-    @Inject lateinit var preference: UserPreferenceManager
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,7 +24,9 @@ class MainActivity: AppCompatActivity() {
         setContentView(binding.root)
         setNavController()
         transparentStatusAndNavigation()
-        preference.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVkNDM0YmUxMGI5ZDA3ZWQ1MmRiNzkiLCJpYXQiOjE2MjYxOTI5MDYsImV4cCI6MTYyNjI3OTMwNn0.X3DikJditPdxUbQlVk1-vjrwEmcQqcxCKWOVkVy6mr4")
+
+        userPreferenceManager.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVlODMzNjhiNzg1MTFhMDc5MGRjNzkiLCJpYXQiOjE2MjYyODgwODUsImV4cCI6MTYyNjM3NDQ4NX0.igLe0rwR_7LAlVC-UdetmFrSb19Z-oqjDXW7T29wgBY")
+
     }
 
     private fun setNavController() {
