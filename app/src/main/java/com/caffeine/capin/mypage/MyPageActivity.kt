@@ -10,7 +10,9 @@ import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityMyPageBinding
 import com.caffeine.capin.databinding.MyPageTabIconBinding
 import com.google.android.material.tabs.TabLayoutMediator
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MyPageActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyPageBinding

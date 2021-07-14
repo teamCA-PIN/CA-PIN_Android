@@ -1,5 +1,6 @@
 package com.caffeine.capin.profile
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -7,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.caffeine.capin.databinding.FragmentMapProfileBinding
+import com.caffeine.capin.mypage.MyPageActivity
 import com.caffeine.capin.util.AutoClearedValue
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -29,5 +31,10 @@ class MapProfileFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
         viewModel.fetchUserInfo()
+
+        binding.constraintlayoutArchive.setOnClickListener {
+            val intent = Intent(this@MapProfileFragment.requireActivity(), MyPageActivity::class.java)
+            startActivity(intent)
+        }
     }
 }

@@ -5,9 +5,10 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemMypageReviewBinding
 
-class MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
+class
+MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
 
-    val myReviewList = mutableListOf<MyReview>()
+    var myReviewList = mutableListOf<MyReview>()
     var mPosition = 0
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyReviewAdapter.MyReviewViewHolder {
