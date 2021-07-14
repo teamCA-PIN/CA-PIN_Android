@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -49,10 +50,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
+
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDeatail()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.cardviewCafeSelected.visibility = View.GONE
 
     }
 
@@ -63,6 +70,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.zoomcontrolview.map = naverMap
         binding.locationButton.map = naverMap
 
+
         setMarker()
         checkPermissions()
         getTagResult()
@@ -70,10 +78,15 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun getTagResult() {
-        viewModel.filterChecked.observe(viewLifecycleOwner){
-            if (it.all { !it.isChecked }) {
+
+        if (viewModel.checkedTagList.value != null) {
+            if ( viewModel.checkedTagList.value!!.all { it == null }) {
+                Log.e("checkedTagList", "${viewModel.checkedTagList.value}")
+
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
             } else {
+                Log.e("checkedTagList else", "${viewModel.checkedTagList.value}")
+
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
             }
         }
