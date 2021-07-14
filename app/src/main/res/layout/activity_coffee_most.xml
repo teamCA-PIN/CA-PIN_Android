@@ -6,19 +6,20 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:id="@+id/imageView_coffee_most"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@drawable/frame_137"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:0.647"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.325"
-        app:layout_constraintVertical_bias="0.187"
-        app:srcCompat="@drawable/component_3" />
+        app:layout_constraintVertical_bias="0.086" />
 
     <TextView
-        android:id="@+id/textView8"
+        android:id="@+id/question_coffee_most"
         style="@style/Headline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -52,7 +53,7 @@
         app:layout_constraintVertical_bias="0.871" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/question_number"
         style="@style/Headline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -93,7 +94,7 @@
         app:layout_constraintVertical_bias="0.56">
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radiobtn_noncoffee"
+            android:id="@+id/radiobtn_coffee"
             style="@style/Subhead"
             android:layout_width="328dp"
             android:layout_height="48dp"
@@ -105,7 +106,7 @@
             android:textSize="16dp" />
 
         <androidx.appcompat.widget.AppCompatRadioButton
-            android:id="@+id/radiobtn_coffee"
+            android:id="@+id/radiobtn_noncoffee"
             style="@style/Subhead"
             android:layout_width="328dp"
             android:layout_height="48dp"

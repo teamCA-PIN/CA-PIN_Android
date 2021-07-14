@@ -14,6 +14,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:src="@drawable/mypage_category_tab_selector"/>
+        android:src="@drawable/selector_mypage_category_tab"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

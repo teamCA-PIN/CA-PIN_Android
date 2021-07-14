@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".mypage.mycategory.MyPageCategoryEditActivity">
+
+    <ImageView
+        android:id="@+id/mypage_category_edit_back_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="38dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_back_black" />
+
+    <TextView
+        android:id="@+id/mypage_category_edit_header_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="38dp"
+        android:text="아아아"
+        android:textColor="@color/black"
+        android:theme="@style/Headline1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/mypage_category_edit_name_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="101dp"
+        android:text="@string/category_edit_name"
+        android:textColor="@color/black"
+        android:theme="@style/Headline1"
+        app:layout_constraintStart_toStartOf="@+id/mypage_category_edit_back_btn"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_back_btn" />
+
+    <EditText
+        android:id="@+id/mypage_category_edit_edt"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginEnd="16dp"
+        android:backgroundTint="@color/gray_4"
+        android:cursorVisible="false"
+        android:ems="10"
+        android:hint="@string/new_category_name"
+        android:maxLength="10"
+        android:singleLine="true"
+        android:textColor="@color/black"
+        android:theme="@style/Body1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_name_tv" />
+
+    <ImageView
+        android:id="@+id/mypage_category_edit_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/mypage_category_edit_edt"
+        app:layout_constraintEnd_toEndOf="@+id/mypage_category_edit_edt"
+        app:layout_constraintTop_toTopOf="@+id/mypage_category_edit_edt"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+    <TextView
+        android:id="@+id/mypage_category_edit_length_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="3dp"
+        android:text="0/10"
+        android:textColor="@color/gray_4"
+        android:theme="@style/Body3"
+        app:layout_constraintEnd_toEndOf="@+id/mypage_category_edit_edt"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_edt" />
+
+
+    <ImageView
+        android:id="@+id/mypage_category_color_done_btn"
+        android:layout_width="154dp"
+        android:layout_height="54dp"
+        android:layout_marginTop="284dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/category_color8_iv"
+        app:srcCompat="@drawable/round_rectangle_gray_24dp" />
+
+    <TextView
+        android:id="@+id/mypage_category_color_done_tv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:theme="@style/Subhead"
+        app:layout_constraintBottom_toBottomOf="@+id/mypage_category_color_done_btn"
+        app:layout_constraintEnd_toEndOf="@+id/mypage_category_color_done_btn"
+        app:layout_constraintStart_toStartOf="@+id/mypage_category_color_done_btn"
+        app:layout_constraintTop_toTopOf="@+id/mypage_category_color_done_btn" />
+
+    <RadioButton
+        android:id="@+id/category_color1_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="27dp"
+        android:button="@null"
+        android:background="@drawable/selector_category_color1"
+        app:layout_constraintEnd_toStartOf="@+id/category_color2_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/mypage_category_edit_length_tv" />
+
+    <RadioButton
+        android:id="@+id/category_color2_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color2"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color1_iv"
+        app:layout_constraintEnd_toStartOf="@+id/category_color3_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:button="@null"
+        app:layout_constraintStart_toEndOf="@+id/category_color1_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color1_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color3_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color3"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color2_iv"
+        app:layout_constraintEnd_toStartOf="@+id/category_color4_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:button="@null"
+        app:layout_constraintStart_toEndOf="@+id/category_color2_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color2_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color4_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color4"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color3_iv"
+        app:layout_constraintEnd_toStartOf="@+id/category_color5_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:button="@null"
+        app:layout_constraintStart_toEndOf="@+id/category_color3_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color3_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color5_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color5"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color4_iv"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:button="@null"
+        app:layout_constraintStart_toEndOf="@+id/category_color4_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color4_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color6_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color6"
+        android:layout_marginTop="17dp"
+        android:button="@null"
+        app:layout_constraintEnd_toEndOf="@+id/category_color1_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/category_color1_iv"
+        app:layout_constraintTop_toBottomOf="@+id/category_color1_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color7_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color7"
+        android:button="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color6_iv"
+        app:layout_constraintEnd_toStartOf="@+id/category_color8_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/category_color6_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color6_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color8_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color8"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color7_iv"
+        app:layout_constraintEnd_toStartOf="@+id/category_color9_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        android:button="@null"
+        app:layout_constraintStart_toEndOf="@+id/category_color7_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color7_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color9_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color9"
+        android:button="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color8_iv"
+        app:layout_constraintEnd_toStartOf="@+id/category_color10_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/category_color8_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color8_iv" />
+
+    <RadioButton
+        android:id="@+id/category_color10_iv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/selector_category_color10"
+        android:button="@null"
+        app:layout_constraintBottom_toBottomOf="@+id/category_color9_iv"
+        app:layout_constraintEnd_toEndOf="@+id/category_color5_iv"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="@+id/category_color5_iv"
+        app:layout_constraintTop_toTopOf="@+id/category_color9_iv" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>
