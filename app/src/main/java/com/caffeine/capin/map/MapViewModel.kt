@@ -1,6 +1,7 @@
 package com.caffeine.capin.map
 
 import android.util.Log
+import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -79,20 +80,20 @@ class MapViewModel @Inject constructor(
         _cafeInsideCurrentCamera.value = cafeList
     }
 
-    fun getCapinMapCafeLocations() {
-        cafeListRepository.getCafeList(null,null,null,null,null,null)
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribe({ cafes ->
-                _capinMapCafeLocations.postValue(cafes)
-                cafes.forEach { cafe ->
-                    cafeList[cafe] = false
-                }
-                _cafeInsideCurrentCamera.postValue(cafeList)
-            }, {
-                it.printStackTrace()
-            })
-    }
+//    fun getCapinMapCafeLocations() {
+//        cafeListRepository.getCafeList(null,null,null,null,null,null)
+//            .subscribeOn(Schedulers.io())
+//            .observeOn(AndroidSchedulers.mainThread())
+//            .subscribe({ cafes ->
+//                _capinMapCafeLocations.postValue(cafes)
+//                cafes.forEach { cafe ->
+//                    cafeList[cafe] = false
+//                }
+//                _cafeInsideCurrentCamera.postValue(cafeList)
+//            }, {
+//                it.printStackTrace()
+//            })
+//    }
 
     fun getSelectedCafeDetailInfo() {
         cafeInsideCurrentCamera.value?.forEach { isSelectedCafe ->
@@ -111,7 +112,8 @@ class MapViewModel @Inject constructor(
 
     fun switchToCapinMap() {
         cafeList.clear()
-        getCapinMapCafeLocations()
+        initializeCapinMap()
+//        getCafeLocations()
     }
 
     fun switchToMyMap() {
@@ -142,6 +144,89 @@ class MapViewModel @Inject constructor(
     fun removeAllCafeCurrentCamera() {
         cafeList.clear()
         _cafeInsideCurrentCamera.value = cafeList
+    }
+
+    //TagFilter
+    private val checkedTagFilterCheckbox = ArrayList<CompoundButton>()
+    private val _filterChecked = MutableLiveData<ArrayList<CompoundButton>>()
+    val filterChecked: LiveData<ArrayList<CompoundButton>>
+        get() = _filterChecked
+
+    private val taglist = arrayListOf<TagFilterEntity?>(null,null,null,null,null,null)
+    private val _checkedTagList = MutableLiveData<ArrayList<TagFilterEntity?>>()
+    val checkedTagList: LiveData<ArrayList<TagFilterEntity?>>
+        get() = _checkedTagList
+
+    private val _countCafeResult = MutableLiveData<Int?>()
+    val countCafeResult: LiveData<Int?>
+        get() = _countCafeResult
+
+    fun addFilterChecked(checkbox: CompoundButton) {
+        checkedTagFilterCheckbox.add(checkbox)
+        _filterChecked.value = checkedTagFilterCheckbox
+    }
+
+    fun removeFilterChecked(checkbox: CompoundButton) {
+        checkedTagFilterCheckbox.remove(checkbox)
+        _filterChecked.value = checkedTagFilterCheckbox
+    }
+
+    fun addTagList(tag: TagFilterEntity) {
+        taglist[tag.tagIndex] = tag
+        _checkedTagList.value = taglist
+    }
+
+    fun updateCountCafeResult(count: Int?) {
+        _countCafeResult.postValue(count)
+    }
+
+    fun removeTagList(tag: TagFilterEntity) {
+        taglist[tag.tagIndex] = null
+        _checkedTagList.value = taglist
+    }
+
+    fun getCafeLocations() {
+        cafeListRepository.getCafeList(
+            taglist[0]?.tagIndex,
+            taglist[1]?.tagIndex,
+            taglist[2]?.tagIndex,
+            taglist[3]?.tagIndex,
+            taglist[4]?.tagIndex,
+            taglist[5]?.tagIndex
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                cafeList.clear()
+                it.forEach { cafe ->
+                    cafeList[cafe] = false
+                }
+                _cafeInsideCurrentCamera.postValue(cafeList)
+                _countCafeResult.postValue(it.size)
+            }, {
+                it.printStackTrace()
+            })
+    }
+
+    fun initializeCapinMap() {
+        cafeListRepository.getCafeList(
+            null,
+            null,
+            null,
+            null,
+            null,
+            null
+        ).subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                cafeList.clear()
+                it.forEach { cafe ->
+                    cafeList[cafe] = false
+                }
+                _cafeInsideCurrentCamera.postValue(cafeList)
+                _countCafeResult.postValue(it.size)
+            }, {
+                it.printStackTrace()
+            })
     }
 
     companion object {

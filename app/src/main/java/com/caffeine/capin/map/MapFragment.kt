@@ -10,15 +10,13 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
-import androidx.navigation.Navigation
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.category.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.tagfilter.TagFilterEntity
-import com.caffeine.capin.tagfilter.TagFilterList
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -31,7 +29,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
     private var binding by AutoClearedValue<FragmentMapBinding>()
-    private val viewModel by viewModels<MapViewModel>()
+    private val viewModel by activityViewModels<MapViewModel>()
     private lateinit var naverMap: NaverMap
     private lateinit var mapView: MapView
     private lateinit var locationSource: FusedLocationSource
@@ -55,7 +53,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDeatail()
-        changeMap()
 
     }
 
@@ -69,35 +66,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         setMarker()
         checkPermissions()
         getTagResult()
+        changeMap()
     }
 
     private fun getTagResult() {
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<List<CafeInformationEntity>>(
-            "tagResult"
-        )
-            ?.observe(viewLifecycleOwner) {
-                removeActiveMarkers()
-                viewModel.changeCapinMapLocations(it)
+        viewModel.filterChecked.observe(viewLifecycleOwner){
+            if (it.all { !it.isChecked }) {
+                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
+            } else {
+                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
             }
-
-        findNavController().currentBackStackEntry?.savedStateHandle?.getLiveData<ArrayList<TagFilterEntity?>>(
-            "tagList"
-        )
-            ?.observe(viewLifecycleOwner) {
-                binding.cardviewCafeSelected.visibility = View.GONE
-                viewModel.unselectAllLocation()
-
-                if (it != null) {
-                    viewModel.changeTagList(it)
-                }
-
-                if (it.all { tag -> tag == null }) {
-                    viewModel.getCapinMapCafeLocations()
-                    binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
-                } else {
-                    binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
-                }
-            }
+        }
     }
 
     private fun checkPermissions() {
@@ -130,7 +109,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
             setTagSearchButton {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
-
             }
         }
     }

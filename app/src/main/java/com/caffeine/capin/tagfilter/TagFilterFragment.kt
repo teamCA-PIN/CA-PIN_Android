@@ -1,16 +1,18 @@
 package com.caffeine.capin.tagfilter
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
+import com.caffeine.capin.map.MapViewModel
 import com.caffeine.capin.util.AutoClearedValue
 import com.caffeine.capin.util.VerticalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
@@ -18,7 +20,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class TagFilterFragment : Fragment() {
     private var binding by AutoClearedValue<FragmentTagFilterBinding>()
-    private val viewModel by viewModels<TagFilterViewModel>()
+    private val viewModel by activityViewModels<MapViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -35,10 +37,21 @@ class TagFilterFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerviewTagFilter.isNestedScrollingEnabled = false
         setTagFilterButton()
-        activeGetResultButton()
+        activeResultButton()
         getFilterCafe()
         showResultInMapView()
         closeTagFilterFragment()
+        checkIsTagApplied()
+        initializeTag()
+    }
+
+    private fun initializeTag() {
+        if (!viewModel.checkedTagList.value.isNullOrEmpty()) {
+            Log.e("initial", "${(binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList}")
+            Log.e("checkedList", "${viewModel.checkedTagList.value}")
+            (binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList = viewModel.checkedTagList.value!!
+            viewModel.getCafeLocations()
+        }
     }
 
     private fun setTagFilterButton() {
@@ -58,7 +71,7 @@ class TagFilterFragment : Fragment() {
         }
     }
 
-    private fun activeGetResultButton() {
+    private fun activeResultButton() {
         viewModel.filterChecked.observe(viewLifecycleOwner) { tagFilter ->
             if (!tagFilter.isNullOrEmpty()) {
                 changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
@@ -70,18 +83,24 @@ class TagFilterFragment : Fragment() {
         }
     }
 
+    private fun checkIsTagApplied() {
+        if (!viewModel.filterChecked.value.isNullOrEmpty()) {
+            changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
+            binding.buttonResult.isClickable = true
+        } else {
+            changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
+            binding.buttonResult.isClickable = false
+        }
+    }
+
     private fun getFilterCafe() {
         viewModel.checkedTagList.observe(viewLifecycleOwner) { checkedList ->
-            viewModel.getCafeSize()
+            viewModel.getCafeLocations()
         }
     }
 
     private fun showResultInMapView() {
-        binding.buttonResult.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("tagResult", viewModel.tagResult.value)
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("tagList", viewModel.checkedTagList.value)
-            findNavController().popBackStack()
-        }
+        binding.buttonResult.setOnClickListener { findNavController().popBackStack() }
     }
 
     private fun closeTagFilterFragment() {
