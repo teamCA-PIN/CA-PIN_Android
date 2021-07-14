@@ -1,11 +1,15 @@
 package com.caffeine.capin.mypage
 
+import android.app.Activity
+import android.app.Instrumentation
 import android.content.Intent
 import android.os.Bundle
+import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
@@ -47,7 +51,7 @@ class MyPageCategoryFragment : Fragment() {
         binding.mypageCategoryAddCl.setOnClickListener {
             val intent = Intent(this@MyPageCategoryFragment.activity, MyPageCategoryEditActivity::class.java)
             intent.putExtra("feature", "새 카테고리")
-            startActivity(intent)
+            categoryCreateActivityLauncher.launch(intent)
         }
 
         myCategoryAdapter = MyCategoryAdapter()
@@ -78,51 +82,10 @@ class MyPageCategoryFragment : Fragment() {
                     name = "기본 카테고리",
                     cafeNum = 1
                 ),
-
                 MyCategory(
                     color = "6bbc9a",
                     name = "카테고리1",
                     cafeNum = 2
-                ),
-                MyCategory(
-                    color = "ffc24b",
-                    name = "카테고리2",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "816f7c",
-                    name = "카테고리3",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "ffc2d5",
-                    name = "카테고리4",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "c9d776",
-                    name = "카테고리5",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "b2b9e5",
-                    name = "카테고리6",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "ff8e8e",
-                    name = "카테고리7",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "ebeaef",
-                    name = "카테고리8",
-                    cafeNum = 3
-                ),
-                MyCategory(
-                    color = "9dc5e8",
-                    name = "카테고리9",
-                    cafeNum = 3
                 )
             )
         )
@@ -148,7 +111,7 @@ class MyPageCategoryFragment : Fragment() {
                         override fun onClick() {
                             val intent = Intent(this@MyPageCategoryFragment.activity, MyPageCategoryEditActivity::class.java)
                             intent.putExtra("feature", "카테고리 수정")
-                            startActivity(intent)
+                            categoryEditActivityLauncher.launch(intent)
                             dialog.dismiss()
                         }
                     })
@@ -179,5 +142,42 @@ class MyPageCategoryFragment : Fragment() {
                 }
             }).build()
         dialog.show(childFragmentManager, "DeleteReview")
+    }
+
+    private val categoryEditActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val intent = it.data
+            val editName = intent?.getStringExtra("categoryName")
+            val editColor = intent?.getStringExtra("categoryColor")
+            Log.d("리미-돌아와서 edit", editName.toString())
+            Log.d("리미-돌아와서 edit", editColor.toString())
+
+            removeCategoryInfo.name = editName.toString()
+            removeCategoryInfo.color = editColor.toString()
+
+        }
+    }
+
+    private val categoryCreateActivityLauncher = registerForActivityResult(
+        ActivityResultContracts.StartActivityForResult()
+    ) {
+        if (it.resultCode == Activity.RESULT_OK) {
+            val intent = it.data
+            val createName = intent?.getStringExtra("categoryName")
+            val createColor = intent?.getStringExtra("categoryColor")
+            Log.d("리미-돌아와서 create", createName.toString())
+            Log.d("리미-돌아와서 create", createColor.toString())
+
+            myCategoryAdapter.myCategoryList.add(
+                MyCategory(
+                    color = createColor.toString(),
+                    name = createName.toString(),
+                    cafeNum = 0
+                )
+            )
+            myCategoryAdapter.notifyDataSetChanged()
+        }
     }
 }

@@ -1,7 +1,7 @@
 package com.caffeine.capin.mypage.mycategory
 
 data class MyCategory(
-    val color: String,
-    val name: String,
+    var color: String,
+    var name: String,
     val cafeNum: Int
 )

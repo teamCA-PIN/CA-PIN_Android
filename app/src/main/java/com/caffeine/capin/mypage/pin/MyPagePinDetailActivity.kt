@@ -1,6 +1,7 @@
 package com.caffeine.capin.mypage.pin
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
@@ -72,14 +73,14 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         myPinInfoAdapter.myPinInfoList.addAll(
             listOf<MyPinInfo>(
                 MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고1",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집")
                     )
                 ),
                 MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고2",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집"),
@@ -87,7 +88,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     )
                 ),
                 MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고3",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집"),
@@ -96,7 +97,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     )
                 ),
                 MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고4",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집"),
@@ -106,7 +107,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     )
                 ),
                 MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고5",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집"),
@@ -116,21 +117,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     )
                 ),
                 MyPinInfo(
-                    name = "후엘고",
-                    address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
-                    tags = listOf(
-                        PinInfoTag("카페맛집"),
-                        PinInfoTag("디저트맛집"),
-                        PinInfoTag("브런치카페"),
-                        PinInfoTag("태그태그"),
-                        PinInfoTag("카페맛집"),
-                        PinInfoTag("디저트맛집"),
-                        PinInfoTag("브런치카페"),
-                        PinInfoTag("태그태그")
-                    )
-                ),
-                MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고6",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집"),
@@ -144,7 +131,21 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     )
                 ),
                 MyPinInfo(
-                    name = "후엘고",
+                    name = "후엘고7",
+                    address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
+                    tags = listOf(
+                        PinInfoTag("카페맛집"),
+                        PinInfoTag("디저트맛집"),
+                        PinInfoTag("브런치카페"),
+                        PinInfoTag("태그태그"),
+                        PinInfoTag("카페맛집"),
+                        PinInfoTag("디저트맛집"),
+                        PinInfoTag("브런치카페"),
+                        PinInfoTag("태그태그")
+                    )
+                ),
+                MyPinInfo(
+                    name = "후엘고8",
                     address = "서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길어지면 여기까지 내려올 수 있다~서울 마포구 마포대로11길 118 1층 (염리동) 주소가 길...",
                     tags = listOf(
                         PinInfoTag("카페맛집"),
@@ -175,13 +176,16 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 override fun onClick() {
                     for (i in 0 until removePinInfoList.size) {
                         myPinInfoAdapter.myPinInfoList.remove(removePinInfoList[i])
+                        Log.d("이거는 removePinInfoList", removePinInfoList.size.toString())
                         myPinInfoAdapter.checkboxList.forEach{
                             it.isChecked = false
                         }
                     }
                     myPinInfoAdapter.checkboxList.clear()
+                    Log.d("이거는 checkboxList", myPinInfoAdapter.checkboxList.size.toString())
 
                     removePinInfoList.clear()
+                    Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
                     myPinInfoAdapter.switchDeleteMode(false)
                     myPinInfoAdapter.notifyDataSetChanged()
                     binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
