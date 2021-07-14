@@ -1,29 +1,38 @@
 package com.caffeine.capin.mypage
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import androidx.fragment.app.Fragment
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.*
-import com.caffeine.capin.databinding.FragmentMyPageCategoryBinding
 import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
+import com.caffeine.capin.mypage.api.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
-import com.caffeine.capin.mypage.pin.MyPinInfo
+import com.caffeine.capin.network.ServiceCreator
+import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.AutoClearedValue
+import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
+import java.util.*
+import javax.inject.Inject
+import kotlin.collections.ArrayList
 
-
+@AndroidEntryPoint
 class MyPageReviewFragment : Fragment() {
 
     private var binding by AutoClearedValue<FragmentMyPageReviewBinding>()
-
     private lateinit var myReviewAdapter: MyReviewAdapter
-
     private lateinit var removeReviewInfo: MyReview
+
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -53,89 +62,7 @@ class MyPageReviewFragment : Fragment() {
             }
         })
 
-        myReviewAdapter.myReviewList.addAll(
-            listOf<MyReview>(
-                MyReview(
-                    cafeName = "후엘고1",
-                    rating = "3.5",
-                    content = "무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 ! 무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 !무엇보다 커피가 정말 맛있고, 디저트로 준비돼",
-                    recommend = listOf(
-                        0,
-                        1
-                    ),
-                    imgs = listOf(
-                        ""
-                    )
-                ),
-                MyReview(
-                    cafeName = "후엘고후엘고2",
-                    rating = "4.0",
-                    content = "무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 ! 무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 !무엇보다 커피가 정말 맛있고, 디저트로 준비돼",
-                    recommend = listOf(
-                        0,
-                        1
-                    ),
-                    imgs = listOf(
-                        ""
-                    )
-                ),
-                MyReview(
-                    cafeName = "꺄항냐항3",
-                    rating = "3.5",
-                    content = "무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 ! 무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 !무엇보다 커피가 정말 맛있고, 디저트로 준비돼",
-                    recommend = listOf(
-                        0,
-                        1
-                    ),
-                    imgs = listOf(
-                        ""
-                    )
-                ),
-                MyReview(
-                    cafeName = "후엘고4",
-                    rating = "3.5",
-                    content = "무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 ! 무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 !무엇보다 커피가 정말 맛있고, 디저트로 준비돼",
-                    recommend = listOf(
-                        0,
-                        1
-                    ),
-                    imgs = listOf(
-                        ""
-                    )
-                ),
-                MyReview(
-                    cafeName = "후엘고5",
-                    rating = "3.5",
-                    content = "무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 ! 무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 !무엇보다 커피가 정말 맛있고, 디저트로 준비돼",
-                    recommend = listOf(
-                        0,
-                        1
-                    ),
-                    imgs = listOf(
-                        ""
-                    )
-                ),
-                MyReview(
-                    cafeName = "후엘고6",
-                    rating = "3.5",
-                    content = "무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 ! 무엇보다 커피가 정말 맛있고, 디저트로 준비돼 있던 쿠키와 휘낭시에도 맛있었습니다.  브라운크림은 꼭 드세요 !무엇보다 커피가 정말 맛있고, 디저트로 준비돼",
-                    recommend = listOf(
-                        0,
-                        1
-                    ),
-                    imgs = listOf(
-                        ""
-                    )
-                )
-            )
-        )
-
-        myReviewAdapter.notifyDataSetChanged()
-        binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
-
-        if(myReviewAdapter.myReviewList.size > 1) {
-            binding.ifBasicReviewTv.isVisible = false
-        }
+        getMyReviewFromServer()
     }
 
     private fun showEditReviewDialog() {
@@ -184,5 +111,35 @@ class MyPageReviewFragment : Fragment() {
         dialog.show(childFragmentManager, "DeleteReview")
     }
 
+    private fun getMyReviewFromServer() {
+        userPreferenceManager.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVlODMzNjhiNzg1MTFhMDc5MGRjNzkiLCJpYXQiOjE2MjYyNDM5NjEsImV4cCI6MTYyNjMzMDM2MX0.govjwTEd5FiH4kZ01J_qe44v21lhgj7pKtKQ2MNbaxk")
+        val capinApiService = ServiceCreator.capinApiService.getMyReview(
+            userPreferenceManager.getUserToken()
+        )
 
+        capinApiService.enqueue(object : Callback<ResponseMyReviewData>{
+            override fun onFailure(
+                call: Call<ResponseMyReviewData>,
+                t: Throwable
+            ) { //통신실패
+                Log.d("fail", "error:$t")
+            }
+
+            override fun onResponse(
+                call: Call<ResponseMyReviewData>,
+                response: Response<ResponseMyReviewData>
+            ) { //통신 성공
+                if (response.isSuccessful) {
+                    myReviewAdapter.myReviewList = response.body()?.reviews as MutableList<MyReview>
+                    Log.d("리미", response.body().toString())
+                    myReviewAdapter.notifyDataSetChanged()
+                }
+                binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
+
+                if(myReviewAdapter.myReviewList.size > 1) {
+                    binding.ifBasicReviewTv.isVisible = false
+                }
+            }
+        })
+    }
 }
