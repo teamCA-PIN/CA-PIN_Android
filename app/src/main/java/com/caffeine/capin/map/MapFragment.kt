@@ -11,11 +11,13 @@ import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
-import androidx.fragment.app.viewModels
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.category.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
+import com.caffeine.capin.map.entity.CafeInformationEntity
+import com.caffeine.capin.tagfilter.TagFilterEntity
 import com.caffeine.capin.util.AutoClearedValue
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -28,7 +30,7 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
     private var binding by AutoClearedValue<FragmentMapBinding>()
-    private val viewModel by viewModels<MapViewModel>()
+    private val viewModel by activityViewModels<MapViewModel>()
     private lateinit var naverMap: NaverMap
     private lateinit var mapView: MapView
     private lateinit var locationSource: FusedLocationSource
@@ -48,11 +50,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
-        viewModel.switchToCapinMap()
+
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDeatail()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        binding.cardviewCafeSelected.visibility = View.GONE
+
     }
 
     override fun onMapReady(naverMap: NaverMap) {
@@ -62,9 +70,26 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.zoomcontrolview.map = naverMap
         binding.locationButton.map = naverMap
 
-        changeMap()
+
         setMarker()
         checkPermissions()
+        getTagResult()
+        changeMap()
+    }
+
+    private fun getTagResult() {
+
+        if (viewModel.checkedTagList.value != null) {
+            if ( viewModel.checkedTagList.value!!.all { it == null }) {
+                Log.e("checkedTagList", "${viewModel.checkedTagList.value}")
+
+                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
+            } else {
+                Log.e("checkedTagList else", "${viewModel.checkedTagList.value}")
+
+                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
+            }
+        }
     }
 
     private fun checkPermissions() {
@@ -109,16 +134,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun changeMap() {
-        binding.radiogroupMap.check(binding.radiobuttonCapinMap.id)
-        binding.radiogroupMap.setOnCheckedChangeListener { _, checkedId ->
-            removeActiveMarkers()
-
-            when (checkedId) {
-                binding.radiobuttonMyMap.id -> {
-                    viewModel.switchToMyMap()
-                }
-                binding.radiobuttonCapinMap.id -> {
-                    viewModel.switchToCapinMap()
+        binding.radiogroupMap.apply {
+            check(binding.radiobuttonCapinMap.id)
+            setOnCheckedChangeListener { _, checkedId ->
+                removeActiveMarkers()
+                when (checkedId) {
+                    binding.radiobuttonMyMap.id -> {
+                        viewModel.switchToMyMap()
+                    }
+                    binding.radiobuttonCapinMap.id -> {
+                        viewModel.switchToCapinMap()
+                    }
                 }
             }
         }
@@ -145,7 +171,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
         }
 
-        if(viewModel.cafeCurrentChecked.value != null) {
+        if (viewModel.cafeCurrentChecked.value != null) {
             viewModel.addCafeInsideCurrentCamera(viewModel.cafeCurrentChecked.value!!, true)
         }
     }

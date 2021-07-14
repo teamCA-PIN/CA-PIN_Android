@@ -8,7 +8,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.BR
 import com.caffeine.capin.databinding.ItemTagFilterBinding
 
-class TagFilterAdapter(val listener: FilterClickListener): RecyclerView.Adapter<TagFilterAdapter.TagFilterViewHolder>() {
+class TagFilterAdapter(private val listener: FilterClickListener): RecyclerView.Adapter<TagFilterAdapter.TagFilterViewHolder>() {
+    var checkTagList = arrayListOf<TagFilterEntity?>()
 
     interface FilterClickListener {
         fun selectFilter(checkbox: CompoundButton, tag: TagFilterEntity)
@@ -22,6 +23,15 @@ class TagFilterAdapter(val listener: FilterClickListener): RecyclerView.Adapter<
 
     override fun onBindViewHolder(holder: TagFilterViewHolder, position: Int) {
         holder.binding.setVariable(BR.data, DATA[position])
+
+        if(!checkTagList.isNullOrEmpty()){
+            checkTagList.forEach { checkedTag ->
+                if (checkedTag?.tagIndex == position) {
+                    holder.binding.checkboxTagFilter.isChecked = true
+                }
+            }
+
+        }
 
         holder.binding.checkboxTagFilter.setOnCheckedChangeListener { buttonView, isChecked ->
             if (isChecked) {
