@@ -117,9 +117,9 @@ class MapViewModel @Inject constructor(
     val filterChecked: LiveData<ArrayList<CompoundButton>>
         get() = _filterChecked
 
-    private val taglist = arrayListOf<TagFilterEntity?>()
-    private val _checkedTagList = MutableLiveData<ArrayList<TagFilterEntity?>>()
-    val checkedTagList: LiveData<ArrayList<TagFilterEntity?>>
+    val taglist = arrayListOf<TagFilterEntity>()
+    private val _checkedTagList = MutableLiveData<ArrayList<TagFilterEntity>>()
+    val checkedTagList: LiveData<ArrayList<TagFilterEntity>>
         get() = _checkedTagList
 
     private val _countCafeResult = MutableLiveData<Int?>()
