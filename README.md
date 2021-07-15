@@ -5,56 +5,34 @@
 ## 📌 Project Structure
 🌠 Capin_android  
 📂 cafeti  
- ┣ 📂 CafeColorActivity  
- ┣ 📂 CafeStyleActivity  
- ┣ 📂 CoffeeMostActivity  
- ┣ 📂 CoffeeTasteActivity  
- ┣ 📂 CoffeeMenuActivity  
- ┣ 📂 CafetiActivity  
- ┣ 📂 CafetiResultActivity  
- ┣ 📂 RequestCafetiData    
- ┣ 📂 ResponseCafetiData  
-📂 category  
- ┣ 📂 CategoryListAdapter  
- ┣ 📂 CategiryNameEntity  
- ┣ 📂 CategoryViewModel  
- ┣ 📂 SelectCategoryActivity      
+📂 category       
 📂 customview  
- ┣ 📂 CapinActiveInActiveButton    
- ┣ 📂 CapinChip    
- ┣ 📂 CapinDialog    
- ┣ 📂 CapinDialogBuilder  
- ┣ 📂 CapinDialogButton  
- ┣ 📂 CapinMapToolbar  
- ┣ 📂 CapinToastMessage  
- ┣ 📂 CapinToolbar    
- ┣ 📂 DialogClickListener   
- ┣ 📂 TagFilterCheckbox  
-📂 detail        
-  ┣ 📂 menus   
-    ┣┣ 📂 CafeMenu    
-    ┣┣ 📂 CafeMenusActivity      
-    ┣┣ 📂 CafeMenusAdapter     
-    ┣┣ 📂 CafeMenusViewModel  
-  
-
-📂 di    
+📂 detail  
+┣ 📂 menus          
+📂 di      
 📂 login   
 📂 map  
+┣ 📂 datasource    
+┣ 📂 dto    
+┣ 📂 entity    
+┣ 📂 mapper   
+┣ 📂 repository    
 📂 mypage  
+┣ 📂 api   
+┃ ┣ 📂 request   
+┃ ┣ 📂 response    
+📂 mycategory    
+📂 myreview    
+📂 pin     
 📂 network  
+┣ 📂 response    
 📂 preference  
 📂 profile  
+📂 review    
+┣ 📂 write    
 📂 signup  
 📂 tagfilter  
 📂 util  
-   ┣ 📂 CapinApplication    
-   ┃ ┣ 📂 CapinService  
-   ┃ ┗ 📂 ServiceCreator   
-   ┣ 📂 PictureUriEntity  
-   ┃ ┗ 📂 MainActivity 
-  
-  
     
 ## 🔗 Dependency
 ``` C
