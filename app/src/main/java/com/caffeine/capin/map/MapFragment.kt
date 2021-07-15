@@ -14,6 +14,7 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
+import com.caffeine.capin.category.CategoryType
 import com.caffeine.capin.category.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.map.entity.CafeInformationEntity
@@ -191,10 +192,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             viewModel.addExposedMarker(marker)
 
             if (cafe.value) {
-                marker.icon = OverlayImage.fromResource(CafeInformationEntity.MarkType.findActiveType(cafe.key.markType))
+                marker.icon = OverlayImage.fromResource(CategoryType.findActiveType(cafe.key.markType))
                 marker.map = naverMap
             } else {
-                marker.icon = OverlayImage.fromResource(CafeInformationEntity.MarkType.findInactiveType(cafe.key.markType))
+                marker.icon = OverlayImage.fromResource(CategoryType.findInactiveType(cafe.key.markType))
                 marker.map = naverMap
             }
 

@@ -1,5 +1,7 @@
 package com.caffeine.capin.di
 
+import com.caffeine.capin.category.CategoryListDataSource
+import com.caffeine.capin.category.CategoryListDataSourceImpl
 import com.caffeine.capin.map.datasource.CafeListDataSource
 import com.caffeine.capin.map.datasource.CafeListDataSourceImpl
 import com.caffeine.capin.map.datasource.MyMapLocationsDataSource
@@ -22,4 +24,8 @@ object DataSourceModule {
     @Provides
     @Singleton
     fun provideMyMapLocationsDataSource(capinApiService: CapinApiService): MyMapLocationsDataSource = MyMapLocationsDataSourceImpl(capinApiService)
+
+    @Provides
+    @Singleton
+    fun provideCategoryListDataSource(capinApiService: CapinApiService): CategoryListDataSource = CategoryListDataSourceImpl(capinApiService)
 }

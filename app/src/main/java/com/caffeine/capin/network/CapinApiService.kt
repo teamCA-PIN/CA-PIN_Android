@@ -88,4 +88,7 @@ interface CapinApiService {
 
     @GET("/cafes/myMap")
     fun getMyMapPins(): Single<ResponseMyMapLocations>
+
+    @GET("/user/categoryList")
+    fun getCategoryList() : Single<ResponseMyCategoryData>
 }

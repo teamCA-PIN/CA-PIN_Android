@@ -4,7 +4,9 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.databinding.ActivitySelectCategoryBinding
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class SelectCategoryActivity : AppCompatActivity() {
     private lateinit var binding: ActivitySelectCategoryBinding
     private val viewModel by viewModels<CategoryViewModel>()

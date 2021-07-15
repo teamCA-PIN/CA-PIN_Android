@@ -1,5 +1,9 @@
 package com.caffeine.capin.di
 
+import com.caffeine.capin.category.CategoryListDataSource
+import com.caffeine.capin.category.CategoryListMapper
+import com.caffeine.capin.category.CategoryListRepository
+import com.caffeine.capin.category.CategoryListRepositoryImpl
 import com.caffeine.capin.map.mapper.CafeDetailMapper
 import com.caffeine.capin.map.datasource.CafeListDataSource
 import com.caffeine.capin.map.CafeListMapper
@@ -34,6 +38,10 @@ object RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideCategoryListMapper(): CategoryListMapper = CategoryListMapper()
+
+    @Provides
+    @Singleton
     fun provideCafeListRepository(
         datasource: CafeListDataSource,
         cafeListMapper: CafeListMapper,
@@ -48,5 +56,12 @@ object RepositoryModule {
         myMapPinMapper: MyMapPinMapper
     ): MyMapLocationsRepository =
         MyMapLocationsRepositoryImpl(capinApiService, myMapPinMapper)
+
+    @Provides
+    @Singleton
+    fun provideCategoryListRepository(
+        categoryListDataSource: CategoryListDataSource,
+        categoryListMapper: CategoryListMapper
+    ): CategoryListRepository = CategoryListRepositoryImpl(categoryListDataSource, categoryListMapper)
 
 }
