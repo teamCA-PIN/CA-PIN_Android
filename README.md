@@ -1,11 +1,41 @@
 # 믿고 보는 카페 맵, C A : P I N ☕
 
-## 📌 Project 
+
+
+## 📌 Project Structure
+🌠 Capin_android  
+📂 cafeti    
+📂 category  
+📂 customview  
+📂 detail   
+📂 di    
+📂 login   
+📂 map  
+📂 mypage  
+📂 network  
+📂 preference  
+📂 profile  
+📂 signup  
+📂 tagfilter  
+📂 util  
+   ┣ 📂 CapinApplication    
+   ┃ ┣ 📂 CapinService  
+   ┃ ┗ 📂 MainActivity  
+   ┣ 📂 PictureUriEntity  
+   ┃ ┗ 📂 ServiceCreator  
+  
+## 📌 Project explanation
 
 ## 🔍 Preview
 
+
 ## 💡 Core Function
+
 1. CAFETI 검사 
+
+
+<img src="https://user-images.githubusercontent.com/76424700/125820405-c1274452-373e-4630-93f2-fc16dd32891c.png" width="250" height="500"/> <img src="https://user-images.githubusercontent.com/76424700/125820330-064adb3c-efb9-406d-8f6c-8c581784787a.png" width="250" height="500"/>
+
 ``` C
        private fun nextButtonClickEvent() {
         binding.btnNext.setOnClickListener() {
@@ -69,15 +99,17 @@
     }
 ``` 
 2. 카핀맵 / 마이맵 
+
+<img src="https://user-images.githubusercontent.com/76424700/125819992-1e8be074-79ca-4364-957a-527bb4a9dbd6.png" width="250" height="500"/> <img src="https://user-images.githubusercontent.com/76424700/125820219-4373dc5f-b2ec-494c-983a-08b5214e18a8.png" width="250" height="500"/>
+
 ``` C
 카핀맵 / 마이맵 코드 
 ```
 
-3. 태그 필터
-``` C
-태그 필터 코드 
-```
-4. 마이페이지(핀)
+3. 마이페이지(핀)
+
+<img src="https://user-images.githubusercontent.com/76424700/125820572-89111293-de65-4c30-93cf-81e3f0765612.png" width="250" height="500"/>
+
 ``` C
 마이페이지(핀) 코드 
 ```
