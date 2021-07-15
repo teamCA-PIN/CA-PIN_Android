@@ -45,13 +45,6 @@
         <activity android:name=".cafeti.CafeStyleActivity"/>
         <activity android:name=".cafeti.CoffeeMenuActivity"/>
         <activity android:name=".cafeti.CafetiActivity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
-
-
 
         </activity>
 
@@ -62,15 +55,19 @@
         <activity android:name=".login.FindPasswordActivity"></activity>
         <activity android:name=".login.LoginPwActivity">
 
-            
-
-
         </activity>
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.write.WriteReviewActivity"></activity>
+        <activity android:name=".review.write.WriteReviewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".category.SelectCategoryActivity"></activity>
         <activity android:name=".detail.menus.CafeMenusActivity" />
 

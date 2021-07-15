@@ -63,5 +63,4 @@ object NetworkModule {
     @Singleton
     fun provideCapinApiService(retrofit: Retrofit): CapinApiService =
         retrofit.create(CapinApiService::class.java)
-
 }

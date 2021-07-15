@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.CompoundButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -188,6 +189,29 @@ class WriteReviewActivity : AppCompatActivity() {
             } else {
                 binding.buttonPostReview.inactiveButton()
             }
+        }
+    }
+
+    private fun postReview() {
+
+
+        binding.buttonPostReview.setOnClickListener {
+            val map = mapOf<CompoundButton, Int>(
+                binding.checkboxTaste to 1,
+                binding.checkboxFeeling to 0
+            )
+            val checkedTag = mutableListOf<Int>()
+            map.forEach{
+                if (it.key.isChecked) checkedTag.add(it.value)
+            }
+
+            val review = RequestWriteReview(
+                checkedTag,
+                viewModel.contentsOfReview.value!!,
+                viewModel.rateOfReview.value!!
+
+            )
+
         }
     }
 

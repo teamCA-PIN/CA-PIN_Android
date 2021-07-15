@@ -7,6 +7,8 @@ import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.network.response.CafeMenusResponse
 import io.reactivex.rxjava3.core.Single
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.http.*
 
@@ -54,4 +56,12 @@ interface CapinApiService {
         @Path("categoryId") categoryId: String,
         @Body body: RequestNewCategoryData,
     ) : Call<BaseResponse>
+
+    //Write Review
+    @Multipart
+    @POST("/reviews")
+    fun postReview(
+        @Part review: MultipartBody.Part,
+        @PartMap imgs: Map<String, RequestBody>
+    ): Single<BaseResponse>
 }

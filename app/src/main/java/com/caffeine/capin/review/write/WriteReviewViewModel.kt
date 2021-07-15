@@ -15,6 +15,10 @@ class WriteReviewViewModel: ViewModel() {
     val imagesOfCafe: LiveData<List<PictureUriEntity>>
         get() = _imagesOfCafe
 
+    private val _recommendation = MutableLiveData<List<Int?>>()
+    val recommendation: LiveData<List<Int?>>
+        get() = _recommendation
+
     fun addImagesOfCafe(pictureUriEntity: PictureUriEntity) {
         cafePhotos.add(pictureUriEntity)
         _imagesOfCafe.value = cafePhotos
@@ -24,6 +28,7 @@ class WriteReviewViewModel: ViewModel() {
         cafePhotos.remove(pictureUriEntity)
         _imagesOfCafe.value = cafePhotos
     }
+
 
     fun checkImagesCount(): Boolean {
         return if (imagesOfCafe.value.isNullOrEmpty()) {
