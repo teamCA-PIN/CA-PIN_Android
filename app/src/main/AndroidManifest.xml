@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -39,32 +40,33 @@
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity">
 
-        </activity>
-        <activity android:name=".cafeti.CoffeeTasteActivity"/>
-        <activity android:name=".cafeti.CafeColorActivity"/>
-        <activity android:name=".cafeti.CafeStyleActivity"/>
-        <activity android:name=".cafeti.CoffeeMenuActivity"/>
-        <activity android:name=".cafeti.CafetiActivity">
-        </activity>
-
-        <activity android:name=".cafeti.CafetiResultActivity"/>
-        <activity android:name=".cafeti.CoffeeMostActivity"></activity>
-
-        <activity android:name=".login.FindPasswordActivity"></activity>
-        <activity android:name=".login.SignUpActivity">
-
-        </activity>
-        <activity android:name=".login.LoginPwActivity" />
-        <activity android:name=".login.LoginActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".cafeti.CoffeeTasteActivity" />
+        <activity android:name=".cafeti.CafeColorActivity" />
+        <activity android:name=".cafeti.CafeStyleActivity" />
+        <activity android:name=".cafeti.CoffeeMenuActivity" />
+        <activity android:name=".cafeti.CafetiActivity"></activity>
+        <activity android:name=".cafeti.CafetiResultActivity" />
+        <activity android:name=".cafeti.CoffeeMostActivity"></activity>
+        <activity android:name=".login.FindPasswordActivity"></activity>
+        <activity android:name=".login.LoginPwActivity"></activity>
+        <activity android:name=".login.SignUpActivity" />
+        <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.write.WriteReviewActivity"></activity>
+        <activity android:name=".review.write.WriteReviewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".category.SelectCategoryActivity"></activity>
         <activity android:name=".detail.menus.CafeMenusActivity" />
 

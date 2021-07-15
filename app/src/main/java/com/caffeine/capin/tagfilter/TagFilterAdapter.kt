@@ -9,7 +9,7 @@ import com.caffeine.capin.BR
 import com.caffeine.capin.databinding.ItemTagFilterBinding
 
 class TagFilterAdapter(private val listener: FilterClickListener): RecyclerView.Adapter<TagFilterAdapter.TagFilterViewHolder>() {
-    var checkTagList = arrayListOf<TagFilterEntity?>()
+    var checkTagList = arrayListOf<TagFilterEntity>()
 
     interface FilterClickListener {
         fun selectFilter(checkbox: CompoundButton, tag: TagFilterEntity)

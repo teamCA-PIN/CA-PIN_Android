@@ -28,10 +28,10 @@ jobs:
           NAVER_MAP_CLIENT_ID: ${{ secrets.NAVER_MAP_CLIENT_ID }}
         run: echo NAVER_MAP_CLIENT_ID=\"$NAVER_MAP_CLIENT_ID\" > ./local.properties
 
-     - name: Decode BASE_URL
-       env:
+      - name: Decode BASE_URL
+        env:
          BASE_URL: ${{ secrets.BASE_URL }}
-      run: echo BASE_URL=\"$BASE_URL\" > ./local.properties
+        run: echo BASE_URL=\"$BASE_URL\" > ./local.properties
 
       - name: Gradle cache
         uses: actions/cache@v2

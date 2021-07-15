@@ -10,7 +10,7 @@ import com.caffeine.capin.databinding.ItemCategoryPinDetailBinding
 
 class MyPinInfoAdapter : RecyclerView.Adapter<MyPinInfoAdapter.MyPinInfoViewHolder>() {
 
-    val myPinInfoList = mutableListOf<MyPinInfo>()
+    var myPinInfoList = mutableListOf<MyPinInfo>()
     private var isVisible: Boolean = false
     var checkboxList = mutableListOf<CheckBox>()
 

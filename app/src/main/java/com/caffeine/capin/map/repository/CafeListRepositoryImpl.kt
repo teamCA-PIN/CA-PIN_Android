@@ -12,15 +12,8 @@ class CafeListRepositoryImpl(
     private val cafeListMapper: CafeListMapper,
     private val cafeDetailMapper: CafeDetailMapper
 ): CafeListRepository {
-    override fun getCafeList(
-        tag1: Int?,
-        tag2: Int?,
-        tag3: Int?,
-        tag4: Int?,
-        tag5: Int?,
-        tag6: Int?
-    ): Single<List<CafeInformationEntity>> =
-        cafeListDataSource.getCafeList(tag1, tag2, tag3, tag4, tag5, tag6).map { list ->
+    override fun getCafeList(tags: List<Int?>): Single<List<CafeInformationEntity>> =
+        cafeListDataSource.getCafeList(tags).map { list ->
             list.cafeLocations.map {
                 cafeListMapper.map(it)
             }

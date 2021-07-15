@@ -36,6 +36,9 @@ class TagFilterFragment : Fragment() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerviewTagFilter.isNestedScrollingEnabled = false
+
+        checkIsTagApplied()
+
         setTagFilterButton()
         activeResultButton()
         getFilterCafe()
@@ -47,8 +50,6 @@ class TagFilterFragment : Fragment() {
 
     private fun initializeTag() {
         if (!viewModel.checkedTagList.value.isNullOrEmpty()) {
-            Log.e("initial", "${(binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList}")
-            Log.e("checkedList", "${viewModel.checkedTagList.value}")
             (binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList = viewModel.checkedTagList.value!!
             viewModel.getCafeLocations()
         }
@@ -56,6 +57,7 @@ class TagFilterFragment : Fragment() {
 
     private fun setTagFilterButton() {
         binding.recyclerviewTagFilter.apply {
+            addItemDecoration(VerticalItemDecoration(16))
             adapter = TagFilterAdapter(object : TagFilterAdapter.FilterClickListener {
                 override fun selectFilter(checkbox: CompoundButton, tag: TagFilterEntity) {
                     viewModel.addFilterChecked(checkbox)
@@ -67,19 +69,12 @@ class TagFilterFragment : Fragment() {
                     viewModel.removeTagList(tag)
                 }
             })
-            addItemDecoration(VerticalItemDecoration(16))
         }
     }
 
     private fun activeResultButton() {
-        viewModel.filterChecked.observe(viewLifecycleOwner) { tagFilter ->
-            if (!tagFilter.isNullOrEmpty()) {
-                changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
-                binding.buttonResult.isClickable = true
-            } else {
-                changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
-                binding.buttonResult.isClickable = false
-            }
+        viewModel.countCafeResult.observe(viewLifecycleOwner) { tagFilter ->
+            checkIsTagApplied()
         }
     }
 
@@ -89,6 +84,7 @@ class TagFilterFragment : Fragment() {
             binding.buttonResult.isClickable = true
         } else {
             changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
+            binding.buttonResult.text = resources.getString(R.string.tagfilter_button_no_result)
             binding.buttonResult.isClickable = false
         }
     }
