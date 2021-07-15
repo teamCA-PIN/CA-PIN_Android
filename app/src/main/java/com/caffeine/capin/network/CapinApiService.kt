@@ -4,9 +4,7 @@ import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList
 import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
-import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
-import com.caffeine.capin.mypage.api.response.ResponseMyPinData
-import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
+import com.caffeine.capin.mypage.api.response.*
 import com.caffeine.capin.network.response.CafeMenusResponse
 import io.reactivex.rxjava3.core.Single
 import retrofit2.Call
@@ -70,4 +68,8 @@ interface CapinApiService {
         @Body body: RequestDeletePinData,
     ) : Call<BaseResponse>
 
+    @GET("/user/myInfo")
+    fun getMyInfo(
+        @Header("token") token: String,
+    ) : Call<ResponseMyData>
 }
