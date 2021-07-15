@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -57,7 +58,14 @@
         <activity android:name=".login.LoginActivity" />
         <activity android:name=".login.SplashActivity" />
         <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.write.WriteReviewActivity"></activity>
+        <activity android:name=".review.write.WriteReviewActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+
+        </activity>
         <activity android:name=".category.SelectCategoryActivity"></activity>
         <activity android:name=".detail.menus.CafeMenusActivity" />
 

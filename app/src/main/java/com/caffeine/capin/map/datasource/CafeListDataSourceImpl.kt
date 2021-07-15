@@ -7,7 +7,7 @@ import io.reactivex.rxjava3.core.Single
 import retrofit2.http.QueryMap
 
 class CafeListDataSourceImpl(private val capinApiService: CapinApiService) : CafeListDataSource {
-    override fun getCafeList(tags: Map<String, Int?>): Single<ResponseCafeList> = capinApiService.getCafeLocationList(tags)
+    override fun getCafeList(tags: List<Int?>): Single<ResponseCafeList> = capinApiService.getCafeLocationList(tags)
 
     override fun getCafeDetail(cafeId: String): Single<ResponseCafeDetail> =
         capinApiService.getCafeDetail(cafeId)

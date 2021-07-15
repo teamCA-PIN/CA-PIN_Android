@@ -7,27 +7,31 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.widget.CompoundButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityWriteReviewBinding
-import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.util.HorizontalItemDecoration
+import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
 
+@AndroidEntryPoint
 class WriteReviewActivity : AppCompatActivity() {
     private lateinit var binding: ActivityWriteReviewBinding
     private val viewModel by viewModels<WriteReviewViewModel>()
     private lateinit var pictureUri: Uri
     private var failedPermissions = ArrayList<String>()
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,6 +44,8 @@ class WriteReviewActivity : AppCompatActivity() {
         showStagingPictureDialog()
         stagePictures()
         switchButtonActivation()
+        postReview()
+        goToMapView()
     }
 
     private fun setWriteReviewToolber() {
@@ -188,6 +194,22 @@ class WriteReviewActivity : AppCompatActivity() {
             } else {
                 binding.buttonPostReview.inactiveButton()
             }
+        }
+    }
+
+    private fun postReview() {
+        binding.buttonPostReview.setOnClickListener {
+            viewModel.changeCheckedRecommend(mapOf<CompoundButton, Int>(
+                binding.checkboxTaste to 1,
+                binding.checkboxFeeling to 0
+            ))
+           viewModel.uploadReview(contentResolver)
+        }
+    }
+
+    private fun goToMapView() {
+        viewModel.successPost.observe(this) { success ->
+            if (success) finish()
         }
     }
 
