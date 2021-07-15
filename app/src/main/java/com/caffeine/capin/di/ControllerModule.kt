@@ -11,8 +11,7 @@ import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
-class ControllerModule {
-
+object ControllerModule {
     @Provides
     @Singleton
     fun provideWriteReviewController(capinApiService: CapinApiService): WriteReviewController = WriteReviewControllerImpl(capinApiService)
