@@ -1,7 +1,6 @@
 package com.caffeine.capin.network
 
 import com.caffeine.capin.BuildConfig
-import com.caffeine.capin.login.LoginService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -12,6 +11,6 @@ object ServiceCreator {
         .addConverterFactory(GsonConverterFactory.create())
         .build()
 
-    val loginService: LoginService = retrofit.create(LoginService::class.java)
     val capinApiService: CapinApiService = retrofit.create(CapinApiService::class.java)
+
 }

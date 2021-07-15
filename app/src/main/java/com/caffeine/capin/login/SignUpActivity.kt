@@ -13,10 +13,10 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
-import com.caffeine.capin.ServiceCreator.capinService
 import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
+import com.caffeine.capin.network.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -234,7 +234,7 @@ class SignUpActivity : AppCompatActivity() {
                 password = binding.edittextPw.text.toString(),
                 nickname = binding.edittextName.text.toString()
             )
-            val call: Call<ResponseSignUpData> = capinService.postSignUp(requestSignUpData)
+            val call: Call<ResponseSignUpData> = ServiceCreator.capinApiService.postSignUp(requestSignUpData)
             call.enqueue(object : Callback<ResponseSignUpData> {
                 override fun onResponse(
                     call: Call<ResponseSignUpData>,

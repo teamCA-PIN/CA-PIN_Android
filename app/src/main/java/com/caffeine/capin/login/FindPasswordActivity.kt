@@ -10,7 +10,6 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
-import com.caffeine.capin.CapinService
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityFindPasswordBinding

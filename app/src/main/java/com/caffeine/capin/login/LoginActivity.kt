@@ -11,10 +11,10 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.caffeine.capin.R
-import com.caffeine.capin.ServiceCreator
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityLoginBinding
+import com.caffeine.capin.network.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -107,7 +107,7 @@ class LoginActivity : AppCompatActivity() {
                 password = binding.loginEdittextPw.text.toString()
             )
             val call: Call<ResponseLoginData> =
-                ServiceCreator.capinService.postLogin(requestLoginData)
+                ServiceCreator.capinApiService.postLogin(requestLoginData)
             call.enqueue(object : Callback<ResponseLoginData> {
                 override fun onResponse(
                     call: Call<ResponseLoginData>,
