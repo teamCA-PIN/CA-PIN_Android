@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.caffeine.capin.review.CafeReview" />
+
         <variable
             name="review"
             type="com.caffeine.capin.review.CafeReview" />
@@ -88,7 +90,7 @@
             style="@style/Body3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="2dp"
             android:layout_marginBottom="32dp"
             android:ellipsize="end"
             android:maxLines="3"
@@ -105,7 +107,6 @@
             android:id="@+id/imageView10"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="32dp"
@@ -115,7 +116,7 @@
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/imageView11"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
             app:rounded5Image="@{review.getReviewImageUrlFirst()}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
@@ -139,30 +140,15 @@
             android:id="@+id/imageView12"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
             android:visibility="@{review.getReviewImageUrlThird() == null ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView11"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/imageView13"
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintStart_toEndOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="@+id/imageView11"
             app:rounded5Image="@{review.getReviewImageUrlThird()}"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-        <ImageView
-            android:id="@+id/imageView13"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="12dp"
-            android:scaleType="centerCrop"
-            android:visibility="@{review.getReviewImageUrlFourth() == null ? View.INVISIBLE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView12"
-            app:layout_constraintTop_toTopOf="@+id/imageView12"
-            app:rounded5Image="@{review.getReviewImageUrlFourth()}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
@@ -173,13 +159,13 @@
             android:background="@drawable/round_rectangle_5dp"
             android:backgroundTint="@color/mask_"
             android:gravity="center"
-            android:text="@{@string/plus_n(review.getImageOverCount(4))}"
+            android:text="@{@string/plus_n(review.getImageOverCount(CafeReview.MAX_BASIC_REVIEW_IMAGE_COUNT))}"
             android:textColor="@color/white"
-            android:visibility="@{review.getImageOverCount(4) &lt;= 0 ? View.GONE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-            app:layout_constraintEnd_toEndOf="@+id/imageView13"
-            app:layout_constraintStart_toStartOf="@+id/imageView13"
-            app:layout_constraintTop_toTopOf="@+id/imageView13" />
+            android:visibility="@{review.getImageOverCount(CafeReview.MAX_BASIC_REVIEW_IMAGE_COUNT) &lt;= 0 ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

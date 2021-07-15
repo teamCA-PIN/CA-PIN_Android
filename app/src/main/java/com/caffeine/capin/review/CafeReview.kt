@@ -32,12 +32,12 @@ data class CafeReview(
     fun getReviewImageUrlFourth(): String? = imageUrls.getOrNull(3)
 
     fun getImageOverCount(maxImageCount: Int): Int {
-        val diffCount = imageUrls.size - maxImageCount
+        val diffCount = imageUrls.size - maxImageCount + 1
         return if (diffCount < 0) 0 else diffCount
     }
 
     companion object {
-        const val MAX_BASIC_REVIEW_IMAGE_COUNT = 4
+        const val MAX_BASIC_REVIEW_IMAGE_COUNT = 3
         const val MAX_MYPAGE_REVIEW_IMAGE_COUNT = 3
     }
 }

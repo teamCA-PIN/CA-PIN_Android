@@ -53,5 +53,12 @@
         <item name="android:maxHeight">45dp</item>
     </style>
 
+    <style name="CollapsedTitleStyle" parent="Headline1">
+        <item name="android:textColor">@color/black</item>
+    </style>
 
+    <style name="ExpandedTitleStyle" parent="Headline1">
+        <item name="android:textColor">@color/transparent</item>
+        <item name="android:textSize">0.1sp</item>
+    </style>
 </resources>
