@@ -43,7 +43,11 @@ class WriteReviewActivity : AppCompatActivity() {
     }
 
     private fun setWriteReviewToolber() {
+        val header = intent.getStringExtra("feature")
         binding.toolbar.apply {
+            if(header == "리뷰 수정하기") {
+                setToolbarTitle(header)
+            }
             setToolbarTitle("리뷰 작성하기")
             setBackButton {
                 //Todo: back button 클릭시 이벤트 추가

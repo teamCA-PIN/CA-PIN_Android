@@ -49,6 +49,8 @@ class MyPageActivity : AppCompatActivity() {
             tab.customView = getTabView(position)
         }.attach()
 
+        binding.mypageCloseBtn.setOnClickListener { finish() }
+
     }
 
     fun getTabView(position: Int): View {

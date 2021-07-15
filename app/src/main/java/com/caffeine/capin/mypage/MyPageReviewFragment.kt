@@ -1,5 +1,6 @@
 package com.caffeine.capin.mypage
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -14,8 +15,10 @@ import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
+import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.review.write.WriteReviewActivity
 import com.caffeine.capin.util.AutoClearedValue
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
@@ -27,12 +30,10 @@ import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class MyPageReviewFragment : Fragment() {
-
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private var binding by AutoClearedValue<FragmentMyPageReviewBinding>()
     private lateinit var myReviewAdapter: MyReviewAdapter
     private lateinit var removeReviewInfo: MyReview
-
-    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -63,6 +64,10 @@ class MyPageReviewFragment : Fragment() {
         })
 
         getMyReviewFromServer()
+
+        if(myReviewAdapter.myReviewList.size > 0) {
+            binding.ifBasicReviewTv.isVisible = false
+        }
     }
 
     private fun showEditReviewDialog() {
@@ -78,7 +83,9 @@ class MyPageReviewFragment : Fragment() {
                     ContextCompat.getColor(this@MyPageReviewFragment.requireContext(), R.color.maincolor_1), this@MyPageReviewFragment.requireContext(),
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
-
+                            val intent = Intent(this@MyPageReviewFragment.requireContext(), WriteReviewActivity::class.java)
+                            intent.putExtra("feature", "리뷰 수정하기")
+                            startActivity(intent)
                             dialog.dismiss()
                         }
                     })
@@ -103,6 +110,7 @@ class MyPageReviewFragment : Fragment() {
             .setContentDialogTitile("리뷰를 삭제하시겠습니까?")
             .setContentDialogButtons(true, object: DialogClickListener {
                 override fun onClick() {
+                    deleteMyReviewAtServer()
                     myReviewAdapter.myReviewList.remove(removeReviewInfo)
                     myReviewAdapter.notifyDataSetChanged()
                     binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
@@ -140,5 +148,27 @@ class MyPageReviewFragment : Fragment() {
                 }
             }
         })
+    }
+
+    private fun deleteMyReviewAtServer() {
+        val capinApiService = ServiceCreator.capinApiService.deleteMyReview(
+            userPreferenceManager.getUserToken(),
+            reviewId = removeReviewInfo._id
+        )
+        Log.d("리미-reviewId", removeReviewInfo._id)
+
+        capinApiService.enqueue(object : Callback<BaseResponse> {
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                Log.d("fail", "error:$t")
+            }
+
+            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+                if (response.isSuccessful) {
+                    Log.d("리미","리뷰 삭제 성공인가")
+                    myReviewAdapter.notifyDataSetChanged()
+                }
+            }
+        })
+
     }
 }

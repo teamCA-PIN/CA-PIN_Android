@@ -14,6 +14,7 @@ import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.databinding.DataBindingUtil.setContentView
 import com.caffeine.capin.R
+import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
@@ -61,6 +62,11 @@ class MyPageProfileEditActivity : AppCompatActivity() {
                 binding.profileEditNameDeleteBtn.isVisible = true
             }
         })
+
+        binding.profileEditCafetiBtn.setOnClickListener {
+            val intent = Intent(this@MyPageProfileEditActivity, CafetiActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun showEditProfileialog() {

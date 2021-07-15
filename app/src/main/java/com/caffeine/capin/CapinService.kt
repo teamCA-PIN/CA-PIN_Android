@@ -4,10 +4,7 @@ import com.caffeine.capin.cafeti.RequestCafetiData
 import com.caffeine.capin.cafeti.ResponseCafetiData
 import com.caffeine.capin.login.*
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Header
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 interface CapinService {
     @POST("/user/login")

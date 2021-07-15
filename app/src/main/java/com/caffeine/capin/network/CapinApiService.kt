@@ -72,4 +72,10 @@ interface CapinApiService {
     fun getMyInfo(
         @Header("token") token: String,
     ) : Call<ResponseMyData>
+
+    @DELETE("/reviews/{reviewId}")
+    fun deleteMyReview(
+        @Header("token") token: String,
+        @Path("reviewId") reviewId: String
+    ) : Call<BaseResponse>
 }
