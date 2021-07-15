@@ -1,5 +1,5 @@
 # 믿고 보는 카페 맵, C A : P I N ☕
-
+<img src="https://user-images.githubusercontent.com/76424700/125826222-b59ef45c-826b-467a-92d1-e1a63be33111.png" width="700" height="400"/>
 
 
 ## 📌 Project Structure
@@ -24,7 +24,57 @@
    ┣ 📂 PictureUriEntity  
    ┃ ┗ 📂 MainActivity 
   
-## 📌 Project explanation
+  
+    
+## 🔗 Dependency
+``` C
+        implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
+        implementation(Dependencies.KOTLIN)
+        implementation(Dependencies.CORE_KTX)
+        implementation(Dependencies.APPCOMPAT)
+        implementation(Dependencies.MATERIAL)
+        implementation(Dependencies.CONSTRAIN_LAYOUT)
+        implementation(Dependencies.CARD_VIEW)
+        implementation(Dependencies.VIEW_PAGER)
+        implementation(Dependencies.RECYCLER_VIEW)
+
+        implementation(Dependencies.FRAGMENT_KTX)
+        implementation(Dependencies.LOTTIE)
+
+        implementation(Dependencies.GLIDE)
+        kapt(Dependencies.GLIDE_COMPILER)
+
+        implementation(Dependencies.RETROFIT)
+        implementation(Dependencies.RETROFIT_CONVERTER)
+        implementation(Dependencies.RETROFIT_RX_ADAPTER)
+        implementation(Dependencies.OKHTTP)
+
+        implementation(Dependencies.NAVIGATION_FRAGMENT)
+        implementation(Dependencies.NAVIGATION_UI)
+
+        implementation(Dependencies.LIFECYCLE_LIVEDATA)
+        implementation(Dependencies.LIFECYCLE_VIEWMODEL)
+        implementation(Dependencies.LIFECYCLE_COMMON_JAVA)
+        kapt(Dependencies.LIFECYCLE_COMPILER)
+
+        implementation(Dependencies.RXJAVA)
+        implementation(Dependencies.RX_ANDROID)
+
+        implementation(Dependencies.ROOM)
+        kapt(Dependencies.ROOM_COMPILER)
+
+        implementation(Dependencies.HILT)
+        kapt(Dependencies.HILT_COMPILER)
+
+        implementation(Dependencies.NAVER_MAP)
+
+        implementation(Dependencies.CRYPTO)
+
+        testImplementation(TestDependencies.JUNIT)
+        androidTestImplementation(TestDependencies.EXT)
+        androidTestImplementation(TestDependencies.ESPRESSO)
+        implementation("com.google.android.gms:play-services-location:16.0.0")
+``` 
 
 ## 🔍 Preview
 
@@ -114,6 +164,11 @@
 마이페이지(핀) 코드 
 ```
 
+## 🙆‍♀️🙆‍♂️ Android developer & roles
+손평화 :     
+윤혁 :    
+조성림 :     
+홍은결 :   
 
 
 
