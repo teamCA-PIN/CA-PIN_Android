@@ -5,21 +5,25 @@ import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.map.datasource.MyMapLocationsDataSource
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.map.repository.CafeListRepository
+import com.caffeine.capin.map.repository.MyMapLocationsRepository
 import com.caffeine.capin.tagfilter.TagFilterEntity
 import com.caffeine.capin.tagfilter.TagFilterList
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import retrofit2.http.QueryMap
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
 @HiltViewModel
 class MapViewModel @Inject constructor(
-    private val cafeListRepository: CafeListRepository
+    private val cafeListRepository: CafeListRepository,
+    private val myMapLocationsRepository: MyMapLocationsRepository
 ) : ViewModel() {
     private val markerList = ArrayList<Marker>()
 
@@ -83,10 +87,7 @@ class MapViewModel @Inject constructor(
 
     fun switchToMyMap() {
         cafeList.clear()
-        myMapInfo.forEach { cafe ->
-            cafeList[cafe] = false
-        }
-        _cafeInsideCurrentCamera.value = cafeList
+        getMyMapPins()
     }
 
     fun addExposedMarker(marker: Marker) {
@@ -151,10 +152,10 @@ class MapViewModel @Inject constructor(
     }
 
     fun getCafeLocations() {
-        val tags = mutableMapOf<String, Int?>()
-        if (!taglist.isNullOrEmpty()){
+        val tags = mutableListOf<Int?>()
+        if (!taglist.isNullOrEmpty()) {
             taglist.forEach {
-                tags["tags"] = it?.tagIndex
+                tags.add(it.tagIndex)
             }
         }
         Log.e("tags", "${tags}")
@@ -174,10 +175,29 @@ class MapViewModel @Inject constructor(
             })
     }
 
+    private fun getMyMapPins() {
+        myMapLocationsRepository.getPinCafes()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                Log.e("my map", "$it")
+                cafeList.clear()
+                it.forEach { cafe ->
+                    cafeList[cafe] = false
+                }
+                _cafeInsideCurrentCamera.postValue(cafeList)
+                _countCafeResult.postValue(it.size)
+                Log.e("cafeList", "${it}")
+
+            }, {
+
+            })
+    }
+
     companion object {
         private val myMapInfo: List<CafeInformationEntity> = listOf(
-            CafeInformationEntity("후엘고", 37.580221, 126.923442),
-            CafeInformationEntity("빈플루", 37.582996109622876, 126.91380431146156)
+            CafeInformationEntity("c9d776", "후엘고", 37.580221, 126.923442),
+            CafeInformationEntity("ffc324b", "빈플루", 37.582996109622876, 126.91380431146156)
         )
     }
 }

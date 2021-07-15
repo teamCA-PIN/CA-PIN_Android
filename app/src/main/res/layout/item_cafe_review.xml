@@ -7,6 +7,8 @@
 
         <import type="android.view.View" />
 
+        <import type="com.caffeine.capin.review.CafeReview" />
+
         <variable
             name="review"
             type="com.caffeine.capin.review.CafeReview" />
@@ -21,6 +23,7 @@
             android:layout_width="45dp"
             android:layout_height="45dp"
             android:layout_marginStart="18dp"
+            app:circleImage="@{review.profileImageUrl}"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:srcCompat="@tools:sample/avatars" />
@@ -31,6 +34,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="10dp"
+            android:text="@{review.writerNickname}"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toTopOf="parent"
@@ -43,6 +47,7 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="11dp"
             android:textColor="@color/gray_4"
+            app:date="@{review.createDate}"
             app:layout_constraintStart_toEndOf="@+id/textView"
             app:layout_constraintTop_toTopOf="@+id/textView"
             tools:text="2020.04.01" />
@@ -55,7 +60,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/textView3"
             app:layout_constraintEnd_toStartOf="@+id/textView3"
             app:layout_constraintTop_toTopOf="@+id/textView3"
-            app:srcCompat="@drawable/star" />
+            app:srcCompat="@drawable/star_small" />
 
         <TextView
             android:id="@+id/textView3"
@@ -63,17 +68,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="25dp"
+            android:text="@{@string/float_0_1(review.starRate)}"
+            android:textColor="@color/pointcolor_yellow"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             tools:text="3.5" />
 
-        <com.google.android.material.chip.ChipGroup
+        <com.google.android.flexbox.FlexboxLayout
             android:id="@+id/chipGroup"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
+            android:layout_marginStart="6.5dp"
             android:layout_marginTop="10dp"
+            app:chipTitles="@{review.getRecommendStrings()}"
             app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/textView"
+            app:layout_constraintStart_toEndOf="@+id/imageView5"
             app:layout_constraintTop_toBottomOf="@+id/textView" />
 
         <TextView
@@ -81,14 +90,15 @@
             style="@style/Body3"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="9dp"
+            android:layout_marginTop="2dp"
             android:layout_marginBottom="32dp"
             android:ellipsize="end"
             android:maxLines="3"
+            android:text="@{review.content}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@+id/textView3"
-            app:layout_constraintStart_toStartOf="@+id/chipGroup"
+            app:layout_constraintStart_toStartOf="@+id/textView"
             app:layout_constraintTop_toBottomOf="@+id/chipGroup"
             app:layout_constraintVertical_bias="0.0"
             tools:text="무엇보다 커피가 정말 맛있고, 디저트로 준비돼있던 쿠키와 휘낭시에도 맛있었습니다. 브라운크림은 꼭 드세요 !" />
@@ -97,17 +107,18 @@
             android:id="@+id/imageView10"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginStart="12dp"
             android:layout_marginTop="18dp"
             android:layout_marginEnd="5dp"
             android:layout_marginBottom="32dp"
             android:scaleType="centerCrop"
+            android:visibility="@{review.getReviewImageUrlFirst() == null ? View.GONE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/imageView11"
             app:layout_constraintHorizontal_chainStyle="spread"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintStart_toStartOf="@+id/textView5"
             app:layout_constraintTop_toBottomOf="@+id/textView5"
+            app:rounded5Image="@{review.getReviewImageUrlFirst()}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <ImageView
@@ -116,37 +127,28 @@
             android:layout_height="0dp"
             android:layout_marginEnd="5dp"
             android:scaleType="centerCrop"
+            android:visibility="@{review.getReviewImageUrlSecond() == null ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView10"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintEnd_toStartOf="@+id/imageView12"
             app:layout_constraintStart_toEndOf="@+id/imageView10"
             app:layout_constraintTop_toTopOf="@+id/imageView10"
+            app:rounded5Image="@{review.getReviewImageUrlSecond()}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <ImageView
             android:id="@+id/imageView12"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="10dp"
             android:scaleType="centerCrop"
+            android:visibility="@{review.getReviewImageUrlThird() == null ? View.INVISIBLE : View.VISIBLE}"
             app:layout_constraintBottom_toBottomOf="@+id/imageView11"
             app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toStartOf="@+id/imageView13"
+            app:layout_constraintEnd_toEndOf="@+id/textView5"
             app:layout_constraintStart_toEndOf="@+id/imageView11"
             app:layout_constraintTop_toTopOf="@+id/imageView11"
-            tools:srcCompat="@tools:sample/backgrounds/scenic" />
-
-        <ImageView
-            android:id="@+id/imageView13"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            android:layout_marginEnd="12dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
-            app:layout_constraintDimensionRatio="1:1"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imageView12"
-            app:layout_constraintTop_toTopOf="@+id/imageView12"
+            app:rounded5Image="@{review.getReviewImageUrlThird()}"
             tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
         <TextView
@@ -157,12 +159,13 @@
             android:background="@drawable/round_rectangle_5dp"
             android:backgroundTint="@color/mask_"
             android:gravity="center"
+            android:text="@{@string/plus_n(review.getImageOverCount(CafeReview.MAX_BASIC_REVIEW_IMAGE_COUNT))}"
             android:textColor="@color/white"
-            android:visibility="@{review.getImageOverCount(4) &lt;= 0 ? View.GONE : View.VISIBLE}"
-            app:layout_constraintBottom_toBottomOf="@+id/imageView13"
-            app:layout_constraintEnd_toEndOf="@+id/imageView13"
-            app:layout_constraintStart_toStartOf="@+id/imageView13"
-            app:layout_constraintTop_toTopOf="@+id/imageView13" />
+            android:visibility="@{review.getImageOverCount(CafeReview.MAX_BASIC_REVIEW_IMAGE_COUNT) &lt;= 0 ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="@+id/imageView12"
+            app:layout_constraintEnd_toEndOf="@+id/imageView12"
+            app:layout_constraintStart_toStartOf="@+id/imageView12"
+            app:layout_constraintTop_toTopOf="@+id/imageView12" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

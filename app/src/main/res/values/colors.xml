@@ -41,5 +41,7 @@
     <color name="logo_brown">#927865</color>
     <color name="logo_white">#ccffffff</color>
 
-    <color name="mask_">#AAf9f9f9</color>
+    <color name="mask_">#66474747</color>
+    <color name="mask_20percent">#33000000</color>
+    <color name="transparent">#00000000</color>
 </resources>

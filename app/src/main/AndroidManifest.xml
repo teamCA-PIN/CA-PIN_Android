@@ -21,7 +21,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
-        android:usesCleartextTraffic="true">
+        android:usesCleartextTraffic="true"
+        android:requestLegacyExternalStorage="true">
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -40,12 +41,12 @@
         <activity android:name=".MainActivity">
 
         </activity>
-        <activity android:name=".cafeti.CoffeeTasteActivity"/>
-        <activity android:name=".cafeti.CafeColorActivity"/>
-        <activity android:name=".cafeti.CafeStyleActivity"/>
-        <activity android:name=".cafeti.CoffeeMenuActivity"/>
+        <activity android:name=".cafeti.CoffeeTasteActivity" />
+        <activity android:name=".cafeti.CafeColorActivity" />
+        <activity android:name=".cafeti.CafeStyleActivity" />
+        <activity android:name=".cafeti.CoffeeMenuActivity" />
         <activity android:name=".cafeti.CafetiActivity"></activity>
-        <activity android:name=".cafeti.CafetiResultActivity"/>
+        <activity android:name=".cafeti.CafetiResultActivity" />
         <activity android:name=".cafeti.CoffeeMostActivity"></activity>
         <activity android:name=".login.FindPasswordActivity"></activity>
         <activity android:name=".login.LoginPwActivity"></activity>

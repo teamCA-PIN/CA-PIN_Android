@@ -24,14 +24,11 @@ class MainActivity: AppCompatActivity() {
         setContentView(binding.root)
         setNavController()
         transparentStatusAndNavigation()
-
-        userPreferenceManager.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVlODMzNjhiNzg1MTFhMDc5MGRjNzkiLCJpYXQiOjE2MjYyODgwODUsImV4cCI6MTYyNjM3NDQ4NX0.igLe0rwR_7LAlVC-UdetmFrSb19Z-oqjDXW7T29wgBY")
     }
 
     private fun setNavController() {
         val navHostFragment =
             supportFragmentManager.findFragmentById(R.id.fragment_nav_host) as NavHostFragment
         navController = navHostFragment.findNavController()
-
     }
 }

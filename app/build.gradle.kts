@@ -47,8 +47,12 @@ android {
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
 
-        getByName("debug"){
-            buildConfigField("String", "NAVER_MAP_CLIENT_ID", properties["NAVER_MAP_CLIENT_ID"] as String)
+        getByName("debug") {
+            buildConfigField(
+                "String",
+                "NAVER_MAP_CLIENT_ID",
+                properties["NAVER_MAP_CLIENT_ID"] as String
+            )
             buildConfigField("String", "BASE_URL", properties["BASE_URL"] as String)
         }
     }
@@ -114,6 +118,6 @@ android {
         androidTestImplementation(TestDependencies.EXT)
         androidTestImplementation(TestDependencies.ESPRESSO)
         implementation("com.google.android.gms:play-services-location:16.0.0")
-
+        implementation("com.google.android.flexbox:flexbox:3.0.0")
     }
 }

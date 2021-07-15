@@ -2,9 +2,11 @@ package com.caffeine.capin.util
 
 import android.graphics.Color
 import android.net.Uri
+import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.core.content.ContextCompat
+import androidx.core.view.updateMargins
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
 import com.google.android.material.imageview.ShapeableImageView
@@ -12,8 +14,10 @@ import com.google.android.material.shape.ShapeAppearanceModel
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
+import com.caffeine.capin.R
 import com.caffeine.capin.category.CategoryNameEntity.CategoryPalette.Companion.findColorResource
 import com.caffeine.capin.customview.CapinChip
+import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.chip.ChipGroup
 import java.text.SimpleDateFormat
 import java.util.*
@@ -22,7 +26,7 @@ object BindingAdapter {
     @BindingAdapter("load_url")
     @JvmStatic
     fun ImageView.loadImageView(url: String?) {
-        if(url != null) {
+        if (url != null) {
             Glide.with(context).load(url).into(this)
 
         }
@@ -65,11 +69,20 @@ object BindingAdapter {
 
     @JvmStatic
     @BindingAdapter("app:chipTitles")
-    fun bindingChipsToChipGroup(chipGroup: ChipGroup, chipTitles: List<String>?) {
+    fun bindingChipsToChipGroup(chipGroup: FlexboxLayout, chipTitles: List<String>?) {
         if (chipTitles.isNullOrEmpty()) return
         chipGroup.removeAllViews()
         chipTitles.map { CapinChip.create(chipGroup.context).apply { text = it } }
-            .forEach { chipGroup.addView(it) }
+            .forEach {
+                chipGroup.addView(it)
+
+                (it.layoutParams as? ViewGroup.MarginLayoutParams)?.updateMargins(
+                    bottom = chipGroup.context.resources.getDimensionPixelSize(R.dimen.chip_bottom_margin),
+                    right = chipGroup.context.resources.getDimensionPixelSize(R.dimen.chip_margin),
+                    left = chipGroup.context.resources.getDimensionPixelSize(R.dimen.chip_margin),
+                )
+            }
+        //fixme: 빠르게 하기위해서 걍 복붙
     }
 
     @JvmStatic

@@ -33,9 +33,14 @@
                 <com.google.android.material.appbar.CollapsingToolbarLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
+                    app:collapsedTitleGravity="center"
+                    app:collapsedTitleTextAppearance="@style/CollapsedTitleStyle"
                     app:contentScrim="@color/white"
+                    app:expandedTitleGravity="center"
+                    app:expandedTitleTextAppearance="@style/ExpandedTitleStyle"
                     app:layout_scrollFlags="scroll|exitUntilCollapsed"
                     app:scrimAnimationDuration="150"
+                    app:title="@{viewModel.cafeDetails.cafeName}"
                     app:toolbarId="@id/toolbar">
 
                     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,6 +49,7 @@
                         app:layout_collapseMode="pin">
 
                         <ImageView
+                            android:id="@+id/imageView8"
                             android:layout_width="0dp"
                             android:layout_height="0dp"
                             android:scaleType="centerCrop"
@@ -56,12 +62,34 @@
                             app:load_url="@{viewModel.cafeDetails.mainImageUrl}"
                             tools:src="@tools:sample/backgrounds/scenic" />
 
+                        <View
+                            android:id="@+id/image_mask"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/gradient_image_mask"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <ImageView
+                            android:id="@+id/button_back"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:layout_marginTop="16dp"
+                            app:layout_collapseMode="pin"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/icon_back_white" />
+
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
-                        android:layout_height="64dp" />
+                        android:layout_height="64dp"
+                        app:contentInsetStart="0dp" />
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -88,6 +116,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
                         android:text="@{viewModel.cafeDetails.cafeName}"
+                        android:textColor="@color/black"
                         android:textSize="26dp"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -150,35 +179,27 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_star_rate"
                         tools:text="서울 마포구 마포대로11길 118 1층 (염리동)" />
 
-                    <com.google.android.material.chip.ChipGroup
+                    <com.google.android.flexbox.FlexboxLayout
                         android:id="@+id/chips_cafe_tags"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
                         app:chipTitles="@{viewModel.cafeDetails.tags}"
+                        app:flexWrap="wrap"
+                        app:justifyContent="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_cafe_address">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="커피맛집" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="디저트맛집" />
-                    </com.google.android.material.chip.ChipGroup>
+                        app:layout_constraintTop_toBottomOf="@+id/text_cafe_address" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="25dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/round_rectangle_10dp"
                         android:backgroundTint="@color/gray_1"
@@ -247,7 +268,7 @@
                             app:srcCompat="@drawable/content_paste" />
 
                         <TextView
-                            android:id="@+id/button_menu_details"
+                            android:id="@+id/button_menus"
                             style="@style/Body2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -279,6 +300,7 @@
                         android:layout_height="wrap_content"
                         android:layout_marginStart="17dp"
                         android:layout_marginBottom="1dp"
+                        android:visibility="gone"
                         app:layout_constraintBottom_toBottomOf="@+id/textView9"
                         app:layout_constraintStart_toEndOf="@+id/textView9" />
 
@@ -381,7 +403,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

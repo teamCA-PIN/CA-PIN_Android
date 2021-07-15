@@ -2,11 +2,15 @@ package com.caffeine.capin.network
 
 import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList
+import com.caffeine.capin.map.dto.ResponseMyMapLocations
 import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
 import com.caffeine.capin.mypage.api.response.*
 import com.caffeine.capin.network.response.CafeMenusResponse
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
+import okhttp3.MultipartBody
+import okhttp3.RequestBody
 import retrofit2.Call
 import retrofit2.Response
 import retrofit2.http.*
@@ -14,7 +18,7 @@ import retrofit2.http.*
 interface CapinApiService {
     @GET("/cafes")
     fun getCafeLocationList(
-        @QueryMap tags: Map<String, Int?>
+        @Query ("tags") tags: List<Int?>
     ): Single<ResponseCafeList>
 
     @GET("/cafes/detail/{cafeId}")
@@ -55,6 +59,15 @@ interface CapinApiService {
         @Body body: RequestNewCategoryData,
     ) : Call<BaseResponse>
 
+    //Write Review
+    @Multipart
+    @POST("/reviews")
+    fun postReview(
+        @Query ("cafe") cafeId: String,
+        @Part review: MultipartBody.Part,
+        @Part imgs: List<MultipartBody.Part?>
+    ):Completable
+
     @GET("/category/{categoryId}/cafes")
     fun getMyPin(
         @Header("token") token: String,
@@ -78,4 +91,7 @@ interface CapinApiService {
         @Header("token") token: String,
         @Path("reviewId") reviewId: String
     ) : Call<BaseResponse>
+
+    @GET("/cafes/myMap")
+    fun getMyMapPins(): Single<ResponseMyMapLocations>
 }
