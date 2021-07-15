@@ -10,8 +10,6 @@ class CapinDialogBuilder(
     private var exitButton: Boolean = false
     private var listener: DialogClickListener? = null
 
-
-
     fun build(): CapinDialog {
         return CapinDialog(
             title,

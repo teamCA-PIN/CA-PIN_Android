@@ -190,11 +190,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             marker.position = LatLng(cafe.key.latitude, cafe.key.longitude)
             viewModel.addExposedMarker(marker)
 
+            Log.e("dsf34124","${cafe.key.markType}")
             if (cafe.value) {
-                marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_active_cate_10)
+                marker.icon = OverlayImage.fromResource(CafeInformationEntity.MarkType.findActiveType(cafe.key.markType))
                 marker.map = naverMap
             } else {
-                marker.icon = OverlayImage.fromResource(R.drawable.ic_pin_inactive_default)
+                marker.icon = OverlayImage.fromResource(CafeInformationEntity.MarkType.findInactiveType(cafe.key.markType))
                 marker.map = naverMap
             }
 
