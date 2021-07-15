@@ -65,6 +65,7 @@ class WriteReviewActivity : AppCompatActivity() {
         stagePictures()
         switchButtonActivation()
         postReview()
+        goToMapView()
     }
 
     private fun setWriteReviewToolber() {
@@ -223,6 +224,12 @@ class WriteReviewActivity : AppCompatActivity() {
                 binding.checkboxFeeling to 0
             ))
            viewModel.uploadReview(contentResolver)
+        }
+    }
+
+    private fun goToMapView() {
+        viewModel.successPost.observe(this) { success ->
+            if (success) finish()
         }
     }
 

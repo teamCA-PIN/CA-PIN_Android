@@ -6,6 +6,7 @@ import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
 import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.network.response.CafeMenusResponse
+import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -64,5 +65,5 @@ interface CapinApiService {
         @Query ("cafe") cafeId: String,
         @Part review: MultipartBody.Part,
         @Part imgs: List<MultipartBody.Part?>
-    ): Single<BaseResponse>
+    ):Completable
 }
