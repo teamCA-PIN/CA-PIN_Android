@@ -39,6 +39,7 @@
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

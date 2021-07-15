@@ -10,7 +10,9 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
+import com.caffeine.capin.CapinService
 import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityFindPasswordBinding
 import com.caffeine.capin.login.LoginActivity
 
@@ -28,6 +30,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
         numberButtonClickEvent()
         changePwButtonClickEvent()
+        imageviewButtonClickEvent()
 
         lateinit var number : EditText
         lateinit var newpassword : EditText
@@ -78,11 +81,11 @@ class FindPasswordActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.pwDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.pwDeleteBtn.isVisible = true
+                binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
             }
         })
 
@@ -95,11 +98,11 @@ class FindPasswordActivity : AppCompatActivity() {
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                binding.pwagainDeleteBtn.isVisible = true
+
             }
 
             override fun afterTextChanged(s: Editable?) {
-                binding.pwagainDeleteBtn.isVisible = true
+                binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
             }
         })
 
@@ -108,28 +111,36 @@ class FindPasswordActivity : AppCompatActivity() {
 
     private fun numberButtonClickEvent() {
         binding.btnProve.setOnClickListener() {
-            val number = binding.edittextNumber.text
-            if (number.isNullOrBlank()) {
-                //인증번호가 틀리다면
+            val authNumber = binding.edittextNumber.text
+            if (authNumber.isNullOrBlank()){
+
             }
-            else { //인증번호가 맞다면
-                Toast.makeText(this@FindPasswordActivity, "인증되었습니다.", LENGTH_SHORT).show()
+            else {
+                CapinToastMessage.createCapinToast(this@FindPasswordActivity,"인증되었습니다.",135)?.show()
+            }
             }
         }
-    }
+
 
     private fun changePwButtonClickEvent() {
         binding.btnChange.setOnClickListener() {
             val password = binding.edittextNewpw.text
             val newpassword = binding.edittextNewpwcheck.text
             if (password.isNullOrBlank() || newpassword.isNullOrBlank()) {
-                //비번이 틀리다면
+
             }
             else {
-                Toast.makeText(this@FindPasswordActivity, "인증되었습니다.", LENGTH_SHORT).show()
-                val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
+                val intent = Intent(this@FindPasswordActivity,LoginActivity::class.java)
+                CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
                 startActivity(intent)
             }
+        }
+    }
+
+    private fun imageviewButtonClickEvent(){
+        binding.imageViewTool.setOnClickListener() {
+            val intent = Intent(this@FindPasswordActivity, LoginPwActivity::class.java)
+            startActivity(intent)
         }
     }
 
