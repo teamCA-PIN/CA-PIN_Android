@@ -1,10 +1,8 @@
 package com.caffeine.capin.mypage.pin
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.caffeine.capin.databinding.ItemCategoryPinDetailBinding
 import com.caffeine.capin.databinding.ItemPinDetailTagBinding
 
 class PinInfoTagAdapter : RecyclerView.Adapter<PinInfoTagAdapter.PinInfoTagViewHolder>() {
@@ -30,7 +28,7 @@ class PinInfoTagAdapter : RecyclerView.Adapter<PinInfoTagAdapter.PinInfoTagViewH
         val binding: ItemPinDetailTagBinding
     ) : RecyclerView.ViewHolder(binding.root) {
         fun onBind(pinInfoTag: PinInfoTag){
-            binding.pinDetailTagTv.text = pinInfoTag.tags
+            binding.pinDetailTagTv.text = pinInfoTag.name
         }
     }
 }
