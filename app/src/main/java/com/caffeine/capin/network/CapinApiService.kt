@@ -2,17 +2,17 @@ package com.caffeine.capin.network
 
 import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList
+import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
-import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
-import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
+import com.caffeine.capin.mypage.api.response.*
 import com.caffeine.capin.network.response.CafeMenusResponse
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import retrofit2.Call
+import retrofit2.Response
 import retrofit2.http.*
-
 
 interface CapinApiService {
     @GET("/cafes")
@@ -66,4 +66,22 @@ interface CapinApiService {
         @Part review: MultipartBody.Part,
         @Part imgs: List<MultipartBody.Part?>
     ):Completable
+
+    @GET("/category/{categoryId}/cafes")
+    fun getMyPin(
+        @Header("token") token: String,
+        @Path("categoryId") categoryId: String
+    ) : Call<ResponseMyPinData>
+
+    @HTTP(method = "DELETE", path = "/category/{categoryId}/archive", hasBody = true)
+    fun deleteMyPin(
+        @Header("token") token: String,
+        @Path("categoryId") categoryId: String,
+        @Body body: RequestDeletePinData,
+    ) : Call<BaseResponse>
+
+    @GET("/user/myInfo")
+    fun getMyInfo(
+        @Header("token") token: String,
+    ) : Call<ResponseMyData>
 }

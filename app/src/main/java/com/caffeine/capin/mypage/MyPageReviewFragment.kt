@@ -112,7 +112,6 @@ class MyPageReviewFragment : Fragment() {
     }
 
     private fun getMyReviewFromServer() {
-        userPreferenceManager.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVlODMzNjhiNzg1MTFhMDc5MGRjNzkiLCJpYXQiOjE2MjYyNDM5NjEsImV4cCI6MTYyNjMzMDM2MX0.govjwTEd5FiH4kZ01J_qe44v21lhgj7pKtKQ2MNbaxk")
         val capinApiService = ServiceCreator.capinApiService.getMyReview(
             userPreferenceManager.getUserToken()
         )

@@ -1,5 +1,6 @@
 package com.caffeine.capin.mypage.pin
 
 data class PinInfoTag(
-    val tags: String
+    val _id: String,
+    val name: String
 )

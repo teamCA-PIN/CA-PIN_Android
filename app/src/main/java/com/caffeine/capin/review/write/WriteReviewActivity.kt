@@ -1,49 +1,29 @@
 package com.caffeine.capin.review.write
 
-import android.content.ContentResolver
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.net.Uri
-import android.os.Build
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.provider.OpenableColumns
 import android.util.Log
 import android.widget.CompoundButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
-import androidx.annotation.RequiresApi
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityWriteReviewBinding
-import com.caffeine.capin.PictureUriEntity
-import com.caffeine.capin.util.FormDataUtil.getBody
-import com.caffeine.capin.util.FormDataUtil.getImageBody
 import com.caffeine.capin.util.HorizontalItemDecoration
-import com.caffeine.capin.util.JsonStringParser.parseToJsonString
 import dagger.hilt.android.AndroidEntryPoint
-import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.schedulers.Schedulers
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
-import okhttp3.MediaType.Companion.toMediaTypeOrNull
-import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okhttp3.RequestBody.Companion.asRequestBody
-import okio.BufferedSink
-import okio.source
 import java.io.File
-import java.nio.file.Files
-import java.nio.file.Paths
-import javax.inject.Inject
 
 @AndroidEntryPoint
 class WriteReviewActivity : AppCompatActivity() {
