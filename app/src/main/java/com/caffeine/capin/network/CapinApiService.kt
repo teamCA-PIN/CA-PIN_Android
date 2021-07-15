@@ -1,5 +1,8 @@
 package com.caffeine.capin.network
 
+import com.caffeine.capin.cafeti.RequestCafetiData
+import com.caffeine.capin.cafeti.ResponseCafetiData
+import com.caffeine.capin.login.*
 import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList
 import com.caffeine.capin.map.dto.ResponseMyMapLocations
@@ -102,4 +105,30 @@ interface CapinApiService {
 
     @GET("/cafes/myMap")
     fun getMyMapPins(): Single<ResponseMyMapLocations>
+
+    @POST("/user/login")
+    fun postLogin(
+        @Body body: RequestLoginData
+    ): Call<ResponseLoginData>
+
+    @POST("/user/signup")
+    fun postSignUp(
+        @Body body: RequestSignUpData
+    ): Call<ResponseSignUpData>
+
+    @POST("/cafeti")
+    fun postCafeti(
+        @Header("token") token: String,
+        @Body body: RequestCafetiData
+    ): Call<ResponseCafetiData>
+
+    @POST("/user/emailAuth")
+    fun postLoginPw(
+        @Body body: RequestLoginPwData
+    ): Call<ResponseLoginPwData>
+
+    @PUT("/user/changePassword")
+    fun postFindPw(
+        @Body body: RequestFindPwData
+    ): Call<ResponseFindPwData>
 }

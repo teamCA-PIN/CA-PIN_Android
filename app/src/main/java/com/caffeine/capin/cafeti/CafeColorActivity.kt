@@ -9,8 +9,9 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
 import com.caffeine.capin.R
-import com.caffeine.capin.ServiceCreator
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityCafeColorBinding
+import com.caffeine.capin.network.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -18,7 +19,7 @@ import retrofit2.Response
 class CafeColorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCafeColorBinding
     private var cafetiResultList = arrayListOf<Int>()
-    private val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGViMTAwMTJkNGNhZDY0ZjBkNmVhMDAiLCJpYXQiOjE2MjYyODM2NTksImV4cCI6MTYyNjM3MDA1OX0.91T1wDbDKyJY3rDOMKUXsTmFKUnNxdaM1yOYRyW72U0"
+    private val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGViMTAwMTJkNGNhZDY0ZjBkNmVhMDAiLCJpYXQiOjE2MjYzODAxNjYsImV4cCI6MTYyNjQ2NjU2Nn0.A0dkNMMFEoS9210MiW5Yd8GghsKs8NXbFnDKovznDrg"
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,7 +92,7 @@ class CafeColorActivity : AppCompatActivity() {
                     }
                 }
             } else {
-                Toast.makeText(this@CafeColorActivity, "한가지 항목을 선택해주세요", LENGTH_SHORT).show()
+                CapinToastMessage.createCapinRejectToast(this@CafeColorActivity, "한가지 항목을 선택해주세요", 135)?.show()
             }
         }
     }
@@ -101,7 +102,7 @@ class CafeColorActivity : AppCompatActivity() {
             answers = cafetiResultList
         )
         val call: Call<ResponseCafetiData> =
-            ServiceCreator.capinService.postCafeti(
+            ServiceCreator.capinApiService.postCafeti(
                 token,
                 requestCafetiData
             )
@@ -112,13 +113,13 @@ class CafeColorActivity : AppCompatActivity() {
             ) {
                 if (response.isSuccessful) {
                     Log.e("dfsd", "dfasdf")
-                    Toast.makeText(this@CafeColorActivity, "CAFETI 검사 완료", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@CafeColorActivity, "CAFETI 검사 완료", LENGTH_SHORT)
                     val intent = Intent(this@CafeColorActivity, CafetiResultActivity::class.java)
                     intent.putExtra("cafeti_result", response.body()?.result)
                     startActivity(intent)
 
                 } else {
-                    Toast.makeText(this@CafeColorActivity, "필요한 값이 없습니다.", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@CafeColorActivity, "필요한 값이 없습니다.", LENGTH_SHORT)
                 }
             }
 

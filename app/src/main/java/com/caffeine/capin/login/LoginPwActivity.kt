@@ -11,8 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
-import com.caffeine.capin.ServiceCreator
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityLoginpwBinding
+import com.caffeine.capin.network.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -28,6 +29,8 @@ class LoginPwActivity : AppCompatActivity() {
         binding = ActivityLoginpwBinding.inflate(layoutInflater)
         setContentView(binding.root)
         binding.btnFindpw.clipToOutline = true
+
+        imageviewButtonClickEvent()
 
 
         binding.loginpwDeleteBtn.setOnClickListener {
@@ -83,7 +86,7 @@ class LoginPwActivity : AppCompatActivity() {
             val requestLoginPwData = RequestLoginPwData(
                 email = binding.loginpwEdittextEmail.text.toString()
             )
-            val call: Call<ResponseLoginPwData> = ServiceCreator.capinService.postLoginPw(requestLoginPwData)
+            val call: Call<ResponseLoginPwData> = ServiceCreator.capinApiService.postLoginPw(requestLoginPwData)
             call.enqueue(object : Callback<ResponseLoginPwData> {
                 override fun onResponse(
                     call: Call<ResponseLoginPwData>,
@@ -94,7 +97,11 @@ class LoginPwActivity : AppCompatActivity() {
                         intent = Intent(this@LoginPwActivity, FindPasswordActivity::class.java)
                         startActivity(intent)
                     } else {
-                        Toast.makeText(this@LoginPwActivity, "이메일을 찾을 수 없습니다.", LENGTH_SHORT).show()
+                        CapinToastMessage.createCapinRejectToast(
+                            this@LoginPwActivity,
+                            "이메일을 찾을 수 없습니다.",
+                            135
+                        )?.show()
                         binding.loginpwEdittextEmail.setTextColor(ContextCompat.getColor(this@LoginPwActivity,R.color.pointcolor_red))
                     }
                 }
@@ -103,6 +110,13 @@ class LoginPwActivity : AppCompatActivity() {
                     Log.d("NetworkTest", "error:$t")
                 }
             })
+        }
+    }
+
+    private fun imageviewButtonClickEvent(){
+        binding.imageviewBackButton.setOnClickListener() {
+            val intent = Intent(this@LoginPwActivity, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 }

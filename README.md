@@ -4,27 +4,35 @@
 
 ## 📌 Project Structure
 🌠 Capin_android  
-📂 cafeti    
-📂 category  
+📂 cafeti  
+📂 category       
 📂 customview  
-📂 detail   
-📂 di    
+📂 detail  
+┣ 📂 menus          
+📂 di      
 📂 login   
 📂 map  
+┣ 📂 datasource    
+┣ 📂 dto    
+┣ 📂 entity    
+┣ 📂 mapper   
+┣ 📂 repository    
 📂 mypage  
+┣ 📂 api   
+┃ ┣ 📂 request   
+┃ ┣ 📂 response    
+📂 mycategory    
+📂 myreview    
+📂 pin     
 📂 network  
+┣ 📂 response    
 📂 preference  
 📂 profile  
+📂 review    
+┣ 📂 write    
 📂 signup  
 📂 tagfilter  
 📂 util  
-   ┣ 📂 CapinApplication    
-   ┃ ┣ 📂 CapinService  
-   ┃ ┗ 📂 ServiceCreator   
-   ┣ 📂 PictureUriEntity  
-   ┃ ┗ 📂 MainActivity 
-  
-  
     
 ## 🔗 Dependency
 ``` C
@@ -165,12 +173,9 @@
 ```
 
 ## 🙆‍♀️🙆‍♂️ Android developer & roles
-손평화 :     
-윤혁 :    
-조성림 :     
-홍은결 :   
-
-
+|  손평화                                               |  윤혁                                             |  조성림                                               |  홍은결                                                             
+|------------------------------------------------------|------------------------------------------------------|--------------------------------------------------------|----------------------------|
+|  카핀맵                    |  ?                     |  마이핀                     |  CAFETI,로그인                     |  
 
 
 

@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_test_finish"
         style="@style/Headline1"
@@ -15,68 +16,22 @@
         android:textSize="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.022" />
 
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageView_cafetiResult"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:0.89"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.171" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_cafeti_modifier"
-        style="@style/Display1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="차분한 기린씨"
-        android:textColor="@color/subcolor_brown_4"
-        android:textSize="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.578" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/detail_cafeti_test_again"
-        style="@style/Body2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CAFETI는 프로필 수정페이지에서\n다시 검사하실 수 있습니다."
-        android:textAlignment="center"
-        android:textColor="@color/subcolor_blue_4"
-        android:textSize="14dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.667" />
-
-
-    <androidx.appcompat.widget.AppCompatButton
-        android:id="@+id/btn_cafetitestfinish"
-        style="@style/BtnText"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:background="@drawable/circle_image_view4"
-        android:text="검사 종료"
-        android:textColor="@color/white"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.493"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.87" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_test_finish"
+        app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_cafeti_type"
@@ -95,8 +50,54 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.521" />
+        app:layout_constraintTop_toBottomOf="@id/imageView_cafetiResult"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textView_cafeti_modifier"
+        style="@style/Display1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="차분한 기린씨"
+        android:textColor="@color/subcolor_brown_4"
+        android:textSize="26dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_cafeti_type"
+        app:layout_constraintVertical_bias="0.0" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/detail_cafeti_test_again"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="CAFETI는 프로필 수정페이지에서\n다시 검사하실 수 있습니다."
+        android:textAlignment="center"
+        android:textColor="@color/subcolor_blue_4"
+        android:textSize="14dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView_cafeti_modifier"
+        app:layout_constraintVertical_bias="0.241" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_cafetitestfinish"
+        style="@style/BtnText"
+        android:layout_width="328dp"
+        android:layout_height="48dp"
+        android:background="@drawable/circle_image_view4"
+        android:text="검사 종료"
+        android:textColor="@color/white"
+        android:textSize="16dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detail_cafeti_test_again"
+        app:layout_constraintVertical_bias="0.349"
+        app:layout_constraintWidth_percent="0.911" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textView_cafeti_modifierDetail"
@@ -109,7 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.618" />
+        app:layout_constraintTop_toBottomOf="@+id/textView_cafeti_modifier"
+        app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

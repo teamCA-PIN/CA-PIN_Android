@@ -7,6 +7,7 @@ import android.widget.RadioGroup
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityCafeStyleBinding
 import com.caffeine.capin.databinding.ActivityCoffeeMostBinding
 
@@ -105,7 +106,7 @@ class CafeStyleActivity : AppCompatActivity() {
                     }
                 }
                 else {
-                    Toast.makeText(this@CafeStyleActivity,"한가지 항목을 선택해주세요", Toast.LENGTH_SHORT).show()
+                    CapinToastMessage.createCapinRejectToast(this@CafeStyleActivity,"한가지 항목을 선택해주세요", 135)?.show()
                 }
             }
         }
