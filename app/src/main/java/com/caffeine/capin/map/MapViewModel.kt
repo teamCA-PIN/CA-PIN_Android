@@ -5,6 +5,7 @@ import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.map.datasource.MyMapLocationsDataSource
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.map.repository.CafeListRepository
@@ -20,7 +21,8 @@ import kotlin.collections.ArrayList
 
 @HiltViewModel
 class MapViewModel @Inject constructor(
-    private val cafeListRepository: CafeListRepository
+    private val cafeListRepository: CafeListRepository,
+    private val myMapLocationsDataSource: MyMapLocationsDataSource
 ) : ViewModel() {
     private val markerList = ArrayList<Marker>()
 
@@ -84,6 +86,7 @@ class MapViewModel @Inject constructor(
 
     fun switchToMyMap() {
         cafeList.clear()
+        getMyMapPins()
         myMapInfo.forEach { cafe ->
             cafeList[cafe] = false
         }
@@ -172,6 +175,17 @@ class MapViewModel @Inject constructor(
                 _countCafeResult.postValue(it.size)
             }, {
                 it.printStackTrace()
+            })
+    }
+
+    private fun getMyMapPins() {
+        myMapLocationsDataSource.getPinCafes()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+
+            }, {
+
             })
     }
 

@@ -24,7 +24,8 @@ class MainActivity: AppCompatActivity() {
         setContentView(binding.root)
         setNavController()
         transparentStatusAndNavigation()
-        
+
+
     }
 
     private fun setNavController() {

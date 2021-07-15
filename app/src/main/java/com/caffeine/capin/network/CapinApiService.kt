@@ -2,6 +2,7 @@ package com.caffeine.capin.network
 
 import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList
+import com.caffeine.capin.map.dto.ResponseMyMapLocations
 import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
 import com.caffeine.capin.mypage.api.response.*
@@ -84,4 +85,7 @@ interface CapinApiService {
     fun getMyInfo(
         @Header("token") token: String,
     ) : Call<ResponseMyData>
+
+    @GET("/cafes/myMap")
+    fun getMyMapPins(): Single<ResponseMyMapLocations>
 }
