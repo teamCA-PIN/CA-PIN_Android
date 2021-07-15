@@ -14,5 +14,7 @@ data class CafeDetailDTO(
     val closetimeHoliday: String?,
     val offday: List<String>?,
     val latitude: Double,
-    val longitude: Double
+    val longitude: Double,
+    val img: String,
+    val average: Double?,
 )
