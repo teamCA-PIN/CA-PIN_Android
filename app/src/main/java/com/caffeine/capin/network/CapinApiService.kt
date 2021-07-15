@@ -5,6 +5,7 @@ import com.caffeine.capin.map.dto.ResponseCafeList
 import com.caffeine.capin.map.dto.ResponseMyMapLocations
 import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
+import com.caffeine.capin.mypage.api.request.RequestPutReviewData
 import com.caffeine.capin.mypage.api.response.*
 import com.caffeine.capin.network.response.CafeMenusResponse
 import io.reactivex.rxjava3.core.Completable
@@ -90,6 +91,13 @@ interface CapinApiService {
     fun deleteMyReview(
         @Header("token") token: String,
         @Path("reviewId") reviewId: String
+    ) : Call<BaseResponse>
+
+    @PUT("/reviews/{reviewId}")
+    fun putMyReview(
+        @Header("token") token: String,
+        @Path("reviewId") reviewId: String,
+        @Body body : RequestPutReviewData
     ) : Call<BaseResponse>
 
     @GET("/cafes/myMap")

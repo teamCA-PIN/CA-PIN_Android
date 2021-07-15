@@ -85,6 +85,7 @@ class MyPageReviewFragment : Fragment() {
                         override fun onClick() {
                             val intent = Intent(this@MyPageReviewFragment.requireContext(), WriteReviewActivity::class.java)
                             intent.putExtra("feature", "리뷰 수정하기")
+                            intent.putExtra("editReviewId", removeReviewInfo._id)
                             startActivity(intent)
                             dialog.dismiss()
                         }
