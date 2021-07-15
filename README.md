@@ -3,9 +3,9 @@
 
 <br> 
 
-## 📌 Project Structure
+### 📌 Project Structure
 ------
-🌠 Capin_android  
+☕ Capin_android  
 📂 cafeti  
 📂 category       
 📂 customview  
@@ -40,7 +40,7 @@
 <br>
 
     
-## 🔗 Dependency
+### 🔗 Dependency
 ------
 ``` kotlin
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
@@ -94,13 +94,13 @@
 
 <br>
 
-## 🔍 Preview
+### 🔍 Preview
 ------
 
 
 <br>
 
-## 💡 Core Function
+### 💡 Core Function
 ------
 
 1. CAFETI 검사 
@@ -189,7 +189,7 @@
 
 <br>
 
-## 🙆‍♀️🙆‍♂️ Android developer & roles
+### 🙆‍♀️🙆‍♂️ Android developer & roles
 ------
 |  손평화                                               |  윤혁                                             |  조성림                                               |  홍은결                                                             
 |------------------------------------------------------|------------------------------------------------------|--------------------------------------------------------|----------------------------|
