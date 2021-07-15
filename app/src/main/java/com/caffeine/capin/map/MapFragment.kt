@@ -51,7 +51,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
-
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
@@ -61,6 +60,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
+        when(binding.radiogroupMap.checkedRadioButtonId) {
+            binding.radiobuttonCapinMap.id -> {
+                viewModel.getCafeLocations()
+            }
+             binding.radiobuttonMyMap.id -> {
+                 viewModel.switchToMyMap()
+             }
+        }
         binding.cardviewCafeSelected.visibility = View.GONE
 
     }
@@ -139,6 +146,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.radiogroupMap.apply {
             check(binding.radiobuttonCapinMap.id)
             setOnCheckedChangeListener { _, checkedId ->
+                binding.cardviewCafeSelected.visibility = View.GONE
                 removeActiveMarkers()
                 when (checkedId) {
                     binding.radiobuttonMyMap.id -> {
