@@ -3,6 +3,8 @@ package com.caffeine.capin.detail
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.content.res.AppCompatResources
+import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.review.CafeReviewsAdapter
 import dagger.hilt.android.AndroidEntryPoint

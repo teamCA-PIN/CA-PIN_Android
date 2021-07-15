@@ -150,35 +150,27 @@
                         app:layout_constraintTop_toBottomOf="@+id/text_star_rate"
                         tools:text="서울 마포구 마포대로11길 118 1층 (염리동)" />
 
-                    <com.google.android.material.chip.ChipGroup
+                    <com.google.android.flexbox.FlexboxLayout
                         android:id="@+id/chips_cafe_tags"
-                        android:layout_width="wrap_content"
+                        android:layout_width="0dp"
                         android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
                         android:layout_marginTop="32dp"
+                        android:layout_marginEnd="16dp"
+                        android:gravity="center"
                         app:chipTitles="@{viewModel.cafeDetails.tags}"
+                        app:flexWrap="wrap"
+                        app:justifyContent="center"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/text_cafe_address">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip5"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="커피맛집" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chip4"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="디저트맛집" />
-                    </com.google.android.material.chip.ChipGroup>
+                        app:layout_constraintTop_toBottomOf="@+id/text_cafe_address" />
 
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:id="@+id/constraintLayout"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="20dp"
-                        android:layout_marginTop="32dp"
+                        android:layout_marginTop="25dp"
                         android:layout_marginEnd="20dp"
                         android:background="@drawable/round_rectangle_10dp"
                         android:backgroundTint="@color/gray_1"
@@ -381,7 +373,7 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            tools:visibility="visible" />
+            tools:visibility="gone" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
