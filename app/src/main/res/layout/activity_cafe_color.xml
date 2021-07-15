@@ -14,8 +14,9 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.325"
-        app:layout_constraintVertical_bias="0.187"
-        android:background="@drawable/frame_134" />
+        app:layout_constraintVertical_bias="0.086"
+        android:background="@drawable/frame_134"
+        app:layout_constraintDimensionRatio="1:0.647"/>
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -26,7 +27,7 @@
         android:layout_marginStart="16dp"
         android:background="@drawable/button_image_view"
         android:text="이전"
-        android:textColor="#929292"
+        android:textColor="@color/gray_4"
         android:textSize="16.6dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -74,7 +75,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.64">
+        app:layout_constraintVertical_bias="0.66">
 
     <androidx.appcompat.widget.AppCompatRadioButton
         android:id="@+id/radiobtn_dark"
@@ -162,7 +163,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.395"
+        app:layout_constraintVertical_bias="0.4"
         app:layout_constraintWidth_percent="0.694"/>
 
 

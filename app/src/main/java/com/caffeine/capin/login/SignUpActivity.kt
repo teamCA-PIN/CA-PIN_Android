@@ -6,6 +6,7 @@ import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
 import android.widget.EditText
+import android.widget.ImageView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
@@ -32,6 +33,8 @@ class SignUpActivity : AppCompatActivity() {
         binding.btnSignup.clipToOutline = true
 
         signUpButtonClickEvent()
+        imageviewButtonClickEvent()
+
 
         lateinit var username: EditText
         lateinit var email: EditText
@@ -49,6 +52,7 @@ class SignUpActivity : AppCompatActivity() {
             password,
             newpassword
         )
+
 
         edittextList.forEach { edittext ->
             edittext.addTextChangedListener(object : TextWatcher {
@@ -88,84 +92,119 @@ class SignUpActivity : AppCompatActivity() {
             })
         }
 
-        binding.pwDeleteBtn.setOnClickListener {
-            binding.pwDeleteBtn.isVisible = false
+
+
+
+            binding.pwDeleteBtn.setOnClickListener {
+                binding.pwDeleteBtn.isVisible = false
+            }
+
+            binding.edittextPw.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
+                    checkEditTextEmpty()
+
+
+                }
+            })
+
+            binding.emailidDeleteBtn.setOnClickListener {
+                binding.emailidDeleteBtn.isVisible = false
+            }
+
+            binding.edittextEmail.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    binding.emailidDeleteBtn.isVisible = !s.isNullOrEmpty()
+                    checkEditTextEmpty()
+
+
+                }
+            })
+
+            binding.pwagainDeleteBtn.setOnClickListener {
+                binding.pwagainDeleteBtn.isVisible = false
+            }
+
+            binding.edittextPwagain.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
+                    checkEditTextEmpty()
+
+
+                }
+            })
+
+
+            binding.usernameDeleteBtn.setOnClickListener {
+                binding.usernameDeleteBtn.isVisible = false
+            }
+
+            binding.edittextName.addTextChangedListener(object : TextWatcher {
+                override fun beforeTextChanged(
+                    s: CharSequence?,
+                    start: Int,
+                    count: Int,
+                    after: Int
+                ) {
+
+                }
+
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+
+                }
+
+                override fun afterTextChanged(s: Editable?) {
+                    binding.usernameDeleteBtn.isVisible = !s.isNullOrEmpty()
+                    checkEditTextEmpty()
+
+
+                }
+            })
+
+
         }
 
-        binding.edittextPw.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
-
-            }
-        })
-
-        binding.emailidDeleteBtn.setOnClickListener {
-            binding.emailidDeleteBtn.isVisible = false
-        }
-
-        binding.edittextEmail.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                binding.emailidDeleteBtn.isVisible = !s.isNullOrEmpty()
-
-            }
-        })
-
-        binding.pwagainDeleteBtn.setOnClickListener {
-            binding.pwagainDeleteBtn.isVisible = false
-        }
-
-        binding.edittextPwagain.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
-
-            }
-        })
-
-        binding.usernameDeleteBtn.setOnClickListener {
-            binding.usernameDeleteBtn.isVisible = false
-        }
-
-        binding.edittextName.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                binding.usernameDeleteBtn.isVisible = !s.isNullOrEmpty()
-
-            }
-        })
 
 
-    }
 
     private fun checkEditTextEmpty() {
         if (edittextCount >= 4) {
@@ -202,21 +241,26 @@ class SignUpActivity : AppCompatActivity() {
                     response: Response<ResponseSignUpData>
                 ) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@SignUpActivity,"가입이 완료되었습니다.", LENGTH_SHORT).show()
-                        intent = Intent(this@SignUpActivity, LoginActivity::class.java)
-                        startActivity(intent)
+                        CapinToastMessage.createCapinToast(this@SignUpActivity,"가입이 완료되었습니다.", 135)?.show()
+                        finish()
                     } else {
-
-                        CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.",  200)?.show()
+                        CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.",  135)?.show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-                    CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.",  200)?.show()
+                    CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.",  135)?.show()
                     Log.d("NetworkTest", "error:$t")
                 }
             })
 
+        }
+    }
+
+    private fun imageviewButtonClickEvent(){
+        binding.imageViewTool.setOnClickListener() {
+            val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
+            startActivity(intent)
         }
     }
 

@@ -26,13 +26,14 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="당신의 카페 취향은?"
-        app:layout_constraintVertical_bias="0.602"
         android:textColor="@color/pointcolor_1"
         android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/cafeti_test"
@@ -47,7 +48,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
+        app:layout_constraintVertical_bias="0.703" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cafetiteststart"
@@ -56,7 +57,7 @@
         android:layout_height="48dp"
         android:background="@drawable/circle_image_view4"
         android:text="시작하기"
-        android:textColor="#ffffff"
+        android:textColor="@color/white"
         android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
@@ -71,10 +72,8 @@
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.49"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.155"
-        app:layout_constraintWidth_percent="0.891"
+        app:layout_constraintVertical_bias="0.229"
         app:srcCompat="@drawable/frame_133" />
 </androidx.constraintlayout.widget.ConstraintLayout>

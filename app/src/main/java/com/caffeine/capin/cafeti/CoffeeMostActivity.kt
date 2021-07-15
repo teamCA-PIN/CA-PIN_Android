@@ -69,7 +69,7 @@ class CoffeeMostActivity : AppCompatActivity() {
                 }
             }
             else {
-                CapinToastMessage.createCapinRejectToast(this@CoffeeMostActivity,"한가지 항목을 선택해주세요", 200)?.show()
+                CapinToastMessage.createCapinRejectToast(this@CoffeeMostActivity,"한가지 항목을 선택해주세요", 135)?.show()
             }
         }
     }

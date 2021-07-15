@@ -114,16 +114,17 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponseLoginData>
                 ) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@LoginActivity, "로그인 성공.", LENGTH_SHORT)
-                        intent = Intent(this@LoginActivity, CafetiActivity::class.java)
+                        createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
+                        val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
                         startActivity(intent)
+
                     } else {
-                        createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 200)?.show()
+                        createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 100)?.show()
                     }
                 }
 
                 override fun onFailure(call: Call<ResponseLoginData>, t: Throwable) {
-                    createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 200)?.show()
+                    createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 100)?.show()
 
                     Log.d("NetworkTest", "error:$t")
                 }
@@ -142,7 +143,7 @@ class LoginActivity : AppCompatActivity() {
 
     private fun findPwTextClickEvent() {
         binding.loginTextviewFindpw.setOnClickListener() {
-            val intent = Intent(this@LoginActivity, FindPasswordActivity::class.java)
+            val intent = Intent(this@LoginActivity, LoginPwActivity::class.java)
             startActivity(intent)
         }
 
