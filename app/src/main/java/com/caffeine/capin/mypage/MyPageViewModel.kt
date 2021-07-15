@@ -25,6 +25,7 @@ class MyPageViewModel @Inject constructor(
         get() = _categories
 
     private var fakeCategories = mutableListOf<MyCategory>()
+
     private val _removeCategoryInfo = MutableLiveData<MyCategory>()
     val removeCategoryInfo: LiveData<MyCategory>
         get() = _removeCategoryInfo
@@ -64,7 +65,7 @@ class MyPageViewModel @Inject constructor(
                     fakeCategories = response.body()?.myCategoryList as MutableList<MyCategory>
                     _categories.value = response.body()?.myCategoryList
                 } else {
-                    Log.e("error", "dfdsfs")
+                    Log.e("error", "")
                 }
             }
         })

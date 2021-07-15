@@ -83,12 +83,15 @@ class MyPageCategoryFragment : Fragment() {
         myCategoryAdapter.setOnCategoryClickListener(object :
             MyCategoryAdapter.OnCategoryClickListener {
             override fun onCategoryClick(myCategory: MyCategory) {
+                viewModel.changeRemoveCategoryInfo(myCategory)
                 val intent = Intent(
                     this@MyPageCategoryFragment.requireContext(),
                     MyPagePinDetailActivity::class.java
                 )
                 val categoryName = myCategory.name
                 intent.putExtra("name", categoryName)
+                intent.putExtra("categoryPinId", viewModel.removeCategoryInfo.value?._id)
+                Log.d("리미-이거 확인", viewModel.removeCategoryInfo.value?._id.toString())
                 startActivity(intent)
             }
         })
