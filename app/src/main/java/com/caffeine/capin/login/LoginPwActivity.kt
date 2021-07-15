@@ -11,9 +11,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.caffeine.capin.R
-import com.caffeine.capin.ServiceCreator
 import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityLoginpwBinding
+import com.caffeine.capin.network.ServiceCreator
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -86,7 +86,7 @@ class LoginPwActivity : AppCompatActivity() {
             val requestLoginPwData = RequestLoginPwData(
                 email = binding.loginpwEdittextEmail.text.toString()
             )
-            val call: Call<ResponseLoginPwData> = ServiceCreator.capinService.postLoginPw(requestLoginPwData)
+            val call: Call<ResponseLoginPwData> = ServiceCreator.capinApiService.postLoginPw(requestLoginPwData)
             call.enqueue(object : Callback<ResponseLoginPwData> {
                 override fun onResponse(
                     call: Call<ResponseLoginPwData>,
