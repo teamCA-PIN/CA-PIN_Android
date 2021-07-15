@@ -1,5 +1,6 @@
-package com.caffeine.capin.category
+package com.caffeine.capin.category.repository
 
+import com.caffeine.capin.category.CategoryNameEntity
 import io.reactivex.rxjava3.core.Single
 
 interface CategoryListRepository {

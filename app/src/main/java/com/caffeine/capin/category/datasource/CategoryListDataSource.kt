@@ -1,4 +1,4 @@
-package com.caffeine.capin.category
+package com.caffeine.capin.category.datasource
 
 import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
 import io.reactivex.rxjava3.core.Single

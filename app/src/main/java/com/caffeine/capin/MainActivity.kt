@@ -25,6 +25,7 @@ class MainActivity: AppCompatActivity() {
         setNavController()
         transparentStatusAndNavigation()
 
+        userPreferenceManager.setUserToken("eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGU2OWUwZGNlN2Q0M2M3MzNlZTI2MTkiLCJpYXQiOjE2MjYzOTIwNTYsImV4cCI6MTYyNzI1NjA1Nn0.PUFfPsD-QU9CpM3kAV02GDM9XKIcpfdZiQEuOjR7xV4")
     }
 
     private fun setNavController() {

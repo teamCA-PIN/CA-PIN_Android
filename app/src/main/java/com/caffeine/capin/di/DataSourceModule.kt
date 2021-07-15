@@ -1,7 +1,7 @@
 package com.caffeine.capin.di
 
-import com.caffeine.capin.category.CategoryListDataSource
-import com.caffeine.capin.category.CategoryListDataSourceImpl
+import com.caffeine.capin.category.datasource.CategoryListDataSource
+import com.caffeine.capin.category.datasource.CategoryListDataSourceImpl
 import com.caffeine.capin.map.datasource.CafeListDataSource
 import com.caffeine.capin.map.datasource.CafeListDataSourceImpl
 import com.caffeine.capin.map.datasource.MyMapLocationsDataSource

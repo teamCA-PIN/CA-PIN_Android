@@ -1,14 +1,13 @@
 package com.caffeine.capin.di
 
-import com.caffeine.capin.category.CategoryListDataSource
+import com.caffeine.capin.category.datasource.CategoryListDataSource
 import com.caffeine.capin.category.CategoryListMapper
-import com.caffeine.capin.category.CategoryListRepository
-import com.caffeine.capin.category.CategoryListRepositoryImpl
+import com.caffeine.capin.category.repository.CategoryListRepository
+import com.caffeine.capin.category.repository.CategoryListRepositoryImpl
 import com.caffeine.capin.map.mapper.CafeDetailMapper
 import com.caffeine.capin.map.datasource.CafeListDataSource
 import com.caffeine.capin.map.CafeListMapper
 import com.caffeine.capin.map.MyMapPinMapper
-import com.caffeine.capin.map.datasource.MyMapLocationsDataSourceImpl
 import com.caffeine.capin.map.repository.CafeListRepository
 import com.caffeine.capin.map.repository.CafeListRepositoryImpl
 import com.caffeine.capin.map.repository.MyMapLocationsRepository
