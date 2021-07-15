@@ -1,11 +1,13 @@
 # 믿고 보는 카페 맵, C A : P I N ☕
-<img src="https://user-images.githubusercontent.com/76424700/125826222-b59ef45c-826b-467a-92d1-e1a63be33111.png" width="700" height="400"/>
+<img src="https://user-images.githubusercontent.com/76424700/125826222-b59ef45c-826b-467a-92d1-e1a63be33111.png" width="700" height="400"/>  
+
 **오늘도 '카페 어디가지?' 고민하는 분들을 위한 카페맵 앱 서비스 / [Service OPR](https://www.notion.so/O-P-R-f521f789248347949bef26a1ef0d2354#2f8521e618114579b183cdcd99188d2f)**  
-> **Team-CA:PIN Android**  
-> SOPT 28th APPJAM  
-> 프로젝트 기간: 2021.06.26 ~ 2021.07.16
+> **Team-CA:PIN Android**   
+> SOPT 28th APPJAM    
+> 프로젝트 기간: 2021.06.26 ~ 2021.07.16  
 
 <br>
+
 
 ### 📌 Project Structure
 ------
