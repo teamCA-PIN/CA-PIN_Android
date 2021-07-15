@@ -135,7 +135,7 @@ class MyPageReviewFragment : Fragment() {
                 }
                 binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
 
-                if(myReviewAdapter.myReviewList.size > 0) {
+                if(myReviewAdapter.myReviewList.size > 1) {
                     binding.ifBasicReviewTv.isVisible = false
                 }
             }

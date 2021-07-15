@@ -107,7 +107,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 override fun onClick() {
 
                     deleteMyPinAtServer()
-                    
+
                     Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
                     myPinInfoAdapter.switchDeleteMode(false)
                     myPinInfoAdapter.notifyDataSetChanged()

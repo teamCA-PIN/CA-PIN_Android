@@ -1,4 +1,4 @@
-package com.caffeine.capin
+package com.caffeine.capin.login
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

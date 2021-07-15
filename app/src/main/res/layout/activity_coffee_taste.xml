@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/imageView_coffee_taste"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintWidth_percent="0.325"
         app:layout_constraintVertical_bias="0.187"
-        app:srcCompat="@drawable/component_3" />
+        android:background="@drawable/frame_136" />
 
 
     <androidx.appcompat.widget.AppCompatButton
@@ -51,7 +51,7 @@
         app:layout_constraintTop_toTopOf="@+id/btn_before" />
 
     <TextView
-        android:id="@+id/textView21"
+        android:id="@+id/question_number"
         style="@style/Headline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -133,7 +133,7 @@
 
 
     <TextView
-        android:id="@+id/textView20"
+        android:id="@+id/question_coffee_taste"
         style="@style/Headline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
