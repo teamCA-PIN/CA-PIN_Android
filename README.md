@@ -20,9 +20,9 @@
 📂 util  
    ┣ 📂 CapinApplication    
    ┃ ┣ 📂 CapinService  
-   ┃ ┗ 📂 MainActivity  
+   ┃ ┗ 📂 ServiceCreator   
    ┣ 📂 PictureUriEntity  
-   ┃ ┗ 📂 ServiceCreator  
+   ┃ ┗ 📂 MainActivity 
   
 ## 📌 Project explanation
 
