@@ -30,7 +30,14 @@
  ┣ 📂 CapinToolbar    
  ┣ 📂 DialogClickListener   
  ┣ 📂 TagFilterCheckbox  
-📂 detail   
+📂 detail        
+  ┣ 📂 menus   
+    ┣┣ 📂 CafeMenu    
+    ┣┣ 📂 CafeMenusActivity      
+    ┣┣ 📂 CafeMenusAdapter     
+    ┣┣ 📂 CafeMenusViewModel  
+  
+
 📂 di    
 📂 login   
 📂 map  
