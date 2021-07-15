@@ -5,7 +5,7 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody.Companion.asRequestBody
 import java.io.File
 
-class FormDataUtil {
+object FormDataUtil {
     fun getBody(key: String, value: Any): MultipartBody.Part {
         return MultipartBody.Part.createFormData(key, value.toString())
     }
@@ -14,7 +14,7 @@ class FormDataUtil {
         return MultipartBody.Part.createFormData(
             name = key,
             filename = file.name,
-            body = file.asRequestBody("image/*".toMediaType())
+            body = file.asRequestBody("multipart/form-data".toMediaType())
         )
     }
 

@@ -10,6 +10,6 @@ import javax.inject.Inject
 class WriteReviewControllerImpl @Inject constructor(
     private val capinApiService: CapinApiService
 ): WriteReviewController {
-    override fun postReview(review: MultipartBody.Part, imgs: Map<String, RequestBody>): Single<BaseResponse> =
-        capinApiService.postReview(review,imgs)
+    override fun postReview(cafeId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>): Single<BaseResponse> =
+        capinApiService.postReview(cafeId, review,imgs)
 }

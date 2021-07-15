@@ -14,6 +14,7 @@ import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
+import retrofit2.http.QueryMap
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
@@ -151,10 +152,10 @@ class MapViewModel @Inject constructor(
     }
 
     fun getCafeLocations() {
-        val tags = mutableMapOf<String, Int?>()
-        if (!taglist.isNullOrEmpty()){
+        val tags = mutableListOf<Int?>()
+        if (!taglist.isNullOrEmpty()) {
             taglist.forEach {
-                tags["tags"] = it?.tagIndex
+                tags.add(it.tagIndex)
             }
         }
         Log.e("tags", "${tags}")

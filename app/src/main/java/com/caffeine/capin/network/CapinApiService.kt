@@ -16,7 +16,7 @@ import retrofit2.http.*
 interface CapinApiService {
     @GET("/cafes")
     fun getCafeLocationList(
-        @QueryMap tags: Map<String, Int?>
+        @Query ("tags") tags: List<Int?>
     ): Single<ResponseCafeList>
 
     @GET("/cafes/detail/{cafeId}")
@@ -61,7 +61,8 @@ interface CapinApiService {
     @Multipart
     @POST("/reviews")
     fun postReview(
+        @Query ("cafe") cafeId: String,
         @Part review: MultipartBody.Part,
-        @PartMap imgs: Map<String, RequestBody>
+        @Part imgs: List<MultipartBody.Part?>
     ): Single<BaseResponse>
 }

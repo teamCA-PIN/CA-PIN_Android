@@ -6,5 +6,5 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 
 interface WriteReviewController {
-    fun postReview(review: MultipartBody.Part, imgs: Map<String, RequestBody>): Single<BaseResponse>
+    fun postReview(cafeId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>): Single<BaseResponse>
 }
