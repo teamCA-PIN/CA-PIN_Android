@@ -1,4 +1,4 @@
-# 믿고 보는 카페맵, C A : P I N 
+# 믿고 보는 카페 맵, C A : P I N ☕
 
 ## 📌 Project 
 
