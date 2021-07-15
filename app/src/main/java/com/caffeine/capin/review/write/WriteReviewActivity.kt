@@ -51,7 +51,7 @@ class WriteReviewActivity : AppCompatActivity() {
     private val viewModel by viewModels<WriteReviewViewModel>()
     private lateinit var pictureUri: Uri
     private var failedPermissions = ArrayList<String>()
-    @Inject lateinit var writeReviewController: WriteReviewController
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -216,64 +216,13 @@ class WriteReviewActivity : AppCompatActivity() {
         }
     }
 
-    @RequiresApi(Build.VERSION_CODES.O)
     private fun postReview() {
-        var requestMap = mutableListOf<MultipartBody.Part?>()
-
         binding.buttonPostReview.setOnClickListener {
-            val map = mapOf<CompoundButton, Int>(
+            viewModel.changeCheckedRecommend(mapOf<CompoundButton, Int>(
                 binding.checkboxTaste to 1,
                 binding.checkboxFeeling to 0
-            )
-            val checkedTag = mutableListOf<Int>()
-            map.forEach{
-                if (it.key.isChecked) checkedTag.add(it.value)
-            }
-
-            val review = RequestWriteReview(
-                checkedTag,
-                viewModel.contentsOfReview.value!!,
-                viewModel.rateOfReview.value!!
-            )
-            val reviewJson = getBody("review", parseToJsonString(review))
-
-            viewModel.imagesOfCafe.value?.forEach { picture ->
-                requestMap.add(picture.uri?.asMultipart("imgs",contentResolver))
-            }
-            writeReviewController.postReview(
-                "60e96789868b7d75f394b058",
-                reviewJson,
-                requestMap
-            ).subscribeOn(Schedulers.io())
-                .observeOn(AndroidSchedulers.mainThread())
-                .subscribe({
-                    Log.e("success", "fdfsad")
-                }, {
-                    it.printStackTrace()
-                    Log.e("fail", "dfasd")
-                })
-        }
-    }
-
-    fun Uri.asMultipart(name: String, contentResolver: ContentResolver): MultipartBody.Part? {
-        return contentResolver.query(this, null, null, null, null)?.let {
-            if (it.moveToNext()) {
-                val displayName = it.getString(it.getColumnIndex(OpenableColumns.DISPLAY_NAME));
-                val requestBody = object : RequestBody() {
-                    override fun contentType(): MediaType? {
-                        return contentResolver.getType(this@asMultipart)?.toMediaType()
-                    }
-
-                    override fun writeTo(sink: BufferedSink) {
-                        sink.writeAll(contentResolver.openInputStream(this@asMultipart)?.source()!!)
-                    }
-                }
-                it.close()
-                MultipartBody.Part.createFormData(name, displayName, requestBody)
-            } else {
-                it.close()
-                null
-            }
+            ))
+           viewModel.uploadReview(contentResolver)
         }
     }
 
