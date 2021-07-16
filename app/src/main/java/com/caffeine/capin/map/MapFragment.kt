@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +18,6 @@ import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
 import com.caffeine.capin.util.AutoClearedValue
-import com.caffeine.capin.util.JsonStringParser.parseToJsonString
 import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -64,10 +62,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onResume()
         when (binding.radiogroupMap.checkedRadioButtonId) {
             binding.radiobuttonCapinMap.id -> {
-                viewModel.getCafeLocations()
+                viewModel.getCapinMapPins()
             }
             binding.radiobuttonMyMap.id -> {
-                viewModel.switchToMyMap()
+                viewModel.getCapinMapPins()
             }
         }
         binding.cardviewCafeSelected.visibility = View.GONE
@@ -153,10 +151,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 removeActiveMarkers()
                 when (checkedId) {
                     binding.radiobuttonMyMap.id -> {
-                        viewModel.switchToMyMap()
+                        viewModel.getMyMapPins()
+                        viewModel.changeIsMyMap(true)
                     }
                     binding.radiobuttonCapinMap.id -> {
-                        viewModel.switchToCapinMap()
+                        viewModel.getCapinMapPins()
+                        viewModel.changeIsMyMap(false)
                     }
                 }
             }
@@ -219,7 +219,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 marker.map = naverMap
             }
 
-            //Todo: OnClickListener 메서드 분리시키기
+            //Fixme: OnClickListener 메서드 분리시키기
             marker.setOnClickListener(object : Overlay.OnClickListener {
                 override fun onClick(overlay: Overlay): Boolean {
                     if (overlay is Marker) {
@@ -242,7 +242,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 textviewCafeRating.text = cafeDetail.average.toString()
                 textviewCafeTag.text = cafeDetail.tags[0].name
                 cardviewCafeSelected.setOnClickListener {
-                    Log.d("MalibinDebug","clicked: ${cafeDetail._id}")
                     Intent(activity, CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail._id)
                         .also { startActivity(it) }

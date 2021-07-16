@@ -34,27 +34,27 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".mypage.MyPageActivity"></activity>
+        <activity android:name=".mypage.ui.MyPageActivity"></activity>
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
-        <activity android:name=".mypage.MyPageProfileEditActivity" />
+        <activity android:name=".mypage.ui.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity" />
-        <activity android:name=".cafeti.CoffeeTasteActivity" />
-        <activity android:name=".cafeti.CafeColorActivity" >
+        <activity android:name=".cafeti.ui.CoffeeTasteActivity" />
+        <activity android:name=".cafeti.ui.CafeColorActivity" >
 
         </activity>
-        <activity android:name=".cafeti.CafeStyleActivity" />
-        <activity android:name=".cafeti.CoffeeMenuActivity" />
+        <activity android:name=".cafeti.ui.CafeStyleActivity" />
+        <activity android:name=".cafeti.ui.CoffeeMenuActivity" />
         <activity android:name=".cafeti.CafetiActivity">
 
         </activity>
-        <activity android:name=".cafeti.CafetiResultActivity" />
-        <activity android:name=".cafeti.CoffeeMostActivity" />
-        <activity android:name=".login.FindPasswordActivity" />
-        <activity android:name=".login.LoginPwActivity" />
-        <activity android:name=".login.SignUpActivity" />
-        <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".login.SplashActivity">
+        <activity android:name=".cafeti.ui.CafetiResultActivity" />
+        <activity android:name=".cafeti.ui.CoffeeMostActivity" />
+        <activity android:name=".login.ui.FindPasswordActivity" />
+        <activity android:name=".login.ui.LoginPwActivity" />
+        <activity android:name=".login.ui.SignUpActivity" />
+        <activity android:name=".login.ui.LoginActivity"></activity>
+        <activity android:name=".login.ui.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -62,7 +62,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.write.WriteReviewActivity">
+        <activity android:name=".review.write.ui.WriteReviewActivity">
 
         </activity>
         <activity android:name=".category.ui.SelectCategoryActivity"></activity>

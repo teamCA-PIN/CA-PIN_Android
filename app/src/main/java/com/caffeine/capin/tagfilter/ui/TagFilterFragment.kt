@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
+import com.caffeine.capin.customview.CapinDialog
+import com.caffeine.capin.customview.CapinDialogBuilder
+import com.caffeine.capin.customview.DialogClickListener
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
 import com.caffeine.capin.map.MapViewModel
 import com.caffeine.capin.tagfilter.model.TagFilterEntity
@@ -50,7 +53,7 @@ class TagFilterFragment : Fragment() {
     private fun initializeTag() {
         if (!viewModel.checkedTagList.value.isNullOrEmpty()) {
             (binding.recyclerviewTagFilter.adapter as TagFilterAdapter).checkTagList = viewModel.checkedTagList.value!!
-            viewModel.getCafeLocations()
+            viewModel.getCapinMapPins()
         }
     }
 
@@ -92,7 +95,7 @@ class TagFilterFragment : Fragment() {
 
     private fun getFilterCafe() {
         viewModel.checkedTagList.observe(viewLifecycleOwner) { checkedList ->
-            viewModel.getCafeLocations()
+            viewModel.getCapinMapPins()
         }
     }
 
@@ -101,9 +104,21 @@ class TagFilterFragment : Fragment() {
     }
 
     private fun closeTagFilterFragment() {
+        val dialog: CapinDialog = CapinDialogBuilder(null)
+            .setContentDialogTitile(resources.getString(R.string.exit_page_tagfilter))
+            .setContent(resources.getString(R.string.exit_page_content_tagfilter))
+            .setContentDialogButtons(true, object : DialogClickListener {
+                override fun onClick() {
+                    viewModel.initializeFilterTag()
+                    viewModel.getCapinMapPins()
+                    findNavController().previousBackStackEntry?.savedStateHandle?.set("tagList", viewModel.checkedTagList.value)
+                    findNavController().popBackStack()
+                }
+            }).build()
+
         binding.imageviewButtonClose.setOnClickListener {
-            findNavController().previousBackStackEntry?.savedStateHandle?.set("tagList", viewModel.checkedTagList.value)
-            findNavController().popBackStack()
+            dialog.show(childFragmentManager,this.tag)
+
         }
     }
 
