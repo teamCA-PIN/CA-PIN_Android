@@ -1,4 +1,4 @@
-# 믿고 보는 카페 맵, C A : P I N ☕
+# 믿고 보는 카페맵, C A : P I N ☕
 
 <img src="https://user-images.githubusercontent.com/72273531/125905703-553419e1-ba79-4a6c-8c3a-2a4d9ca022ac.png" />  
 
