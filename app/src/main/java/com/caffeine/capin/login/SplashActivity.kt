@@ -1,5 +1,6 @@
 package com.caffeine.capin.login
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.databinding.ActivitySplashBinding
@@ -12,5 +13,7 @@ class SplashActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+
     }
 }
