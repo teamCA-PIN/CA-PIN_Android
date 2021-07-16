@@ -37,7 +37,7 @@ class CafeDetailsViewModel @Inject constructor(
         id = "id",
         cafeName = "후엘고",
         mainImageUrl = "https://s3-ap-northeast-1.amazonaws.com/dcreviewsresized/300_300_20210125203545_photo3_3bcd18e14f3d.jpg",
-        starRate = 4.5,
+        starRate = 4.5f,
         address = "서울 마포구 마포대로 11길 118 1층 (염리동)",
         tags = listOf("커피맛집", "디저트맛집", "그루비", "작업하기좋은", "조용한", "친절왕", "채광좋은"),
         instagramId = "@huelgocoffee",

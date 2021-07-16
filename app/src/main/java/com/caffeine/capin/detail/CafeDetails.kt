@@ -10,8 +10,8 @@ import com.caffeine.capin.review.CafeReview
 data class CafeDetails(
     val id: String,
     val cafeName: String,
-    val mainImageUrl: String,
-    val starRate: Double,
+    val mainImageUrl: String?,
+    val starRate: Float?,
     val address: String,
     val tags: List<String>,
     val instagramId: String,
