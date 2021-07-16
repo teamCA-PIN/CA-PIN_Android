@@ -1,11 +1,9 @@
-package com.caffeine.capin.review.write
+package com.caffeine.capin.review.write.controller
 
-import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.CapinApiService
+import com.caffeine.capin.review.write.controller.WriteReviewController
 import io.reactivex.rxjava3.core.Completable
-import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
 import javax.inject.Inject
 
 class WriteReviewControllerImpl @Inject constructor(

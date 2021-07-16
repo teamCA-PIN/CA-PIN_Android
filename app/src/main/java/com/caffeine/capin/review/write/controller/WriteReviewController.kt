@@ -1,4 +1,4 @@
-package com.caffeine.capin.review.write
+package com.caffeine.capin.review.write.controller
 
 import com.caffeine.capin.network.BaseResponse
 import io.reactivex.rxjava3.core.Completable

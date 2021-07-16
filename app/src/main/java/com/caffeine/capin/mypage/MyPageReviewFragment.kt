@@ -93,8 +93,7 @@ class MyPageReviewFragment : Fragment() {
                             )
                             val gson = Gson()
                             val reviewSelected = gson.toJson(removeReviewInfo)
-                            intent.putExtra("feature", "리뷰 수정하기")
-                            intent.putExtra("editReview", reviewSelected)
+                            intent.putExtra("edit_review", reviewSelected)
                             startActivity(intent)
                             dialog.dismiss()
                         }
