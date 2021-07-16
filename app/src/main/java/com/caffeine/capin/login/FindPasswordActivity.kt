@@ -138,7 +138,7 @@ class FindPasswordActivity : AppCompatActivity() {
     }
 
     private fun imageviewButtonClickEvent(){
-        binding.imageViewTool.setOnClickListener() {
+        binding.imageviewTool.setOnClickListener() {
             val intent = Intent(this@FindPasswordActivity, LoginPwActivity::class.java)
             startActivity(intent)
         }

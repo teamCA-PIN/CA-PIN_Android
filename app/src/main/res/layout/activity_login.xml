@@ -17,13 +17,13 @@
         android:paddingVertical="6dp"
         android:textColorHint="@color/gray_3"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView_pw"
+        app:layout_constraintEnd_toEndOf="@+id/textview_pw"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/textView_pw"
-        app:layout_constraintTop_toBottomOf="@+id/textView_pw" />
+        app:layout_constraintStart_toStartOf="@+id/textview_pw"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pw" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_capin"
+        android:id="@+id/imageview_capin"
         android:layout_width="98dp"
         android:layout_height="105.7dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -46,7 +46,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/login_edittext_email"
-        app:layout_constraintTop_toBottomOf="@+id/imageView_capin"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_capin"
         app:layout_constraintWidth_percent="0.244" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -113,7 +113,7 @@
         app:layout_constraintWidth_percent="0.608" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_pw"
+        android:id="@+id/textview_pw"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
