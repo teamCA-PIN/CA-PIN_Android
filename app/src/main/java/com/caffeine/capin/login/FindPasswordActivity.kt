@@ -33,16 +33,16 @@ class FindPasswordActivity : AppCompatActivity() {
         imageviewButtonClickEvent()
 
         lateinit var number : EditText
-        lateinit var newpassword : EditText
-        lateinit var newpasswordcheck : EditText
+        lateinit var newPassword : EditText
+        lateinit var newPasswordCheck : EditText
         number = binding.edittextNumber
-        newpassword = binding.edittextNewpw
-        newpasswordcheck = binding.edittextNewpwcheck
+        newPassword = binding.edittextNewpw
+        newPasswordCheck = binding.edittextNewpwcheck
 
         val edittextList = listOf<EditText>(
             number,
-            newpassword,
-            newpasswordcheck
+            newPassword,
+            newPasswordCheck
         )
 
         edittextList.forEach{ edittext ->
@@ -125,8 +125,8 @@ class FindPasswordActivity : AppCompatActivity() {
     private fun changePwButtonClickEvent() {
         binding.btnChange.setOnClickListener() {
             val password = binding.edittextNewpw.text
-            val newpassword = binding.edittextNewpwcheck.text
-            if (password.isNullOrBlank() || newpassword.isNullOrBlank()) {
+            val newPassword = binding.edittextNewpwcheck.text
+            if (password.isNullOrBlank() || newPassword.isNullOrBlank()) {
 
             }
             else {

@@ -53,19 +53,19 @@ class CafeStyleActivity : AppCompatActivity() {
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
                 when (checkedId) {
                     binding.radiobtnModern.id -> {
-                        binding.imageViewCafeStyle.setBackgroundResource(R.drawable.frame_128)
+                        binding.imageviewCafeStyle.setBackgroundResource(R.drawable.frame_128)
                     }
                     binding.radiobtnVintage.id -> {
-                        binding.imageViewCafeStyle.setBackgroundResource(R.drawable.frame_129)
+                        binding.imageviewCafeStyle.setBackgroundResource(R.drawable.frame_129)
                     }
                     binding.radiobtnHip.id -> {
-                        binding.imageViewCafeStyle.setBackgroundResource(R.drawable.frame_130)
+                        binding.imageviewCafeStyle.setBackgroundResource(R.drawable.frame_130)
                     }
                     binding.radiobtnUnique.id -> {
-                        binding.imageViewCafeStyle.setBackgroundResource(R.drawable.frame_131)
+                        binding.imageviewCafeStyle.setBackgroundResource(R.drawable.frame_131)
                     }
                     binding.radiobtnCute.id -> {
-                        binding.imageViewCafeStyle.setBackgroundResource(R.drawable.frame_132)
+                        binding.imageviewCafeStyle.setBackgroundResource(R.drawable.frame_132)
                     }
                 }
             }
