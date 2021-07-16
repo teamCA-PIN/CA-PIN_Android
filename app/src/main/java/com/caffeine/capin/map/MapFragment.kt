@@ -51,6 +51,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
+
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
@@ -63,6 +64,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onResume()
         checkMapSort()
         binding.cardviewCafeSelected.visibility = View.GONE
+
+    }
+
+    private fun moveToCurrentLocation() {
 
     }
 
@@ -109,8 +114,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun moveToMyLocation() {
         locationSource = FusedLocationSource(this, PERMISSION_FUSED_LOCATION)
-        naverMap.locationTrackingMode = LocationTrackingMode.Follow
         naverMap.locationSource = locationSource
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+
     }
 
     private fun setToolbar() {
@@ -170,11 +176,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setCameraChangeListener() {
-//        naverMap.addOnCameraChangeListener(object : NaverMap.OnCameraChangeListener{
-//            override fun onCameraChange(p0: Int, animation: Boolean) {
-//                if (!animation)  setMarkersInsideCamera()
-//            }
-//        })
         naverMap.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener {
             override fun onCameraIdle() {
                 setMarkersInsideCamera()
