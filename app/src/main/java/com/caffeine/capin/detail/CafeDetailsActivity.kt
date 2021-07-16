@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
 import com.caffeine.capin.review.CafeReviewsAdapter
+import com.caffeine.capin.review.all.AllCafeReviewsActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -27,8 +28,7 @@ class CafeDetailsActivity : AppCompatActivity() {
 
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
         binding.buttonBack.setOnClickListener { finish() }
-//        binding.toolbar.setNavigationIcon(R.drawable.icon_back_black)
-//        binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.buttonAllReviews.setOnClickListener { deployAllCafeReviewsActivity() }
 
         cafeDetailsViewModel.cafeReviews.observe(this) {
             adapter.submitList(it)
@@ -43,6 +43,12 @@ class CafeDetailsActivity : AppCompatActivity() {
     private fun deployMenusActivity() {
         Intent(this, CafeMenusActivity::class.java)
             .apply { putExtra(CafeMenusActivity.KEY_CAFE_ID, getCafeId()) }
+            .also { startActivity(it) }
+    }
+
+    private fun deployAllCafeReviewsActivity() {
+        Intent(this, AllCafeReviewsActivity::class.java)
+            .apply { putExtra(AllCafeReviewsActivity.KEY_CAFE_ID, getCafeId()) }
             .also { startActivity(it) }
     }
 

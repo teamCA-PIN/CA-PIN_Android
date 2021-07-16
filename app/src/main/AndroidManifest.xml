@@ -18,11 +18,11 @@
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.Capin"
-        android:usesCleartextTraffic="true"
-        android:requestLegacyExternalStorage="true">
+        android:usesCleartextTraffic="true">
 
         <provider
             android:name="androidx.core.content.FileProvider"
@@ -38,19 +38,19 @@
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
-        <activity android:name=".MainActivity"/>
+        <activity android:name=".MainActivity" />
         <activity android:name=".cafeti.CoffeeTasteActivity" />
         <activity android:name=".cafeti.CafeColorActivity" />
         <activity android:name=".cafeti.CafeStyleActivity" />
         <activity android:name=".cafeti.CoffeeMenuActivity" />
-        <activity android:name=".cafeti.CafetiActivity"/>
+        <activity android:name=".cafeti.CafetiActivity" />
         <activity android:name=".cafeti.CafetiResultActivity" />
-        <activity android:name=".cafeti.CoffeeMostActivity"/>
-        <activity android:name=".login.FindPasswordActivity"/>
-        <activity android:name=".login.LoginPwActivity"/>
+        <activity android:name=".cafeti.CoffeeMostActivity" />
+        <activity android:name=".login.FindPasswordActivity" />
+        <activity android:name=".login.LoginPwActivity" />
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.LoginActivity"></activity>
-        <activity android:name=".login.SplashActivity" >
+        <activity android:name=".login.SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -63,7 +63,7 @@
         </activity>
         <activity android:name=".category.ui.SelectCategoryActivity"></activity>
         <activity android:name=".detail.menus.CafeMenusActivity" />
-
+        <activity android:name=".review.all.AllCafeReviewsActivity" />
     </application>
 
 </manifest>
