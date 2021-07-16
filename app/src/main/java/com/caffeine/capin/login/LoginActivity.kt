@@ -116,6 +116,7 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
+
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener() {
             val requestLoginData = RequestLoginData(
@@ -157,10 +158,10 @@ class LoginActivity : AppCompatActivity() {
     private fun successLogin() {
         val isNeedToCheckCafeti = userPreferenceManager.getNeedCafetiCheck()
         if (isNeedToCheckCafeti) {
-            val intent = Intent(this, CafetiActivity::class.java)
+            val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
             startActivity(intent)
         } else {
-            val intent = Intent(this, MainActivity::class.java)
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
         }
     }
