@@ -37,10 +37,10 @@ class CoffeeMostActivity : AppCompatActivity() {
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
                 when (checkedId) {
                     binding.radiobtnCoffee.id -> {
-                        binding.imageViewCoffeeMost.setBackgroundResource(R.drawable.coffee)
+                        binding.imageviewCoffeeMost.setBackgroundResource(R.drawable.coffee)
                     }
                     binding.radiobtnNoncoffee.id -> {
-                        binding.imageViewCoffeeMost.setBackgroundResource(R.drawable.non_coffee)
+                        binding.imageviewCoffeeMost.setBackgroundResource(R.drawable.non_coffee)
                     }
                 }
             }

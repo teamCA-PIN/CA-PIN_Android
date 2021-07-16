@@ -29,10 +29,10 @@ class CafetiResultActivity : AppCompatActivity() {
         if (intent.hasExtra("cafeti_result")) {
             userPreferenceManager.setNeedCafetiCheck(false)
             val cafetiResultList = intent.getSerializableExtra("cafeti_result") as ResponseCafetiData.Result
-            Glide.with(binding.imageViewCafetiResult.context).load(cafetiResultList.img).into(binding.imageViewCafetiResult)
-            binding.textViewCafetiType.text = cafetiResultList.type
-            binding.textViewCafetiModifier.text = cafetiResultList.modifier
-            binding.textViewCafetiModifierDetail.text = cafetiResultList.modifierDetail
+            Glide.with(binding.imageviewCafetiResult.context).load(cafetiResultList.img).into(binding.imageviewCafetiResult)
+            binding.textviewCafetiType.text = cafetiResultList.type
+            binding.textviewCafetiModifier.text = cafetiResultList.modifier
+            binding.textviewCafetiModifierDetail.text = cafetiResultList.modifierDetail
         }
     }
 
