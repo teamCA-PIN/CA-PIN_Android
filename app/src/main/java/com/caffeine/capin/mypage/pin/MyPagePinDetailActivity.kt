@@ -40,29 +40,32 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         categoryPinId = intent.getStringExtra("categoryPinId").toString()
-        Log.d("리미=categoryPinId", categoryPinId)
-        getMyPinFromServer()
+        binding.pinDetailBackBtn.setOnClickListener { onBackPressed() }
 
+        setFeature()
+        setMyPinInfoAdapter()
+        getMyPinFromServer()
+        setDefaultComment()
+        pinEditButtonClickEvent()
+        pinDeleteButtonClickEvent()
+    }
+
+    private fun setFeature() {
         if(intent.hasExtra("name")) {
             binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
         } else {
             binding.pinDetailHeaderTv.text = "카테고리"
         }
+    }
 
-        binding.pinDetailBackBtn.setOnClickListener { onBackPressed() }
-
-        binding.pinDetailEditBtn.setOnClickListener {
-            myPinInfoAdapter.switchDeleteMode(true)
-            binding.pinDetailEditBtn.isGone = true
-            binding.pinDetailDeleteBtn.isVisible = true
+    private fun setDefaultComment() {
+        if(myPinInfoAdapter.myPinInfoList.size > 1) {
+            binding.pinDetailBasicIv.isVisible = false
+            binding.pinDetailBasicTv.isVisible = false
         }
+    }
 
-        binding.pinDetailDeleteBtn.setOnClickListener {
-            showDeletePinConfirmDialog()
-            binding.pinDetailEditBtn.isVisible = true
-            binding.pinDetailDeleteBtn.isGone = true
-        }
-
+    private fun setMyPinInfoAdapter() {
         myPinInfoAdapter = MyPinInfoAdapter()
         binding.pinDetailRcv.adapter = myPinInfoAdapter
 
@@ -76,14 +79,16 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     } else {
                         myPinInfoAdapter.switchDeleteMode(false)
                         binding.pinDetailEditBtn.isVisible = true
-                        binding.pinDetailDeleteBtn.isGone = true
+                        binding.pinDetailActiveDeleteBtn.isGone = true
+                        binding.pinDetailInactiveDeleteBtn.isGone = true
                         binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
                     }
                 } else {
+                    binding.pinDetailActiveDeleteBtn.isVisible = true
+                    binding.pinDetailInactiveDeleteBtn.isGone = true
                     removePinInfoList.add(myPinInfo)
                     binding.pinDetailHeaderTv.text = "${removePinInfoList.size}개 선택됨"
                     removePinId.add(myPinInfo._id)
-                    Log.d("리미", removePinId.toString())
                 }
             }
         })
@@ -93,10 +98,21 @@ class MyPagePinDetailActivity : AppCompatActivity() {
 
         myPinInfoAdapter.notifyDataSetChanged()
         binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
+    }
 
-        if(myPinInfoAdapter.myPinInfoList.size > 1) {
-            binding.pinDetailBasicIv.isVisible = false
-            binding.pinDetailBasicTv.isVisible = false
+    private fun pinEditButtonClickEvent() {
+        binding.pinDetailEditBtn.setOnClickListener {
+            myPinInfoAdapter.switchDeleteMode(true)
+            binding.pinDetailEditBtn.isGone = true
+            binding.pinDetailInactiveDeleteBtn.isVisible = true
+        }
+    }
+
+    private fun pinDeleteButtonClickEvent() {
+        binding.pinDetailActiveDeleteBtn.setOnClickListener {
+            showDeletePinConfirmDialog()
+            binding.pinDetailEditBtn.isVisible = true
+            binding.pinDetailActiveDeleteBtn.isGone = true
         }
     }
 
@@ -107,6 +123,19 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 override fun onClick() {
 
                     deleteMyPinAtServer()
+
+                    for (i in 0 until removePinInfoList.size) {
+                        myPinInfoAdapter.myPinInfoList.remove(removePinInfoList[i])
+                        Log.d("이거는 removePinInfoList", removePinInfoList.size.toString())
+                        myPinInfoAdapter.checkboxList.forEach{
+                            it.isChecked = false
+                        }
+                    }
+                    myPinInfoAdapter.checkboxList.clear()
+                    Log.d("이거는 checkboxList", myPinInfoAdapter.checkboxList.size.toString())
+
+                    removePinInfoList.clear()
+                    Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
 
                     Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
                     myPinInfoAdapter.switchDeleteMode(false)

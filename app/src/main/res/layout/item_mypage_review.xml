@@ -8,15 +8,18 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/item_cl"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:paddingBottom="24dp">
 
         <TextView
             android:id="@+id/mypage_review_cafename_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/mypage_review_seemore_btn"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_review_seemore_btn"
             android:layout_marginStart="22dp"
             android:text="후엘고"
             android:theme="@style/Subhead"
@@ -52,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/mypage_review_seemore_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mypage_review_seemore_btn"
-            app:srcCompat="@drawable/icon_edit" />
+            app:srcCompat="@drawable/icon_edit_horizontal" />
 
         <ImageView
             android:id="@+id/mypage_review_seemore_btn"
@@ -78,62 +81,47 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/mypage_review_cafename_tv" />
 
-        <ImageView
-            android:id="@+id/mypage_review_type_flavor_iv"
-            android:layout_width="65dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="22dp"
-            android:layout_marginTop="14dp"
-            app:layout_constraintStart_toStartOf="parent"
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mypage_review_type_flavor_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="3dp"
+            android:background="@drawable/round_rectangle_brown_11dp"
+            android:paddingHorizontal="11dp"
+            android:text="맛 추천"
+            android:textAlignment="center"
+            android:textColor="@color/white"
+            android:theme="@style/Body5"
+            app:layout_constraintStart_toStartOf="@+id/mypage_review_contents_tv"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_review_contents_tv" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mypage_review_type_mood_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginTop="10dp"
+            android:paddingVertical="3dp"
+            app:layout_constraintStart_toEndOf="@id/mypage_review_type_flavor_btn"
             app:layout_constraintTop_toBottomOf="@+id/mypage_review_contents_tv"
-            app:srcCompat="@drawable/round_rectangle_brown_11dp" />
-
-        <TextView
-            android:id="@+id/mypage_review_type_flavor_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/recommend_flavor"
+            android:text="분위기 추천"
+            android:textAlignment="center"
             android:textColor="@color/white"
             android:theme="@style/Body5"
-            app:layout_constraintBottom_toBottomOf="@+id/mypage_review_type_flavor_iv"
-            app:layout_constraintEnd_toEndOf="@+id/mypage_review_type_flavor_iv"
-            app:layout_constraintStart_toStartOf="@+id/mypage_review_type_flavor_iv"
-            app:layout_constraintTop_toTopOf="@+id/mypage_review_type_flavor_iv" />
-
-        <ImageView
-            android:id="@+id/mypage_review_type_mood_iv"
-            android:layout_width="86dp"
-            android:layout_height="22dp"
-            android:layout_marginStart="6dp"
-            app:layout_constraintBottom_toBottomOf="@+id/mypage_review_type_flavor_iv"
-            app:layout_constraintStart_toEndOf="@+id/mypage_review_type_flavor_iv"
-            app:layout_constraintTop_toTopOf="@+id/mypage_review_type_flavor_iv"
-            app:srcCompat="@drawable/round_rectangle_brown_11dp" />
-
-        <TextView
-            android:id="@+id/mypage_review_recommend_mood_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/recommend_mood"
-            android:textColor="@color/white"
-            android:theme="@style/Body5"
-            app:layout_constraintBottom_toBottomOf="@+id/mypage_review_type_mood_iv"
-            app:layout_constraintEnd_toEndOf="@+id/mypage_review_type_mood_iv"
-            app:layout_constraintStart_toStartOf="@+id/mypage_review_type_mood_iv"
-            app:layout_constraintTop_toTopOf="@+id/mypage_review_type_mood_iv" />
+            android:paddingHorizontal="11dp"
+            android:background="@drawable/round_rectangle_brown_11dp"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mypage_review_imgs_first_iv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.222"
-            app:layout_constraintDimensionRatio="1:1"
-            android:layout_marginTop="12dp"
-            android:layout_marginBottom="30dp"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/mypage_review_contents_tv"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_review_type_flavor_iv"
             android:scaleType="centerCrop"
+            android:layout_marginTop="10dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toStartOf="@+id/mypage_review_contents_tv"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_review_type_flavor_btn"
+            app:layout_constraintWidth_percent="0.222"
             app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
             app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
 
@@ -164,6 +152,34 @@
             app:layout_constraintWidth_percent="0.222"
             app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
             app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/mypage_review_imgs_seemore_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:visibility="invisible"
+            android:layout_marginStart="5dp"
+            android:scaleType="centerCrop"
+            app:layout_constraintBottom_toBottomOf="@+id/mypage_review_imgs_second_iv"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintStart_toEndOf="@+id/mypage_review_imgs_second_iv"
+            app:layout_constraintTop_toTopOf="@+id/mypage_review_imgs_second_iv"
+            app:layout_constraintWidth_percent="0.222"
+            app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
+            android:background="#66474747"/>
+
+        <TextView
+            android:id="@+id/mypage_review_imgs_seemore_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="invisible"
+            android:text="+3"
+            android:theme="@style/Body2"
+            android:textColor="@color/white"
+            app:layout_constraintTop_toTopOf="@id/mypage_review_imgs_seemore_btn"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_review_imgs_seemore_btn"
+            app:layout_constraintStart_toStartOf="@id/mypage_review_imgs_seemore_btn"
+            app:layout_constraintEnd_toEndOf="@id/mypage_review_imgs_seemore_btn"/>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

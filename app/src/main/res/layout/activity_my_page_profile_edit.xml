@@ -116,7 +116,7 @@
             app:layout_constraintTop_toBottomOf="@+id/profile_edit_name_headline_tv" />
 
         <ImageView
-            android:id="@+id/profile_edit_complete_btn"
+            android:id="@+id/profile_edit_done_btn"
             android:layout_width="154dp"
             android:layout_height="48dp"
             android:layout_marginBottom="57dp"
@@ -132,10 +132,10 @@
             android:text="@string/profile_edit_complete"
             android:textColor="@color/white"
             android:theme="@style/Subhead"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_complete_btn"
-            app:layout_constraintEnd_toEndOf="@+id/profile_edit_complete_btn"
-            app:layout_constraintStart_toStartOf="@+id/profile_edit_complete_btn"
-            app:layout_constraintTop_toTopOf="@+id/profile_edit_complete_btn" />
+            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_done_btn"
+            app:layout_constraintEnd_toEndOf="@+id/profile_edit_done_btn"
+            app:layout_constraintStart_toStartOf="@+id/profile_edit_done_btn"
+            app:layout_constraintTop_toTopOf="@+id/profile_edit_done_btn" />
 
         <EditText
             android:id="@+id/profile_edit_name_edt"

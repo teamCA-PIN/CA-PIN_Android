@@ -1,6 +1,6 @@
 package com.caffeine.capin.map.repository
 
-import com.caffeine.capin.map.CafeListMapper
+import com.caffeine.capin.map.mapper.CafeListMapper
 import com.caffeine.capin.map.datasource.CafeListDataSource
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.map.entity.CafeInformationEntity

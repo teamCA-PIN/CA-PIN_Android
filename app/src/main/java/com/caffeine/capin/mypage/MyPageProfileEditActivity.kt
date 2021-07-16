@@ -9,11 +9,9 @@ import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
-import androidx.databinding.DataBindingUtil.setContentView
 import com.caffeine.capin.R
+import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
@@ -33,12 +31,15 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         binding = ActivityMyPageProfileEditBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setEditTextWatcher()
+        cafeTiButtonClickEvent()
+
         binding.profileEditBackBtn.setOnClickListener { onBackPressed() }
+        binding.profileEditProfileEditBtn.setOnClickListener { showEditProfileDialog() }
+        binding.profileEditDoneBtn.setOnClickListener { finish() }
+    }
 
-        binding.profileEditProfileEditBtn.setOnClickListener {
-            showEditProfileialog()
-        }
-
+    private fun setEditTextWatcher() {
         binding.profileEditNameDeleteBtn.setOnClickListener {
             binding.profileEditNameEdt.text.clear()
             binding.profileEditNameDeleteBtn.isVisible = false
@@ -63,7 +64,14 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         })
     }
 
-    private fun showEditProfileialog() {
+    private fun cafeTiButtonClickEvent() {
+        binding.profileEditCafetiBtn.setOnClickListener {
+            val intent = Intent(this@MyPageProfileEditActivity, CafetiActivity::class.java)
+            startActivity(intent)
+        }
+    }
+
+    private fun showEditProfileDialog() {
         val profileEditList = ArrayList<CapinDialogButton>()
         val dialog: CapinDialog = CapinDialogBuilder("프로필 사진 설정")
             .setButtonArray(profileEditList)

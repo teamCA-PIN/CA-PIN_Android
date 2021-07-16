@@ -35,20 +35,9 @@ class MyPageActivity : AppCompatActivity() {
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        setViewPager()
         getMyInfoFromServer()
-
         profileEditButtonClickEvent()
-
-        viewPager = binding.mypageViewpager
-
-        var myPageViewPagerAdapter = MyPageViewPagerAdapter(this)
-        binding.mypageViewpager.adapter = myPageViewPagerAdapter
-        binding.mypageViewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
-
-        TabLayoutMediator(binding.mypageTabLayout, viewPager) { tab, position ->
-            tab.customView = getTabView(position)
-        }.attach()
-
     }
 
     fun getTabView(position: Int): View {
@@ -97,5 +86,19 @@ class MyPageActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun setViewPager() {
+        viewPager = binding.mypageViewpager
+
+        var myPageViewPagerAdapter = MyPageViewPagerAdapter(this)
+        binding.mypageViewpager.adapter = myPageViewPagerAdapter
+        binding.mypageViewpager.orientation = ViewPager2.ORIENTATION_HORIZONTAL
+
+        TabLayoutMediator(binding.mypageTabLayout, viewPager) { tab, position ->
+            tab.customView = getTabView(position)
+        }.attach()
+
+        binding.mypageCloseBtn.setOnClickListener { finish() }
     }
 }

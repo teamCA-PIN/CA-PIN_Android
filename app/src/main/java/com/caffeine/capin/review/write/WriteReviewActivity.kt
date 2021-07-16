@@ -16,22 +16,32 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.R
+import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityWriteReviewBinding
+import com.caffeine.capin.mypage.api.request.RequestPutReviewData
+import com.caffeine.capin.network.BaseResponse
+import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.HorizontalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import java.io.File
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class WriteReviewActivity : AppCompatActivity() {
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivityWriteReviewBinding
     private val viewModel by viewModels<WriteReviewViewModel>()
     private lateinit var pictureUri: Uri
     private var failedPermissions = ArrayList<String>()
-
+//    lateinit var header : String
+//    lateinit var editReviewId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -39,6 +49,9 @@ class WriteReviewActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+
+//        header = intent?.getStringExtra("feature").toString()
+//        editReviewId = intent?.getStringExtra("editReviewId").toString()
 
         setWriteReviewToolber()
         showStagingPictureDialog()
@@ -50,7 +63,11 @@ class WriteReviewActivity : AppCompatActivity() {
 
     private fun setWriteReviewToolber() {
         binding.toolbar.apply {
-            setToolbarTitle("리뷰 작성하기")
+//            if(header == "리뷰 수정하기") {
+//                setToolbarTitle(header)
+//            } else {
+                setToolbarTitle("리뷰 작성하기")
+//            }
             setBackButton {
                 //Todo: back button 클릭시 이벤트 추가
             }
@@ -212,6 +229,30 @@ class WriteReviewActivity : AppCompatActivity() {
             if (success) finish()
         }
     }
+
+//    private fun putMyReviewToServer() {
+//        val requestPutReviewData = RequestPutReviewData(
+//            recommend = null,
+//            content = "",
+//            rating = 3.5f
+//        )
+//
+//        val capinApiService = ServiceCreator.capinApiService.putMyReview(
+//            userPreferenceManager.getUserToken(),
+//            editReviewId,
+//            requestPutReviewData
+//        )
+//
+//        capinApiService.enqueue(object : Callback<BaseResponse>{
+//            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+//                Log.d("fail", "error:$t")
+//            }
+//
+//            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
+//                finish()
+//            }
+//        })
+//    }
 
     companion object {
         private const val PERMISSION_CAMERA = android.Manifest.permission.CAMERA

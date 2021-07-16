@@ -16,12 +16,16 @@ import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
 import com.caffeine.capin.network.ServiceCreator.capinApiService
+import com.caffeine.capin.preference.UserPreferenceManager
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
-
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivitySignupBinding
     private var edittextCount = 0
 
@@ -195,6 +199,7 @@ class SignUpActivity : AppCompatActivity() {
                     response: Response<ResponseSignUpData>
                 ) {
                     if (response.isSuccessful) {
+                        userPreferenceManager.setNeedCafetiCheck(true)
                         Toast.makeText(this@SignUpActivity,"가입이 완료되었습니다.", LENGTH_SHORT).show()
                         intent = Intent(this@SignUpActivity, LoginActivity::class.java)
                         startActivity(intent)

@@ -10,19 +10,25 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.MainActivity
 import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityLoginBinding
 import com.caffeine.capin.network.ServiceCreator
+import com.caffeine.capin.preference.UserPreferenceManager
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private var edittextCount = 0
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,8 +40,8 @@ class LoginActivity : AppCompatActivity() {
         signupTextClickEvent()
         findPwTextClickEvent()
 
-        lateinit var email : EditText
-        lateinit var password : EditText
+        lateinit var email: EditText
+        lateinit var password: EditText
         email = binding.loginEdittextEmail
         password = binding.loginEdittextPw
 
@@ -44,8 +50,8 @@ class LoginActivity : AppCompatActivity() {
             password
         )
 
-        edittextList.forEach{ edittext ->
-            edittext.addTextChangedListener(object : TextWatcher{
+        edittextList.forEach { edittext ->
+            edittext.addTextChangedListener(object : TextWatcher {
                 override fun beforeTextChanged(
                     s: CharSequence?,
                     start: Int,
@@ -60,16 +66,22 @@ class LoginActivity : AppCompatActivity() {
                 }
 
                 override fun afterTextChanged(text: Editable?) {
-                    if(text.isNullOrEmpty()) {
+                    if (text.isNullOrEmpty()) {
                         edittextCount--
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
-                            R.color.gray_3
-                        ))
+                        edittext.setTextColor(
+                            ContextCompat.getColor(
+                                this@LoginActivity,
+                                R.color.gray_3
+                            )
+                        )
                     } else {
                         edittextCount++
-                        edittext.setTextColor(ContextCompat.getColor(this@LoginActivity,
-                            R.color.black
-                        ))
+                        edittext.setTextColor(
+                            ContextCompat.getColor(
+                                this@LoginActivity,
+                                R.color.black
+                            )
+                        )
                     }
                     checkEditTextEmpty()
                 }
@@ -82,17 +94,23 @@ class LoginActivity : AppCompatActivity() {
         if (edittextCount >= 2) {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.pointcolor_1))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
-                    R.drawable.circle_image_view2
-                ))
+                setBackgroundDrawable(
+                    ContextCompat.getDrawable(
+                        this@LoginActivity,
+                        R.drawable.circle_image_view2
+                    )
+                )
                 isClickable = true
             }
         } else {
             binding.btnLogin.apply {
                 setBackgroundColor(ContextCompat.getColor(this@LoginActivity, R.color.gray_3))
-                setBackgroundDrawable(ContextCompat.getDrawable(this@LoginActivity,
-                    R.drawable.circle_image_view
-                ))
+                setBackgroundDrawable(
+                    ContextCompat.getDrawable(
+                        this@LoginActivity,
+                        R.drawable.circle_image_view
+                    )
+                )
                 isClickable = false
             }
         }
@@ -113,12 +131,18 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponseLoginData>
                 ) {
                     if (response.isSuccessful) {
+                        response.body()?.loginData?.token?.let { token ->
+                            userPreferenceManager.setUserToken(token)
+                        }
                         createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
-                        val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
-                        startActivity(intent)
 
+                        successLogin()
                     } else {
-                        createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 100)?.show()
+                        createCapinRejectToast(
+                            this@LoginActivity,
+                            "이메일 또는 비밀번호가 잘못되었습니다.",
+                            100
+                        )?.show()
                     }
                 }
 
@@ -129,8 +153,18 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
         }
+    }
 
+    private fun successLogin() {
+        val isNeedToCheckCafeti = userPreferenceManager.getNeedCafetiCheck()
+        if (isNeedToCheckCafeti) {
+            val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
+            startActivity(intent)
+        } else {
+            val intent = Intent(this@LoginActivity, MainActivity::class.java)
+            startActivity(intent)
         }
+    }
 
 
     private fun signupTextClickEvent() {

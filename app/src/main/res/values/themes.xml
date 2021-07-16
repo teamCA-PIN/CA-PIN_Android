@@ -61,4 +61,9 @@
         <item name="android:textColor">@color/transparent</item>
         <item name="android:textSize">0.1sp</item>
     </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.NoActionBar">
+        <item name="android:windowBackground">@drawable/splash</item>
+    </style>
+
 </resources>

@@ -1,6 +1,6 @@
 package com.caffeine.capin.map.entity
 
-import com.caffeine.capin.tagfilter.CafeTagEntity
+import com.caffeine.capin.tagfilter.model.CafeTagEntity
 
 data class CafeDetailEntity(
     val tags: List<CafeTagEntity>,
@@ -15,6 +15,5 @@ data class CafeDetailEntity(
     val offday: List<String>?,
     val latitude: Double,
     val longitude: Double,
-    val isSaved: Boolean,
-    val average: Float
+    val average: Float?
 )

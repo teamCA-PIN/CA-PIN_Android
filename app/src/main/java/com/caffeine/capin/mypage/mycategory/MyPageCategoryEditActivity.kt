@@ -30,8 +30,8 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
 
     lateinit var categoryName : String
     var selectedColor : Int = 0
-
     lateinit var categoryId : String
+    lateinit var header : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -40,48 +40,11 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
 
         binding.mypageCategoryEditBackBtn.setOnClickListener { onBackPressed() }
 
-        categoryId = intent.getStringExtra("categoryId").toString()
-        val header = intent.getStringExtra("feature").toString()
-        Log.d("리미", header)
-
-        if(intent.hasExtra("feature")) {
-            binding.mypageCategoryEditHeaderTv.text = header
-        } else {
-            binding.mypageCategoryEditHeaderTv.text = "카테고리 편집"
-        }
-
-        binding.mypageCategoryEditDeleteBtn.setOnClickListener {
-            binding.mypageCategoryEditEdt.text.clear()
-            binding.mypageCategoryEditDeleteBtn.isVisible = false
-        }
-
-        binding.mypageCategoryEditEdt.addTextChangedListener(object : TextWatcher {
-            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
-                binding.mypageCategoryEditLengthTv.text = "0/10"
-            }
-
-            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-                val userInput = binding.mypageCategoryEditEdt.text.toString()
-                binding.mypageCategoryEditLengthTv.text = "${userInput.length.toString()}/10"
-                binding.mypageCategoryEditDeleteBtn.isVisible = true
-            }
-
-            override fun afterTextChanged(s: Editable?) {
-                val userInput = binding.mypageCategoryEditEdt.text.toString()
-                binding.mypageCategoryEditLengthTv.text = "${userInput.length.toString()}/10"
-                binding.mypageCategoryEditDeleteBtn.isVisible = true
-            }
-        })
-
+        setFeature()
+        categoryDeleteButtonClickEvent()
+        setEditTextWatcher()
         selectSingleColor()
-
-        binding.mypageCategoryColorDoneBtn.setOnClickListener {
-            if(intent.getStringExtra("feature") == "새 카테고리") {
-                postNewCategoryToServer()
-            } else {
-                putMyCategoryToServer()
-            }
-        }
+        doneButtonClickEvent()
     }
 
     fun selectSingleColor() {
@@ -177,5 +140,59 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
                 finish()
             }
         })
+    }
+
+    private fun setFeature() {
+        categoryId = intent.getStringExtra("categoryId").toString()
+        header = intent.getStringExtra("feature").toString()
+
+        if(intent.hasExtra("feature")) {
+            binding.mypageCategoryEditHeaderTv.text = header
+        } else {
+            binding.mypageCategoryEditHeaderTv.text = "카테고리 편집"
+        }
+
+        if(header == "새 카테고리") {
+            binding.mypageCategoryEditEdt.hint = "새 카테고리명 입력"
+        } else {
+            binding.mypageCategoryEditEdt.hint = "수정할 카테고리명 입력"
+        }
+    }
+
+    private fun categoryDeleteButtonClickEvent() {
+        binding.mypageCategoryEditDeleteBtn.setOnClickListener {
+            binding.mypageCategoryEditEdt.text.clear()
+            binding.mypageCategoryEditDeleteBtn.isVisible = false
+        }
+    }
+
+    private fun setEditTextWatcher() {
+        binding.mypageCategoryEditEdt.addTextChangedListener(object : TextWatcher {
+            override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+                binding.mypageCategoryEditLengthTv.text = "0/10"
+            }
+
+            override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
+                val userInput = binding.mypageCategoryEditEdt.text.toString()
+                binding.mypageCategoryEditLengthTv.text = "${userInput.length.toString()}/10"
+                binding.mypageCategoryEditDeleteBtn.isVisible = true
+            }
+
+            override fun afterTextChanged(s: Editable?) {
+                val userInput = binding.mypageCategoryEditEdt.text.toString()
+                binding.mypageCategoryEditLengthTv.text = "${userInput.length.toString()}/10"
+                binding.mypageCategoryEditDeleteBtn.isVisible = true
+            }
+        })
+    }
+
+    private fun doneButtonClickEvent() {
+        binding.mypageCategoryColorDoneBtn.setOnClickListener {
+            if(intent.getStringExtra("feature") == "새 카테고리") {
+                postNewCategoryToServer()
+            } else {
+                putMyCategoryToServer()
+            }
+        }
     }
 }
