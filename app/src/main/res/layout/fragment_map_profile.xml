@@ -32,7 +32,6 @@
             android:background="@drawable/cafeti_asset"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintVertical_bias="0.15"
-            app:layout_constraintHorizontal_bias="0.45"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -72,7 +71,7 @@
             android:background="@drawable/background_cafeti_tag"
             style="@style/Body3"
             android:paddingHorizontal="8dp"
-            android:text="@{viewModel.userInfo.cafeti.type}"
+            android:text="@{viewModel.userInfo.cafeti}"
             android:layout_marginTop="11dp"
             android:textColor="@color/white"
             app:layout_constraintTop_toBottomOf="@id/textview_email"

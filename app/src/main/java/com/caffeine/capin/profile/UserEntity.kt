@@ -8,5 +8,5 @@ data class UserEntity(
     val pinNum: Int,
     val reviewNum: Int,
     val profileImg: String,
-    val cafeti: CafetiEntity
+    val cafeti: String
 )
