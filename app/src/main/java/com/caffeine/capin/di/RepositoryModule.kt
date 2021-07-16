@@ -13,6 +13,10 @@ import com.caffeine.capin.map.repository.CafeListRepositoryImpl
 import com.caffeine.capin.map.repository.MyMapLocationsRepository
 import com.caffeine.capin.map.repository.MyMapLocationsRepositoryImpl
 import com.caffeine.capin.network.CapinApiService
+import com.caffeine.capin.profile.UserProfileDataSource
+import com.caffeine.capin.profile.UserProfileMapper
+import com.caffeine.capin.profile.UserProfileRepository
+import com.caffeine.capin.profile.UserProfileRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -41,6 +45,10 @@ object RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideUserProfileMapper(): UserProfileMapper = UserProfileMapper()
+
+    @Provides
+    @Singleton
     fun provideCafeListRepository(
         datasource: CafeListDataSource,
         cafeListMapper: CafeListMapper,
@@ -62,5 +70,12 @@ object RepositoryModule {
         categoryListDataSource: CategoryListDataSource,
         categoryListMapper: CategoryListMapper
     ): CategoryListRepository = CategoryListRepositoryImpl(categoryListDataSource, categoryListMapper)
+
+    @Provides
+    @Singleton
+    fun provideUserProfileRepository(
+        userProfileDataSource: UserProfileDataSource,
+        userProfileMapper: UserProfileMapper
+    ): UserProfileRepository = UserProfileRepositoryImpl(userProfileDataSource, userProfileMapper)
 
 }

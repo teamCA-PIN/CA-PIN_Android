@@ -128,4 +128,7 @@ interface CapinApiService {
     fun postFindPw(
         @Body body: RequestFindPwData
     ): Call<ResponseFindPwData>
+
+    @GET("/user/myInfo")
+    fun getUserProfile(): Single<ResponseMyData>
 }

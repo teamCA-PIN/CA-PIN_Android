@@ -4,33 +4,31 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.caffeine.capin.map.entity.CafetiEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class MapProfileViewModel: ViewModel() {
+@HiltViewModel
+class MapProfileViewModel @Inject constructor(
+    private val userProfileRepository: UserProfileRepository
+): ViewModel() {
     private val _userInfo = MutableLiveData<UserEntity>()
     val userInfo: LiveData<UserEntity>
         get() = _userInfo
 
-    fun fetchUserInfo() {
-        _userInfo.value = dummyUserInfo
+    init {
+        getUserInfo()
     }
 
-
-    companion object {
-        private val cafetiEntity = CafetiEntity(
-            "uiduid",
-            "WBFJ",
-            "https://github.com/SONPYEONGHWA.png",
-            "hello i'm ENTJ"
-        )
-
-        private val dummyUserInfo = UserEntity(
-            "핸드피쓰",
-            "capin@teamcapin.com",
-            56,
-            31,
-            "https://github.com/SONPYEONGHWA.png",
-            cafetiEntity
-        )
-
+    private fun getUserInfo() {
+        userProfileRepository.getUserProfile()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _userInfo.postValue(it)
+            }, {
+                it.printStackTrace()
+            })
     }
 }

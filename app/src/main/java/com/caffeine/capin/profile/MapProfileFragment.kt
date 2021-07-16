@@ -30,7 +30,6 @@ class MapProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        viewModel.fetchUserInfo()
 
         binding.constraintlayoutArchive.setOnClickListener {
             val intent = Intent(this@MapProfileFragment.requireActivity(), MyPageActivity::class.java)
