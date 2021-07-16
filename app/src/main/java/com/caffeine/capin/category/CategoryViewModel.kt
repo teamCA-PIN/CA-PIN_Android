@@ -1,57 +1,89 @@
 package com.caffeine.capin.category
 
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.category.repository.CategoryListRepository
+import com.caffeine.capin.map.entity.CafeDetailEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.schedulers.Schedulers
+import javax.inject.Inject
 
-class CategoryViewModel: ViewModel() {
+@HiltViewModel
+class CategoryViewModel @Inject constructor(
+    private val categoryListRepository: CategoryListRepository,
+    private val archiveCafeController: ArchiveCafeController
+): ViewModel() {
     private val _cafeName = MutableLiveData<String>()
     val cafeName: LiveData<String>
         get() = _cafeName
+
+    private val _selectedCafeDetail = MutableLiveData<CafeDetailEntity>()
+    val selectedCafeDetail: LiveData<CafeDetailEntity>
+        get() = _selectedCafeDetail
 
     private val _categoryList = MutableLiveData<List<CategoryNameEntity>>()
     val categoryList: LiveData<List<CategoryNameEntity>>
         get() = _categoryList
 
+    private val _selectedCategory = MutableLiveData<CategoryNameEntity>()
+    val selectedCategory: LiveData<CategoryNameEntity>
+        get() = _selectedCategory
 
-    init {
-        changeCategoryList(DUMMY_CATEGORY)
-    }
+    private val _isSuccessArchive = MutableLiveData<Boolean>()
+    val isSuccessArchive: LiveData<Boolean>
+        get() = _isSuccessArchive
 
     fun changeCafeName(cafeName: String) {
         _cafeName.value = cafeName
+    }
+
+    fun changeSelectedCafeDetail(cafe: CafeDetailEntity) {
+        _selectedCafeDetail.value = cafe
+    }
+
+    init {
+        getCategoryList()
     }
 
     fun changeCategoryList(categotries: List<CategoryNameEntity>) {
         _categoryList.value = categotries
     }
 
-    companion object {
-        private val DUMMY_CATEGORY = listOf<CategoryNameEntity>(
-            CategoryNameEntity(
-                "6492f5",
-                "기본 카테고리"
-            ),
-            CategoryNameEntity(
-                "6bbc9a",
-                "Peace List"
-            ),
-            CategoryNameEntity(
-                "ffc24b",
-                "호엥고"
-            ),
-            CategoryNameEntity(
-                "816f7c",
-                "상수동 카페 리스트"
-            ),
-            CategoryNameEntity(
-                "ffc2d5",
-                "핑핑이들"
-            ),
-            CategoryNameEntity(
-                "c9d776",
-                "Capin"
-            )
-        )
+    fun changeSelectedCategory(category: CategoryNameEntity) {
+        _selectedCategory.value = category
     }
+
+    fun getCategoryList() {
+        categoryListRepository.getCategoryList()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                       _categoryList.postValue(it)
+            }, {
+                it.printStackTrace()
+            })
+    }
+
+    fun archiveCafe() {
+        Log.e("cafe", "${selectedCafeDetail.value!!._id}")
+        Log.e("cafe", "${selectedCategory.value?.id}")
+        archiveCafeController.archiveCafe(
+            selectedCafeDetail.value!!._id,
+            RequestArchiveCafeDTO(
+                selectedCategory.value?.id
+            )
+        ).observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({
+                _isSuccessArchive.postValue(true)
+            }, {
+                _isSuccessArchive.postValue(false)
+
+            })
+    }
+
+
 }

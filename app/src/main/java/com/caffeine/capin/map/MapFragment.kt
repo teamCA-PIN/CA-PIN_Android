@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -14,11 +13,11 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
-import com.caffeine.capin.category.SelectCategoryActivity
+import com.caffeine.capin.category.CategoryType
+import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
-import com.caffeine.capin.map.entity.CafeInformationEntity
-import com.caffeine.capin.tagfilter.TagFilterEntity
 import com.caffeine.capin.util.AutoClearedValue
+import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
 import com.naver.maps.map.overlay.Marker
@@ -50,7 +49,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
-
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
@@ -60,6 +58,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
+        when(binding.radiogroupMap.checkedRadioButtonId) {
+            binding.radiobuttonCapinMap.id -> {
+                viewModel.getCafeLocations()
+            }
+             binding.radiobuttonMyMap.id -> {
+                 viewModel.switchToMyMap()
+             }
+        }
         binding.cardviewCafeSelected.visibility = View.GONE
 
     }
@@ -138,6 +144,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.radiogroupMap.apply {
             check(binding.radiobuttonCapinMap.id)
             setOnCheckedChangeListener { _, checkedId ->
+                binding.cardviewCafeSelected.visibility = View.GONE
                 removeActiveMarkers()
                 when (checkedId) {
                     binding.radiobuttonMyMap.id -> {
@@ -191,10 +198,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             viewModel.addExposedMarker(marker)
 
             if (cafe.value) {
-                marker.icon = OverlayImage.fromResource(CafeInformationEntity.MarkType.findActiveType(cafe.key.markType))
+                marker.icon = OverlayImage.fromResource(CategoryType.findActiveType(cafe.key.markType))
                 marker.map = naverMap
             } else {
-                marker.icon = OverlayImage.fromResource(CafeInformationEntity.MarkType.findInactiveType(cafe.key.markType))
+                marker.icon = OverlayImage.fromResource(CategoryType.findInactiveType(cafe.key.markType))
                 marker.map = naverMap
             }
 
@@ -226,8 +233,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun archiveCafeToMyMap() {
         binding.buttonSaveCafe.setOnClickListener {
+            val gson = Gson()
+            val jsonCafeInfo = gson.toJson(viewModel.selectedCafe.value)
             val intent = Intent(requireContext(), SelectCategoryActivity::class.java)
-            intent.putExtra(CAFE_NAME, binding.textviewCafeName.text)
+            intent.putExtra(SELECTED_CAFE_INFO, jsonCafeInfo)
             startActivity(intent)
         }
     }
@@ -242,6 +251,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     companion object {
         private val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
         private const val PERMISSION_FUSED_LOCATION = 1000
-        private const val CAFE_NAME = "CafeName"
+        private const val SELECTED_CAFE_INFO = "selected_cafe_info"
     }
 }

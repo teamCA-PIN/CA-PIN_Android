@@ -62,6 +62,41 @@
             app:layout_constraintBottom_toBottomOf="parent"/>
 
 
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="20dp"
+            android:weightSum="2"
+            android:layout_marginHorizontal="19dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_cancel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="닫기"
+                android:textSize="16dp"
+                android:textColor="@color/gray_4"
+                android:background="@drawable/round_rectangle_gray_24dp"/>
+
+            <androidx.appcompat.widget.AppCompatButton
+                android:id="@+id/button_complete"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="완료"
+                android:layout_marginStart="14dp"
+                android:textSize="16dp"
+                android:textColor="@color/white"
+                android:background="@drawable/round_rectangle_brown_24dp"/>
+
+        </LinearLayout>
+
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
