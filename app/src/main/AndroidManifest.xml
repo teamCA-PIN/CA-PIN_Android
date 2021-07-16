@@ -38,6 +38,7 @@
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
+        <activity android:name=".mypage.myreview.MyReviewImageActivity" />
         <activity android:name=".MainActivity"/>
         <activity android:name=".cafeti.CoffeeTasteActivity" />
         <activity android:name=".cafeti.CafeColorActivity" />

@@ -3,6 +3,7 @@ package com.caffeine.capin.mypage.myreview
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -40,11 +41,6 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
         }
     }
 
-    fun removeChat() {
-        myReviewList.removeAt(myReviewList.size - 1)
-        notifyItemRemoved(myReviewList.size)
-    }
-
     interface OnEditButtonClickListener {
         fun onEditButtonClick(myReview: MyReview)
     }
@@ -53,6 +49,16 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
 
     fun setOnEditButtonClickListener(listener: OnEditButtonClickListener) {
         this.editButtonClickListener = listener
+    }
+
+    interface OnImageClickListener{
+        fun onImageClick(myReview: MyReview)
+    }
+
+    private lateinit var imageClickListener: OnImageClickListener
+
+    fun setOnImageClickListener(listener: OnImageClickListener) {
+        this.imageClickListener = listener
     }
 
     inner class MyReviewViewHolder(
@@ -140,6 +146,16 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
 
             binding.mypageReviewEditBtn.setOnClickListener {
                 editButtonClickListener.onEditButtonClick(myReview)
+            }
+
+            listOf<ImageView>(
+                binding.mypageReviewImgsFirstIv,
+                binding.mypageReviewImgsSecondIv,
+                binding.mypageReviewImgsThirdIv
+            ).forEach {
+                it.setOnClickListener {
+                    imageClickListener.onImageClick(myReview)
+                }
             }
         }
     }

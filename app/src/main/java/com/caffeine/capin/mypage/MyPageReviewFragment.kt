@@ -15,6 +15,7 @@ import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
+import com.caffeine.capin.mypage.myreview.MyReviewImageActivity
 import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
@@ -66,6 +67,16 @@ class MyPageReviewFragment : Fragment() {
             override fun onEditButtonClick(myReview: MyReview) {
                 removeReviewInfo = myReview
                 showEditReviewDialog()
+            }
+        })
+
+        myReviewAdapter.setOnImageClickListener(object :
+            MyReviewAdapter.OnImageClickListener{
+
+            override fun onImageClick(myReview: MyReview) {
+                val intent = Intent(this@MyPageReviewFragment.requireContext(), MyReviewImageActivity::class.java)
+                intent.putStringArrayListExtra("imgs", arrayListOf(*myReview.imgs.toTypedArray()))
+                startActivity(intent)
             }
         })
     }
