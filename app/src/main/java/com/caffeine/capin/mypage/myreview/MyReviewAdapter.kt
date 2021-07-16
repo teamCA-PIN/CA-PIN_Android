@@ -3,9 +3,7 @@ package com.caffeine.capin.mypage.myreview
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
@@ -17,7 +15,10 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
     var myReviewList = mutableListOf<MyReview>()
     var mPosition = 0
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyReviewAdapter.MyReviewViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MyReviewAdapter.MyReviewViewHolder {
         val binding = ItemMypageReviewBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -25,7 +26,8 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
         )
         return MyReviewViewHolder(binding)
     }
-    override fun getItemCount(): Int  = myReviewList.size
+
+    override fun getItemCount(): Int = myReviewList.size
 
     override fun onBindViewHolder(holder: MyReviewViewHolder, position: Int) {
         holder.onBind(myReviewList[position])
@@ -39,7 +41,7 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
     }
 
     fun removeChat() {
-        myReviewList.removeAt(myReviewList.size-1)
+        myReviewList.removeAt(myReviewList.size - 1)
         notifyItemRemoved(myReviewList.size)
     }
 
@@ -56,7 +58,7 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
     inner class MyReviewViewHolder(
         private val binding: ItemMypageReviewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(myReview: MyReview){
+        fun onBind(myReview: MyReview) {
             binding.mypageReviewCafenameTv.text = myReview.cafeName
             binding.mypageReviewRatingTv.text = myReview.rating.toString()
             binding.mypageReviewContentsTv.text = myReview.content
@@ -121,8 +123,8 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
                 binding.mypageReviewImgsThirdIv.isVisible = false
             }
 
-            if(myReview.recommend != null) {
-                when(myReview.recommend) {
+            if (myReview.recommend != null) {
+                when (myReview.recommend) {
                     listOf(0) -> {
                         binding.mypageReviewTypeMoodBtn.isVisible = false
                         binding.mypageReviewTypeFlavorBtn.setText("분위기 추천")

@@ -15,10 +15,10 @@ class PinInfoTagAdapter : RecyclerView.Adapter<PinInfoTagAdapter.PinInfoTagViewH
             parent,
             false
         )
-        return PinInfoTagViewHolder( binding )
+        return PinInfoTagViewHolder(binding)
     }
 
-    override fun getItemCount(): Int  = pinInfoTagList.size
+    override fun getItemCount(): Int = pinInfoTagList.size
 
     override fun onBindViewHolder(holder: PinInfoTagViewHolder, position: Int) {
         holder.onBind(pinInfoTagList[position])
@@ -27,7 +27,7 @@ class PinInfoTagAdapter : RecyclerView.Adapter<PinInfoTagAdapter.PinInfoTagViewH
     class PinInfoTagViewHolder(
         val binding: ItemPinDetailTagBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-        fun onBind(pinInfoTag: PinInfoTag){
+        fun onBind(pinInfoTag: PinInfoTag) {
             binding.pinDetailTagTv.text = pinInfoTag.name
         }
     }

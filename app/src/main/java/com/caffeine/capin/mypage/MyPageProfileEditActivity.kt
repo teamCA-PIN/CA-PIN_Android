@@ -45,7 +45,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
             binding.profileEditNameDeleteBtn.isVisible = false
         }
 
-        binding.profileEditNameEdt.addTextChangedListener(object : TextWatcher{
+        binding.profileEditNameEdt.addTextChangedListener(object : TextWatcher {
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
                 binding.profileEditNameLengthTv.text = "0/10"
             }
@@ -81,7 +81,8 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         profileEditList.apply {
             add(
                 CapinDialogButton("앨범에서 사진 선택",
-                    ContextCompat.getColor(this@MyPageProfileEditActivity, R.color.maincolor_1), this@MyPageProfileEditActivity,
+                    ContextCompat.getColor(this@MyPageProfileEditActivity, R.color.maincolor_1),
+                    this@MyPageProfileEditActivity,
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
                             val intent = Intent(Intent.ACTION_PICK)
@@ -94,7 +95,8 @@ class MyPageProfileEditActivity : AppCompatActivity() {
             )
             add(
                 CapinDialogButton("기본 이미지로 변경",
-                    ContextCompat.getColor(this@MyPageProfileEditActivity, R.color.maincolor_1), this@MyPageProfileEditActivity,
+                    ContextCompat.getColor(this@MyPageProfileEditActivity, R.color.maincolor_1),
+                    this@MyPageProfileEditActivity,
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
                             dialog.dismiss()

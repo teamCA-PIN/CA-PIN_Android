@@ -10,7 +10,10 @@ import com.caffeine.capin.databinding.ItemRecyclerviewCategoryBinding
 class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCategoryViewHolder>() {
     var myCategoryList = mutableListOf<MyCategory>()
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MyCategoryAdapter.ArchivingCategoryViewHolder {
+    override fun onCreateViewHolder(
+        parent: ViewGroup,
+        viewType: Int
+    ): MyCategoryAdapter.ArchivingCategoryViewHolder {
         val binding = ItemRecyclerviewCategoryBinding.inflate(
             LayoutInflater.from(parent.context),
             parent,
@@ -18,7 +21,8 @@ class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCatego
         )
         return ArchivingCategoryViewHolder(binding)
     }
-    override fun getItemCount(): Int  = myCategoryList.size
+
+    override fun getItemCount(): Int = myCategoryList.size
 
     override fun onBindViewHolder(holder: ArchivingCategoryViewHolder, position: Int) {
         holder.onBind(myCategoryList[position])
@@ -48,7 +52,7 @@ class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCatego
         private val binding: ItemRecyclerviewCategoryBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun onBind(myCategory: MyCategory){
+        fun onBind(myCategory: MyCategory) {
             binding.rcvCategoryColorIv.setBackgroundColor(Color.parseColor("#${myCategory.color}"))
             binding.rcvCategoryNameTv.text = myCategory.name
             binding.rcvCategoryPinNumTv.text = myCategory.cafes.size.toString()

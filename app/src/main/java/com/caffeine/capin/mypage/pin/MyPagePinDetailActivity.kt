@@ -30,9 +30,10 @@ class MyPagePinDetailActivity : AppCompatActivity() {
     private var removePinInfoList: MutableList<MyPinInfo> = mutableListOf()
     private var removePinId: MutableList<String> = mutableListOf()
 
-    @Inject lateinit var  userPreferenceManager: UserPreferenceManager
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
 
-    lateinit var categoryPinId : String
+    lateinit var categoryPinId: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -51,7 +52,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
     }
 
     private fun setFeature() {
-        if(intent.hasExtra("name")) {
+        if (intent.hasExtra("name")) {
             binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
         } else {
             binding.pinDetailHeaderTv.text = "카테고리"
@@ -59,7 +60,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
     }
 
     private fun setDefaultComment() {
-        if(myPinInfoAdapter.myPinInfoList.size > 1) {
+        if (myPinInfoAdapter.myPinInfoList.size > 1) {
             binding.pinDetailBasicIv.isVisible = false
             binding.pinDetailBasicTv.isVisible = false
         }
@@ -70,9 +71,9 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         binding.pinDetailRcv.adapter = myPinInfoAdapter
 
         myPinInfoAdapter.setOnCheckboxClickListener(object :
-            MyPinInfoAdapter.OnCheckboxClickListener{
+            MyPinInfoAdapter.OnCheckboxClickListener {
             override fun onCheckboxClick(myPinInfo: MyPinInfo) {
-                if(myPinInfo in removePinInfoList) {
+                if (myPinInfo in removePinInfoList) {
                     removePinInfoList.remove(myPinInfo)
                     if (removePinInfoList.size > 0) {
                         binding.pinDetailHeaderTv.text = "${removePinInfoList.size}개 선택됨"
@@ -93,7 +94,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             }
         })
 
-        val decoration = DividerItemDecoration(this,LinearLayoutManager.VERTICAL)
+        val decoration = DividerItemDecoration(this, LinearLayoutManager.VERTICAL)
         binding.pinDetailRcv.addItemDecoration(decoration)
 
         myPinInfoAdapter.notifyDataSetChanged()
@@ -119,7 +120,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
     private fun showDeletePinConfirmDialog() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile("선택된 핀을 모두 삭제하시겠습니까?")
-            .setContentDialogButtons(true, object: DialogClickListener {
+            .setContentDialogButtons(true, object : DialogClickListener {
                 override fun onClick() {
 
                     deleteMyPinAtServer()
@@ -127,7 +128,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     for (i in 0 until removePinInfoList.size) {
                         myPinInfoAdapter.myPinInfoList.remove(removePinInfoList[i])
                         Log.d("이거는 removePinInfoList", removePinInfoList.size.toString())
-                        myPinInfoAdapter.checkboxList.forEach{
+                        myPinInfoAdapter.checkboxList.forEach {
                             it.isChecked = false
                         }
                     }
@@ -153,7 +154,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             categoryId = categoryPinId
         )
 
-        capinApiService.enqueue(object : Callback<ResponseMyPinData>{
+        capinApiService.enqueue(object : Callback<ResponseMyPinData> {
             override fun onFailure(call: Call<ResponseMyPinData>, t: Throwable) {
                 Log.d("fail", "error:$t")
             }
@@ -163,13 +164,14 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 response: Response<ResponseMyPinData>
             ) {
                 if (response.isSuccessful) {
-                    myPinInfoAdapter.myPinInfoList = response.body()?.cafeDetail as MutableList<MyPinInfo>
+                    myPinInfoAdapter.myPinInfoList =
+                        response.body()?.cafeDetail as MutableList<MyPinInfo>
                     myPinInfoAdapter.notifyDataSetChanged()
-                    Log.d("리미","getMyPinFromServer")
+                    Log.d("리미", "getMyPinFromServer")
                 }
                 binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
 
-                if(myPinInfoAdapter.myPinInfoList.size > 0) {
+                if (myPinInfoAdapter.myPinInfoList.size > 0) {
                     binding.pinDetailBasicIv.isVisible = false
                     binding.pinDetailBasicTv.isVisible = false
                 }

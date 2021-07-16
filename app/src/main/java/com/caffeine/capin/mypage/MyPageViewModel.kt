@@ -6,7 +6,6 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
 import com.caffeine.capin.mypage.mycategory.MyCategory
-import com.caffeine.capin.mypage.mycategory.MyCategoryAdapter
 import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager

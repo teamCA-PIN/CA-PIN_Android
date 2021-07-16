@@ -28,7 +28,8 @@ class MyPageActivity : AppCompatActivity() {
     private lateinit var binding: ActivityMyPageBinding
     private lateinit var viewPager: ViewPager2
 
-    @Inject lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -65,7 +66,7 @@ class MyPageActivity : AppCompatActivity() {
             userPreferenceManager.getUserToken()
         )
 
-        capinApiService.enqueue(object : Callback<ResponseMyData>{
+        capinApiService.enqueue(object : Callback<ResponseMyData> {
             override fun onFailure(call: Call<ResponseMyData>, t: Throwable) {
                 Log.d("fail", "error:$t")
             }
@@ -74,7 +75,7 @@ class MyPageActivity : AppCompatActivity() {
                 call: Call<ResponseMyData>,
                 response: Response<ResponseMyData>
             ) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
                     binding.mypageUsernameTv.setText(response.body()?.myInfo?.nickname as String)
                     binding.mypageCafetiTv.setText(response.body()?.myInfo?.cafeti?.type as String)
 

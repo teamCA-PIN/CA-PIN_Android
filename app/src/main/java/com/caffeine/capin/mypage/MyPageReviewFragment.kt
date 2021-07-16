@@ -30,7 +30,8 @@ import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class MyPageReviewFragment : Fragment() {
-    @Inject lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
     private var binding by AutoClearedValue<FragmentMyPageReviewBinding>()
     private lateinit var myReviewAdapter: MyReviewAdapter
     private lateinit var removeReviewInfo: MyReview
@@ -79,10 +80,16 @@ class MyPageReviewFragment : Fragment() {
         reviewEditList.apply {
             add(
                 CapinDialogButton("리뷰 수정",
-                    ContextCompat.getColor(this@MyPageReviewFragment.requireContext(), R.color.maincolor_1), this@MyPageReviewFragment.requireContext(),
+                    ContextCompat.getColor(
+                        this@MyPageReviewFragment.requireContext(),
+                        R.color.maincolor_1
+                    ), this@MyPageReviewFragment.requireContext(),
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
-                            val intent = Intent(this@MyPageReviewFragment.requireContext(), WriteReviewActivity::class.java)
+                            val intent = Intent(
+                                this@MyPageReviewFragment.requireContext(),
+                                WriteReviewActivity::class.java
+                            )
                             intent.putExtra("feature", "리뷰 수정하기")
                             intent.putExtra("editReviewId", removeReviewInfo._id)
                             startActivity(intent)
@@ -92,7 +99,10 @@ class MyPageReviewFragment : Fragment() {
             )
             add(
                 CapinDialogButton("리뷰 삭제",
-                    ContextCompat.getColor(this@MyPageReviewFragment.requireContext(), R.color.pointcolor_red), this@MyPageReviewFragment.requireContext(),
+                    ContextCompat.getColor(
+                        this@MyPageReviewFragment.requireContext(),
+                        R.color.pointcolor_red
+                    ), this@MyPageReviewFragment.requireContext(),
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
                             showDeleteReviewConfirmDialog()
@@ -108,7 +118,7 @@ class MyPageReviewFragment : Fragment() {
     private fun showDeleteReviewConfirmDialog() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile("리뷰를 삭제하시겠습니까?")
-            .setContentDialogButtons(true, object: DialogClickListener {
+            .setContentDialogButtons(true, object : DialogClickListener {
                 override fun onClick() {
                     deleteMyReviewAtServer()
                     myReviewAdapter.myReviewList.remove(removeReviewInfo)
@@ -124,7 +134,7 @@ class MyPageReviewFragment : Fragment() {
             userPreferenceManager.getUserToken()
         )
 
-        capinApiService.enqueue(object : Callback<ResponseMyReviewData>{
+        capinApiService.enqueue(object : Callback<ResponseMyReviewData> {
             override fun onFailure(
                 call: Call<ResponseMyReviewData>,
                 t: Throwable
@@ -143,7 +153,7 @@ class MyPageReviewFragment : Fragment() {
                 }
                 binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
 
-                if(myReviewAdapter.myReviewList.size < 1) {
+                if (myReviewAdapter.myReviewList.size < 1) {
                     binding.ifBasicReviewTv.isVisible = true
                 }
             }
@@ -165,7 +175,7 @@ class MyPageReviewFragment : Fragment() {
                 if (response.isSuccessful) {
                     myReviewAdapter.notifyDataSetChanged()
 
-                    if(myReviewAdapter.myReviewList.size < 1) {
+                    if (myReviewAdapter.myReviewList.size < 1) {
                         binding.ifBasicReviewTv.isVisible = true
                     }
                 }
