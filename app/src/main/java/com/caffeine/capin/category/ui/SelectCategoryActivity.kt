@@ -49,12 +49,6 @@ class SelectCategoryActivity : AppCompatActivity() {
             viewModel.changeSelectedCafeDetail(selectedCafeInfo)
             binding.toolbarCafeName.setToolbarTitle(selectedCafeInfo.name)
         }
-
-        if(intent.hasExtra("editReview")) {
-            val gson = Gson()
-            val editReview = intent.getStringExtra("editReview")
-            val review = gson.fromJson(editReview, MyReview::class.java)
-        }
     }
 
     private fun setCategoryListAdapter() {

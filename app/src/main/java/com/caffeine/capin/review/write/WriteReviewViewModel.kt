@@ -5,6 +5,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.caffeine.capin.PictureUriEntity
+import com.caffeine.capin.review.write.controller.WriteReviewController
 import com.caffeine.capin.util.FormDataUtil
 import com.caffeine.capin.util.FormDataUtil.asMultipart
 import com.caffeine.capin.util.JsonStringParser
@@ -12,7 +13,6 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
 import okhttp3.MultipartBody
-import okio.source
 import javax.inject.Inject
 
 @HiltViewModel
@@ -51,6 +51,10 @@ class WriteReviewViewModel @Inject constructor(
 
     fun changeCheckedRecommend(list: List<Int?>) {
         _checkedRecommend.value = list
+    }
+
+    fun changeImageOfCafe(pictures: List<PictureUriEntity>) {
+        _imagesOfCafe.value = pictures
     }
 
     fun addImagesOfCafe(pictureUriEntity: PictureUriEntity) {

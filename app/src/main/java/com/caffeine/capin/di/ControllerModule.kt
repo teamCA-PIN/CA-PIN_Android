@@ -3,8 +3,8 @@ package com.caffeine.capin.di
 import com.caffeine.capin.category.controller.ArchiveCafeController
 import com.caffeine.capin.category.controller.ArchiveCafeControllerImpl
 import com.caffeine.capin.network.CapinApiService
-import com.caffeine.capin.review.write.WriteReviewController
-import com.caffeine.capin.review.write.WriteReviewControllerImpl
+import com.caffeine.capin.review.write.controller.WriteReviewController
+import com.caffeine.capin.review.write.controller.WriteReviewControllerImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
