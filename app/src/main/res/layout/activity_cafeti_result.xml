@@ -7,7 +7,7 @@
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_test_finish"
+        android:id="@+id/textview_test_finish"
         style="@style/Headline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -21,7 +21,7 @@
         app:layout_constraintVertical_bias="0.022" />
 
     <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/imageView_cafetiResult"
+        android:id="@+id/imageview_cafetiResult"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_marginTop="10dp"
@@ -30,11 +30,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_test_finish"
+        app:layout_constraintTop_toBottomOf="@+id/textview_test_finish"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_cafeti_type"
+        android:id="@+id/textview_cafeti_type"
         style="@style/Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -50,11 +50,11 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageView_cafetiResult"
+        app:layout_constraintTop_toBottomOf="@id/imageview_cafetiResult"
         app:layout_constraintVertical_bias="0.0" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_cafeti_modifier"
+        android:id="@+id/textview_cafeti_modifier"
         style="@style/Display1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -64,7 +64,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_cafeti_type"
+        app:layout_constraintTop_toBottomOf="@id/textview_cafeti_type"
         app:layout_constraintVertical_bias="0.0" />
 
 
@@ -80,7 +80,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_cafeti_modifier"
+        app:layout_constraintTop_toBottomOf="@id/textview_cafeti_modifier"
         app:layout_constraintVertical_bias="0.241" />
 
     <androidx.appcompat.widget.AppCompatButton
@@ -100,7 +100,7 @@
         app:layout_constraintWidth_percent="0.911" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_cafeti_modifierDetail"
+        android:id="@+id/textview_cafeti_modifierDetail"
         style="@style/Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -110,7 +110,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView_cafeti_modifier"
+        app:layout_constraintTop_toBottomOf="@+id/textview_cafeti_modifier"
         app:layout_constraintVertical_bias="0.0" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

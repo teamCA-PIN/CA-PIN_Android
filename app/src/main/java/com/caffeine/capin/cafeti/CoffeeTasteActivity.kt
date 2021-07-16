@@ -43,13 +43,13 @@ class CoffeeTasteActivity : AppCompatActivity() {
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
                 when (checkedId) {
                     binding.radiobtnSour.id -> {
-                        binding.imageViewCoffeeTaste.setBackgroundResource(R.drawable.frame_120)
+                        binding.imageviewCoffeeTaste.setBackgroundResource(R.drawable.frame_120)
                     }
                     binding.radiobtnNosour.id -> {
-                        binding.imageViewCoffeeTaste.setBackgroundResource(R.drawable.frame_119)
+                        binding.imageviewCoffeeTaste.setBackgroundResource(R.drawable.frame_119)
                     }
                     binding.radiobtnNoway.id -> {
-                        binding.imageViewCoffeeTaste.setBackgroundResource(R.drawable.frame_118)
+                        binding.imageviewCoffeeTaste.setBackgroundResource(R.drawable.frame_118)
                     }
                 }
             }

@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_find_password"
+        android:id="@+id/textview_find_password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="비밀번호 찾기"
@@ -20,7 +20,7 @@
         app:layout_constraintVertical_bias="0.048" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_notice"
+        android:id="@+id/textview_notice"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입 시에 사용한 이메일을 입력하시면\n인증번호를 전송해드립니다."
@@ -43,8 +43,8 @@
         style="@style/Subhead"
         android:layout_marginTop="74dp"
         android:textColor="@color/maincolor_1"
-        app:layout_constraintStart_toStartOf="@id/textView_notice"
-        app:layout_constraintTop_toBottomOf="@id/textView_notice"/>
+        app:layout_constraintStart_toStartOf="@id/textview_notice"
+        app:layout_constraintTop_toBottomOf="@id/textview_notice"/>
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/loginpw_edittext_email"
@@ -59,13 +59,13 @@
         android:paddingVertical="6dp"
         android:textColorHint="@color/gray_3"
         android:textSize="15dp"
-        app:layout_constraintEnd_toEndOf="@+id/textView_notice"
+        app:layout_constraintEnd_toEndOf="@+id/textview_notice"
         app:layout_constraintHorizontal_bias="0.032"
-        app:layout_constraintStart_toStartOf="@+id/textView_notice"
+        app:layout_constraintStart_toStartOf="@+id/textview_notice"
         app:layout_constraintTop_toBottomOf="@+id/textview_email_id" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_signup_detail"
+        android:id="@+id/textview_signup_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"

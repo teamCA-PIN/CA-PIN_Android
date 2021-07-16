@@ -63,7 +63,7 @@ class MyPageActivity : AppCompatActivity() {
             userPreferenceManager.getUserToken()
         )
 
-        capinApiService.enqueue(object : Callback<ResponseMyData>{
+        capinApiService.enqueue(object : Callback<ResponseMyData> {
             override fun onFailure(call: Call<ResponseMyData>, t: Throwable) {
                 Log.d("fail", "error:$t")
             }
@@ -72,7 +72,7 @@ class MyPageActivity : AppCompatActivity() {
                 call: Call<ResponseMyData>,
                 response: Response<ResponseMyData>
             ) {
-                if(response.isSuccessful) {
+                if (response.isSuccessful) {
                     binding.mypageUsernameTv.setText(response.body()?.myInfo?.nickname as String)
                     binding.mypageCafetiTv.setText(response.body()?.myInfo?.cafeti?.type as String)
 

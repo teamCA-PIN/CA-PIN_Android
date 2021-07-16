@@ -1,12 +1,9 @@
 package com.caffeine.capin.mypage.mycategory
 
-import android.app.Activity
-import android.content.Intent
 import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
-import android.widget.ImageView
 import android.widget.RadioButton
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isVisible
@@ -26,12 +23,14 @@ import javax.inject.Inject
 class MyPageCategoryEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyPageCategoryEditBinding
-    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
-    lateinit var categoryName : String
-    var selectedColor : Int = 0
-    lateinit var categoryId : String
-    lateinit var header : String
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
+
+    lateinit var categoryName: String
+    var selectedColor: Int = 0
+    lateinit var categoryId: String
+    lateinit var header: String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -89,6 +88,7 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
                 } else {
                     binding.mypageCategoryColorDoneBtn.setImageResource(R.drawable.round_rectangle_brown_24dp)
                 }
+
             }
         }
     }
@@ -146,13 +146,13 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         categoryId = intent.getStringExtra("categoryId").toString()
         header = intent.getStringExtra("feature").toString()
 
-        if(intent.hasExtra("feature")) {
+        if (intent.hasExtra("feature")) {
             binding.mypageCategoryEditHeaderTv.text = header
         } else {
             binding.mypageCategoryEditHeaderTv.text = "카테고리 편집"
         }
 
-        if(header == "새 카테고리") {
+        if (header == "새 카테고리") {
             binding.mypageCategoryEditEdt.hint = "새 카테고리명 입력"
         } else {
             binding.mypageCategoryEditEdt.hint = "수정할 카테고리명 입력"
@@ -182,13 +182,17 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
                 val userInput = binding.mypageCategoryEditEdt.text.toString()
                 binding.mypageCategoryEditLengthTv.text = "${userInput.length.toString()}/10"
                 binding.mypageCategoryEditDeleteBtn.isVisible = true
+
+                if (userInput.isEmpty()) {
+                    binding.mypageCategoryColorDoneBtn.setImageResource(R.drawable.round_rectangle_gray_24dp)
+                }
             }
         })
     }
 
     private fun doneButtonClickEvent() {
         binding.mypageCategoryColorDoneBtn.setOnClickListener {
-            if(intent.getStringExtra("feature") == "새 카테고리") {
+            if (intent.getStringExtra("feature") == "새 카테고리") {
                 postNewCategoryToServer()
             } else {
                 putMyCategoryToServer()

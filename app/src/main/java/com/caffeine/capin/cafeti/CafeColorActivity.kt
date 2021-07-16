@@ -55,16 +55,16 @@ class CafeColorActivity : AppCompatActivity() {
             override fun onCheckedChanged(group: RadioGroup?, checkedId: Int) {
                 when (checkedId) {
                     binding.radiobtnDark.id -> {
-                        binding.imageViewCafeColor.setBackgroundResource(R.drawable.frame_124)
+                        binding.imageviewCafeColor.setBackgroundResource(R.drawable.frame_124)
                     }
                     binding.radiobtnLight.id -> {
-                        binding.imageViewCafeColor.setBackgroundResource(R.drawable.frame_125)
+                        binding.imageviewCafeColor.setBackgroundResource(R.drawable.frame_125)
                     }
                     binding.radiobtnWarm.id -> {
-                        binding.imageViewCafeColor.setBackgroundResource(R.drawable.frame_126)
+                        binding.imageviewCafeColor.setBackgroundResource(R.drawable.frame_126)
                     }
                     binding.radiobtnColorful.id -> {
-                        binding.imageViewCafeColor.setBackgroundResource(R.drawable.frame_127)
+                        binding.imageviewCafeColor.setBackgroundResource(R.drawable.frame_127)
                     }
 
                 }

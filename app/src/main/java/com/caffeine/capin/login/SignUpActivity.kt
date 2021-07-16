@@ -45,18 +45,18 @@ class SignUpActivity : AppCompatActivity() {
         lateinit var username: EditText
         lateinit var email: EditText
         lateinit var password: EditText
-        lateinit var newpassword: EditText
+        lateinit var newPassword: EditText
         username = binding.edittextName
         email = binding.edittextEmail
         password = binding.edittextPw
-        newpassword = binding.edittextPwagain
+        newPassword = binding.edittextPwagain
 
 
         val edittextList = listOf<EditText>(
             username,
             email,
             password,
-            newpassword
+            newPassword
         )
 
         edittextList.forEach { edittext ->
@@ -269,7 +269,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
     private fun imageviewButtonClickEvent() {
-        binding.imageViewTool.setOnClickListener() {
+        binding.imageviewTool.setOnClickListener() {
             val intent = Intent(this@SignUpActivity, LoginActivity::class.java)
             startActivity(intent)
         }
