@@ -42,7 +42,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_nickName"
-            style="@style/Headline2"
+            android:theme="@style/Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -59,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            theme="@style/Body3"
+            android:theme="@style/Body3"
             android:text="@{viewModel.userInfo.email}"
             android:textColor="@color/gray_4"
             android:textSize="12dp"
@@ -73,7 +73,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="@drawable/background_cafeti_tag"
-            style="@style/Body3"
+            android:theme="@style/Body3"
             android:paddingHorizontal="8dp"
             android:text="@{viewModel.userInfo.cafeti}"
             android:layout_marginTop="11dp"
@@ -103,7 +103,6 @@
                 android:layout_marginStart="23dp"
                 android:layout_marginTop="20dp"
                 android:text="아카이브"
-                style="@style/Subhead"
                 android:textColor="@color/pointcolor_1"
                 android:textSize="16dp"
                 android:theme="@style/Subhead"
@@ -129,7 +128,7 @@
                 android:layout_marginTop="10dp"
                 android:textColor="@color/gray_4"
                 android:textSize="14dp"
-                style="@style/Body2"
+                android:theme="@style/Body2"
                 app:layout_constraintBottom_toTopOf="@+id/textview_feed"
                 app:layout_constraintStart_toStartOf="@id/textview_archive"
                 app:layout_constraintTop_toBottomOf="@+id/textview_archive" />
@@ -142,7 +141,7 @@
                 android:text="피드"
                 android:textColor="@color/gray_4"
                 android:textSize="14dp"
-                style="@style/Body2"
+                android:theme="@style/Body2"
                 app:layout_constraintStart_toStartOf="@id/textview_pin"
                 app:layout_constraintTop_toBottomOf="@+id/textview_pin" />
 
@@ -153,7 +152,7 @@
                 android:text="@{Integer.toString(viewModel.userInfo.pinNum)}"
                 android:textColor="@color/subcolor_blue_4"
                 android:textSize="14dp"
-                style="@style/Body2"
+                android:theme="@style/Body2"
                 app:layout_constraintEnd_toEndOf="@id/button_archive"
                 app:layout_constraintTop_toTopOf="@id/textview_pin"
                 tools:text="25" />
@@ -165,7 +164,7 @@
                 android:text="@{Integer.toString(viewModel.userInfo.reviewNum)}"
                 android:textColor="@color/subcolor_blue_4"
                 android:textSize="14dp"
-                style="@style/Body2"
+                android:theme="@style/Body2"
                 app:layout_constraintEnd_toEndOf="@id/textview_pin_count"
                 app:layout_constraintTop_toTopOf="@id/textview_feed"
                 tools:text="17" />
@@ -178,7 +177,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:textColor="@color/pointcolor_1"
-            style="@style/Body2"
+            android:theme="@style/Body2"
             android:textSize="14dp"
             android:layout_marginTop="40dp"
             android:text="@string/terms_and_policy"
@@ -201,7 +200,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_copyright"
-            style="@style/Sub"
+            android:theme="@style/Sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/copyright"

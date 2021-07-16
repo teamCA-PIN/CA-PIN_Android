@@ -2,12 +2,18 @@ package com.caffeine.capin.review.write
 
 import android.content.Intent
 import android.content.pm.PackageManager
+import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.SpannableStringBuilder
+import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.CompoundButton
+import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -35,13 +41,12 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class WriteReviewActivity : AppCompatActivity() {
-    @Inject lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivityWriteReviewBinding
     private val viewModel by viewModels<WriteReviewViewModel>()
     private lateinit var pictureUri: Uri
     private var failedPermissions = ArrayList<String>()
-//    lateinit var header : String
-//    lateinit var editReviewId : String
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -50,26 +55,20 @@ class WriteReviewActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
-//        header = intent?.getStringExtra("feature").toString()
-//        editReviewId = intent?.getStringExtra("editReviewId").toString()
-
         setWriteReviewToolber()
         showStagingPictureDialog()
         stagePictures()
         switchButtonActivation()
         postReview()
         goToMapView()
+
     }
 
     private fun setWriteReviewToolber() {
         binding.toolbar.apply {
-//            if(header == "리뷰 수정하기") {
-//                setToolbarTitle(header)
-//            } else {
-                setToolbarTitle("리뷰 작성하기")
-//            }
+            setToolbarTitle("리뷰 작성하기")
             setBackButton {
-                //Todo: back button 클릭시 이벤트 추가
+                finish()
             }
         }
     }
@@ -84,13 +83,18 @@ class WriteReviewActivity : AppCompatActivity() {
         buttonList.apply {
             add(
                 CapinDialogButton("앨범에서 선택",
-                    ContextCompat.getColor(this@WriteReviewActivity, R.color.pointcolor_1),this@WriteReviewActivity,
+                    ContextCompat.getColor(this@WriteReviewActivity, R.color.pointcolor_1),
+                    this@WriteReviewActivity,
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
-                            if(viewModel.checkImagesCount()) {
+                            if (viewModel.checkImagesCount()) {
                                 checkGalleryPermissions()
                             } else {
-                                createCapinRejectToast(this@WriteReviewActivity, "사진은 5장까지 추가가능합니다.", 200)?.show()
+                                createCapinRejectToast(
+                                    this@WriteReviewActivity,
+                                    "사진은 5장까지 추가가능합니다.",
+                                    200
+                                )?.show()
                             }
                             dialog.dismiss()
                         }
@@ -98,13 +102,18 @@ class WriteReviewActivity : AppCompatActivity() {
             )
             add(
                 CapinDialogButton("카메라 촬영",
-                    ContextCompat.getColor(this@WriteReviewActivity, R.color.pointcolor_1),this@WriteReviewActivity,
+                    ContextCompat.getColor(this@WriteReviewActivity, R.color.pointcolor_1),
+                    this@WriteReviewActivity,
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
-                            if(viewModel.checkImagesCount()) {
+                            if (viewModel.checkImagesCount()) {
                                 checkCameraPermissions()
                             } else {
-                                createCapinRejectToast(this@WriteReviewActivity, "최대 5장까지 추가가능합니다.", 200)?.show()
+                                createCapinRejectToast(
+                                    this@WriteReviewActivity,
+                                    "최대 5장까지 추가가능합니다.",
+                                    200
+                                )?.show()
                             }
                             dialog.dismiss()
                         }
@@ -119,7 +128,11 @@ class WriteReviewActivity : AppCompatActivity() {
 
     private fun checkCameraPermissions() {
         TAKE_PICTURE_PERMISSIONS.forEach { permission ->
-            if (ContextCompat.checkSelfPermission(this, permission) != PackageManager.PERMISSION_GRANTED) {
+            if (ContextCompat.checkSelfPermission(
+                    this,
+                    permission
+                ) != PackageManager.PERMISSION_GRANTED
+            ) {
                 failedPermissions.add(permission)
                 requestCameraPermission.launch(permission)
             }
@@ -130,7 +143,11 @@ class WriteReviewActivity : AppCompatActivity() {
     }
 
     private fun checkGalleryPermissions() {
-        if (ContextCompat.checkSelfPermission(this, PERMISSION_READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
+        if (ContextCompat.checkSelfPermission(
+                this,
+                PERMISSION_READ_EXTERNAL_STORAGE
+            ) != PackageManager.PERMISSION_GRANTED
+        ) {
             requestGalleryPermission.launch(PERMISSION_READ_EXTERNAL_STORAGE)
         } else {
             val intent = Intent(Intent.ACTION_GET_CONTENT)
@@ -141,14 +158,14 @@ class WriteReviewActivity : AppCompatActivity() {
     }
 
     private val requestCameraPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted ->
-            if(isGranted) {
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
+            if (isGranted) {
                 takePicture()
             }
         }
 
     private val requestGalleryPermission =
-        registerForActivityResult(ActivityResultContracts.RequestPermission()){ isGranted ->
+        registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
             if (isGranted) {
                 val intent = Intent(Intent.ACTION_GET_CONTENT)
                 intent.type = MediaStore.Images.Media.CONTENT_TYPE
@@ -158,28 +175,31 @@ class WriteReviewActivity : AppCompatActivity() {
         }
 
     private fun takePicture() {
-        val photoFile = File.createTempFile("IMG_", ".jpg", getExternalFilesDir(Environment.DIRECTORY_PICTURES))
+        val photoFile =
+            File.createTempFile("IMG_", ".jpg", getExternalFilesDir(Environment.DIRECTORY_PICTURES))
         pictureUri = FileProvider.getUriForFile(this, "${packageName}.provider", photoFile)
         cameraActivityLauncher.launch(pictureUri)
     }
 
-    private val cameraActivityLauncher = registerForActivityResult(ActivityResultContracts.TakePicture()) { isSaved ->
-        if(isSaved) {
-            viewModel.addImagesOfCafe(PictureUriEntity(pictureUri))
+    private val cameraActivityLauncher =
+        registerForActivityResult(ActivityResultContracts.TakePicture()) { isSaved ->
+            if (isSaved) {
+                viewModel.addImagesOfCafe(PictureUriEntity(pictureUri))
+            }
         }
-    }
 
-    private val getHousePicture = registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
-        if(result.data != null) {
-            Log.e("gallery", "${result.data}")
-            viewModel.addImagesOfCafe(PictureUriEntity(result.data?.data))
+    private val getHousePicture =
+        registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
+            if (result.data != null) {
+                Log.e("gallery", "${result.data}")
+                viewModel.addImagesOfCafe(PictureUriEntity(result.data?.data))
+            }
         }
-    }
 
     private fun stagePictures() {
         binding.recyclerviewPicture.apply {
             isNestedScrollingEnabled = false
-            adapter = WriteReviewPictureAdapter(object: WriteReviewPictureAdapter.DeleteListener {
+            adapter = WriteReviewPictureAdapter(object : WriteReviewPictureAdapter.DeleteListener {
                 override fun delete(pictureUriEntity: PictureUriEntity) {
                     viewModel.deleteImageOfCafe(pictureUriEntity)
                 }
@@ -216,11 +236,13 @@ class WriteReviewActivity : AppCompatActivity() {
 
     private fun postReview() {
         binding.buttonPostReview.setOnClickListener {
-            viewModel.changeCheckedRecommend(mapOf<CompoundButton, Int>(
-                binding.checkboxTaste to 1,
-                binding.checkboxFeeling to 0
-            ))
-           viewModel.uploadReview(contentResolver)
+            viewModel.changeCheckedRecommend(
+                mapOf<CompoundButton, Int>(
+                    binding.checkboxTaste to 1,
+                    binding.checkboxFeeling to 0
+                )
+            )
+            viewModel.uploadReview(contentResolver)
         }
     }
 
@@ -230,34 +252,12 @@ class WriteReviewActivity : AppCompatActivity() {
         }
     }
 
-//    private fun putMyReviewToServer() {
-//        val requestPutReviewData = RequestPutReviewData(
-//            recommend = null,
-//            content = "",
-//            rating = 3.5f
-//        )
-//
-//        val capinApiService = ServiceCreator.capinApiService.putMyReview(
-//            userPreferenceManager.getUserToken(),
-//            editReviewId,
-//            requestPutReviewData
-//        )
-//
-//        capinApiService.enqueue(object : Callback<BaseResponse>{
-//            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-//                Log.d("fail", "error:$t")
-//            }
-//
-//            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-//                finish()
-//            }
-//        })
-//    }
-
     companion object {
         private const val PERMISSION_CAMERA = android.Manifest.permission.CAMERA
-        private const val PERMISSION_WRITE_EXTERNAL_STORAGE = android.Manifest.permission.WRITE_EXTERNAL_STORAGE
-        private const val PERMISSION_READ_EXTERNAL_STORAGE = android.Manifest.permission.READ_EXTERNAL_STORAGE
+        private const val PERMISSION_WRITE_EXTERNAL_STORAGE =
+            android.Manifest.permission.WRITE_EXTERNAL_STORAGE
+        private const val PERMISSION_READ_EXTERNAL_STORAGE =
+            android.Manifest.permission.READ_EXTERNAL_STORAGE
         private val TAKE_PICTURE_PERMISSIONS = arrayOf(
             PERMISSION_CAMERA,
             PERMISSION_WRITE_EXTERNAL_STORAGE

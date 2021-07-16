@@ -51,14 +51,16 @@
         <activity android:name=".login.SignUpActivity" />
         <activity android:name=".login.LoginActivity"></activity>
         <activity android:name=".login.SplashActivity" >
+
+        </activity>
+        <activity android:name=".detail.CafeDetailsActivity" />
+        <activity android:name=".review.write.WriteReviewActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.write.WriteReviewActivity"></activity>
         <activity android:name=".category.ui.SelectCategoryActivity"></activity>
         <activity android:name=".detail.menus.CafeMenusActivity" />
 
