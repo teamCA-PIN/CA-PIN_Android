@@ -15,6 +15,7 @@
         android:layout_marginTop="276dp"
         android:theme="@style/Body2"
         android:textColor="@color/gray_4"
+        android:visibility="invisible"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />

@@ -51,6 +51,11 @@ class MyPageReviewFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        setMyReviewAdapter()
+        getMyReviewFromServer()
+    }
+
+    private fun setMyReviewAdapter() {
         myReviewAdapter = MyReviewAdapter()
         binding.mypageReviewRcv.adapter = myReviewAdapter
 
@@ -62,12 +67,6 @@ class MyPageReviewFragment : Fragment() {
                 showEditReviewDialog()
             }
         })
-
-        getMyReviewFromServer()
-
-        if(myReviewAdapter.myReviewList.size > 0) {
-            binding.ifBasicReviewTv.isVisible = false
-        }
     }
 
     private fun showEditReviewDialog() {
@@ -144,8 +143,8 @@ class MyPageReviewFragment : Fragment() {
                 }
                 binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
 
-                if(myReviewAdapter.myReviewList.size > 1) {
-                    binding.ifBasicReviewTv.isVisible = false
+                if(myReviewAdapter.myReviewList.size < 1) {
+                    binding.ifBasicReviewTv.isVisible = true
                 }
             }
         })
@@ -156,7 +155,6 @@ class MyPageReviewFragment : Fragment() {
             userPreferenceManager.getUserToken(),
             reviewId = removeReviewInfo._id
         )
-        Log.d("리미-reviewId", removeReviewInfo._id)
 
         capinApiService.enqueue(object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
@@ -165,8 +163,11 @@ class MyPageReviewFragment : Fragment() {
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 if (response.isSuccessful) {
-                    Log.d("리미","리뷰 삭제 성공인가")
                     myReviewAdapter.notifyDataSetChanged()
+
+                    if(myReviewAdapter.myReviewList.size < 1) {
+                        binding.ifBasicReviewTv.isVisible = true
+                    }
                 }
             }
         })
