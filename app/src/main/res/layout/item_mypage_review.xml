@@ -55,7 +55,7 @@
             app:layout_constraintBottom_toBottomOf="@+id/mypage_review_seemore_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/mypage_review_seemore_btn"
-            app:srcCompat="@drawable/icon_edit" />
+            app:srcCompat="@drawable/icon_edit_horizontal" />
 
         <ImageView
             android:id="@+id/mypage_review_seemore_btn"
@@ -116,11 +116,11 @@
             android:id="@+id/mypage_review_imgs_first_iv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:layout_marginTop="42dp"
             android:scaleType="centerCrop"
+            android:layout_marginTop="10dp"
             app:layout_constraintDimensionRatio="1:1"
             app:layout_constraintStart_toStartOf="@+id/mypage_review_contents_tv"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_review_contents_tv"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_review_type_flavor_btn"
             app:layout_constraintWidth_percent="0.222"
             app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
             app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />

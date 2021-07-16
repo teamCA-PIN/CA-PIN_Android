@@ -71,7 +71,20 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageView
-            android:id="@+id/pin_detail_delete_btn"
+            android:id="@+id/pin_detail_inactive_delete_btn"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintWidth_percent="0.078"
+            android:layout_marginTop="38dp"
+            android:layout_marginEnd="16dp"
+            android:visibility="gone"
+            android:src="@drawable/icon_delete_ver_2"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/pin_detail_active_delete_btn"
             android:layout_width="0dp"
             android:layout_height="0dp"
             app:layout_constraintDimensionRatio="1:1"

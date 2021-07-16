@@ -4,8 +4,10 @@ import android.content.Intent
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.MainActivity
+import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivitySplashBinding
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.transparentStatusAndNavigation
@@ -29,6 +31,9 @@ class SplashActivity : AppCompatActivity() {
             .subscribe {
                 checkIsAlreadyLogin()
             }
+
+        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.animation_fade_in)
+        binding.splashIv.startAnimation(fadeInAnim)
     }
 
     private fun checkIsAlreadyLogin() {

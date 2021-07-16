@@ -39,7 +39,6 @@
         <activity android:name=".mypage.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
         <activity android:name=".MainActivity"/>
-
         <activity android:name=".cafeti.CoffeeTasteActivity" />
         <activity android:name=".cafeti.CafeColorActivity" />
         <activity android:name=".cafeti.CafeStyleActivity" />
@@ -50,10 +49,7 @@
         <activity android:name=".login.FindPasswordActivity"/>
         <activity android:name=".login.LoginPwActivity"/>
         <activity android:name=".login.SignUpActivity" />
-
-        <activity android:name=".login.LoginActivity">
-
-    </activity>
+        <activity android:name=".login.LoginActivity"></activity>
         <activity android:name=".login.SplashActivity" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -61,7 +57,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
         <activity android:name=".detail.CafeDetailsActivity" />
         <activity android:name=".review.write.WriteReviewActivity"></activity>
         <activity android:name=".category.ui.SelectCategoryActivity"></activity>
