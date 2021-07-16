@@ -26,10 +26,11 @@
             app:layout_constraintEnd_toEndOf="parent"/>
 
 
-        <androidx.appcompat.widget.AppCompatImageView
+        <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/imageview_cafeti"
             android:layout_width="0dp"
             android:layout_height="0dp"
+            app:shapeAppearanceOverlay="@style/shapeapperance_circle"
             load_url="@{viewModel.userInfo.profileImg}"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintWidth_percent="0.33"
@@ -58,7 +59,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="3dp"
-            style="@style/Body3"
+            theme="@style/Body3"
             android:text="@{viewModel.userInfo.email}"
             android:textColor="@color/gray_4"
             android:textSize="12dp"
@@ -88,12 +89,11 @@
             android:layout_height="0dp"
             android:background="@drawable/background_archive_info"
             android:elevation="5dp"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_marginTop="40dp"
             app:layout_constraintDimensionRatio="1:0.575"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_cafeti"
-            app:layout_constraintVertical_bias="0.098"
             app:layout_constraintWidth_percent="0.55">
 
             <androidx.appcompat.widget.AppCompatTextView

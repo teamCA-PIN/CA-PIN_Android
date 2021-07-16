@@ -15,6 +15,5 @@ data class CafeDetailEntity(
     val offday: List<String>?,
     val latitude: Double,
     val longitude: Double,
-    val isSaved: Boolean,
-    val average: Float
+    val average: Float?
 )
