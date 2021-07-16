@@ -9,14 +9,18 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.databinding.FragmentMapProfileBinding
+import com.caffeine.capin.login.LoginActivity
 import com.caffeine.capin.mypage.MyPageActivity
+import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.AutoClearedValue
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MapProfileFragment : Fragment() {
     private var binding by AutoClearedValue<FragmentMapProfileBinding>()
     private val viewModel by viewModels<MapProfileViewModel>()
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -32,12 +36,24 @@ class MapProfileFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
 
+        logout()
+
         binding.constraintlayoutArchive.setOnClickListener {
             val intent = Intent(this@MapProfileFragment.requireActivity(), MyPageActivity::class.java)
             startActivity(intent)
         }
         binding.buttonExit.setOnClickListener {
             findNavController().popBackStack()
+        }
+    }
+
+    private fun logout() {
+        binding.textviewLogout.setOnClickListener {
+            val intent = Intent(requireContext(), LoginActivity::class.java)
+            intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+            intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+            userPreferenceManager.setUserToken("")
+            startActivity(intent)
         }
     }
 }

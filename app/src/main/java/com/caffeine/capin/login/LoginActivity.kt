@@ -39,7 +39,6 @@ class LoginActivity : AppCompatActivity() {
         loginButtonClickEvent()
         signupTextClickEvent()
         findPwTextClickEvent()
-        checkIsAlreadyLogin()
 
         lateinit var email: EditText
         lateinit var password: EditText
@@ -114,12 +113,6 @@ class LoginActivity : AppCompatActivity() {
                 )
                 isClickable = false
             }
-        }
-    }
-
-    private fun checkIsAlreadyLogin() {
-        if (!userPreferenceManager.getUserToken().isNullOrEmpty()) {
-            successLogin()
         }
     }
 
