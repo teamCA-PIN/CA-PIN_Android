@@ -1,6 +1,7 @@
 package com.caffeine.capin.cafeti
 
 import android.content.Intent
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.util.Log
 import android.widget.RadioGroup
@@ -12,15 +13,18 @@ import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityCafeColorBinding
 import com.caffeine.capin.network.ServiceCreator
+import com.caffeine.capin.preference.UserPreferenceManager
+import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
+@AndroidEntryPoint
 class CafeColorActivity : AppCompatActivity() {
     private lateinit var binding: ActivityCafeColorBinding
     private var cafetiResultList = arrayListOf<Int>()
-    private val token = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGViMTAwMTJkNGNhZDY0ZjBkNmVhMDAiLCJpYXQiOjE2MjYzODAxNjYsImV4cCI6MTYyNjQ2NjU2Nn0.A0dkNMMFEoS9210MiW5Yd8GghsKs8NXbFnDKovznDrg"
-
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,7 +33,6 @@ class CafeColorActivity : AppCompatActivity() {
 
         if (intent.hasExtra("cafeti_result_list")) {
             cafetiResultList = intent.getSerializableExtra("cafeti_result_list") as ArrayList<Int>
-            Log.d("CafeStyleresult", "$cafetiResultList")
         }
 
         beforeButtonClickEvent()
@@ -103,7 +106,7 @@ class CafeColorActivity : AppCompatActivity() {
         )
         val call: Call<ResponseCafetiData> =
             ServiceCreator.capinApiService.postCafeti(
-                token,
+                userPreferenceManager.getUserToken(),
                 requestCafetiData
             )
         call.enqueue(object : Callback<ResponseCafetiData> {
