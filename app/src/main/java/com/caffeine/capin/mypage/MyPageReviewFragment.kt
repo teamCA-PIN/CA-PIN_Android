@@ -114,7 +114,7 @@ class MyPageReviewFragment : Fragment() {
                     deleteMyReviewAtServer()
                     myReviewAdapter.myReviewList.remove(removeReviewInfo)
                     myReviewAdapter.notifyDataSetChanged()
-                    binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
+                    binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
                 }
             }).build()
         dialog.show(childFragmentManager, "DeleteReview")
@@ -142,7 +142,7 @@ class MyPageReviewFragment : Fragment() {
                     Log.d("리미", response.body().toString())
                     myReviewAdapter.notifyDataSetChanged()
                 }
-                binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 뷰")
+                binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
 
                 if(myReviewAdapter.myReviewList.size > 1) {
                     binding.ifBasicReviewTv.isVisible = false

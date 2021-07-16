@@ -4,6 +4,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.view.isGone
 import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -131,8 +132,8 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
                     }
                 }
             } else {
-                binding.mypageReviewTypeFlavorBtn.isVisible = false
-                binding.mypageReviewTypeMoodBtn.isVisible = false
+                binding.mypageReviewTypeFlavorBtn.isGone = true
+                binding.mypageReviewTypeMoodBtn.isGone = true
             }
 
             binding.mypageReviewEditBtn.setOnClickListener {
