@@ -6,6 +6,7 @@ import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.bumptech.glide.Glide
+import com.caffeine.capin.MainActivity
 import com.caffeine.capin.databinding.ActivityCafetiResultBinding
 import retrofit2.Call
 import retrofit2.Callback
@@ -36,7 +37,7 @@ class CafetiResultActivity : AppCompatActivity() {
 
     private fun cafetiTestFinishButtonClickEvent() {
         binding.btnCafetitestfinish.setOnClickListener() {
-            val intent = Intent(this@CafetiResultActivity, CafetiActivity::class.java)
+            val intent = Intent(this@CafetiResultActivity, MainActivity::class.java)
             startActivity(intent)
         }
     }
