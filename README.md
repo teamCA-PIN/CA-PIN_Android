@@ -1,5 +1,9 @@
 # 믿고 보는 카페 맵, C A : P I N ☕
+
 <img src="https://user-images.githubusercontent.com/72273531/125905703-553419e1-ba79-4a6c-8c3a-2a4d9ca022ac.png" />  
+
+### 📌 Project Description
+------
 
 **오늘도 '카페 어디가지?' 고민하는 분들을 위한 카페맵 앱 서비스 / [Service OPR](https://www.notion.so/O-P-R-f521f789248347949bef26a1ef0d2354#2f8521e618114579b183cdcd99188d2f)**  
 > **Team-CA:PIN Android**   
@@ -9,15 +13,7 @@
 <br>
 
 
-### 📌 Project Description
-------
 
-
-<br>
-
-
-### 📌 Function Description
-------
 
 
 <br>
@@ -51,15 +47,15 @@
 <img src="https://user-images.githubusercontent.com/72273531/125911758-8b2ca8ae-24b4-4424-9fa0-e09768eec2ec.jpg" width="700" height="264" />
 
 
+<br>
 
 <br>
 
 ### 💡 Main Feature
 ------
-<img src="https://user-images.githubusercontent.com/72273531/125924705-ee14c6a4-250e-4e8b-a3d2-9c78a7c86ad7.jpg" />  
+<img src="https://user-images.githubusercontent.com/72273531/125932769-7d5a97f4-f767-451c-88cc-a7b7b4677e37.png" />  
 
-
-
+<br>
 
 <br>
 
@@ -70,7 +66,7 @@
 <!-- markdownlint-disable -->
 <table>
   <tr>
-    <td align="center"><a href="https://github.com/SONPYEONGHWA"><img src="https://user-images.githubusercontent.com/72273531/125926480-93c5341c-3e7e-4d1a-83cf-24424c9f18a9.png";" alt=""/><br /><sub><b>손평화</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=SONPYEONGHWA" title="Code">💻</a><br /><sub><b>카핀맵</b></sub></a><br /><sub><b>마이맵</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/SONPYEONGHWA"><img src="https://user-images.githubusercontent.com/72273531/125926480-93c5341c-3e7e-4d1a-83cf-24424c9f18a9.png";" alt=""/><br /><sub><b>손평화</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=SONPYEONGHWA" title="Code">💻</a><br /><sub><b>카핀맵</b></sub></a><br /><sub><b>마이맵</b></sub></a><br /><sub><b>리뷰 </b></sub></a><br /></td>
     <td align="center"><a href="https://github.com/malibinYun"><img src="https://user-images.githubusercontent.com/72273531/125926366-bb800691-a15e-44c1-b4bd-cd27d55e521b.png";" alt=""/><br /><sub><b>윤혁</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=malibinYun" title="Code">💻</a><br /><sub><b>카페 상세 보기</b></sub></a><br /><sub><b>카페 메뉴/리뷰</b></sub></a><br /></td>
      <td align="center"><a href="https://github.com/CHOSUNGRIM"><img src="https://user-images.githubusercontent.com/72273531/125926250-90af849a-3517-474a-b8a3-9039c99a1249.png";" alt=""/><br /><sub><b>조성림</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=CHOSUNGRIM" title="Code">💻</a><br /><sub><b>마이페이지</b></sub></a><br /><sub><b>마이 카테고리/리뷰</b></sub></a><br /></td>
      <td align="center"><a href="https://github.com/hongeungual"><img src="https://user-images.githubusercontent.com/72273531/125926104-23cdc2ab-6a8f-486b-a5b9-33aeebd03c90.png";" alt=""/><br /><sub><b>홍은결</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=hongeungual" title="Code">💻</a><br /><sub><b>로그인/회원가입</b></sub></a><br /><sub><b>CAFETI 검사</b></sub></a><br /></td>
