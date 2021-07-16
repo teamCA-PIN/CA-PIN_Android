@@ -23,6 +23,7 @@ import javax.inject.Inject
 class MyPageCategoryEditActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMyPageCategoryEditBinding
+
     @Inject
     lateinit var userPreferenceManager: UserPreferenceManager
 
