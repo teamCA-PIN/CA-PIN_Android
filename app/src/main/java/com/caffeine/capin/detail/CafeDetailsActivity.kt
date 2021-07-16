@@ -2,12 +2,8 @@ package com.caffeine.capin.detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import com.caffeine.capin.BuildConfig
-import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
 import com.caffeine.capin.review.CafeReviewsAdapter
@@ -34,10 +30,9 @@ class CafeDetailsActivity : AppCompatActivity() {
 //        binding.toolbar.setNavigationIcon(R.drawable.icon_back_black)
 //        binding.toolbar.setNavigationOnClickListener { finish() }
 
-//
-//        cafeDetailsViewModel.cafeDetails.observe(this) {
-//            adapter.submitList(it.reviews)
-//        }
+        cafeDetailsViewModel.cafeReviews.observe(this) {
+            adapter.submitList(it)
+        }
         cafeDetailsViewModel.loadCafeDetails(getCafeId())
     }
 
