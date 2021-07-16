@@ -1,20 +1,16 @@
 package com.caffeine.capin.mypage
 
-import android.annotation.SuppressLint
 import android.content.Intent
-import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.annotation.ColorRes
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import com.caffeine.capin.R
-import com.caffeine.capin.R.color.gray_2
 import com.caffeine.capin.customview.*
 import com.caffeine.capin.databinding.FragmentMyPageCategoryBinding
 import com.caffeine.capin.mypage.mycategory.MyCategory
@@ -28,7 +24,8 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MyPageCategoryFragment : Fragment() {
-    @Inject lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject
+    lateinit var userPreferenceManager: UserPreferenceManager
     private val viewModel by viewModels<MyPageViewModel>()
     private var binding by AutoClearedValue<FragmentMyPageCategoryBinding>()
     private lateinit var myCategoryAdapter: MyCategoryAdapter
@@ -60,8 +57,10 @@ class MyPageCategoryFragment : Fragment() {
 
         binding.mypageCategoryAddCl.setOnClickListener {
             val intent =
-                Intent(this@MyPageCategoryFragment.requireContext(),
-                    MyPageCategoryEditActivity::class.java)
+                Intent(
+                    this@MyPageCategoryFragment.requireContext(),
+                    MyPageCategoryEditActivity::class.java
+                )
             intent.putExtra("feature", "새 카테고리")
             startActivity(intent)
         }
@@ -168,11 +167,12 @@ class MyPageCategoryFragment : Fragment() {
     private fun updateCategoryList() {
         viewModel.categories.observe(viewLifecycleOwner) { categories ->
             Log.d("리미", categories.toString())
-            (binding.mypageCategoryRcvInclude.categoryRcv.adapter as MyCategoryAdapter).myCategoryList = categories as MutableList<MyCategory>
+            (binding.mypageCategoryRcvInclude.categoryRcv.adapter as MyCategoryAdapter).myCategoryList =
+                categories as MutableList<MyCategory>
             (binding.mypageCategoryRcvInclude.categoryRcv.adapter as MyCategoryAdapter).notifyDataSetChanged()
             Log.e("success", "dfsdg32rdsfs")
             Log.d("리미2", categories.toString())
-            if(categories.size > 1) {
+            if (categories.size > 1) {
                 binding.ifBasicCategoryTv.isVisible = false
             }
         }
