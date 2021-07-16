@@ -2,15 +2,14 @@ package com.caffeine.capin.detail
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.View
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.appcompat.content.res.AppCompatResources
-import com.caffeine.capin.BuildConfig
-import com.caffeine.capin.R
+import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
 import com.caffeine.capin.review.CafeReviewsAdapter
+import com.caffeine.capin.review.all.AllCafeReviewsActivity
+import com.caffeine.capin.review.write.WriteReviewActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -28,26 +27,40 @@ class CafeDetailsActivity : AppCompatActivity() {
 
         val adapter = CafeReviewsAdapter()
         binding.listReviews.adapter = adapter
-
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
-//        binding.toolbar.setNavigationIcon(R.drawable.icon_back_black)
-//        binding.toolbar.setNavigationOnClickListener { finish() }
+        binding.buttonBack.setOnClickListener { finish() }
+        binding.buttonAllReviews.setOnClickListener { deployAllCafeReviewsActivity() }
+        binding.buttonWriteReview.setOnClickListener { deployWriteReviewActivity() }
+        binding.buttonAddPin.setOnClickListener { deploySelectCategoryActivity() }
 
-
-        cafeDetailsViewModel.cafeDetails.observe(this) {
-            adapter.submitList(it.reviews)
-        }
-        cafeDetailsViewModel.loadCafeDetails("")
+        cafeDetailsViewModel.cafeReviews.observe(this) { adapter.submitList(it) }
+        cafeDetailsViewModel.loadCafeDetails(getCafeId())
     }
 
     private fun getCafeId(): String {
-        return if (BuildConfig.DEBUG) "60e96789868b7d75f394b00b"
-        else intent.getStringExtra(KEY_CAFE_ID) ?: error("cafe id must be put in intent")
+        return intent.getStringExtra(KEY_CAFE_ID) ?: error("cafe id must be put in intent")
     }
 
     private fun deployMenusActivity() {
         Intent(this, CafeMenusActivity::class.java)
             .apply { putExtra(CafeMenusActivity.KEY_CAFE_ID, getCafeId()) }
+            .also { startActivity(it) }
+    }
+
+    private fun deployAllCafeReviewsActivity() {
+        Intent(this, AllCafeReviewsActivity::class.java)
+            .apply { putExtra(AllCafeReviewsActivity.KEY_CAFE_ID, getCafeId()) }
+            .also { startActivity(it) }
+    }
+
+    private fun deployWriteReviewActivity() {
+        Intent(this, WriteReviewActivity::class.java)
+            .apply { putExtra(WriteReviewActivity.KEY_CAFE_ID, getCafeId()) }
+            .also { startActivity(it) }
+    }
+
+    private fun deploySelectCategoryActivity() {
+        Intent(this, SelectCategoryActivity::class.java)
             .also { startActivity(it) }
     }
 

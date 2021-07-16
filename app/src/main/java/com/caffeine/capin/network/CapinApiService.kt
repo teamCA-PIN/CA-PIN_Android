@@ -15,6 +15,7 @@ import com.caffeine.capin.mypage.api.response.ResponseMyData
 import com.caffeine.capin.mypage.api.response.ResponseMyPinData
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.network.response.CafeMenusResponse
+import com.caffeine.capin.network.response.CafeReviewsResponse
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
@@ -144,4 +145,9 @@ interface CapinApiService {
 
     @GET("/user/myInfo")
     fun getUserProfile(): Single<ResponseMyData>
+
+    @GET("/reviews")
+    fun getCafeReviewsOf(
+        @Query("cafe") cafeId: String
+    ): Call<CafeReviewsResponse>
 }

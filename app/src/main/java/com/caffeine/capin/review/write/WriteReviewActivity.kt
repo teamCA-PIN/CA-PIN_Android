@@ -2,40 +2,33 @@ package com.caffeine.capin.review.write
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
+import android.graphics.Bitmap
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.CompoundButton
-import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
+import com.bumptech.glide.Glide
+import com.bumptech.glide.request.target.SimpleTarget
 import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.R
-import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityWriteReviewBinding
-import com.caffeine.capin.mypage.api.request.RequestPutReviewData
-import com.caffeine.capin.network.BaseResponse
+import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.HorizontalItemDecoration
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.File
 import javax.inject.Inject
 
@@ -47,6 +40,7 @@ class WriteReviewActivity : AppCompatActivity() {
     private val viewModel by viewModels<WriteReviewViewModel>()
     private lateinit var pictureUri: Uri
     private var failedPermissions = ArrayList<String>()
+    private var tagCheckBoxList = mapOf<CompoundButton, Int>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -55,23 +49,50 @@ class WriteReviewActivity : AppCompatActivity() {
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
 
+        tagCheckBoxList = mapOf(
+            binding.checkboxFeeling to 0,
+            binding.checkboxTaste to 1
+        )
+
         setWriteReviewToolber()
         showStagingPictureDialog()
         stagePictures()
         switchButtonActivation()
         postReview()
         goToMapView()
-
+        settingBeforeReview()
     }
 
     private fun setWriteReviewToolber() {
         binding.toolbar.apply {
-            setToolbarTitle("리뷰 작성하기")
+            if (intent.hasExtra(EDIT_REVIEW)) {
+                setToolbarTitle("리뷰 수정하기")
+            } else {
+                setToolbarTitle("리뷰 작성하기")
+            }
+
             setBackButton {
                 finish()
             }
         }
     }
+
+    private fun settingBeforeReview() {
+        if (intent.hasExtra(EDIT_REVIEW)) {
+            val gson = Gson()
+            val review = gson.fromJson(intent.getStringExtra(EDIT_REVIEW), MyReview::class.java)
+            review.recommend.forEach { tag ->
+                tagCheckBoxList.keys.find {
+                    tag == tagCheckBoxList[it]
+                }?.isChecked = true
+            }
+
+            viewModel.changeCheckedRecommend(review.recommend)
+            viewModel.contentsOfReview.value = review.content
+            viewModel.rateOfReview.value = review.rating.toFloat()
+        }
+    }
+
 
     private fun showStagingPictureDialog() {
         val buttonList = ArrayList<CapinDialogButton>()
@@ -175,8 +196,7 @@ class WriteReviewActivity : AppCompatActivity() {
         }
 
     private fun takePicture() {
-        val photoFile =
-            File.createTempFile("IMG_", ".jpg", getExternalFilesDir(Environment.DIRECTORY_PICTURES))
+        val photoFile = File.createTempFile("IMG_", ".jpg", getExternalFilesDir(Environment.DIRECTORY_PICTURES))
         pictureUri = FileProvider.getUriForFile(this, "${packageName}.provider", photoFile)
         cameraActivityLauncher.launch(pictureUri)
     }
@@ -236,12 +256,11 @@ class WriteReviewActivity : AppCompatActivity() {
 
     private fun postReview() {
         binding.buttonPostReview.setOnClickListener {
-            viewModel.changeCheckedRecommend(
-                mapOf<CompoundButton, Int>(
-                    binding.checkboxTaste to 1,
-                    binding.checkboxFeeling to 0
-                )
-            )
+            val checkedTags = mutableListOf<Int?>()
+            tagCheckBoxList.forEach {
+                if (it.key.isChecked) checkedTags.add(it.value)
+            }
+            viewModel.changeCheckedRecommend(checkedTags)
             viewModel.uploadReview(contentResolver)
         }
     }
@@ -252,7 +271,9 @@ class WriteReviewActivity : AppCompatActivity() {
         }
     }
 
+
     companion object {
+        private val EDIT_REVIEW = "edit_review"
         private const val PERMISSION_CAMERA = android.Manifest.permission.CAMERA
         private const val PERMISSION_WRITE_EXTERNAL_STORAGE =
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE
@@ -262,6 +283,7 @@ class WriteReviewActivity : AppCompatActivity() {
             PERMISSION_CAMERA,
             PERMISSION_WRITE_EXTERNAL_STORAGE
         )
-    }
 
+        const val KEY_CAFE_ID = "KEY_CAFE_ID"
+    }
 }

@@ -39,7 +39,7 @@ class WriteReviewPictureAdapter(private val listener: DeleteListener) : ListAdap
                 oldItem: PictureUriEntity,
                 newItem: PictureUriEntity
             ): Boolean {
-                return oldItem.uri == newItem.uri
+                return oldItem.hashCode() == newItem.hashCode()
             }
 
             override fun areContentsTheSame(

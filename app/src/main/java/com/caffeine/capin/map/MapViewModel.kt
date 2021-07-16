@@ -28,8 +28,8 @@ class MapViewModel @Inject constructor(
     val exposedMarker: LiveData<ArrayList<Marker>>
         get() = _exposedMarker
 
-    private val _cafeInsideCurrentCamera = MutableLiveData<Map<CafeInformationEntity, Boolean>>()
-    val cafeInsideCurrentCamera: LiveData<Map<CafeInformationEntity, Boolean>>
+    private val _cafeInsideCurrentCamera = MutableLiveData<Map<CafeInformationEntity, Boolean>?>()
+    val cafeInsideCurrentCamera: LiveData<Map<CafeInformationEntity, Boolean>?>
         get() = _cafeInsideCurrentCamera
 
     private var cafeList = mutableMapOf<CafeInformationEntity, Boolean>()
@@ -38,8 +38,8 @@ class MapViewModel @Inject constructor(
     val selectedCafe: LiveData<CafeDetailEntity>
         get() = _selectedCafe
 
-    private val _cafeCurrentChecked = MutableLiveData<CafeInformationEntity>()
-    val cafeCurrentChecked: LiveData<CafeInformationEntity>
+    private val _cafeCurrentChecked = MutableLiveData<CafeInformationEntity?>()
+    val cafeCurrentChecked: LiveData<CafeInformationEntity?>
         get() = _cafeCurrentChecked
 
     fun changeCafeCurrentChecked(cafe: CafeInformationEntity) {
@@ -54,13 +54,7 @@ class MapViewModel @Inject constructor(
     val capinMapCafeLocation: LiveData<List<CafeInformationEntity>>
         get() = _capinMapCafeLocations
 
-    fun changeCapinMapLocations(mapList: List<CafeInformationEntity>) {
-        _capinMapCafeLocations.value = mapList
-        mapList.forEach { cafe ->
-            cafeList[cafe] = false
-        }
-        _cafeInsideCurrentCamera.postValue(cafeList)
-    }
+
 
     fun getSelectedCafeDetailInfo() {
         cafeInsideCurrentCamera.value?.forEach { isSelectedCafe ->
@@ -78,12 +72,10 @@ class MapViewModel @Inject constructor(
     }
 
     fun switchToCapinMap() {
-        cafeList.clear()
         getCafeLocations()
     }
 
     fun switchToMyMap() {
-        cafeList.clear()
         getMyMapPins()
     }
 
@@ -94,6 +86,7 @@ class MapViewModel @Inject constructor(
 
     fun clearExposedMarker() {
         _exposedMarker.value?.clear()
+
     }
 
     fun addCafeInsideCurrentCamera(key: CafeInformationEntity, isSelected: Boolean) {
@@ -162,10 +155,7 @@ class MapViewModel @Inject constructor(
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
                 cafeList.clear()
-                it.forEach { cafe ->
-                    cafeList[cafe] = false
-                }
-                _cafeInsideCurrentCamera.postValue(cafeList)
+                changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
             }, {
                 it.printStackTrace()
@@ -179,16 +169,23 @@ class MapViewModel @Inject constructor(
             .subscribe({
                 Log.e("my map", "$it")
                 cafeList.clear()
-                it.forEach { cafe ->
-                    cafeList[cafe] = false
-                }
-                _cafeInsideCurrentCamera.postValue(cafeList)
+                changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
-                Log.e("cafeList", "${it}")
-
             }, {
 
             })
+    }
+
+    fun changeCapinMapLocations(mapList: List<CafeInformationEntity>) {
+        _capinMapCafeLocations.value = mapList
+        val cafes = mutableMapOf<CafeInformationEntity, Boolean>()
+        mapList.forEach { cafe ->
+            cafes[cafe] = false
+        }
+        _cafeCurrentChecked.value = null
+        _cafeInsideCurrentCamera.postValue(cafes)
+        Log.e("cafeList", "${cafeInsideCurrentCamera.value}")
+
     }
 
     companion object {

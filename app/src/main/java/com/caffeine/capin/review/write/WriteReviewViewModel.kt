@@ -1,27 +1,18 @@
 package com.caffeine.capin.review.write
 
 import android.content.ContentResolver
-import android.net.Uri
-import android.provider.OpenableColumns
-import android.util.Log
-import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.caffeine.capin.PictureUriEntity
+import com.caffeine.capin.review.write.controller.WriteReviewController
 import com.caffeine.capin.util.FormDataUtil
 import com.caffeine.capin.util.FormDataUtil.asMultipart
 import com.caffeine.capin.util.JsonStringParser
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
-import io.reactivex.rxjava3.core.Single
 import io.reactivex.rxjava3.schedulers.Schedulers
-import okhttp3.MediaType
-import okhttp3.MediaType.Companion.toMediaType
 import okhttp3.MultipartBody
-import okhttp3.RequestBody
-import okio.BufferedSink
-import okio.source
 import javax.inject.Inject
 
 @HiltViewModel
@@ -46,12 +37,24 @@ class WriteReviewViewModel @Inject constructor(
     val successPost: LiveData<Boolean>
         get() = _successPost
 
-    private val _checkedRecommend = MutableLiveData<Map<CompoundButton, Int>>()
-    val checkedRecommend: LiveData<Map<CompoundButton, Int>>
+    private val _checkedRecommend = MutableLiveData<List<Int?>>()
+    val checkedRecommend: LiveData<List<Int?>>
         get() = _checkedRecommend
 
-    fun changeCheckedRecommend(map: Map<CompoundButton, Int>) {
-        _checkedRecommend.value = map
+    private val _reviewId = MutableLiveData<String>()
+    val reviewId: LiveData<String>
+        get() = _reviewId
+
+    fun changeReviewId(reviewId: String) {
+        _reviewId.value = reviewId
+    }
+
+    fun changeCheckedRecommend(list: List<Int?>) {
+        _checkedRecommend.value = list
+    }
+
+    fun changeImageOfCafe(pictures: List<PictureUriEntity>) {
+        _imagesOfCafe.value = pictures
     }
 
     fun addImagesOfCafe(pictureUriEntity: PictureUriEntity) {
@@ -81,7 +84,7 @@ class WriteReviewViewModel @Inject constructor(
         var requestMap = mutableListOf<MultipartBody.Part?>()
 
         checkedRecommend.value?.forEach{
-            if (it.key.isChecked) _recommendation.value?.add(it.value)
+            _recommendation.value?.add(it)
         }
 
         val review = RequestWriteReview(
@@ -98,7 +101,7 @@ class WriteReviewViewModel @Inject constructor(
         //Todo: 플로우 연결 후 카페 아이디 하드코딩 수정
 
        writeReviewController.postReview(
-            "60e96789868b7d75f394b06a",
+           "60e96789868b7d75f394b017",
             reviewJson,
             requestMap
         ).subscribeOn(Schedulers.io())

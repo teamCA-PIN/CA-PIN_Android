@@ -10,6 +10,7 @@ import com.caffeine.capin.category.CategoryViewModel
 import com.caffeine.capin.databinding.ActivitySelectCategoryBinding
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.mypage.mycategory.MyPageCategoryEditActivity
+import com.caffeine.capin.mypage.myreview.MyReview
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
