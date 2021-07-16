@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,7 @@ import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.util.AutoClearedValue
+import com.caffeine.capin.util.JsonStringParser.parseToJsonString
 import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -54,6 +56,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         archiveCafeToMyMap()
         updateCafeDeatail()
         showCafeDetail()
+
     }
 
     override fun onResume() {
@@ -159,9 +162,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setCameraChangeListener() {
-        naverMap.addOnCameraChangeListener { reason, animated ->
-            setMarkersInsideCamera()
-        }
+        naverMap.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener {
+            override fun onCameraIdle() {
+                setMarkersInsideCamera()
+            }
+        })
     }
 
     private fun setMarkersInsideCamera() {
