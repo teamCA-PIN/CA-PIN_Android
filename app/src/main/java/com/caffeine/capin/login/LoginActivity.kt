@@ -10,6 +10,7 @@ import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
+import com.caffeine.capin.MainActivity
 import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
@@ -118,11 +119,9 @@ class LoginActivity : AppCompatActivity() {
 
     private fun checkIsAlreadyLogin() {
         if (!userPreferenceManager.getUserToken().isNullOrEmpty()) {
-            val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
-            startActivity(intent)
+            successLogin()
         }
     }
-
 
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener() {
@@ -142,8 +141,8 @@ class LoginActivity : AppCompatActivity() {
                             userPreferenceManager.setUserToken(token)
                         }
                         createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
-                        val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
-                        startActivity(intent)
+
+                        successLogin()
                     } else {
                         createCapinRejectToast(
                             this@LoginActivity,
@@ -160,7 +159,17 @@ class LoginActivity : AppCompatActivity() {
                 }
             })
         }
+    }
 
+    private fun successLogin() {
+        val isNeedToCheckCafeti = userPreferenceManager.getNeedCafetiCheck()
+        if (isNeedToCheckCafeti) {
+            val intent = Intent(this, CafetiActivity::class.java)
+            startActivity(intent)
+        } else {
+            val intent = Intent(this, MainActivity::class.java)
+            startActivity(intent)
+        }
     }
 
 

@@ -1,12 +1,12 @@
-package com.caffeine.capin.tagfilter
+package com.caffeine.capin.tagfilter.ui
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import android.widget.CompoundButton
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.BR
 import com.caffeine.capin.databinding.ItemTagFilterBinding
+import com.caffeine.capin.tagfilter.model.TagFilterEntity
 
 class TagFilterAdapter(private val listener: FilterClickListener): RecyclerView.Adapter<TagFilterAdapter.TagFilterViewHolder>() {
     var checkTagList = arrayListOf<TagFilterEntity>()

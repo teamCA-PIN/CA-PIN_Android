@@ -1,13 +1,15 @@
 package com.caffeine.capin.category.ui
 
+import android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.caffeine.capin.category.CategoryNameEntity
+import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.category.CategoryViewModel
 import com.caffeine.capin.databinding.ActivitySelectCategoryBinding
 import com.caffeine.capin.map.entity.CafeDetailEntity
+import com.caffeine.capin.mypage.mycategory.MyPageCategoryEditActivity
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -26,6 +28,12 @@ class SelectCategoryActivity : AppCompatActivity() {
         updateCategoryList()
         setToolbar()
         archiveCafeToCategory()
+        addCategory()
+    }
+
+    override fun onResume() {
+        super.onResume()
+        viewModel.getCategoryList()
     }
 
     private fun setToolbar() {
@@ -62,6 +70,15 @@ class SelectCategoryActivity : AppCompatActivity() {
     private fun archiveCafeToCategory() {
         binding.buttonComplete.setOnClickListener {
             viewModel.archiveCafe()
+            finish()
+        }
+    }
+
+    private fun addCategory() {
+        binding.constriantlayoutAddCategory.setOnClickListener {
+            val intent = Intent(this, MyPageCategoryEditActivity::class.java)
+            intent.putExtra("feature", "새 카테고리")
+            startActivity(intent)
         }
     }
 }

@@ -1,5 +1,8 @@
-package com.caffeine.capin.profile
+package com.caffeine.capin.profile.repository
 
+import com.caffeine.capin.profile.UserProfileMapper
+import com.caffeine.capin.profile.datasource.UserProfileDataSource
+import com.caffeine.capin.profile.model.UserEntity
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject
 

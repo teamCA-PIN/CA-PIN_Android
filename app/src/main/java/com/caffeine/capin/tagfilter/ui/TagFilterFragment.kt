@@ -1,7 +1,6 @@
-package com.caffeine.capin.tagfilter
+package com.caffeine.capin.tagfilter.ui
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -13,6 +12,7 @@ import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
 import com.caffeine.capin.map.MapViewModel
+import com.caffeine.capin.tagfilter.model.TagFilterEntity
 import com.caffeine.capin.util.AutoClearedValue
 import com.caffeine.capin.util.VerticalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint

@@ -1,6 +1,6 @@
 package com.caffeine.capin.map.repository
 
-import com.caffeine.capin.map.MyMapPinMapper
+import com.caffeine.capin.map.mapper.MyMapPinMapper
 import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.network.CapinApiService
 import io.reactivex.rxjava3.core.Single

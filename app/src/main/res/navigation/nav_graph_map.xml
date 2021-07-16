@@ -28,7 +28,7 @@
 
     <fragment
         android:id="@+id/tagFilterFragment"
-        android:name="com.caffeine.capin.tagfilter.TagFilterFragment"
+        android:name="com.caffeine.capin.tagfilter.ui.TagFilterFragment"
         android:label="TagFilterFragment"
         tools:layout="@layout/fragment_tag_filter">
 

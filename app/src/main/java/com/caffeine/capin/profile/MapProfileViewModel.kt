@@ -3,7 +3,8 @@ package com.caffeine.capin.profile
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.caffeine.capin.map.entity.CafetiEntity
+import com.caffeine.capin.profile.model.UserEntity
+import com.caffeine.capin.profile.repository.UserProfileRepository
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers

@@ -5,6 +5,7 @@ class UserPreferenceManager(
     ) {
     companion object {
         private const val PREFS_KEY_USER_TOKEN = "user_token"
+        private const val PREFS_NEED_CAFETI_CHECK = "need_cafeti_check"
     }
 
     fun setUserToken(token: String) {
@@ -13,6 +14,14 @@ class UserPreferenceManager(
 
     fun getUserToken(): String {
         return preferenceManager.getPreferences(PREFS_KEY_USER_TOKEN, "")
+    }
+
+    fun setNeedCafetiCheck(check: Boolean) {
+        preferenceManager.setPreferences(PREFS_NEED_CAFETI_CHECK, check)
+    }
+
+    fun getNeedCafetiCheck(): Boolean {
+        return preferenceManager.getPreferences(PREFS_NEED_CAFETI_CHECK, false)
     }
 
 
