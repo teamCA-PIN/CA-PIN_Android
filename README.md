@@ -21,30 +21,30 @@
 
 ###  💡 Main Feature & 🔍Preview  
 ------
-> 1. 스플래시 / 회원가입 / 로그인 / 비밀번호 찾기
+> **1. 스플래시 / 회원가입 / 로그인 / 비밀번호 찾기**
 <img src="https://user-images.githubusercontent.com/72273531/125907329-d0ed2a28-bfaa-4b8a-be1b-b18222ec455c.jpg" width="700" height="466" />
 <img src="https://user-images.githubusercontent.com/72273531/125909203-3192b8d3-e73b-40bd-bd9b-b3afa7269241.jpg" width="700" height="390" />
 
-> 2. 카페 이용 유형 검사, CAFETI
+> **2. 카페 이용 유형 검사, CAFETI**
 <img src="https://user-images.githubusercontent.com/72273531/125909376-b8c267f2-e0be-4a04-89ff-f410499d37d2.jpg" width="800" height="241" />
 
-> 3. 믿고 보는 카핀 맵 / 내가 핀한 카페들만 모아보는 마이맵
+> **3. 믿고 보는 카핀 맵 / 내가 핀한 카페들만 모아보는 마이맵**
 <img src="https://user-images.githubusercontent.com/72273531/125909423-69f48a6f-bbf3-4758-8203-290e8b8e04ba.jpg" width="700" height="466" />
 
-> 4. 원하는 특성의 카페만 모아볼 수 있는 태그 검색
+> **4. 원하는 특성의 카페만 모아볼 수 있는 태그 검색**
 <img src="https://user-images.githubusercontent.com/72273531/125911385-7f0fb04b-34c7-45ef-8305-0d46168d1410.jpg" width="700" height="390" />
 
-> 5. 맛, 분위기 취향이 비슷한 유저들의 카페 리뷰
+> **5. 맛, 분위기 취향이 비슷한 유저들의 카페 리뷰**
 <img src="https://user-images.githubusercontent.com/72273531/125943215-84bfd2ca-c6cf-4472-8d1d-0c34e8e62692.png" width="700" height="390" />
 
-> 6. 나의 핀과 리뷰를 관리하는 마이페이지
+> **6. 나의 핀과 리뷰를 관리하는 마이페이지**
 <img src="https://user-images.githubusercontent.com/72273531/125910989-f56b89b9-bd2c-45d6-97a8-01dd30132aa0.jpg" width="466" height="466" />
 
-> 7. 카테고리 생성 / 수정 / 삭제
+> **7. 카테고리 생성 / 수정 / 삭제**
 <img src="https://user-images.githubusercontent.com/72273531/125911530-715e92b3-a615-44b3-bd38-58d9f8052b13.jpg" width="700" height="264" />
 <img src="https://user-images.githubusercontent.com/72273531/125911644-3fea53ce-25ef-417b-96bf-34892f906284.jpg" width="700" height="264" />
 
-> 8. 카테고리 내부 핀 조회 / 삭제
+> **8. 카테고리 내부 핀 조회 / 삭제**
 <img src="https://user-images.githubusercontent.com/72273531/125911758-8b2ca8ae-24b4-4424-9fa0-e09768eec2ec.jpg" width="700" height="264" />
 
 
