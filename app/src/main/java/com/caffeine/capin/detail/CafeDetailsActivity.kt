@@ -30,19 +30,19 @@ class CafeDetailsActivity : AppCompatActivity() {
         binding.listReviews.adapter = adapter
 
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
+        binding.buttonBack.setOnClickListener { finish() }
 //        binding.toolbar.setNavigationIcon(R.drawable.icon_back_black)
 //        binding.toolbar.setNavigationOnClickListener { finish() }
 
-
-        cafeDetailsViewModel.cafeDetails.observe(this) {
-            adapter.submitList(it.reviews)
-        }
-        cafeDetailsViewModel.loadCafeDetails("")
+//
+//        cafeDetailsViewModel.cafeDetails.observe(this) {
+//            adapter.submitList(it.reviews)
+//        }
+        cafeDetailsViewModel.loadCafeDetails(getCafeId())
     }
 
     private fun getCafeId(): String {
-        return if (BuildConfig.DEBUG) "60e96789868b7d75f394b00b"
-        else intent.getStringExtra(KEY_CAFE_ID) ?: error("cafe id must be put in intent")
+        return intent.getStringExtra(KEY_CAFE_ID) ?: error("cafe id must be put in intent")
     }
 
     private fun deployMenusActivity() {

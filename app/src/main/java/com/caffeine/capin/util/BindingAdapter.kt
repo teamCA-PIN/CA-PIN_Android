@@ -27,8 +27,17 @@ object BindingAdapter {
     fun ImageView.loadImageView(url: String?) {
         if (url != null) {
             Glide.with(context).load(url).into(this)
-
         }
+    }
+
+    @BindingAdapter("app:loadCafeMainImage")
+    @JvmStatic
+    fun bindingCafeMainImage(imageView: ImageView, imageUrl: String?) {
+//        if (imageUrl == null) return
+        Glide.with(imageView)
+            .load(imageUrl)
+            .placeholder(R.drawable.default_cafe_main_image)
+            .into(imageView)
     }
 
     @BindingAdapter("app:useCircleOutlineRadius")

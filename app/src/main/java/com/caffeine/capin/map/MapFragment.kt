@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +17,7 @@ import com.caffeine.capin.R
 import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
+import com.caffeine.capin.detail.CafeDetailsActivity
 import com.caffeine.capin.util.AutoClearedValue
 import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
@@ -58,13 +60,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
-        when(binding.radiogroupMap.checkedRadioButtonId) {
+        when (binding.radiogroupMap.checkedRadioButtonId) {
             binding.radiobuttonCapinMap.id -> {
                 viewModel.getCafeLocations()
             }
-             binding.radiobuttonMyMap.id -> {
-                 viewModel.switchToMyMap()
-             }
+            binding.radiobuttonMyMap.id -> {
+                viewModel.switchToMyMap()
+            }
         }
         binding.cardviewCafeSelected.visibility = View.GONE
 
@@ -85,7 +87,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun getTagResult() {
         if (viewModel.checkedTagList.value != null) {
-            if ( viewModel.checkedTagList.value!!.all { it == null }) {
+            if (viewModel.checkedTagList.value!!.all { it == null }) {
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
             } else {
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
@@ -198,10 +200,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             viewModel.addExposedMarker(marker)
 
             if (cafe.value) {
-                marker.icon = OverlayImage.fromResource(CategoryType.findActiveType(cafe.key.markType))
+                marker.icon =
+                    OverlayImage.fromResource(CategoryType.findActiveType(cafe.key.markType))
                 marker.map = naverMap
             } else {
-                marker.icon = OverlayImage.fromResource(CategoryType.findInactiveType(cafe.key.markType))
+                marker.icon =
+                    OverlayImage.fromResource(CategoryType.findInactiveType(cafe.key.markType))
                 marker.map = naverMap
             }
 
@@ -227,6 +231,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 textviewCafeName.text = cafeDetail.name
                 textviewCafeRating.text = cafeDetail.average.toString()
                 textviewCafeTag.text = cafeDetail.tags[0].name
+                cardviewCafeSelected.setOnClickListener {
+                    Log.d("MalibinDebug","clicked: ${cafeDetail._id}")
+                    Intent(activity, CafeDetailsActivity::class.java)
+                        .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail._id)
+                        .also { startActivity(it) }
+                }
             }
         }
     }
