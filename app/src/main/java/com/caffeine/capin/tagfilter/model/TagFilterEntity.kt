@@ -1,4 +1,4 @@
-package com.caffeine.capin.tagfilter
+package com.caffeine.capin.tagfilter.model
 
 import android.os.Parcelable
 import kotlinx.android.parcel.Parcelize

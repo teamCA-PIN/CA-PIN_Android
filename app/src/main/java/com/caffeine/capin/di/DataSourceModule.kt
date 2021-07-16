@@ -7,8 +7,8 @@ import com.caffeine.capin.map.datasource.CafeListDataSourceImpl
 import com.caffeine.capin.map.datasource.MyMapLocationsDataSource
 import com.caffeine.capin.map.datasource.MyMapLocationsDataSourceImpl
 import com.caffeine.capin.network.CapinApiService
-import com.caffeine.capin.profile.UserProfileDataSource
-import com.caffeine.capin.profile.UserProfileDataSourceImpl
+import com.caffeine.capin.profile.datasource.UserProfileDataSource
+import com.caffeine.capin.profile.datasource.UserProfileDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

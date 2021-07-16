@@ -6,7 +6,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.BR
-import com.caffeine.capin.category.CategoryNameEntity
+import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.databinding.ItemSelectCategoryBinding
 
 class CategoryListAdapter(val listener: CategorySelectListener) : ListAdapter<CategoryNameEntity, CategoryListAdapter.CategoryListViewHolder>(

@@ -1,5 +1,6 @@
-package com.caffeine.capin.category
+package com.caffeine.capin.category.controller
 
+import com.caffeine.capin.category.model.RequestArchiveCafeDTO
 import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.CapinApiService
 import io.reactivex.rxjava3.core.Single

@@ -2,7 +2,7 @@ package com.caffeine.capin.network
 
 import com.caffeine.capin.cafeti.RequestCafetiData
 import com.caffeine.capin.cafeti.ResponseCafetiData
-import com.caffeine.capin.category.RequestArchiveCafeDTO
+import com.caffeine.capin.category.model.RequestArchiveCafeDTO
 import com.caffeine.capin.login.*
 import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList

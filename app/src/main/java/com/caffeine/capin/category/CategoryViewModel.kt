@@ -4,6 +4,9 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.category.controller.ArchiveCafeController
+import com.caffeine.capin.category.model.CategoryNameEntity
+import com.caffeine.capin.category.model.RequestArchiveCafeDTO
 import com.caffeine.capin.category.repository.CategoryListRepository
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import dagger.hilt.android.lifecycle.HiltViewModel

@@ -1,4 +1,4 @@
-package com.caffeine.capin.profile
+package com.caffeine.capin.profile.model
 
 import com.caffeine.capin.map.entity.CafetiEntity
 

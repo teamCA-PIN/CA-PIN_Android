@@ -16,6 +16,7 @@
         tools:context=".profile.MapProfileFragment">
 
         <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_exit"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="16dp"
@@ -27,11 +28,13 @@
 
         <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/imageview_cafeti"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/cafeti_asset"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            load_url="@{viewModel.userInfo.profileImg}"
             app:layout_constraintTop_toTopOf="parent"
-            app:layout_constraintVertical_bias="0.15"
+            app:layout_constraintWidth_percent="0.33"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintVertical_bias="0.22"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"/>
@@ -41,7 +44,7 @@
             style="@style/Headline2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="40dp"
+            android:layout_marginTop="10dp"
             android:text="@{viewModel.userInfo.nickName}"
             android:textColor="@color/black"
             android:textSize="20dp"
@@ -177,11 +180,10 @@
             android:textColor="@color/pointcolor_1"
             style="@style/Body2"
             android:textSize="14dp"
-            app:layout_constraintVertical_bias="0.215"
+            android:layout_marginTop="40dp"
             android:text="@string/terms_and_policy"
             app:layout_constraintTop_toBottomOf="@id/constraintlayout_archive"
             app:layout_constraintStart_toStartOf="@id/constraintlayout_archive"
-            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="@id/constraintlayout_archive" />
 
         <androidx.appcompat.widget.AppCompatTextView
@@ -199,17 +201,17 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_copyright"
+            style="@style/Sub"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/gray_3"
-            style="@style/Sub"
-            android:textSize="8dp"
             android:text="@string/copyright"
-            app:layout_constraintVertical_bias="0.18"
-            app:layout_constraintTop_toBottomOf="@id/textview_logout"
+            android:textColor="@color/gray_3"
+            android:textSize="8dp"
+            app:layout_constraintVertical_bias="0.898"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

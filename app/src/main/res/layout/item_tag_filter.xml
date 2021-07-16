@@ -3,7 +3,7 @@
     <data>
         <variable
             name="data"
-            type="com.caffeine.capin.tagfilter.TagFilterEntity" />
+            type="com.caffeine.capin.tagfilter.model.TagFilterEntity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"

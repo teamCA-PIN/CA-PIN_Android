@@ -1,6 +1,6 @@
 package com.caffeine.capin.map.dto
 
-import com.caffeine.capin.tagfilter.CafeTagEntity
+import com.caffeine.capin.tagfilter.model.CafeTagEntity
 
 data class CafeDetailDTO(
     val tags: List<CafeTagEntity>,

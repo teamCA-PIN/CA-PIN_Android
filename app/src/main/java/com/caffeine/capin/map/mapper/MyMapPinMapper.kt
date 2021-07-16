@@ -1,4 +1,4 @@
-package com.caffeine.capin.map
+package com.caffeine.capin.map.mapper
 
 import com.caffeine.capin.map.dto.MyMapLocationDTO
 import com.caffeine.capin.map.entity.CafeInformationEntity

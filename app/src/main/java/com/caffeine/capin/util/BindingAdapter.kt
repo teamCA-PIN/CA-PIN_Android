@@ -13,7 +13,7 @@ import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.caffeine.capin.R
-import com.caffeine.capin.category.CategoryType.Companion.findColorResource
+import com.caffeine.capin.category.model.CategoryType.Companion.findColorResource
 import com.caffeine.capin.customview.CapinChip
 import com.google.android.flexbox.FlexboxLayout
 import com.google.android.material.imageview.ShapeableImageView

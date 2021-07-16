@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.caffeine.capin.category.CategoryNameEntity
+import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.category.CategoryViewModel
 import com.caffeine.capin.databinding.ActivitySelectCategoryBinding
 import com.caffeine.capin.map.entity.CafeDetailEntity

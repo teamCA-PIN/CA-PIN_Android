@@ -1,7 +1,7 @@
 package com.caffeine.capin.category.repository
 
 import com.caffeine.capin.category.CategoryListMapper
-import com.caffeine.capin.category.CategoryNameEntity
+import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.category.datasource.CategoryListDataSource
 import io.reactivex.rxjava3.core.Single
 import javax.inject.Inject

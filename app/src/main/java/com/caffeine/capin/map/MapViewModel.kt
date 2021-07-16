@@ -5,18 +5,15 @@ import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.caffeine.capin.map.datasource.MyMapLocationsDataSource
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.map.repository.CafeListRepository
 import com.caffeine.capin.map.repository.MyMapLocationsRepository
-import com.caffeine.capin.tagfilter.TagFilterEntity
-import com.caffeine.capin.tagfilter.TagFilterList
+import com.caffeine.capin.tagfilter.model.TagFilterEntity
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
-import retrofit2.http.QueryMap
 import javax.inject.Inject
 import kotlin.collections.ArrayList
 
