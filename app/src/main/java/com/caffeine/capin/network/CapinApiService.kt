@@ -9,6 +9,8 @@ import com.caffeine.capin.map.dto.ResponseCafeList
 import com.caffeine.capin.map.dto.ResponseMyMapLocations
 import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
+import com.caffeine.capin.mypage.api.request.RequestPutReviewData
+import com.caffeine.capin.mypage.api.response.*
 import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
 import com.caffeine.capin.mypage.api.response.ResponseMyData
 import com.caffeine.capin.mypage.api.response.ResponseMyPinData
@@ -90,6 +92,19 @@ interface CapinApiService {
     fun getMyInfo(
         @Header("token") token: String,
     ): Call<ResponseMyData>
+
+    @DELETE("/reviews/{reviewId}")
+    fun deleteMyReview(
+        @Header("token") token: String,
+        @Path("reviewId") reviewId: String
+    ) : Call<BaseResponse>
+
+    @PUT("/reviews/{reviewId}")
+    fun putMyReview(
+        @Header("token") token: String,
+        @Path("reviewId") reviewId: String,
+        @Body body : RequestPutReviewData
+    ) : Call<BaseResponse>
 
     @GET("/cafes/myMap")
     fun getMyMapPins(): Single<ResponseMyMapLocations>

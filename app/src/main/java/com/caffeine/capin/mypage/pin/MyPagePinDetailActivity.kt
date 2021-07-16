@@ -108,6 +108,19 @@ class MyPagePinDetailActivity : AppCompatActivity() {
 
                     deleteMyPinAtServer()
 
+                    for (i in 0 until removePinInfoList.size) {
+                        myPinInfoAdapter.myPinInfoList.remove(removePinInfoList[i])
+                        Log.d("이거는 removePinInfoList", removePinInfoList.size.toString())
+                        myPinInfoAdapter.checkboxList.forEach{
+                            it.isChecked = false
+                        }
+                    }
+                    myPinInfoAdapter.checkboxList.clear()
+                    Log.d("이거는 checkboxList", myPinInfoAdapter.checkboxList.size.toString())
+
+                    removePinInfoList.clear()
+                    Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
+
                     Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
                     myPinInfoAdapter.switchDeleteMode(false)
                     myPinInfoAdapter.notifyDataSetChanged()

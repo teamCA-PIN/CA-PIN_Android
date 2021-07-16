@@ -50,6 +50,12 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
             binding.mypageCategoryEditHeaderTv.text = "카테고리 편집"
         }
 
+        if(header == "새 카테고리") {
+            binding.mypageCategoryEditEdt.hint = "새 카테고리명 입력"
+        } else {
+            binding.mypageCategoryEditEdt.hint = "수정할 카테고리명 입력"
+        }
+
         binding.mypageCategoryEditDeleteBtn.setOnClickListener {
             binding.mypageCategoryEditEdt.text.clear()
             binding.mypageCategoryEditDeleteBtn.isVisible = false
