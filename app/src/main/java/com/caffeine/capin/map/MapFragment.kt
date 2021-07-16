@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -60,14 +61,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
-        when (binding.radiogroupMap.checkedRadioButtonId) {
-            binding.radiobuttonCapinMap.id -> {
-                viewModel.getCapinMapPins()
-            }
-            binding.radiobuttonMyMap.id -> {
-                viewModel.getCapinMapPins()
-            }
-        }
+        checkMapSort()
         binding.cardviewCafeSelected.visibility = View.GONE
 
     }
@@ -145,20 +139,32 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun changeMap() {
         binding.radiogroupMap.apply {
-            check(binding.radiobuttonCapinMap.id)
+            when (viewModel.isMyMap.value) {
+                true -> {
+                    check(binding.radiobuttonMyMap.id)
+                }
+                false -> {
+                    check(binding.radiobuttonCapinMap.id)
+                }
+            }
+
             setOnCheckedChangeListener { _, checkedId ->
                 binding.cardviewCafeSelected.visibility = View.GONE
                 removeActiveMarkers()
-                when (checkedId) {
-                    binding.radiobuttonMyMap.id -> {
-                        viewModel.getMyMapPins()
-                        viewModel.changeIsMyMap(true)
-                    }
-                    binding.radiobuttonCapinMap.id -> {
-                        viewModel.getCapinMapPins()
-                        viewModel.changeIsMyMap(false)
-                    }
-                }
+                checkMapSort()
+            }
+        }
+    }
+
+    private fun checkMapSort() {
+        when (binding.radiogroupMap.checkedRadioButtonId) {
+            binding.radiobuttonMyMap.id -> {
+                viewModel.changeIsMyMap(true)
+                viewModel.getMyMapPins()
+            }
+            binding.radiobuttonCapinMap.id -> {
+                viewModel.changeIsMyMap(false)
+                viewModel.getCapinMapPins()
             }
         }
     }
