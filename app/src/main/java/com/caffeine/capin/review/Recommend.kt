@@ -11,4 +11,9 @@ enum class Recommend(
 ) {
     MOOD(0, "분위기 추천"),
     TASTE(1, "맛 추천");
+
+    companion object {
+        fun find(id: Int): Recommend = values().find { it.id == id }
+            ?: error("cannot find Recommend by id : $id")
+    }
 }

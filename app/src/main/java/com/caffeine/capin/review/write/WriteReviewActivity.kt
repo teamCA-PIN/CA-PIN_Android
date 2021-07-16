@@ -283,6 +283,7 @@ class WriteReviewActivity : AppCompatActivity() {
             PERMISSION_CAMERA,
             PERMISSION_WRITE_EXTERNAL_STORAGE
         )
-    }
 
+        const val KEY_CAFE_ID = "KEY_CAFE_ID"
+    }
 }

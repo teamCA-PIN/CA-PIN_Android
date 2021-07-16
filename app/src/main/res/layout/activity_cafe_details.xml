@@ -2,7 +2,9 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <data>
+
         <import type="android.view.View" />
 
         <variable
@@ -57,7 +59,7 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:load_url="@{viewModel.cafeDetails.mainImageUrl}"
+                            app:loadCafeMainImage="@{viewModel.cafeDetails.mainImageUrl}"
                             tools:src="@tools:sample/backgrounds/scenic" />
 
                         <View
@@ -76,6 +78,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="16dp"
                             android:layout_marginTop="16dp"
+                            android:visibility="gone"
                             app:layout_collapseMode="pin"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
@@ -131,7 +134,7 @@
                         app:layout_constraintHorizontal_chainStyle="packed"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/text_star_rate"
-                        app:srcCompat="@drawable/star" />
+                        app:srcCompat="@drawable/star_small" />
 
                     <TextView
                         android:id="@+id/text_star_rate"
@@ -327,7 +330,7 @@
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@+id/textView9"
-                        tools:itemCount="3"
+                        tools:itemCount="0"
                         tools:listitem="@layout/item_cafe_review" />
 
                     <TextView
@@ -336,10 +339,11 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:gravity="center"
+                        android:layout_marginTop="88dp"
                         android:lineSpacingExtra="2sp"
                         android:text="아직 등록된 리뷰가 없어요.\n가장 먼저 리뷰를 작성해보세요."
                         android:textColor="@color/gray_4"
-                        android:visibility="@{viewModel.cafeDetails.reviews.empty == true ? View.VISIBLE : View.GONE}"
+                        android:visibility="@{viewModel.cafeReviews.empty ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
@@ -396,7 +400,7 @@
             layout="@layout/window_loading"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:isLoading="@{viewModel.isLoading()}"
+            app:isLoading="@{viewModel.isDetailsLoading()}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
