@@ -23,7 +23,7 @@
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/textview_message"
-            style="@style/Body2"
+            android:theme="@style/Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="4dp"

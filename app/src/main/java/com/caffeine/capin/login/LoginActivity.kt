@@ -134,6 +134,7 @@ class LoginActivity : AppCompatActivity() {
                         response.body()?.loginData?.token?.let { token ->
                             userPreferenceManager.setUserToken(token)
                         }
+
                         createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
 
                         successLogin()
@@ -160,9 +161,11 @@ class LoginActivity : AppCompatActivity() {
         if (isNeedToCheckCafeti) {
             val intent = Intent(this@LoginActivity, CafetiActivity::class.java)
             startActivity(intent)
+            finish()
         } else {
             val intent = Intent(this@LoginActivity, MainActivity::class.java)
             startActivity(intent)
+            finish()
         }
     }
 

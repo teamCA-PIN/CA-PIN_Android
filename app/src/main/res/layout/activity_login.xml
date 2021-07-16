@@ -13,6 +13,7 @@
         android:background="@null"
         android:foreground="@drawable/login_edittext_border"
         android:hint="yourpassword"
+        android:inputType="textPassword"
         style="@style/Body1"
         android:paddingVertical="6dp"
         android:textColorHint="@color/gray_3"

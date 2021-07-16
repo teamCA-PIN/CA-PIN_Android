@@ -24,12 +24,9 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MyPageActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMyPageBinding
     private lateinit var viewPager: ViewPager2
-
-    @Inject
-    lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

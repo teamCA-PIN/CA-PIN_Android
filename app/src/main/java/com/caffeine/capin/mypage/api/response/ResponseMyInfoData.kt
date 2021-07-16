@@ -2,9 +2,9 @@ package com.caffeine.capin.mypage.api.response
 
 data class ResponseMyInfoData(
     val cafeti: ResponseMyCafetiData,
-    val email: String,
     val nickname: String,
-    val pinNum: Int,
+    val email: String,
     val profileImg: String,
-    val reviewNum: Int
+    val reviewNum: Int,
+    val pinNum: Int
 )

@@ -19,7 +19,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_add_picture"
-        style="@style/Body5"
+        android:theme="@style/Body5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="(최대 5장)"

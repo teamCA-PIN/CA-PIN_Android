@@ -23,6 +23,4 @@ class UserPreferenceManager(
     fun getNeedCafetiCheck(): Boolean {
         return preferenceManager.getPreferences(PREFS_NEED_CAFETI_CHECK, false)
     }
-
-
 }
