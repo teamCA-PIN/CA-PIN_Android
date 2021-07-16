@@ -6,7 +6,9 @@
         <variable
             name="viewModel"
             type="com.caffeine.capin.review.write.WriteReviewViewModel" />
-
+        <variable
+            name="view"
+            type="android.view.View" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -21,6 +23,16 @@
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="@{viewModel.successPost == true ? view.GONE : view.VISIBLE}"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
 
         <androidx.core.widget.NestedScrollView
             android:id="@+id/scrollview"
@@ -305,6 +317,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:text="리뷰 등록하기"
+                    android:foreground="?android:selectableItemBackground"
                     android:layout_marginTop="30dp"
                     android:layout_marginBottom="56dp"
                     app:layout_constraintDimensionRatio="1:0.15"

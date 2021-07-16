@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".mypage.MyPageCategoryFragment">
+        tools:context=".mypage.ui.MyPageCategoryFragment">
 
         <TextView
             android:id="@+id/if_basic_category_tv"

@@ -9,7 +9,7 @@ import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
 import com.caffeine.capin.review.CafeReviewsAdapter
 import com.caffeine.capin.review.all.AllCafeReviewsActivity
-import com.caffeine.capin.review.write.WriteReviewActivity
+import com.caffeine.capin.review.write.ui.WriteReviewActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
