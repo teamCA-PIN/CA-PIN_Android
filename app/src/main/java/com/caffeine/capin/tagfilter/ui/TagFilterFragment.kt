@@ -38,7 +38,6 @@ class TagFilterFragment : Fragment() {
         binding.recyclerviewTagFilter.isNestedScrollingEnabled = false
 
         checkIsTagApplied()
-
         setTagFilterButton()
         activeResultButton()
         getFilterCafe()
@@ -81,6 +80,8 @@ class TagFilterFragment : Fragment() {
     private fun checkIsTagApplied() {
         if (!viewModel.filterChecked.value.isNullOrEmpty()) {
             changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
+            binding.buttonResult.text = resources.getString(R.string.tagfilter_button, viewModel.countCafeResult.value)
+
             binding.buttonResult.isClickable = true
         } else {
             changeResultButtonStyle(R.color.gray_1, R.color.gray_4)

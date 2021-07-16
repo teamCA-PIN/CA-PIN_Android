@@ -91,6 +91,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         if (viewModel.checkedTagList.value != null) {
             if (viewModel.checkedTagList.value!!.all { it == null }) {
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
+                viewModel.initializeFilterTag()
             } else {
                 binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
             }
@@ -163,6 +164,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setCameraChangeListener() {
+//        naverMap.addOnCameraChangeListener(object : NaverMap.OnCameraChangeListener{
+//            override fun onCameraChange(p0: Int, animation: Boolean) {
+//                if (!animation)  setMarkersInsideCamera()
+//            }
+//        })
         naverMap.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener {
             override fun onCameraIdle() {
                 setMarkersInsideCamera()

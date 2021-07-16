@@ -7,6 +7,7 @@ import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.category.CategoryViewModel
+import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.ActivitySelectCategoryBinding
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.mypage.mycategory.MyPageCategoryEditActivity
@@ -71,6 +72,7 @@ class SelectCategoryActivity : AppCompatActivity() {
     private fun archiveCafeToCategory() {
         binding.buttonComplete.setOnClickListener {
             viewModel.archiveCafe()
+            createCapinToast(applicationContext, "카테고리에 저장되었습니다.", 130)?.show()
             finish()
         }
     }

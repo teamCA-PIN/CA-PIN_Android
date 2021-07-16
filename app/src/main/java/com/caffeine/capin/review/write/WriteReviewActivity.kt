@@ -67,8 +67,9 @@ class WriteReviewActivity : AppCompatActivity() {
         binding.toolbar.apply {
             if (intent.hasExtra(EDIT_REVIEW)) {
                 setToolbarTitle("리뷰 수정하기")
-            } else {
+            } else if (intent.hasExtra(KEY_CAFE_ID)) {
                 setToolbarTitle("리뷰 작성하기")
+                intent.getStringExtra(KEY_CAFE_ID)?.let { viewModel.changeCafeId(it) }
             }
 
             setBackButton {
@@ -285,5 +286,6 @@ class WriteReviewActivity : AppCompatActivity() {
         )
 
         const val KEY_CAFE_ID = "KEY_CAFE_ID"
+
     }
 }

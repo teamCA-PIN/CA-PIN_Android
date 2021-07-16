@@ -29,6 +29,10 @@ class WriteReviewViewModel @Inject constructor(
     val imagesOfCafe: LiveData<List<PictureUriEntity>>
         get() = _imagesOfCafe
 
+    private val _cafeId = MutableLiveData<String>()
+    val cafeId: LiveData<String>
+        get() = _cafeId
+
     private val _recommendation = MutableLiveData<MutableList<Int?>>()
     val recommendation: LiveData<MutableList<Int?>>
         get() = _recommendation
@@ -44,6 +48,10 @@ class WriteReviewViewModel @Inject constructor(
     private val _reviewId = MutableLiveData<String>()
     val reviewId: LiveData<String>
         get() = _reviewId
+
+    fun changeCafeId(cafeId: String) {
+        _cafeId.value = cafeId
+    }
 
     fun changeReviewId(reviewId: String) {
         _reviewId.value = reviewId
