@@ -1,6 +1,6 @@
 package com.caffeine.capin.login
 
 data class RequestFindPwData(
-    val email: String,
+    val email: Int,
     val password: String
 )

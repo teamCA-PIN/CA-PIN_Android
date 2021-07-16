@@ -30,10 +30,9 @@
         android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.616" />
+        app:layout_constraintVertical_bias="0.58" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/cafeti_test"
@@ -48,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.703" />
+        app:layout_constraintVertical_bias="0.67" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cafetiteststart"
@@ -74,6 +73,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.229"
+        app:layout_constraintVertical_bias="0.20"
         app:srcCompat="@drawable/frame_133" />
 </androidx.constraintlayout.widget.ConstraintLayout>
