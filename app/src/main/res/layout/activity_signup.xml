@@ -6,7 +6,7 @@
     android:layout_height="match_parent">
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_signup"
+        android:id="@+id/textview_signup"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="회원가입"
@@ -21,7 +21,7 @@
         app:layout_constraintWidth_percent="0.197" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_username"
+        android:id="@+id/textview_username"
         style="@style/Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -30,7 +30,7 @@
         android:textColor="@color/maincolor_1"
         android:textSize="16dp"
         app:layout_constraintStart_toStartOf="@+id/edittext_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_signup" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_signup" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_email"
@@ -47,7 +47,7 @@
         app:layout_constraintEnd_toEndOf="@+id/edittext_name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edittext_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_email_id_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_email_id_detail" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_name"
@@ -64,7 +64,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.505"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView_username"
+        app:layout_constraintTop_toBottomOf="@id/textview_username"
         app:layout_constraintWidth_percent="0.772" />
 
     <androidx.appcompat.widget.AppCompatEditText
@@ -82,7 +82,7 @@
         app:layout_constraintEnd_toEndOf="@+id/edittext_email"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edittext_email"
-        app:layout_constraintTop_toBottomOf="@+id/textView_password" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_password" />
 
     <androidx.appcompat.widget.AppCompatEditText
         android:id="@+id/edittext_pwagain"
@@ -99,10 +99,10 @@
         app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edittext_pw"
-        app:layout_constraintTop_toBottomOf="@+id/textView_pw_check" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_pw_check" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_username_detail"
+        android:id="@+id/textview_username_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="6dp"
@@ -116,7 +116,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edittext_name" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_email_id_detail"
+        android:id="@+id/textview_email_id_detail"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -127,10 +127,10 @@
         app:layout_constraintEnd_toEndOf="@+id/edittext_name"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edittext_name"
-        app:layout_constraintTop_toBottomOf="@+id/textView_username_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_username_detail" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_pw_detail"
+        android:id="@+id/textview_pw_detail"
         style="@style/Body3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -144,7 +144,7 @@
         app:layout_constraintTop_toBottomOf="@+id/edittext_email" />
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_password"
+        android:id="@+id/textview_password"
         style="@style/Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -155,11 +155,11 @@
         app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/edittext_pw"
-        app:layout_constraintTop_toBottomOf="@+id/textView_pw_detail" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_pw_detail" />
 
 
     <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/textView_pw_check"
+        android:id="@+id/textview_pw_check"
         style="@style/Subhead"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -191,7 +191,7 @@
         app:layout_constraintWidth_percent="0.608" />
 
     <ImageView
-        android:id="@+id/imageView_tool"
+        android:id="@+id/imageview_tool"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
