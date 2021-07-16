@@ -1,15 +1,22 @@
 package com.caffeine.capin.di
 
+import com.caffeine.capin.category.datasource.CategoryListDataSource
+import com.caffeine.capin.category.CategoryListMapper
+import com.caffeine.capin.category.repository.CategoryListRepository
+import com.caffeine.capin.category.repository.CategoryListRepositoryImpl
 import com.caffeine.capin.map.mapper.CafeDetailMapper
 import com.caffeine.capin.map.datasource.CafeListDataSource
-import com.caffeine.capin.map.CafeListMapper
-import com.caffeine.capin.map.MyMapPinMapper
-import com.caffeine.capin.map.datasource.MyMapLocationsDataSourceImpl
+import com.caffeine.capin.map.mapper.CafeListMapper
+import com.caffeine.capin.map.mapper.MyMapPinMapper
 import com.caffeine.capin.map.repository.CafeListRepository
 import com.caffeine.capin.map.repository.CafeListRepositoryImpl
 import com.caffeine.capin.map.repository.MyMapLocationsRepository
 import com.caffeine.capin.map.repository.MyMapLocationsRepositoryImpl
 import com.caffeine.capin.network.CapinApiService
+import com.caffeine.capin.profile.datasource.UserProfileDataSource
+import com.caffeine.capin.profile.UserProfileMapper
+import com.caffeine.capin.profile.repository.UserProfileRepository
+import com.caffeine.capin.profile.repository.UserProfileRepositoryImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +41,14 @@ object RepositoryModule {
 
     @Provides
     @Singleton
+    fun provideCategoryListMapper(): CategoryListMapper = CategoryListMapper()
+
+    @Provides
+    @Singleton
+    fun provideUserProfileMapper(): UserProfileMapper = UserProfileMapper()
+
+    @Provides
+    @Singleton
     fun provideCafeListRepository(
         datasource: CafeListDataSource,
         cafeListMapper: CafeListMapper,
@@ -48,5 +63,19 @@ object RepositoryModule {
         myMapPinMapper: MyMapPinMapper
     ): MyMapLocationsRepository =
         MyMapLocationsRepositoryImpl(capinApiService, myMapPinMapper)
+
+    @Provides
+    @Singleton
+    fun provideCategoryListRepository(
+        categoryListDataSource: CategoryListDataSource,
+        categoryListMapper: CategoryListMapper
+    ): CategoryListRepository = CategoryListRepositoryImpl(categoryListDataSource, categoryListMapper)
+
+    @Provides
+    @Singleton
+    fun provideUserProfileRepository(
+        userProfileDataSource: UserProfileDataSource,
+        userProfileMapper: UserProfileMapper
+    ): UserProfileRepository = UserProfileRepositoryImpl(userProfileDataSource, userProfileMapper)
 
 }

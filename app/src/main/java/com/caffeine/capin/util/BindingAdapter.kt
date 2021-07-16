@@ -9,16 +9,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.updateMargins
 import androidx.databinding.BindingAdapter
 import com.bumptech.glide.Glide
-import com.google.android.material.imageview.ShapeableImageView
-import com.google.android.material.shape.ShapeAppearanceModel
 import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.CircleCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.caffeine.capin.R
-import com.caffeine.capin.category.CategoryNameEntity.CategoryPalette.Companion.findColorResource
+import com.caffeine.capin.category.model.CategoryType.Companion.findColorResource
 import com.caffeine.capin.customview.CapinChip
 import com.google.android.flexbox.FlexboxLayout
-import com.google.android.material.chip.ChipGroup
+import com.google.android.material.imageview.ShapeableImageView
+import com.google.android.material.shape.ShapeAppearanceModel
 import java.text.SimpleDateFormat
 import java.util.*
 

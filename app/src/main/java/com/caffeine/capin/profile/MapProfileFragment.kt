@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
+import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.databinding.FragmentMapProfileBinding
 import com.caffeine.capin.mypage.MyPageActivity
 import com.caffeine.capin.util.AutoClearedValue
@@ -30,11 +31,13 @@ class MapProfileFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         binding.lifecycleOwner = viewLifecycleOwner
         binding.viewModel = viewModel
-        viewModel.fetchUserInfo()
 
         binding.constraintlayoutArchive.setOnClickListener {
             val intent = Intent(this@MapProfileFragment.requireActivity(), MyPageActivity::class.java)
             startActivity(intent)
+        }
+        binding.buttonExit.setOnClickListener {
+            findNavController().popBackStack()
         }
     }
 }

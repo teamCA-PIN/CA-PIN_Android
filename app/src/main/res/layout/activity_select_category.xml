@@ -1,8 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
+
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -10,42 +11,42 @@
             android:id="@+id/toolbar_cafe_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:id="@+id/constriantlayout_dialog"
+            android:id="@+id/constriantlayout_add_category"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:paddingVertical="10dp"
             android:background="@drawable/bottom_border_gray2"
-            app:layout_constraintTop_toBottomOf="@id/toolbar_cafe_name"
+            android:paddingVertical="10dp"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
+            app:layout_constraintTop_toBottomOf="@id/toolbar_cafe_name">
 
             <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/button_add_category"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:layout_marginVertical="5dp"
-                app:layout_constraintWidth_percent="0.08"
-                app:layout_constraintDimensionRatio="1:1"
-                android:src="@drawable/plus_category"
                 android:layout_marginStart="25dp"
+                android:src="@drawable/plus_category"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toStartOf="parent"/>
+                app:layout_constraintWidth_percent="0.08" />
 
             <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/textview_new_category"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:layout_marginStart="22dp"
                 android:text="@string/mypage_category_add"
                 android:theme="@style/Body4"
-                android:layout_marginStart="22dp"
+                app:layout_constraintBottom_toBottomOf="@id/button_add_category"
                 app:layout_constraintStart_toEndOf="@id/button_add_category"
-                app:layout_constraintTop_toTopOf="@id/button_add_category"
-                app:layout_constraintBottom_toBottomOf="@id/button_add_category"/>
+                app:layout_constraintTop_toTopOf="@id/button_add_category" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -53,14 +54,79 @@
             android:id="@+id/recyclerview_select_category"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             android:orientation="vertical"
-            tools:listitem="@layout/item_select_category"
-            app:layout_constraintTop_toBottomOf="@id/constriantlayout_dialog"
-            app:layout_constraintStart_toStartOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/constriantlayout_add_category"
+            tools:listitem="@layout/item_select_category" />
 
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_cancel"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/round_rectangle_gray_24dp"
+            android:text="닫기"
+            android:textColor="@color/gray_4"
+            android:textSize="16dp"
+            android:layout_marginEnd="14dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintDimensionRatio="1:0.31"
+            app:layout_constraintEnd_toStartOf="@+id/button_complete"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toEndOf="@+id/linearLayout"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.87"
+            app:layout_constraintWidth_percent="0.42" />
+
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_complete"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="@drawable/round_rectangle_brown_24dp"
+            android:text="완료"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintDimensionRatio="1:0.31"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.5"
+            app:layout_constraintStart_toEndOf="@+id/button_cancel"
+            app:layout_constraintTop_toBottomOf="@id/button_cancel"
+            app:layout_constraintTop_toTopOf="@id/button_cancel"
+            app:layout_constraintWidth_percent="0.42" />
+
+        <LinearLayout
+            android:id="@+id/linearLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="19dp"
+            android:orientation="horizontal"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="8dp"
+            android:weightSum="2"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.87">
+
+            <!--            <androidx.appcompat.widget.AppCompatButton-->
+            <!--                android:id="@+id/button_cancel"-->
+            <!--                android:layout_width="0dp"-->
+            <!--                android:layout_height="wrap_content"-->
+            <!--                android:layout_weight="1"-->
+            <!--                android:background="@drawable/round_rectangle_gray_24dp"-->
+            <!--                android:text="닫기"-->
+            <!--                android:textColor="@color/gray_4"-->
+            <!--                android:textSize="16dp" />-->
+
+
+        </LinearLayout>
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>

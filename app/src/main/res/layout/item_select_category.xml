@@ -5,7 +5,7 @@
     <data>
         <variable
             name="data"
-            type="com.caffeine.capin.category.CategoryNameEntity" />
+            type="com.caffeine.capin.category.model.CategoryNameEntity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -41,6 +41,7 @@
             tools:text="기본 카테고리"/>
 
         <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_select"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:background="@drawable/selector_checkbox"

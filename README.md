@@ -1,9 +1,17 @@
 # 믿고 보는 카페 맵, C A : P I N ☕
-<img src="https://user-images.githubusercontent.com/76424700/125826222-b59ef45c-826b-467a-92d1-e1a63be33111.png" width="700" height="400"/>
+<img src="https://user-images.githubusercontent.com/76424700/125826222-b59ef45c-826b-467a-92d1-e1a63be33111.png" width="700" height="400"/>  
+
+**오늘도 '카페 어디가지?' 고민하는 분들을 위한 카페맵 앱 서비스 / [Service OPR](https://www.notion.so/O-P-R-f521f789248347949bef26a1ef0d2354#2f8521e618114579b183cdcd99188d2f)**  
+> **Team-CA:PIN Android**   
+> SOPT 28th APPJAM    
+> 프로젝트 기간: 2021.06.26 ~ 2021.07.16  
+
+<br>
 
 
-## 📌 Project Structure
-🌠 Capin_android  
+### 📌 Project Structure
+------
+☕ Capin_android  
 📂 cafeti  
 📂 category       
 📂 customview  
@@ -33,9 +41,14 @@
 📂 signup  
 📂 tagfilter  
 📂 util  
+
+
+<br>
+
     
-## 🔗 Dependency
-``` C
+### 🔗 Dependency
+------
+``` kotlin
         implementation(fileTree(mapOf("dir" to "libs", "include" to listOf("*.jar"))))
         implementation(Dependencies.KOTLIN)
         implementation(Dependencies.CORE_KTX)
@@ -84,17 +97,24 @@
         implementation("com.google.android.gms:play-services-location:16.0.0")
 ``` 
 
-## 🔍 Preview
+
+<br>
+
+### 🔍 Preview
+------
 
 
-## 💡 Core Function
+<br>
+
+### 💡 Core Function
+------
 
 1. CAFETI 검사 
 
 
 <img src="https://user-images.githubusercontent.com/76424700/125820405-c1274452-373e-4630-93f2-fc16dd32891c.png" width="250" height="500"/> <img src="https://user-images.githubusercontent.com/76424700/125820330-064adb3c-efb9-406d-8f6c-8c581784787a.png" width="250" height="500"/>
 
-``` C
+``` kotlin
        private fun nextButtonClickEvent() {
         binding.btnNext.setOnClickListener() {
             val checkedButton = binding.radiogroupCafeColor.checkedRadioButtonId
@@ -160,7 +180,7 @@
 
 <img src="https://user-images.githubusercontent.com/76424700/125819992-1e8be074-79ca-4364-957a-527bb4a9dbd6.png" width="250" height="500"/> <img src="https://user-images.githubusercontent.com/76424700/125820219-4373dc5f-b2ec-494c-983a-08b5214e18a8.png" width="250" height="500"/>
 
-``` C
+``` kotlin
 카핀맵 / 마이맵 코드 
 ```
 
@@ -168,16 +188,22 @@
 
 <img src="https://user-images.githubusercontent.com/76424700/125820572-89111293-de65-4c30-93cf-81e3f0765612.png" width="250" height="500"/>
 
-``` C
+``` kotlin
 마이페이지(핀) 코드 
 ```
 
-## 🙆‍♀️🙆‍♂️ Android developer & roles
-|  손평화                                               |  윤혁                                             |  조성림                                               |  홍은결                                                             
-|------------------------------------------------------|------------------------------------------------------|--------------------------------------------------------|----------------------------|
-|  카핀맵                    |  ?                     |  마이핀                     |  CAFETI,로그인                     |  
 
+<br>
 
-
-
-
+### 🙆‍♀️🙆‍♂️ Android developer & roles
+------
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://github.com/SONPYEONGHWA"><img src="https://avatars.githubusercontent.com/u/56873136?v=4" width="100px;" alt=""/><br /><sub><b>손평화</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=SONPYEONGHWA" title="Code">💻</a><br /><sub><b>카핀맵</b></sub></a><br /><sub><b>마이맵</b></sub></a><br /></td>
+    <td align="center"><a href="https://github.com/malibinYun"><img src="https://avatars.githubusercontent.com/u/44341119?v=4" width="100px;" alt=""/><br /><sub><b>윤혁</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=malibinYun" title="Code">💻</a><br /><sub><b>카페 상세 보기</b></sub></a><br /><sub><b>카페 메뉴/리뷰</b></sub></a><br /></td>
+     <td align="center"><a href="https://github.com/CHOSUNGRIM"><img src="https://avatars.githubusercontent.com/u/72273531?v=4" width="100px;" alt=""/><br /><sub><b>조성림</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=CHOSUNGRIM" title="Code">💻</a><br /><sub><b>마이페이지</b></sub></a><br /><sub><b>프로필 편집</b></sub></a><br /></td>
+     <td align="center"><a href="https://github.com/hongeungual"><img src="https://avatars.githubusercontent.com/u/76424700?v=4" width="100px;" alt=""/><br /><sub><b>홍은결</b></sub></a><br /><a href="https://github.com/teamCA-PIN/CA-PIN_Android/commits?author=hongeungual" title="Code">💻</a><br /><sub><b>로그인/회원가입</b></sub></a><br /><sub><b>CafeTI</b></sub></a><br /></td>
+  </tr>

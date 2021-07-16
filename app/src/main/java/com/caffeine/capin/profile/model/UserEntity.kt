@@ -1,4 +1,4 @@
-package com.caffeine.capin.profile
+package com.caffeine.capin.profile.model
 
 import com.caffeine.capin.map.entity.CafetiEntity
 
@@ -8,5 +8,5 @@ data class UserEntity(
     val pinNum: Int,
     val reviewNum: Int,
     val profileImg: String,
-    val cafeti: CafetiEntity
+    val cafeti: String
 )
