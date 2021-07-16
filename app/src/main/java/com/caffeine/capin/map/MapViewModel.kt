@@ -141,6 +141,10 @@ class MapViewModel @Inject constructor(
         _checkedTagList.value = taglist
     }
 
+    fun initializeFilterTag() {
+        _filterChecked.value?.clear()
+    }
+
     fun getCafeLocations() {
         val tags = mutableListOf<Int?>()
         if (!taglist.isNullOrEmpty()) {
