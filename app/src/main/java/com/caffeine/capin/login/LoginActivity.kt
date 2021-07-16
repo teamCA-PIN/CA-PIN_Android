@@ -99,7 +99,6 @@ class LoginActivity : AppCompatActivity() {
     }
 
 
-
     private fun loginButtonClickEvent() {
         binding.btnLogin.setOnClickListener() {
             val requestLoginData = RequestLoginData(
