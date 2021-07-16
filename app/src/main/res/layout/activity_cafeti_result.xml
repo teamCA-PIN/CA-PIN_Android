@@ -8,7 +8,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_test_finish"
-        style="@style/Headline1"
+        android:theme="@style/Headline1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="검사완료"
@@ -55,10 +55,11 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_modifier"
-        style="@style/Display1"
+        android:theme="@style/Display1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="차분한 기린씨"
+        android:layout_marginTop="8dp"
         android:textColor="@color/subcolor_brown_4"
         android:textSize="26dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -70,11 +71,12 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/detail_cafeti_test_again"
-        style="@style/Body2"
+        android:theme="@style/Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="CAFETI는 프로필 수정페이지에서\n다시 검사하실 수 있습니다."
         android:textAlignment="center"
+        android:lineSpacingExtra="0dp"
         android:textColor="@color/subcolor_blue_4"
         android:textSize="14dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -85,7 +87,7 @@
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_cafetitestfinish"
-        style="@style/BtnText"
+        android:theme="@style/BtnText"
         android:layout_width="328dp"
         android:layout_height="48dp"
         android:background="@drawable/circle_image_view4"
@@ -101,7 +103,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_modifierDetail"
-        style="@style/Body2"
+        android:theme="@style/Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="산미파"

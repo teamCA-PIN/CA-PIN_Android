@@ -20,6 +20,7 @@ import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.review.write.WriteReviewActivity
 import com.caffeine.capin.util.AutoClearedValue
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
@@ -90,8 +91,10 @@ class MyPageReviewFragment : Fragment() {
                                 this@MyPageReviewFragment.requireContext(),
                                 WriteReviewActivity::class.java
                             )
+                            val gson = Gson()
+                            val reviewSelected = gson.toJson(removeReviewInfo)
                             intent.putExtra("feature", "리뷰 수정하기")
-                            intent.putExtra("editReviewId", removeReviewInfo._id)
+                            intent.putExtra("editReview", reviewSelected)
                             startActivity(intent)
                             dialog.dismiss()
                         }
