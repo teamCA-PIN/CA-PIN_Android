@@ -9,45 +9,44 @@
         android:id="@+id/imageview_cafe_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:background="@drawable/frame_128"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:0.647"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.325"
         app:layout_constraintVertical_bias="0.086"
-        android:background="@drawable/frame_128"
-        app:layout_constraintDimensionRatio="1:0.647"/>
+        app:layout_constraintWidth_percent="0.325" />
 
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_before"
         style="@style/Subhead"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="16dp"
         android:background="@drawable/button_image_view"
         android:text="이전"
         android:textColor="@color/gray_4"
-        android:textSize="16.6dp"
+        android:textSize="16dp"
+        app:layout_constraintVertical_bias="0.6"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.11"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.932" />
+        app:layout_constraintEnd_toStartOf="@+id/btn_next"
+        app:layout_constraintHorizontal_chainStyle="packed"
+        app:layout_constraintStart_toStartOf="@+id/radiogroup_cafe_style"
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup_cafe_style" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_next"
         style="@style/Subhead"
-        android:layout_width="160dp"
+        android:layout_width="0dp"
         android:layout_height="48dp"
-        android:layout_marginStart="8dp"
         android:background="@drawable/button_image_view2"
         android:text="다음"
         android:textColor="@color/white"
-        android:textSize="16.6dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.149"
+        android:textSize="16dp"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/btn_before"
+        app:layout_constraintEnd_toEndOf="@+id/radiogroup_cafe_style"
         app:layout_constraintStart_toEndOf="@+id/btn_before"
         app:layout_constraintTop_toTopOf="@+id/btn_before" />
 
@@ -63,116 +62,110 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.294"
-        app:layout_constraintVertical_bias="0.047" />
+        app:layout_constraintVertical_bias="0.047"
+        app:layout_constraintWidth_percent="0.294" />
 
 
     <RadioGroup
         android:id="@+id/radiogroup_cafe_style"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginHorizontal="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.73">
 
-    <androidx.appcompat.widget.AppCompatRadioButton
-        android:id="@+id/radiobtn_modern"
-        style="@style/Subhead"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:button="@null"
-        android:text="모던"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/radiobtn_vintage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radiobtn_vintage"
-        app:layout_constraintTop_toBottomOf="@+id/radiobtn_vintage"
-        android:background="@drawable/selector_cafeti_radiobutton"
-        android:textColor="@color/selector_cafeti_radiobutton_text"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radiobtn_modern"
+            style="@style/Subhead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:background="@drawable/selector_cafeti_radiobutton"
+            android:button="@null"
+            android:text="모던"
+            android:textAlignment="center"
+            android:textColor="@color/selector_cafeti_radiobutton_text"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/radiobtn_vintage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/radiobtn_vintage"
+            app:layout_constraintTop_toBottomOf="@+id/radiobtn_vintage" />
 
-    <androidx.appcompat.widget.AppCompatRadioButton
-        android:id="@+id/radiobtn_vintage"
-        style="@style/Subhead"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radiobtn_vintage"
+            style="@style/Subhead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/selector_cafeti_radiobutton"
+            android:button="@null"
+            android:text="빈티지"
+            android:textAlignment="center"
+            android:textColor="@color/selector_cafeti_radiobutton_text"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/radiobtn_modern"
+            app:layout_constraintHorizontal_bias="0.578"
+            app:layout_constraintStart_toStartOf="@+id/radiobtn_modern"
+            app:layout_constraintTop_toBottomOf="@+id/radiobtn_modern"
+            app:layout_constraintWidth_percent="0.911" />
 
-        android:button="@null"
-        android:text="빈티지"
-        android:layout_marginTop="8dp"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/radiobtn_modern"
-        app:layout_constraintHorizontal_bias="0.578"
-        app:layout_constraintStart_toStartOf="@+id/radiobtn_modern"
-        app:layout_constraintTop_toBottomOf="@+id/radiobtn_modern"
-        app:layout_constraintWidth_percent="0.911"
-        android:background="@drawable/selector_cafeti_radiobutton"
-        android:textColor="@color/selector_cafeti_radiobutton_text"/>
-
-    <androidx.appcompat.widget.AppCompatRadioButton
-        android:id="@+id/radiobtn_hip"
-        style="@style/Subhead"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-
-        android:button="@null"
-        android:text="힙"
-        android:textAlignment="center"
-        android:layout_marginTop="8dp"
-
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.49"
-        app:layout_constraintWidth_percent="0.911"
-        android:background="@drawable/selector_cafeti_radiobutton"
-        android:textColor="@color/selector_cafeti_radiobutton_text"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radiobtn_hip"
+            style="@style/Subhead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/selector_cafeti_radiobutton"
+            android:button="@null"
+            android:text="힙"
+            android:textAlignment="center"
+            android:textColor="@color/selector_cafeti_radiobutton_text"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.49"
+            app:layout_constraintWidth_percent="0.911" />
 
 
-    <androidx.appcompat.widget.AppCompatRadioButton
-        android:id="@+id/radiobtn_unique"
-        style="@style/Subhead"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:layout_marginTop="8dp"
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radiobtn_unique"
+            style="@style/Subhead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/selector_cafeti_radiobutton"
+            android:button="@null"
+            android:text="특색 있는"
+            android:textAlignment="center"
+            android:textColor="@color/selector_cafeti_radiobutton_text"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/radiobtn_vintage"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="@+id/radiobtn_vintage"
+            app:layout_constraintTop_toBottomOf="@+id/radioButton" />
 
-        android:button="@null"
-        android:text="특색 있는"
-        android:textAlignment="center"
-
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/radiobtn_vintage"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/radiobtn_vintage"
-        app:layout_constraintTop_toBottomOf="@+id/radioButton"
-        android:background="@drawable/selector_cafeti_radiobutton"
-        android:textColor="@color/selector_cafeti_radiobutton_text"/>
-
-    <androidx.appcompat.widget.AppCompatRadioButton
-        android:id="@+id/radiobtn_cute"
-        style="@style/Subhead"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:button="@null"
-        android:text="아기자기한"
-        android:textAlignment="center"
-        android:textSize="16dp"
-        app:layout_constraintEnd_toEndOf="@+id/radiobtn_vintage"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/radiobtn_vintage"
-        app:layout_constraintTop_toBottomOf="@+id/radiobtn_unique"
-        android:background="@drawable/selector_cafeti_radiobutton"
-        android:textColor="@color/selector_cafeti_radiobutton_text"
-        android:layout_marginTop="8dp"/>
+        <androidx.appcompat.widget.AppCompatRadioButton
+            android:id="@+id/radiobtn_cute"
+            style="@style/Subhead"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/selector_cafeti_radiobutton"
+            android:button="@null"
+            android:text="아기자기한"
+            android:textAlignment="center"
+            android:textColor="@color/selector_cafeti_radiobutton_text"
+            android:textSize="16dp"
+            app:layout_constraintEnd_toEndOf="@+id/radiobtn_vintage"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/radiobtn_vintage"
+            app:layout_constraintTop_toBottomOf="@+id/radiobtn_unique" />
 
     </RadioGroup>
-
-
 
 
     <TextView
@@ -188,7 +181,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.4"
-        app:layout_constraintWidth_percent="0.694"/>
+        app:layout_constraintWidth_percent="0.694" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

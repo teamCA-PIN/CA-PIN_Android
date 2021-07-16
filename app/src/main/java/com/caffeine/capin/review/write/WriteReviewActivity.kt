@@ -2,18 +2,12 @@ package com.caffeine.capin.review.write
 
 import android.content.Intent
 import android.content.pm.PackageManager
-import android.graphics.Color
 import android.net.Uri
 import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
-import android.text.Spannable
-import android.text.SpannableString
-import android.text.SpannableStringBuilder
-import android.text.style.ForegroundColorSpan
 import android.util.Log
 import android.widget.CompoundButton
-import android.widget.TextView
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.activity.viewModels
@@ -22,20 +16,14 @@ import androidx.core.content.ContextCompat
 import androidx.core.content.FileProvider
 import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.R
-import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.databinding.ActivityWriteReviewBinding
-import com.caffeine.capin.mypage.api.request.RequestPutReviewData
-import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.HorizontalItemDecoration
 import dagger.hilt.android.AndroidEntryPoint
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
 import java.io.File
 import javax.inject.Inject
 
@@ -236,12 +224,20 @@ class WriteReviewActivity : AppCompatActivity() {
 
     private fun postReview() {
         binding.buttonPostReview.setOnClickListener {
-            viewModel.changeCheckedRecommend(
-                mapOf<CompoundButton, Int>(
-                    binding.checkboxTaste to 1,
-                    binding.checkboxFeeling to 0
-                )
+            val checkedTags = mutableListOf<Int?>()
+            val checkBoxList = mapOf<CompoundButton, Int>(
+                binding.checkboxTaste to 1,
+                binding.checkboxFeeling to 0
             )
+            checkBoxList.forEach {
+                if (it.key.isChecked) {
+                    checkedTags.add(it.value)
+                }
+            }
+            viewModel.changeCheckedRecommend(
+                checkedTags
+            )
+            Log.e("checked", "${viewModel.checkedRecommend.value}")
             viewModel.uploadReview(contentResolver)
         }
     }
