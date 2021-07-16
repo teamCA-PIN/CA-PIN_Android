@@ -115,7 +115,7 @@
 <img src="https://user-images.githubusercontent.com/76424700/125820405-c1274452-373e-4630-93f2-fc16dd32891c.png" width="250" height="500"/> <img src="https://user-images.githubusercontent.com/76424700/125820330-064adb3c-efb9-406d-8f6c-8c581784787a.png" width="250" height="500"/>
 
 ``` kotlin
-       private fun nextButtonClickEvent() {
+      private fun nextButtonClickEvent() {
         binding.btnNext.setOnClickListener() {
             val checkedButton = binding.radiogroupCafeColor.checkedRadioButtonId
             if (checkedButton != -1) {
@@ -138,7 +138,7 @@
                     }
                 }
             } else {
-                CapinToastMessage.createCapinRejectToast(this@CafeColorActivity, "한가지 항목을 선택해주세요", 200)?.show()
+                CapinToastMessage.createCapinRejectToast(this@CafeColorActivity, "한가지 항목을 선택해주세요", 135)?.show()
             }
         }
     }
@@ -148,7 +148,7 @@
             answers = cafetiResultList
         )
         val call: Call<ResponseCafetiData> =
-            ServiceCreator.capinService.postCafeti(
+            ServiceCreator.capinApiService.postCafeti(
                 token,
                 requestCafetiData
             )
@@ -159,13 +159,13 @@
             ) {
                 if (response.isSuccessful) {
                     Log.e("dfsd", "dfasdf")
-                    Toast.makeText(this@CafeColorActivity, "CAFETI 검사 완료", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@CafeColorActivity, "CAFETI 검사 완료", LENGTH_SHORT)
                     val intent = Intent(this@CafeColorActivity, CafetiResultActivity::class.java)
                     intent.putExtra("cafeti_result", response.body()?.result)
                     startActivity(intent)
 
                 } else {
-                    Toast.makeText(this@CafeColorActivity, "필요한 값이 없습니다.", Toast.LENGTH_SHORT)
+                    Toast.makeText(this@CafeColorActivity, "필요한 값이 없습니다.", LENGTH_SHORT)
                 }
             }
 
