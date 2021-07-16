@@ -149,6 +149,7 @@
                     android:textSize="14dp"
                     android:theme="@style/Body4"
                     android:layout_marginEnd="20dp"
+                    android:text="@{viewModel.selectedCafe.average != null ? @string/float_0_1(viewModel.selectedCafe.average): @string/float_0_1(0.0)}"
                     android:textColor="@color/pointcolor_yellow"
                     android:layout_marginTop="16dp"
                     android:layout_marginStart="20dp"
