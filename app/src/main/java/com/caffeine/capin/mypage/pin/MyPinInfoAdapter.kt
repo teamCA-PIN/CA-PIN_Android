@@ -1,6 +1,5 @@
 package com.caffeine.capin.mypage.pin
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,7 +41,6 @@ class MyPinInfoAdapter : RecyclerView.Adapter<MyPinInfoAdapter.MyPinInfoViewHold
     fun switchDeleteMode(mode: Boolean) {
         this.isVisible = mode
         notifyDataSetChanged()
-        Log.d("이거는 모드", mode.toString())
     }
 
     interface OnCheckboxClickListener {
@@ -66,10 +64,8 @@ class MyPinInfoAdapter : RecyclerView.Adapter<MyPinInfoAdapter.MyPinInfoViewHold
                 checkboxClickListener.onCheckboxClick(myPinInfo)
                 if (binding.pinDetailChoiceCheckbox.isChecked) {
                     checkboxList.add(binding.pinDetailChoiceCheckbox)
-                    Log.d("이거는 어댑터에서 체크드", checkboxList.size.toString())
                 } else {
                     checkboxList.remove(binding.pinDetailChoiceCheckbox)
-                    Log.d("이거는 어댑터에서 not 체크드", checkboxList.size.toString())
                 }
             }
         }

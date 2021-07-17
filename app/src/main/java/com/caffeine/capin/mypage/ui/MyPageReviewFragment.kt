@@ -15,6 +15,7 @@ import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
+import com.caffeine.capin.mypage.myreview.MyReviewImageActivity
 import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
@@ -67,6 +68,16 @@ class MyPageReviewFragment : Fragment() {
             override fun onEditButtonClick(myReview: MyReview) {
                 removeReviewInfo = myReview
                 showEditReviewDialog()
+            }
+        })
+
+        myReviewAdapter.setOnImageClickListener(object :
+            MyReviewAdapter.OnImageClickListener{
+
+            override fun onImageClick(myReview: MyReview) {
+                val intent = Intent(this@MyPageReviewFragment.requireContext(), MyReviewImageActivity::class.java)
+                intent.putStringArrayListExtra("imgs", arrayListOf(*myReview.imgs.toTypedArray()))
+                startActivity(intent)
             }
         })
     }
@@ -149,14 +160,15 @@ class MyPageReviewFragment : Fragment() {
                 response: Response<ResponseMyReviewData>
             ) { //통신 성공
                 if (response.isSuccessful) {
-                    myReviewAdapter.myReviewList = response.body()?.reviews as MutableList<MyReview>
-                    Log.d("리미", response.body().toString())
-                    myReviewAdapter.notifyDataSetChanged()
-                }
-                binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
-
-                if (myReviewAdapter.myReviewList.size < 1) {
-                    binding.ifBasicReviewTv.isVisible = true
+                    if(response.body() != null) {
+                        myReviewAdapter.myReviewList = response.body()?.reviews as MutableList<MyReview>
+                        Log.d("리미", response.body().toString())
+                        myReviewAdapter.notifyDataSetChanged()
+                    }
+                    binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
+                    if (myReviewAdapter.myReviewList.size < 1) {
+                        binding.ifBasicReviewTv.isVisible = true
+                    }
                 }
             }
         })

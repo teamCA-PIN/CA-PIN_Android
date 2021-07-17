@@ -46,14 +46,12 @@ class MyPageCategoryFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("리미", "onViewCreate")
         viewModel.getMyCategoryFromServer()
 
         myCategoryAdapter = MyCategoryAdapter()
         binding.mypageCategoryRcvInclude.categoryRcv.adapter = myCategoryAdapter
 
         updateCategoryList()
-        Log.d("리미", "onViewCreate update")
         deleteCategory()
 
         binding.mypageCategoryAddCl.setOnClickListener {

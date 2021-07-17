@@ -17,10 +17,10 @@ import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint
-import javax.inject.Inject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MyPagePinDetailActivity : AppCompatActivity() {
@@ -127,18 +127,12 @@ class MyPagePinDetailActivity : AppCompatActivity() {
 
                     for (i in 0 until removePinInfoList.size) {
                         myPinInfoAdapter.myPinInfoList.remove(removePinInfoList[i])
-                        Log.d("이거는 removePinInfoList", removePinInfoList.size.toString())
                         myPinInfoAdapter.checkboxList.forEach {
                             it.isChecked = false
                         }
                     }
                     myPinInfoAdapter.checkboxList.clear()
-                    Log.d("이거는 checkboxList", myPinInfoAdapter.checkboxList.size.toString())
-
                     removePinInfoList.clear()
-                    Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
-
-                    Log.d("이거는 myPinInfoList", myPinInfoAdapter.myPinInfoList.size.toString())
                     myPinInfoAdapter.switchDeleteMode(false)
                     myPinInfoAdapter.notifyDataSetChanged()
                     binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
@@ -167,7 +161,6 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     myPinInfoAdapter.myPinInfoList =
                         response.body()?.cafeDetail as MutableList<MyPinInfo>
                     myPinInfoAdapter.notifyDataSetChanged()
-                    Log.d("리미", "getMyPinFromServer")
                 }
                 binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
 
@@ -196,7 +189,6 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("리미", "delete되냐")
                 getMyPinFromServer()
                 myPinInfoAdapter.notifyDataSetChanged()
             }

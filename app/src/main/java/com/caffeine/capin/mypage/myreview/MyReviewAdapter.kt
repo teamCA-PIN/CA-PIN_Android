@@ -1,8 +1,8 @@
 package com.caffeine.capin.mypage.myreview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import android.widget.ImageView
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
 import androidx.recyclerview.widget.RecyclerView
@@ -40,11 +40,6 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
         }
     }
 
-    fun removeChat() {
-        myReviewList.removeAt(myReviewList.size - 1)
-        notifyItemRemoved(myReviewList.size)
-    }
-
     interface OnEditButtonClickListener {
         fun onEditButtonClick(myReview: MyReview)
     }
@@ -55,6 +50,16 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
         this.editButtonClickListener = listener
     }
 
+    interface OnImageClickListener {
+        fun onImageClick(myReview: MyReview)
+    }
+
+    private lateinit var imageClickListener: OnImageClickListener
+
+    fun setOnImageClickListener(listener: OnImageClickListener) {
+        this.imageClickListener = listener
+    }
+
     inner class MyReviewViewHolder(
         private val binding: ItemMypageReviewBinding
     ) : RecyclerView.ViewHolder(binding.root) {
@@ -62,6 +67,21 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
             binding.mypageReviewCafenameTv.text = myReview.cafeName
             binding.mypageReviewRatingTv.text = myReview.rating.toString()
             binding.mypageReviewContentsTv.text = myReview.content
+            if (myReview.recommend != null) {
+                when (myReview.recommend) {
+                    listOf(0) -> {
+                        binding.mypageReviewTypeMoodBtn.isVisible = false
+                        binding.mypageReviewTypeFlavorBtn.setText("분위기 추천")
+                    }
+                    listOf(1) -> {
+                        binding.mypageReviewTypeMoodBtn.isVisible = false
+                    }
+                }
+            } else {
+                binding.mypageReviewTypeFlavorBtn.isGone = true
+                binding.mypageReviewTypeMoodBtn.isGone = true
+            }
+
             if (myReview.imgs != null) {
                 when (myReview.imgs.size) {
                     1 -> {
@@ -98,7 +118,6 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
                             .into(binding.mypageReviewImgsThirdIv)
                     }
                     else -> {
-                        Log.d("리미", "이미지다섯개왜안들어와")
                         Glide
                             .with(binding.mypageReviewImgsFirstIv.context)
                             .load(myReview.imgs[0])
@@ -123,23 +142,18 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
                 binding.mypageReviewImgsThirdIv.isVisible = false
             }
 
-            if (myReview.recommend != null) {
-                when (myReview.recommend) {
-                    listOf(0) -> {
-                        binding.mypageReviewTypeMoodBtn.isVisible = false
-                        binding.mypageReviewTypeFlavorBtn.setText("분위기 추천")
-                    }
-                    listOf(1) -> {
-                        binding.mypageReviewTypeMoodBtn.isVisible = false
-                    }
-                }
-            } else {
-                binding.mypageReviewTypeFlavorBtn.isGone = true
-                binding.mypageReviewTypeMoodBtn.isGone = true
-            }
-
             binding.mypageReviewEditBtn.setOnClickListener {
                 editButtonClickListener.onEditButtonClick(myReview)
+            }
+
+            listOf<ImageView>(
+                binding.mypageReviewImgsFirstIv,
+                binding.mypageReviewImgsSecondIv,
+                binding.mypageReviewImgsThirdIv
+            ).forEach {
+                it.setOnClickListener {
+                    imageClickListener.onImageClick(myReview)
+                }
             }
         }
     }

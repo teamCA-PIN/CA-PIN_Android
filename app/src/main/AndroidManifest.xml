@@ -38,11 +38,10 @@
         <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
         <activity android:name=".mypage.ui.MyPageProfileEditActivity" />
         <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
-        <activity android:name=".MainActivity" />
+        <activity android:name=".mypage.myreview.MyReviewImageActivity" />
+        <activity android:name=".MainActivity"/>
         <activity android:name=".cafeti.ui.CoffeeTasteActivity" />
-        <activity android:name=".cafeti.ui.CafeColorActivity" >
-
-        </activity>
+        <activity android:name=".cafeti.ui.CafeColorActivity" />
         <activity android:name=".cafeti.ui.CafeStyleActivity" />
         <activity android:name=".cafeti.ui.CoffeeMenuActivity" />
         <activity android:name=".cafeti.CafetiActivity">
