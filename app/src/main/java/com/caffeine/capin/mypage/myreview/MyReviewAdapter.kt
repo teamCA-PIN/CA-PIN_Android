@@ -67,6 +67,21 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
             binding.mypageReviewCafenameTv.text = myReview.cafeName
             binding.mypageReviewRatingTv.text = myReview.rating.toString()
             binding.mypageReviewContentsTv.text = myReview.content
+            if (myReview.recommend != null) {
+                when (myReview.recommend) {
+                    listOf(0) -> {
+                        binding.mypageReviewTypeMoodBtn.isVisible = false
+                        binding.mypageReviewTypeFlavorBtn.setText("분위기 추천")
+                    }
+                    listOf(1) -> {
+                        binding.mypageReviewTypeMoodBtn.isVisible = false
+                    }
+                }
+            } else {
+                binding.mypageReviewTypeFlavorBtn.isGone = true
+                binding.mypageReviewTypeMoodBtn.isGone = true
+            }
+
             if (myReview.imgs != null) {
                 when (myReview.imgs.size) {
                     1 -> {
@@ -125,21 +140,6 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
                 binding.mypageReviewImgsFirstIv.isVisible = false
                 binding.mypageReviewImgsSecondIv.isVisible = false
                 binding.mypageReviewImgsThirdIv.isVisible = false
-            }
-
-            if (myReview.recommend != null) {
-                when (myReview.recommend) {
-                    listOf(0) -> {
-                        binding.mypageReviewTypeMoodBtn.isVisible = false
-                        binding.mypageReviewTypeFlavorBtn.setText("분위기 추천")
-                    }
-                    listOf(1) -> {
-                        binding.mypageReviewTypeMoodBtn.isVisible = false
-                    }
-                }
-            } else {
-                binding.mypageReviewTypeFlavorBtn.isGone = true
-                binding.mypageReviewTypeMoodBtn.isGone = true
             }
 
             binding.mypageReviewEditBtn.setOnClickListener {
