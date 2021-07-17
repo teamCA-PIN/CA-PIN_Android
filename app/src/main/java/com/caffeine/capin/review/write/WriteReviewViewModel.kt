@@ -90,15 +90,11 @@ class WriteReviewViewModel @Inject constructor(
         checkedRecommend.value?.forEach {
             _recommendation.value?.add(it)
         }
-
         val review = RequestWriteReview(
             _recommendation.value,
             contentsOfReview.value!!,
             rateOfReview.value!!
         )
-
-        Log.e("checkedTAGS", "${review}")
-
         val reviewJson = FormDataUtil.getBody("review", JsonStringParser.parseToJsonString(review))
 
         imagesOfCafe.value?.forEach { picture ->
