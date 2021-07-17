@@ -124,6 +124,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
+            android:indeterminateTint="@color/subcolor_blue_4"
             app:layout_constraintTop_toTopOf="@id/pin_detail_rcv"
             app:layout_constraintBottom_toBottomOf="@id/pin_detail_rcv"
             app:layout_constraintStart_toStartOf="@id/pin_detail_rcv"
