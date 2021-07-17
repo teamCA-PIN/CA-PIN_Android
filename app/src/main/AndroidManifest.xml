@@ -42,9 +42,6 @@
         <activity android:name=".MainActivity"/>
         <activity android:name=".cafeti.ui.CoffeeTasteActivity" />
         <activity android:name=".cafeti.ui.CafeColorActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".cafeti.ui.CoffeeTasteActivity" />
-        <activity android:name=".cafeti.ui.CafeColorActivity" />
         <activity android:name=".cafeti.ui.CafeStyleActivity" />
         <activity android:name=".cafeti.ui.CoffeeMenuActivity" />
         <activity android:name=".cafeti.CafetiActivity">

@@ -1,7 +1,6 @@
 package com.caffeine.capin.mypage.myreview
 
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -29,7 +28,6 @@ class MyReviewImageFragment(val url: String) : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        Log.d("리미 왜 안돼", url)
         Glide
             .with(binding.myreviewImageIv.context)
             .load(url)

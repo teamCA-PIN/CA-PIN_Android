@@ -136,7 +136,6 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 Log.d("success", "성공")
-                Log.d("리미", "진짜 안되냐")
                 finish()
             }
         })

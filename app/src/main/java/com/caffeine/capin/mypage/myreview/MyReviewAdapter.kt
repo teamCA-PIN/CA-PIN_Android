@@ -1,6 +1,5 @@
 package com.caffeine.capin.mypage.myreview
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import android.widget.ImageView
@@ -51,7 +50,7 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
         this.editButtonClickListener = listener
     }
 
-    interface OnImageClickListener{
+    interface OnImageClickListener {
         fun onImageClick(myReview: MyReview)
     }
 
@@ -104,7 +103,6 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
                             .into(binding.mypageReviewImgsThirdIv)
                     }
                     else -> {
-                        Log.d("리미", "이미지다섯개왜안들어와")
                         Glide
                             .with(binding.mypageReviewImgsFirstIv.context)
                             .load(myReview.imgs[0])
