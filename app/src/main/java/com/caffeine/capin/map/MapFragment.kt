@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
+import com.bumptech.glide.Glide
 import com.caffeine.capin.R
 import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
@@ -64,10 +65,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         super.onResume()
         checkMapSort()
         binding.cardviewCafeSelected.visibility = View.GONE
-
-    }
-
-    private fun moveToCurrentLocation() {
 
     }
 
@@ -249,6 +246,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     textviewCafeTag.text = cafeDetail.tags[0].name
                 } else {
                     textviewCafeTag.visibility = View.GONE
+                }
+                if(!cafeDetail.img.isNullOrEmpty()) {
+                    Glide.with(requireContext()).load(cafeDetail.img).into(imageviewCafe)
+                } else {
+                    Glide.with(requireContext()).load(R.drawable.ic_component_86).into(binding.imageviewCafe)
                 }
                 cardviewCafeSelected.setOnClickListener {
                     Intent(activity, CafeDetailsActivity::class.java)

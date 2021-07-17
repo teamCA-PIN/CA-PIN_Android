@@ -164,7 +164,7 @@
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     app:layout_constraintWidth_percent="0.275"
-                    android:background="@color/pointcolor_1"
+                    android:background="@color/gray_3"
                     app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}"
                     app:layout_constraintDimensionRatio="1:1"
                     app:layout_constraintEnd_toEndOf="parent"
