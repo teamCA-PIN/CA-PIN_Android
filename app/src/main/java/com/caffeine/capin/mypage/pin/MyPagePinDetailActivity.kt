@@ -2,9 +2,11 @@ package com.caffeine.capin.mypage.pin
 
 import android.os.Bundle
 import android.util.Log
+import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
 import androidx.core.view.isVisible
+import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.caffeine.capin.customview.CapinDialog
@@ -16,6 +18,7 @@ import com.caffeine.capin.mypage.api.response.ResponseMyPinData
 import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
@@ -24,7 +27,6 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class MyPagePinDetailActivity : AppCompatActivity() {
-
     private lateinit var binding: ActivityMyPagePinDetailBinding
     private lateinit var myPinInfoAdapter: MyPinInfoAdapter
     private var removePinInfoList: MutableList<MyPinInfo> = mutableListOf()
@@ -34,12 +36,13 @@ class MyPagePinDetailActivity : AppCompatActivity() {
     lateinit var userPreferenceManager: UserPreferenceManager
 
     lateinit var categoryPinId: String
+    private val success = MutableLiveData<UiState<Boolean>>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMyPagePinDetailBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
+        binding.lifecycleOwner = this
         categoryPinId = intent.getStringExtra("categoryPinId").toString()
         binding.pinDetailBackBtn.setOnClickListener { onBackPressed() }
 
@@ -49,6 +52,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         setDefaultComment()
         pinEditButtonClickEvent()
         pinDeleteButtonClickEvent()
+        displayProgressBar()
     }
 
     private fun setFeature() {
@@ -148,9 +152,11 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             categoryId = categoryPinId
         )
 
+        success.value = UiState.loading(false)
         capinApiService.enqueue(object : Callback<ResponseMyPinData> {
             override fun onFailure(call: Call<ResponseMyPinData>, t: Throwable) {
                 Log.d("fail", "error:$t")
+                success.value = UiState.error(true, t.message)
             }
 
             override fun onResponse(
@@ -158,6 +164,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 response: Response<ResponseMyPinData>
             ) {
                 if (response.isSuccessful) {
+                    success.value = UiState.success(true)
                     myPinInfoAdapter.myPinInfoList =
                         response.body()?.cafeDetail as MutableList<MyPinInfo>
                     myPinInfoAdapter.notifyDataSetChanged()
@@ -170,6 +177,22 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun displayProgressBar() {
+        success.observe(this) {
+            when(it.status) {
+                UiState.Status.LOADING -> {
+                    binding.progressbar.visibility = View.VISIBLE
+                }
+                UiState.Status.SUCCESS -> {
+                    binding.progressbar.visibility = View.GONE
+                }
+                UiState.Status.ERROR -> {
+                    binding.progressbar.visibility = View.GONE
+                }
+            }
+        }
     }
 
     private fun deleteMyPinAtServer() {

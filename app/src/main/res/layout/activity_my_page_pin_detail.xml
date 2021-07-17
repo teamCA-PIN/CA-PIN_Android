@@ -119,5 +119,15 @@
             app:layout_constraintTop_toBottomOf="@+id/pin_detail_num_tv"
             tools:listitem="@layout/item_category_pin_detail" />
 
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            app:layout_constraintTop_toTopOf="@id/pin_detail_rcv"
+            app:layout_constraintBottom_toBottomOf="@id/pin_detail_rcv"
+            app:layout_constraintStart_toStartOf="@id/pin_detail_rcv"
+            app:layout_constraintEnd_toEndOf="@id/pin_detail_rcv"/>
+
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

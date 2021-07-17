@@ -6,7 +6,7 @@
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
         android:paddingVertical="12dp"
-        android:paddingHorizontal="71dp"
+        android:paddingHorizontal="60dp"
         android:background="@drawable/background_reject_toast">
 
         <androidx.appcompat.widget.AppCompatImageView
