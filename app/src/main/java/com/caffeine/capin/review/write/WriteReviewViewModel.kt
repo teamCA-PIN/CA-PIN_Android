@@ -8,6 +8,7 @@ import com.caffeine.capin.review.write.controller.WriteReviewController
 import com.caffeine.capin.util.FormDataUtil
 import com.caffeine.capin.util.FormDataUtil.asMultipart
 import com.caffeine.capin.util.JsonStringParser
+import com.caffeine.capin.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -36,8 +37,8 @@ class WriteReviewViewModel @Inject constructor(
     val recommendation: LiveData<MutableList<Int?>>
         get() = _recommendation
 
-    private val _successPost = MutableLiveData<Boolean>()
-    val successPost: LiveData<Boolean>
+    private val _successPost = MutableLiveData<UiState<Boolean>>()
+    val successPost: LiveData<UiState<Boolean>>
         get() = _successPost
 
     private val _checkedRecommend = MutableLiveData<List<Int?>>()
@@ -99,7 +100,7 @@ class WriteReviewViewModel @Inject constructor(
             requestMap.add(picture.uri?.asMultipart("imgs", contentResolver))
         }
 
-        _successPost.postValue(false)
+        _successPost.value = UiState.loading(null)
         writeReviewController.postReview(
             cafeId.value!!,
             reviewJson,
@@ -107,10 +108,11 @@ class WriteReviewViewModel @Inject constructor(
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                _successPost.postValue(true)
+                _successPost.postValue(UiState.loading(null))
+
             }, {
+                _successPost.postValue(UiState.error(null, it.toString()))
                 it.printStackTrace()
-                _successPost.postValue(false)
             })
     }
 

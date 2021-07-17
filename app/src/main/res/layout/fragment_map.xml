@@ -125,6 +125,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:textSize="20dp"
+                    android:text="@{viewModel.selectedCafe.name}"
                     android:theme="@style/Headline1"
                     android:textColor="@color/black"
                     android:layout_marginTop="16dp"
@@ -179,6 +180,7 @@
                     style="@style/Body3"
                     android:textColor="@color/gray_4"
                     android:textSize="12dp"
+                    android:text="@{viewModel.selectedCafe.address}"
                     android:layout_marginStart="15dp"
                     app:layout_constraintTop_toTopOf="@id/imageview_cafe"
                     app:layout_constraintEnd_toEndOf="@id/textview_cafe_rating"
@@ -201,13 +203,11 @@
 
                 <androidx.appcompat.widget.AppCompatImageView
                     android:id="@+id/button_save_cafe"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:background="@drawable/ic_icon_pinplus"
-                    app:layout_constraintBottom_toBottomOf="@id/textview_cafe_tag"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="@+id/textview_cafe_rating"
-                    app:layout_constraintTop_toTopOf="@id/textview_cafe_tag" />
+                    app:layout_constraintBottom_toBottomOf="@+id/imageview_cafe"
+                    app:layout_constraintEnd_toEndOf="@+id/textview_cafe_rating" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 

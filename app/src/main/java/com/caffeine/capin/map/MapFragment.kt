@@ -244,10 +244,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun updateCafeDeatail() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
             binding.apply {
-                textviewAddress.text = cafeDetail.address
-                textviewCafeName.text = cafeDetail.name
-                textviewCafeRating.text = cafeDetail.average.toString()
-                textviewCafeTag.text = cafeDetail.tags[0].name
+                if (!cafeDetail.tags.isNullOrEmpty()) {
+                    textviewCafeTag.visibility = View.VISIBLE
+                    textviewCafeTag.text = cafeDetail.tags[0].name
+                } else {
+                    textviewCafeTag.visibility = View.GONE
+                }
                 cardviewCafeSelected.setOnClickListener {
                     Intent(activity, CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail._id)
