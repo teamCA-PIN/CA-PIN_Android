@@ -1,9 +1,9 @@
 package com.caffeine.capin.network
 
-import com.caffeine.capin.cafeti.RequestCafetiData
-import com.caffeine.capin.cafeti.ResponseCafetiData
+import com.caffeine.capin.cafeti.model.RequestCafetiData
+import com.caffeine.capin.cafeti.model.ResponseCafetiData
 import com.caffeine.capin.category.model.RequestArchiveCafeDTO
-import com.caffeine.capin.login.*
+import com.caffeine.capin.login.model.*
 import com.caffeine.capin.map.dto.ResponseCafeDetail
 import com.caffeine.capin.map.dto.ResponseCafeList
 import com.caffeine.capin.map.dto.ResponseMyMapLocations
@@ -106,7 +106,9 @@ interface CapinApiService {
     ): Call<BaseResponse>
 
     @GET("/cafes/myMap")
-    fun getMyMapPins(): Single<ResponseMyMapLocations>
+    fun getMyMapPins(
+        @Query("tags") tags: List<Int?>
+    ): Single<ResponseMyMapLocations>
 
     @GET("/user/categoryList")
     fun getCategoryList(): Single<ResponseMyCategoryData>

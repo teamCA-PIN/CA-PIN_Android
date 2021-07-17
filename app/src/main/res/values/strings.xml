@@ -37,5 +37,7 @@
     <string name="count_of_review_contents">%d/150</string>
     <string name="pin_detail_basic">이 카테고리에 핀 해둔 카페가 없습니다.</string>
     <string name="error_cafe_name">카페정보없음</string>
+    <string name="exit_page_tagfilter">페이지를 나가시겠습니까?</string>
+    <string name="exit_page_content_tagfilter">검색결과 보기를 눌러\n원하시는 검색 결과를 받아보세요.</string>
 </resources>
 

@@ -9,8 +9,8 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.databinding.FragmentMapProfileBinding
-import com.caffeine.capin.login.LoginActivity
-import com.caffeine.capin.mypage.MyPageActivity
+import com.caffeine.capin.login.ui.LoginActivity
+import com.caffeine.capin.mypage.ui.MyPageActivity
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.AutoClearedValue
 import dagger.hilt.android.AndroidEntryPoint

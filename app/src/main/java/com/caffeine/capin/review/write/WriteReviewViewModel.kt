@@ -4,11 +4,11 @@ import android.content.ContentResolver
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.caffeine.capin.PictureUriEntity
 import com.caffeine.capin.review.write.controller.WriteReviewController
 import com.caffeine.capin.util.FormDataUtil
 import com.caffeine.capin.util.FormDataUtil.asMultipart
 import com.caffeine.capin.util.JsonStringParser
+import com.caffeine.capin.util.UiState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
 import io.reactivex.rxjava3.schedulers.Schedulers
@@ -19,7 +19,7 @@ import javax.inject.Inject
 class WriteReviewViewModel @Inject constructor(
     private val writeReviewController: WriteReviewController
 
-): ViewModel() {
+) : ViewModel() {
     val rateOfReview = MutableLiveData<Float>(0.0f)
     val contentsOfReview = MutableLiveData<String>()
 
@@ -37,8 +37,8 @@ class WriteReviewViewModel @Inject constructor(
     val recommendation: LiveData<MutableList<Int?>>
         get() = _recommendation
 
-    private val _successPost = MutableLiveData<Boolean>()
-    val successPost: LiveData<Boolean>
+    private val _successPost = MutableLiveData<UiState<Boolean>>()
+    val successPost: LiveData<UiState<Boolean>>
         get() = _successPost
 
     private val _checkedRecommend = MutableLiveData<List<Int?>>()
@@ -51,10 +51,6 @@ class WriteReviewViewModel @Inject constructor(
 
     fun changeCafeId(cafeId: String) {
         _cafeId.value = cafeId
-    }
-
-    fun changeReviewId(reviewId: String) {
-        _reviewId.value = reviewId
     }
 
     fun changeCheckedRecommend(list: List<Int?>) {
@@ -90,11 +86,9 @@ class WriteReviewViewModel @Inject constructor(
 
     fun uploadReview(contentResolver: ContentResolver) {
         var requestMap = mutableListOf<MultipartBody.Part?>()
-
-        checkedRecommend.value?.forEach{
+        checkedRecommend.value?.forEach {
             _recommendation.value?.add(it)
         }
-
         val review = RequestWriteReview(
             _recommendation.value,
             contentsOfReview.value!!,
@@ -103,22 +97,22 @@ class WriteReviewViewModel @Inject constructor(
         val reviewJson = FormDataUtil.getBody("review", JsonStringParser.parseToJsonString(review))
 
         imagesOfCafe.value?.forEach { picture ->
-            requestMap.add(picture.uri?.asMultipart("imgs",contentResolver))
+            requestMap.add(picture.uri?.asMultipart("imgs", contentResolver))
         }
 
-        //Todo: 플로우 연결 후 카페 아이디 하드코딩 수정
-
-       writeReviewController.postReview(
-           "60e96789868b7d75f394b017",
+        _successPost.value = UiState.loading(null)
+        writeReviewController.postReview(
+            cafeId.value!!,
             reviewJson,
             requestMap
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                _successPost.postValue(true)
+                _successPost.postValue(UiState.success(null))
+
             }, {
+                _successPost.postValue(UiState.error(null, it.toString()))
                 it.printStackTrace()
-                _successPost.postValue(false)
             })
     }
 

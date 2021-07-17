@@ -10,8 +10,10 @@ class MyMapLocationsRepositoryImpl @Inject constructor(
     private val capinApiService: CapinApiService,
     private val myMapPinMapper: MyMapPinMapper
 ) : MyMapLocationsRepository {
-    override fun getPinCafes(): Single<List<CafeInformationEntity>> =
-        capinApiService.getMyMapPins().map { response ->
+    override fun getPinCafes(
+        tags: List<Int?>
+    ): Single<List<CafeInformationEntity>> =
+        capinApiService.getMyMapPins(tags).map { response ->
             myMapPinMapper.map(response.myMapLocationDTO)
         }
 }

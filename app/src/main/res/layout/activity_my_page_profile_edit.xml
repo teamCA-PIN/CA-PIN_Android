@@ -10,7 +10,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mypage.MyPageProfileEditActivity">
+        tools:context=".mypage.ui.MyPageProfileEditActivity">
 
         <ImageView
             android:id="@+id/profile_edit_back_btn"

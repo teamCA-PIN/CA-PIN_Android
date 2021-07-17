@@ -15,6 +15,9 @@ import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivitySignupBinding
 import com.caffeine.capin.login.*
+import com.caffeine.capin.login.model.RequestSignUpData
+import com.caffeine.capin.login.model.ResponseSignUpData
+import com.caffeine.capin.login.ui.LoginActivity
 import com.caffeine.capin.network.ServiceCreator.capinApiService
 import com.caffeine.capin.preference.UserPreferenceManager
 import dagger.hilt.android.AndroidEntryPoint

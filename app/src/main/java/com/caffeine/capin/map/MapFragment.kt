@@ -19,7 +19,6 @@ import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
 import com.caffeine.capin.util.AutoClearedValue
-import com.caffeine.capin.util.JsonStringParser.parseToJsonString
 import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.*
@@ -52,6 +51,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
+
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
@@ -62,15 +62,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
-        when (binding.radiogroupMap.checkedRadioButtonId) {
-            binding.radiobuttonCapinMap.id -> {
-                viewModel.getCafeLocations()
-            }
-            binding.radiobuttonMyMap.id -> {
-                viewModel.switchToMyMap()
-            }
-        }
+        checkMapSort()
         binding.cardviewCafeSelected.visibility = View.GONE
+
+    }
+
+    private fun moveToCurrentLocation() {
 
     }
 
@@ -117,8 +114,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun moveToMyLocation() {
         locationSource = FusedLocationSource(this, PERMISSION_FUSED_LOCATION)
-        naverMap.locationTrackingMode = LocationTrackingMode.Follow
         naverMap.locationSource = locationSource
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+
     }
 
     private fun setToolbar() {
@@ -147,28 +145,37 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun changeMap() {
         binding.radiogroupMap.apply {
-            check(binding.radiobuttonCapinMap.id)
+            when (viewModel.isMyMap.value) {
+                true -> {
+                    check(binding.radiobuttonMyMap.id)
+                }
+                false -> {
+                    check(binding.radiobuttonCapinMap.id)
+                }
+            }
+
             setOnCheckedChangeListener { _, checkedId ->
                 binding.cardviewCafeSelected.visibility = View.GONE
                 removeActiveMarkers()
-                when (checkedId) {
-                    binding.radiobuttonMyMap.id -> {
-                        viewModel.switchToMyMap()
-                    }
-                    binding.radiobuttonCapinMap.id -> {
-                        viewModel.switchToCapinMap()
-                    }
-                }
+                checkMapSort()
+            }
+        }
+    }
+
+    private fun checkMapSort() {
+        when (binding.radiogroupMap.checkedRadioButtonId) {
+            binding.radiobuttonMyMap.id -> {
+                viewModel.changeIsMyMap(true)
+                viewModel.getMyMapPins()
+            }
+            binding.radiobuttonCapinMap.id -> {
+                viewModel.changeIsMyMap(false)
+                viewModel.getCapinMapPins()
             }
         }
     }
 
     private fun setCameraChangeListener() {
-//        naverMap.addOnCameraChangeListener(object : NaverMap.OnCameraChangeListener{
-//            override fun onCameraChange(p0: Int, animation: Boolean) {
-//                if (!animation)  setMarkersInsideCamera()
-//            }
-//        })
         naverMap.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener {
             override fun onCameraIdle() {
                 setMarkersInsideCamera()
@@ -219,7 +226,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 marker.map = naverMap
             }
 
-            //Todo: OnClickListener 메서드 분리시키기
+            //Fixme: OnClickListener 메서드 분리시키기
             marker.setOnClickListener(object : Overlay.OnClickListener {
                 override fun onClick(overlay: Overlay): Boolean {
                     if (overlay is Marker) {
@@ -237,12 +244,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun updateCafeDeatail() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
             binding.apply {
-                textviewAddress.text = cafeDetail.address
-                textviewCafeName.text = cafeDetail.name
-                textviewCafeRating.text = cafeDetail.average.toString()
-                textviewCafeTag.text = cafeDetail.tags[0].name
+                if (!cafeDetail.tags.isNullOrEmpty()) {
+                    textviewCafeTag.visibility = View.VISIBLE
+                    textviewCafeTag.text = cafeDetail.tags[0].name
+                } else {
+                    textviewCafeTag.visibility = View.GONE
+                }
                 cardviewCafeSelected.setOnClickListener {
-                    Log.d("MalibinDebug","clicked: ${cafeDetail._id}")
                     Intent(activity, CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail._id)
                         .also { startActivity(it) }
