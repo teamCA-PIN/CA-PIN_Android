@@ -231,6 +231,8 @@ class WriteReviewActivity : AppCompatActivity() {
         viewModel.imagesOfCafe.observe(this) {
             (binding.recyclerviewPicture.adapter as WriteReviewPictureAdapter).apply {
                 submitList(it)
+                //FixMe: notirfy 안해주면 왜 안뜨냐..
+                notifyDataSetChanged()
             }
         }
     }

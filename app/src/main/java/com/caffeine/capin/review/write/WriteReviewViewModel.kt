@@ -108,7 +108,7 @@ class WriteReviewViewModel @Inject constructor(
         ).subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                _successPost.postValue(UiState.loading(null))
+                _successPost.postValue(UiState.success(null))
 
             }, {
                 _successPost.postValue(UiState.error(null, it.toString()))
