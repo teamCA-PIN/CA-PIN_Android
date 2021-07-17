@@ -1,6 +1,7 @@
 package com.caffeine.capin.review.write
 
 import android.content.ContentResolver
+import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -33,7 +34,7 @@ class WriteReviewViewModel @Inject constructor(
     val cafeId: LiveData<String>
         get() = _cafeId
 
-    private val _recommendation = MutableLiveData<MutableList<Int?>>()
+    private val _recommendation = MutableLiveData(mutableListOf<Int?>())
     val recommendation: LiveData<MutableList<Int?>>
         get() = _recommendation
 
@@ -89,11 +90,15 @@ class WriteReviewViewModel @Inject constructor(
         checkedRecommend.value?.forEach {
             _recommendation.value?.add(it)
         }
+
         val review = RequestWriteReview(
             _recommendation.value,
             contentsOfReview.value!!,
             rateOfReview.value!!
         )
+
+        Log.e("checkedTAGS", "${review}")
+
         val reviewJson = FormDataUtil.getBody("review", JsonStringParser.parseToJsonString(review))
 
         imagesOfCafe.value?.forEach { picture ->

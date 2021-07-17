@@ -261,6 +261,8 @@ class WriteReviewActivity : AppCompatActivity() {
             tagCheckBoxList.forEach {
                 if (it.key.isChecked) checkedTags.add(it.value)
             }
+            Log.e("checkedTAGS", "${checkedTags}")
+
             viewModel.changeCheckedRecommend(checkedTags)
             viewModel.uploadReview(contentResolver)
         }
