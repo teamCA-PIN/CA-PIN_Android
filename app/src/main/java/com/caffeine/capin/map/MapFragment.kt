@@ -4,6 +4,7 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -50,6 +51,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         mapView = binding.mapview
         mapView.getMapAsync(this)
 
+
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
@@ -60,15 +62,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     override fun onResume() {
         super.onResume()
-        when (binding.radiogroupMap.checkedRadioButtonId) {
-            binding.radiobuttonCapinMap.id -> {
-                viewModel.getCapinMapPins()
-            }
-            binding.radiobuttonMyMap.id -> {
-                viewModel.getCapinMapPins()
-            }
-        }
+        checkMapSort()
         binding.cardviewCafeSelected.visibility = View.GONE
+
+    }
+
+    private fun moveToCurrentLocation() {
 
     }
 
@@ -115,8 +114,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun moveToMyLocation() {
         locationSource = FusedLocationSource(this, PERMISSION_FUSED_LOCATION)
-        naverMap.locationTrackingMode = LocationTrackingMode.Follow
         naverMap.locationSource = locationSource
+        naverMap.locationTrackingMode = LocationTrackingMode.Follow
+
     }
 
     private fun setToolbar() {
@@ -145,30 +145,37 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun changeMap() {
         binding.radiogroupMap.apply {
-            check(binding.radiobuttonCapinMap.id)
+            when (viewModel.isMyMap.value) {
+                true -> {
+                    check(binding.radiobuttonMyMap.id)
+                }
+                false -> {
+                    check(binding.radiobuttonCapinMap.id)
+                }
+            }
+
             setOnCheckedChangeListener { _, checkedId ->
                 binding.cardviewCafeSelected.visibility = View.GONE
                 removeActiveMarkers()
-                when (checkedId) {
-                    binding.radiobuttonMyMap.id -> {
-                        viewModel.getMyMapPins()
-                        viewModel.changeIsMyMap(true)
-                    }
-                    binding.radiobuttonCapinMap.id -> {
-                        viewModel.getCapinMapPins()
-                        viewModel.changeIsMyMap(false)
-                    }
-                }
+                checkMapSort()
+            }
+        }
+    }
+
+    private fun checkMapSort() {
+        when (binding.radiogroupMap.checkedRadioButtonId) {
+            binding.radiobuttonMyMap.id -> {
+                viewModel.changeIsMyMap(true)
+                viewModel.getMyMapPins()
+            }
+            binding.radiobuttonCapinMap.id -> {
+                viewModel.changeIsMyMap(false)
+                viewModel.getCapinMapPins()
             }
         }
     }
 
     private fun setCameraChangeListener() {
-//        naverMap.addOnCameraChangeListener(object : NaverMap.OnCameraChangeListener{
-//            override fun onCameraChange(p0: Int, animation: Boolean) {
-//                if (!animation)  setMarkersInsideCamera()
-//            }
-//        })
         naverMap.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener {
             override fun onCameraIdle() {
                 setMarkersInsideCamera()
@@ -237,10 +244,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun updateCafeDeatail() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
             binding.apply {
-                textviewAddress.text = cafeDetail.address
-                textviewCafeName.text = cafeDetail.name
-                textviewCafeRating.text = cafeDetail.average.toString()
-                textviewCafeTag.text = cafeDetail.tags[0].name
+                if (!cafeDetail.tags.isNullOrEmpty()) {
+                    textviewCafeTag.visibility = View.VISIBLE
+                    textviewCafeTag.text = cafeDetail.tags[0].name
+                } else {
+                    textviewCafeTag.visibility = View.GONE
+                }
                 cardviewCafeSelected.setOnClickListener {
                     Intent(activity, CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail._id)

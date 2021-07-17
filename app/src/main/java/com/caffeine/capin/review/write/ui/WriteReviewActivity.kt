@@ -7,6 +7,7 @@ import android.os.Bundle
 import android.os.Environment
 import android.provider.MediaStore
 import android.util.Log
+import android.view.View
 import android.widget.CompoundButton
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
@@ -25,6 +26,7 @@ import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.review.write.PictureUriEntity
 import com.caffeine.capin.review.write.WriteReviewViewModel
 import com.caffeine.capin.util.HorizontalItemDecoration
+import com.caffeine.capin.util.UiState
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -229,7 +231,7 @@ class WriteReviewActivity : AppCompatActivity() {
         viewModel.imagesOfCafe.observe(this) {
             (binding.recyclerviewPicture.adapter as WriteReviewPictureAdapter).apply {
                 submitList(it)
-                //Todo: 왜 notifyDataSetChanged로 갱신 안하면 안될까,,,
+                //FixMe: notirfy 안해주면 왜 안뜨냐..
                 notifyDataSetChanged()
             }
         }
@@ -266,7 +268,19 @@ class WriteReviewActivity : AppCompatActivity() {
 
     private fun goToMapView() {
         viewModel.successPost.observe(this) { success ->
-            if (success) finish()
+            when(success.status) {
+                UiState.Status.LOADING -> {
+                    binding.progressbar.visibility = View.VISIBLE
+                }
+                UiState.Status.SUCCESS -> {
+                    binding.progressbar.visibility = View.GONE
+                    finish()
+                }
+                UiState.Status.ERROR -> {
+                    binding.progressbar.visibility = View.GONE
+                    finish()
+                }
+            }
         }
     }
 

@@ -95,7 +95,11 @@ class TagFilterFragment : Fragment() {
 
     private fun getFilterCafe() {
         viewModel.checkedTagList.observe(viewLifecycleOwner) { checkedList ->
-            viewModel.getCapinMapPins()
+            if(viewModel.isMyMap.value == true) {
+                viewModel.getMyMapPins()
+            } else {
+                viewModel.getCapinMapPins()
+            }
         }
     }
 

@@ -50,7 +50,11 @@ class MapViewModel @Inject constructor(
         get() = _capinMapCafeLocations
 
     init {
-        getCapinMapPins()
+        if(isMyMap.value == true) {
+            getMyMapPins()
+        } else {
+            getCapinMapPins()
+        }
     }
 
     fun changeCafeCurrentChecked(cafe: CafeInformationEntity) {
@@ -146,7 +150,13 @@ class MapViewModel @Inject constructor(
     }
 
     fun getMyMapPins() {
-        myMapLocationsRepository.getPinCafes()
+        val tags = mutableListOf<Int?>()
+        if (!taglist.isNullOrEmpty()) {
+            taglist.forEach {
+                tags.add(it.tagIndex)
+            }
+        }
+        myMapLocationsRepository.getPinCafes(tags)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({

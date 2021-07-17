@@ -106,7 +106,9 @@ interface CapinApiService {
     ): Call<BaseResponse>
 
     @GET("/cafes/myMap")
-    fun getMyMapPins(): Single<ResponseMyMapLocations>
+    fun getMyMapPins(
+        @Query("tags") tags: List<Int?>
+    ): Single<ResponseMyMapLocations>
 
     @GET("/user/categoryList")
     fun getCategoryList(): Single<ResponseMyCategoryData>
