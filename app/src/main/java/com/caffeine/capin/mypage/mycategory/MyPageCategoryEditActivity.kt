@@ -28,7 +28,7 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
     lateinit var userPreferenceManager: UserPreferenceManager
 
     lateinit var categoryName: String
-    var selectedColor: Int = 0
+    var selectedColor: Int = -1
     lateinit var categoryId: String
     lateinit var header: String
 
@@ -182,7 +182,9 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
                 binding.mypageCategoryEditLengthTv.text = "${userInput.length.toString()}/10"
                 binding.mypageCategoryEditDeleteBtn.isVisible = true
 
-                if (userInput.isEmpty()) {
+                if (userInput.isNotEmpty() && selectedColor > 0) {
+                    binding.mypageCategoryColorDoneBtn.setImageResource(R.drawable.round_rectangle_brown_24dp)
+                } else {
                     binding.mypageCategoryColorDoneBtn.setImageResource(R.drawable.round_rectangle_gray_24dp)
                 }
             }
