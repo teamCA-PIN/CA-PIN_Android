@@ -9,6 +9,7 @@ import com.caffeine.capin.map.dto.ResponseCafeList
 import com.caffeine.capin.map.dto.ResponseMyMapLocations
 import com.caffeine.capin.mypage.api.request.RequestDeletePinData
 import com.caffeine.capin.mypage.api.request.RequestNewCategoryData
+import com.caffeine.capin.mypage.api.request.RequestProfileEditData
 import com.caffeine.capin.mypage.api.request.RequestPutReviewData
 import com.caffeine.capin.mypage.api.response.ResponseMyCategoryData
 import com.caffeine.capin.mypage.api.response.ResponseMyData
@@ -152,4 +153,12 @@ interface CapinApiService {
     fun getCafeReviewsOf(
         @Query("cafe") cafeId: String
     ): Call<CafeReviewsResponse>
+
+    @Multipart
+    @PUT("/user/myInfo")
+    fun putMyProfileEdit(
+        @Header("token") token: String,
+        @Part("nickname") nickname: String,
+        @Part profileImg: MultipartBody.Part
+    ): Call<BaseResponse>
 }

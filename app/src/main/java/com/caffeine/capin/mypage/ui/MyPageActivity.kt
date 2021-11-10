@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.caffeine.capin.R
+import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityMyPageBinding
 import com.caffeine.capin.databinding.MyPageTabIconBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyData
@@ -34,11 +35,11 @@ class MyPageActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         setViewPager()
+        setButtonClickEvent()
         getMyInfoFromServer()
-        profileEditButtonClickEvent()
     }
 
-    fun getTabView(position: Int): View {
+    private fun getTabView(position: Int): View {
         val layoutInflater = LayoutInflater.from(this)
         val tabView = MyPageTabIconBinding.inflate(layoutInflater, null, false)
         val imageTab = tabView.mypageTabIcon
@@ -49,13 +50,6 @@ class MyPageActivity : AppCompatActivity() {
         }
 
         return tabView.root
-    }
-
-    private fun profileEditButtonClickEvent() {
-        binding.mypageProfileEditBtn.setOnClickListener {
-            val intent = Intent(this@MyPageActivity, MyPageProfileEditActivity::class.java)
-            startActivity(intent)
-        }
     }
 
     private fun getMyInfoFromServer() {
@@ -84,6 +78,18 @@ class MyPageActivity : AppCompatActivity() {
                 }
             }
         })
+    }
+
+    private fun setButtonClickEvent() {
+        binding.mypageCafetiBtnTv.setOnClickListener {
+            val intent = Intent(this, CafetiActivity::class.java)
+            startActivity(intent)
+        }
+
+        binding.mypageProfileEditBtnTv.setOnClickListener {
+            val intent = Intent(this, MyPageProfileEditActivity::class.java)
+            startActivity(intent)
+        }
     }
 
     private fun setViewPager() {

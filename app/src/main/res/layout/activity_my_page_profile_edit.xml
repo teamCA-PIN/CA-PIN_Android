@@ -34,28 +34,6 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <ImageView
-            android:id="@+id/profile_edit_cafeti_btn"
-            android:layout_width="96dp"
-            android:layout_height="32dp"
-            android:layout_marginTop="112dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/mypage_border_round_rectangle_skyblue_39dp" />
-
-        <TextView
-            android:id="@+id/profile_edit_dafeti_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/cafeti"
-            android:textColor="@color/subcolor_blue_3"
-            android:theme="@style/BtnText"
-            app:layout_constraintBottom_toBottomOf="@+id/profile_edit_cafeti_btn"
-            app:layout_constraintEnd_toEndOf="@+id/profile_edit_cafeti_btn"
-            app:layout_constraintStart_toStartOf="@+id/profile_edit_cafeti_btn"
-            app:layout_constraintTop_toTopOf="@+id/profile_edit_cafeti_btn" />
-
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_edit_profile_iv"
             android:layout_width="0dp"
@@ -68,7 +46,7 @@
             app:layout_constraintTop_toBottomOf="@id/profile_edit_headlin_tv"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/shapeapperance_circle"
-            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+            app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/profile_edit_profile_edit_btn"

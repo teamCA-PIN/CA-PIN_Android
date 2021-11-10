@@ -75,7 +75,6 @@ class MyPageCategoryFragment : Fragment() {
                 val categoryName = myCategory.name
                 intent.putExtra("name", categoryName)
                 intent.putExtra("categoryPinId", viewModel.removeCategoryInfo.value?._id)
-                Log.d("리미-이거 확인", viewModel.removeCategoryInfo.value?._id.toString())
                 startActivity(intent)
             }
         })
@@ -93,7 +92,6 @@ class MyPageCategoryFragment : Fragment() {
         super.onResume()
         viewModel.getMyCategoryFromServer()
         updateCategoryList()
-        Log.d("리미", "onResume")
     }
 
     private fun showEditCategoryDialog() {
@@ -118,9 +116,7 @@ class MyPageCategoryFragment : Fragment() {
                             )
                             intent.putExtra("feature", "카테고리 수정")
                             intent.putExtra("categoryId", viewModel.removeCategoryInfo.value?._id)
-                            Log.d("리미", viewModel.removeCategoryInfo.value?._id.toString())
                             startActivity(intent)
-                            Log.d("리미", "수정액티비티 열려라")
                             dialog.dismiss()
                         }
                     })
@@ -165,12 +161,9 @@ class MyPageCategoryFragment : Fragment() {
 
     private fun updateCategoryList() {
         viewModel.categories.observe(viewLifecycleOwner) { categories ->
-            Log.d("리미", categories.toString())
             (binding.mypageCategoryRcvInclude.categoryRcv.adapter as MyCategoryAdapter).myCategoryList =
                 categories as MutableList<MyCategory>
             (binding.mypageCategoryRcvInclude.categoryRcv.adapter as MyCategoryAdapter).notifyDataSetChanged()
-            Log.e("success", "dfsdg32rdsfs")
-            Log.d("리미2", categories.toString())
             if (categories.size > 1) {
                 binding.ifBasicCategoryTv.isVisible = false
             }

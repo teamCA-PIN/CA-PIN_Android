@@ -29,98 +29,100 @@
             android:id="@+id/mypage_profile_iv"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.243"
-            app:layout_constraintDimensionRatio="1:1.031"
-            app:layout_constraintVertical_bias="0.105"
+            app:layout_constraintWidth_percent="0.278"
+            app:layout_constraintDimensionRatio="1:1"
+            app:layout_constraintVertical_bias="0.15"
             android:layout_marginStart="17dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             android:scaleType="centerCrop"
             app:shapeAppearanceOverlay="@style/shapeapperance_circle"
-            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
-
-        <TextView
-            android:id="@+id/mypage_hello_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="15dp"
-            android:layout_marginTop="7dp"
-            android:text="@string/mypage_hello"
-            android:textAlignment="center"
-            android:textColor="@color/gray_3"
-            android:theme="@style/Body1"
-            app:layout_constraintStart_toEndOf="@+id/mypage_profile_iv"
-            app:layout_constraintTop_toTopOf="@+id/mypage_profile_iv" />
+            app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
 
         <TextView
             android:id="@+id/mypage_username_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="김카핀"
-            android:textColor="@color/subcolor_brown_4"
+            android:textColor="@color/black"
             android:theme="@style/Headline1"
-            app:layout_constraintStart_toStartOf="@+id/mypage_hello_tv"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_hello_tv" />
-
-        <TextView
-            android:id="@+id/mypage_dear_tv"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/mypage_dear"
-            android:textColor="@color/gray_3"
-            android:theme="@style/Headline2"
-            app:layout_constraintStart_toEndOf="@+id/mypage_username_tv"
-            app:layout_constraintTop_toTopOf="@id/mypage_username_tv" />
+            android:layout_marginTop="9dp"
+            app:layout_constraintStart_toStartOf="@+id/mypage_profile_iv"
+            app:layout_constraintEnd_toEndOf="@id/mypage_profile_iv"
+            app:layout_constraintTop_toBottomOf="@+id/mypage_profile_iv" />
 
         <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/mypage_cafeti_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="3dp"
             android:fontFamily="@font/noto_sans_kr_regular"
             android:includeFontPadding="false"
             android:textAlignment="center"
             android:text="WBFJ"
-            android:textColor="@color/white"
+            android:textColor="@color/maincolor_1"
             android:textSize="12dp"
             android:paddingHorizontal="12dp"
-            android:background="@drawable/mypage_round_circle_brown_10dp"
             app:layout_constraintStart_toStartOf="@+id/mypage_username_tv"
             app:layout_constraintTop_toBottomOf="@+id/mypage_username_tv"
-            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+            app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
+
+        <ImageView
+            android:id="@+id/mypage_button_iv"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.124"
+            app:layout_constraintWidth_percent="0.717"
+            android:layout_marginTop="19dp"
+            android:src="@drawable/border_round_rectangle_gray_1dp"
+            app:layout_constraintStart_toStartOf="@id/mypage_cafeti_tv"
+            app:layout_constraintEnd_toEndOf="@id/mypage_cafeti_tv"
+            app:layout_constraintTop_toBottomOf="@id/mypage_cafeti_tv" />
+
+        <ImageView
+            android:id="@+id/mypage_button_divider_iv"
+            android:layout_width="1dp"
+            android:layout_height="15dp"
+            android:background="@color/gray_3"
+            app:layout_constraintTop_toTopOf="@id/mypage_button_iv"
+            app:layout_constraintEnd_toEndOf="@id/mypage_button_iv"
+            app:layout_constraintStart_toStartOf="@id/mypage_button_iv"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_button_iv"/>
 
         <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/mypage_profile_edit_btn"
-            android:layout_width="wrap_content"
-            android:layout_height="28dp"
-            android:layout_marginTop="25dp"
-            android:text="@string/mypage_profile_edit"
-            android:textColor="@color/gray_3"
-            android:theme="@style/Body2"
-            android:textAlignment="center"
-            android:includeFontPadding="false"
-            android:paddingTop="3dp"
-            android:paddingHorizontal="10dp"
-            android:background="@drawable/mypage_border_round_rectangle_gray_35dp"
-            app:layout_constraintEnd_toEndOf="@+id/mypage_close_btn"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_close_btn" />
-
-        <TextView
-            android:id="@+id/mypage_profile_edit_tv"
+            android:id="@+id/mypage_cafeti_btn_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:text="카페TI 검사"
+            android:theme="@style/Body3"
+            android:textColor="@color/black"
+            android:textSize="12dp"
+            app:layout_constraintTop_toTopOf="@id/mypage_button_iv"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_button_iv"
+            app:layout_constraintStart_toStartOf="@id/mypage_button_iv"
+            app:layout_constraintEnd_toStartOf="@id/mypage_button_divider_iv"/>
 
-            app:layout_constraintBottom_toBottomOf="@+id/mypage_profile_edit_btn"
-            app:layout_constraintEnd_toEndOf="@+id/mypage_profile_edit_btn"
-            app:layout_constraintStart_toStartOf="@+id/mypage_profile_edit_btn"
-            app:layout_constraintTop_toTopOf="@+id/mypage_profile_edit_btn" />
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/mypage_profile_edit_btn_tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="프로필 편집"
+            android:textSize="12dp"
+            android:theme="@style/Body3"
+            android:textColor="@color/black"
+            app:layout_constraintTop_toTopOf="@id/mypage_button_iv"
+            app:layout_constraintBottom_toBottomOf="@id/mypage_button_iv"
+            app:layout_constraintEnd_toEndOf="@id/mypage_button_iv"
+            app:layout_constraintStart_toEndOf="@id/mypage_button_divider_iv"/>
+
 
         <com.google.android.material.tabs.TabLayout
             android:id="@+id/mypage_tab_layout"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            app:layout_constraintHeight_percent="0.043"
+            app:layout_constraintHeight_percent="0.066"
             android:layout_marginTop="32dp"
             app:tabSelectedTextColor="@color/pointcolor_1"
             app:tabIndicatorColor="@color/pointcolor_1"
@@ -128,7 +130,7 @@
             android:background="@drawable/mypage_tab_layout"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/mypage_profile_iv">
+            app:layout_constraintTop_toBottomOf="@+id/mypage_button_iv">
         </com.google.android.material.tabs.TabLayout>
 
         <androidx.viewpager2.widget.ViewPager2

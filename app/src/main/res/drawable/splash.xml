@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/subcolor_blue_3" />
+    <item android:drawable="@color/logo_white" />
     <item>
         <bitmap
-            android:src="@drawable/capin_logo"
+            android:src="@drawable/capinlogo"
             android:gravity="center"/>
     </item>
 </layer-list>
