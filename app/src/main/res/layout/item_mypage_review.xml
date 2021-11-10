@@ -123,7 +123,7 @@
             app:layout_constraintTop_toBottomOf="@+id/mypage_review_type_flavor_btn"
             app:layout_constraintWidth_percent="0.222"
             app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
-            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+            app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mypage_review_imgs_second_iv"
@@ -137,7 +137,7 @@
             app:layout_constraintTop_toTopOf="@+id/mypage_review_imgs_first_iv"
             app:layout_constraintWidth_percent="0.222"
             app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
-            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+            app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mypage_review_imgs_third_iv"
@@ -151,7 +151,7 @@
             app:layout_constraintTop_toTopOf="@+id/mypage_review_imgs_second_iv"
             app:layout_constraintWidth_percent="0.222"
             app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
-            app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+            app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mypage_review_imgs_seemore_btn"

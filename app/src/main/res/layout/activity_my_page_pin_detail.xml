@@ -124,11 +124,27 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:visibility="gone"
-            android:indeterminateTint="@color/subcolor_blue_4"
+            android:indeterminateTint="@color/subcolor_blue_1"
             app:layout_constraintTop_toTopOf="@id/pin_detail_rcv"
             app:layout_constraintBottom_toBottomOf="@id/pin_detail_rcv"
             app:layout_constraintStart_toStartOf="@id/pin_detail_rcv"
             app:layout_constraintEnd_toEndOf="@id/pin_detail_rcv"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/pin_detail_cancel_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/round_rectangle_gray_24dp"
+            android:text="취소"
+            android:theme="@style/Subhead"
+            android:textSize="16dp"
+            android:textColor="@color/gray_4"
+            android:paddingHorizontal="62dp"
+            android:paddingVertical="12dp"
+            android:layout_marginBottom="57dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

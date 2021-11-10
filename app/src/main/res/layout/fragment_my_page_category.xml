@@ -14,7 +14,7 @@
             android:layout_height="wrap_content"
             android:text="@string/if_basic_category"
             android:gravity="center_horizontal"
-            android:layout_marginTop="276dp"
+            android:layout_marginTop="222dp"
             android:theme="@style/Body2"
             android:textColor="@color/gray_4"
             app:layout_constraintEnd_toEndOf="parent"
