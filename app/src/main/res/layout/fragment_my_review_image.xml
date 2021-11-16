@@ -15,6 +15,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:shapeAppearanceOverlay="@style/mypage_review_cafe_image"
-        app:srcCompat="@drawable/mypage_round_circle_brown_10dp" />
+        app:srcCompat="@drawable/mypage_round_circle_gray_10dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

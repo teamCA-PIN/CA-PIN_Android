@@ -19,6 +19,7 @@ class CafeDetailMapper:DTOMapper<ResponseCafeDetail, CafeDetailEntity> {
             from.cafeDetail.offday,
             from.cafeDetail.latitude,
             from.cafeDetail.longitude,
-            from.cafeDetail.rating
+            from.cafeDetail.rating,
+            from.cafeDetail.img
         )
 }
