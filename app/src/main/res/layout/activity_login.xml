@@ -33,7 +33,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.176"
         app:layout_constraintWidth_percent="0.272"
-        app:srcCompat="@drawable/capin_logo_2" />
+        app:srcCompat="@drawable/capinlogo" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/tv_emailid"

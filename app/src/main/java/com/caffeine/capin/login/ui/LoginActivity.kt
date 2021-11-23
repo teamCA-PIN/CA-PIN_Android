@@ -132,7 +132,10 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponseLoginData>
                 ) {
                     if (response.isSuccessful) {
-                        response.body()?.loginData?.token?.let { token ->
+                        response.body()?.loginData?.token_access?.let { token ->
+                            userPreferenceManager.setUserToken(token)
+                        }
+                        response.body()?.loginData?.token_refresh?.let { token ->
                             userPreferenceManager.setUserToken(token)
                         }
 

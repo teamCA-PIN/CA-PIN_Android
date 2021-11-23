@@ -34,6 +34,7 @@ class CafetiResultActivity : AppCompatActivity() {
             binding.textviewCafetiType.text = cafetiResultList.type
             binding.textviewCafetiModifier.text = cafetiResultList.modifier
             binding.textviewCafetiModifierDetail.text = cafetiResultList.modifierDetail
+            binding.textviewCafetiDetail.text = cafetiResultList.introduction
         }
     }
 
