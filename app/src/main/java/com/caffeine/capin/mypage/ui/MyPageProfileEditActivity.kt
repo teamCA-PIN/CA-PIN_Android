@@ -64,8 +64,13 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         setEditTextWatcher()
 
         binding.profileEditBackBtn.setOnClickListener { onBackPressed() }
-        binding.profileEditProfileEditBtn.setOnClickListener { showEditProfileDialog() }
-        binding.profileEditDoneBtn.setOnClickListener { putMyProfileEditToServer() }
+        binding.profileEditProfileEditBtn.setOnClickListener {
+            Log.d("리미", "편집 버튼 눌렀다")
+            showEditProfileDialog()
+        }
+        binding.profileEditDoneBtn.setOnClickListener {
+            Log.d("리미", "완료 버튼 눌렀다")
+            putMyProfileEditToServer() }
     }
 
     private fun setEditTextWatcher() {
@@ -184,8 +189,9 @@ class MyPageProfileEditActivity : AppCompatActivity() {
 
         Log.d("리미", file.name)
 
-        var requestBody : RequestBody = RequestBody.create("image/*".toMediaTypeOrNull(),file)
-        var body : MultipartBody.Part = MultipartBody.Part.createFormData("uploaded_file",file.name,requestBody)
+        var requestBody : RequestBody = RequestBody.create("image/jpeg".toMediaTypeOrNull(),file)
+        var body : MultipartBody.Part = MultipartBody.Part.createFormData("profileImg",file.name,requestBody)
+        var nicknameBody : MultipartBody.Part = MultipartBody.Part.createFormData("nickname", binding.profileEditNameEdt.text.toString())
 
         Log.d("리미", requestBody.toString())
         Log.d("리미", body.toString())
@@ -193,7 +199,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
 
         val capinApiService = ServiceCreator.capinApiService.putMyProfileEdit(
             userPreferenceManager.getUserToken(),
-            nickname = binding.profileEditNameEdt.text.toString(),
+            nickname = nicknameBody,
             profileImg = body
         )
 

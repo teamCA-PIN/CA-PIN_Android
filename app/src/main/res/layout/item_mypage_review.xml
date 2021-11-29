@@ -87,11 +87,11 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:paddingVertical="3dp"
-            android:background="@drawable/round_rectangle_brown_11dp"
+            android:background="@drawable/border_round_rectangle_blue_1dp"
             android:paddingHorizontal="11dp"
             android:text="맛 추천"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/pointcolor_1"
             android:theme="@style/Body5"
             app:layout_constraintStart_toStartOf="@+id/mypage_review_contents_tv"
             app:layout_constraintTop_toBottomOf="@+id/mypage_review_contents_tv" />
@@ -107,10 +107,10 @@
             app:layout_constraintTop_toBottomOf="@+id/mypage_review_contents_tv"
             android:text="분위기 추천"
             android:textAlignment="center"
-            android:textColor="@color/white"
+            android:textColor="@color/pointcolor_1"
             android:theme="@style/Body5"
             android:paddingHorizontal="11dp"
-            android:background="@drawable/round_rectangle_brown_11dp"/>
+            android:background="@drawable/border_round_rectangle_blue_1dp"/>
 
         <com.google.android.material.imageview.ShapeableImageView
             android:id="@+id/mypage_review_imgs_first_iv"

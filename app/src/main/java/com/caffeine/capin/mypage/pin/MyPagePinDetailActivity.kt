@@ -52,6 +52,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         setDefaultComment()
         pinEditButtonClickEvent()
         pinDeleteButtonClickEvent()
+        pinDeleteCancelButtonClickEvent()
         displayProgressBar()
     }
 
@@ -109,6 +110,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         binding.pinDetailEditBtn.setOnClickListener {
             myPinInfoAdapter.switchDeleteMode(true)
             binding.pinDetailEditBtn.isGone = true
+            binding.pinDetailCancelBtn.isVisible = true
             binding.pinDetailInactiveDeleteBtn.isVisible = true
         }
     }
@@ -118,6 +120,25 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             showDeletePinConfirmDialog()
             binding.pinDetailEditBtn.isVisible = true
             binding.pinDetailActiveDeleteBtn.isGone = true
+        }
+    }
+
+    private fun pinDeleteCancelButtonClickEvent() {
+        binding.pinDetailCancelBtn.setOnClickListener {
+            binding.pinDetailCancelBtn.isGone = true
+            binding.pinDetailEditBtn.isVisible = true
+            binding.pinDetailActiveDeleteBtn.isGone = true
+            for (i in 0 until removePinInfoList.size) {
+                myPinInfoAdapter.checkboxList.forEach {
+                    it.isChecked = false
+                }
+            }
+            myPinInfoAdapter.checkboxList.clear()
+            removePinInfoList.clear()
+            myPinInfoAdapter.switchDeleteMode(false)
+            myPinInfoAdapter.notifyDataSetChanged()
+            binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
+            binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
         }
     }
 
