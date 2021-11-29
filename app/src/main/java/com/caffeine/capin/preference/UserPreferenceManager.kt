@@ -13,7 +13,8 @@ class UserPreferenceManager(
     }
 
     fun getUserToken(): String {
-        return preferenceManager.getPreferences(PREFS_KEY_USER_TOKEN, "")
+        return "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MGVlODMzNjhiNzg1MTFhMDc5MGRjNzkiLCJpYXQiOjE2MzgxNjIxMTEsImV4cCI6MTYzODI0ODUxMX0.pC8JF1GWcs2_7g0npcLZbT4rWjzEhnbhA93bACYJ0aU"
+//        return preferenceManager.getPreferences(PREFS_KEY_USER_TOKEN, "")
     }
 
     fun setNeedCafetiCheck(check: Boolean) {

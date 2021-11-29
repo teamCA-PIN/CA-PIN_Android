@@ -67,6 +67,7 @@ class MyPageActivity : AppCompatActivity() {
                 response: Response<ResponseMyData>
             ) {
                 if (response.isSuccessful) {
+                    Log.d("리미", "로그 왜 안 찍힘?")
                     binding.mypageUsernameTv.setText(response.body()?.myInfo?.nickname as String)
                     binding.mypageCafetiTv.setText(response.body()?.myInfo?.cafeti?.type as String)
 
@@ -104,5 +105,10 @@ class MyPageActivity : AppCompatActivity() {
         }.attach()
 
         binding.mypageCloseBtn.setOnClickListener { finish() }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getMyInfoFromServer()
     }
 }

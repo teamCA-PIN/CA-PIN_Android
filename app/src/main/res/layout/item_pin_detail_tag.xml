@@ -3,7 +3,7 @@
     android:layout_width="wrap_content"
     android:layout_height="23dp"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:background="@drawable/round_rectangle_brown_12dp"
+    android:background="@drawable/round_rectangle_gray_12dp"
     android:layout_marginEnd="3dp">
 
     <TextView
@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:text="커피맛집"
         android:theme="@style/Body5"
-        android:textColor="@color/white"
+        android:textColor="@color/pointcolor_1"
         android:layout_marginVertical="3dp"
         android:layout_marginHorizontal="10dp"
         app:layout_constraintTop_toTopOf="parent"

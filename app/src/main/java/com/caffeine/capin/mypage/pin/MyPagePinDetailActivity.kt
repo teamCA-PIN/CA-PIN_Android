@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -52,6 +53,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         setDefaultComment()
         pinEditButtonClickEvent()
         pinDeleteButtonClickEvent()
+        pinDeleteCancelButtonClickEvent()
         displayProgressBar()
     }
 
@@ -82,10 +84,8 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     if (removePinInfoList.size > 0) {
                         binding.pinDetailHeaderTv.text = "${removePinInfoList.size}개 선택됨"
                     } else {
-                        myPinInfoAdapter.switchDeleteMode(false)
-                        binding.pinDetailEditBtn.isVisible = true
+                        binding.pinDetailInactiveDeleteBtn.isVisible = true
                         binding.pinDetailActiveDeleteBtn.isGone = true
-                        binding.pinDetailInactiveDeleteBtn.isGone = true
                         binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
                     }
                 } else {
@@ -109,6 +109,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         binding.pinDetailEditBtn.setOnClickListener {
             myPinInfoAdapter.switchDeleteMode(true)
             binding.pinDetailEditBtn.isGone = true
+            binding.pinDetailCancelBtn.isVisible = true
             binding.pinDetailInactiveDeleteBtn.isVisible = true
         }
     }
@@ -118,6 +119,26 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             showDeletePinConfirmDialog()
             binding.pinDetailEditBtn.isVisible = true
             binding.pinDetailActiveDeleteBtn.isGone = true
+        }
+    }
+
+    private fun pinDeleteCancelButtonClickEvent() {
+        binding.pinDetailCancelBtn.setOnClickListener {
+            binding.pinDetailCancelBtn.isGone = true
+            binding.pinDetailEditBtn.isVisible = true
+            binding.pinDetailInactiveDeleteBtn.isGone = true
+            binding.pinDetailActiveDeleteBtn.isGone = true
+            for (i in 0 until removePinInfoList.size) {
+                myPinInfoAdapter.checkboxList.forEach {
+                    it.isChecked = false
+                }
+            }
+            myPinInfoAdapter.checkboxList.clear()
+            removePinInfoList.clear()
+            myPinInfoAdapter.switchDeleteMode(false)
+            myPinInfoAdapter.notifyDataSetChanged()
+            binding.pinDetailNumTv.setText("총 ${myPinInfoAdapter.myPinInfoList.size}개의 핀")
+            binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
         }
     }
 

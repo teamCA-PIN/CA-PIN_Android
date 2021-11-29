@@ -11,15 +11,21 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_circle_gray_2dp.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_dialog_title.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_round_rectangle_gray_1dp.xml" value="0.43125" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/button_image_view2.xml" value="0.34" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/ic_colorchip_basic_1.xml" value="0.23" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/ic_colorchip_basic_3.xml" value="0.23" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/ic_colorchip_basic_9.xml" value="0.23" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/indicator_dot_off.xml" value="0.46875" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/indicator_dot_on.xml" value="0.46875" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/marker_capinmap_unselected.xml" value="0.1" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/mypage_border_round_rectangle_skyblue_39dp.xml" value="0.1" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/mypage_round_circle_brown_10dp.xml" value="0.46875" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/mypage_tab_layout.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/radiobutton_imageview_selected.xml" value="0.1" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/round_rectangle_brown_11dp.xml" value="0.395" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/round_rectangle_brown_12dp.xml" value="0.46875" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/round_rectangle_brown_24dp.xml" value="0.46875" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/round_rectangle_gray_12dp.xml" value="0.46875" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/selector_mypage_category_tab.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/selector_mypage_review_tab.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/splash.xml" value="0.1" />
@@ -39,16 +45,19 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page.xml" value="0.5528169014084507" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page_pin_detail.xml" value="0.6666666666666666" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page_profile_edit.xml" value="0.43" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_review_image.xml" value="0.325" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_splash.xml" value="0.3925" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_write_review.xml" value="0.22375" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/capin_dialog.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_map_profile.xml" value="0.22375" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_my_page_category.xml" value="0.3925" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_my_review_image.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_tag_filter.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_cafe_menu.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_cafe_review.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_category_pin_detail.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_mypage_category_color.xml" value="0.41445783132530123" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_mypage_review.xml" value="0.35625" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_pin_detail_tag.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_recyclerview_category.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/item_review_picture.xml" value="0.43" />

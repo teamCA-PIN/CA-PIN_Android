@@ -158,7 +158,7 @@ interface CapinApiService {
     @PUT("/user/myInfo")
     fun putMyProfileEdit(
         @Header("token") token: String,
-        @Part("nickname") nickname: String,
+        @Part nickname: MultipartBody.Part,
         @Part profileImg: MultipartBody.Part
     ): Call<BaseResponse>
 }
