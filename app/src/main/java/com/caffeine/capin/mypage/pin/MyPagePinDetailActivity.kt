@@ -5,6 +5,7 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
+import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -83,10 +84,8 @@ class MyPagePinDetailActivity : AppCompatActivity() {
                     if (removePinInfoList.size > 0) {
                         binding.pinDetailHeaderTv.text = "${removePinInfoList.size}개 선택됨"
                     } else {
-                        myPinInfoAdapter.switchDeleteMode(false)
-                        binding.pinDetailEditBtn.isVisible = true
+                        binding.pinDetailInactiveDeleteBtn.isVisible = true
                         binding.pinDetailActiveDeleteBtn.isGone = true
-                        binding.pinDetailInactiveDeleteBtn.isGone = true
                         binding.pinDetailHeaderTv.text = intent.getStringExtra("name")
                     }
                 } else {
@@ -127,6 +126,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         binding.pinDetailCancelBtn.setOnClickListener {
             binding.pinDetailCancelBtn.isGone = true
             binding.pinDetailEditBtn.isVisible = true
+            binding.pinDetailInactiveDeleteBtn.isGone = true
             binding.pinDetailActiveDeleteBtn.isGone = true
             for (i in 0 until removePinInfoList.size) {
                 myPinInfoAdapter.checkboxList.forEach {
