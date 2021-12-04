@@ -62,7 +62,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDetail()
-        showCafeDetail()
     }
 
     override fun onResume() {
@@ -131,12 +130,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun showCafeDetail() {
-        viewModel.selectedCafe.observe(viewLifecycleOwner) {
-
-        }
-    }
-
     private fun setCafeInformation() {
         viewModel.capinMapCafeLocation.observe(viewLifecycleOwner) {
             setMarkersInsideCamera()
@@ -147,12 +140,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun changeMap() {
         binding.radiogroupMap.apply {
             when (viewModel.isMyMap.value) {
-                true -> {
-                    check(binding.radiobuttonMyMap.id)
-                }
-                false -> {
-                    check(binding.radiobuttonCapinMap.id)
-                }
+                true -> check(binding.radiobuttonMyMap.id)
+                false -> check(binding.radiobuttonCapinMap.id)
             }
 
             setOnCheckedChangeListener { _, checkedId ->
