@@ -4,11 +4,13 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -62,6 +64,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         setToolbar()
         archiveCafeToMyMap()
         updateCafeDetail()
+        checkIsSavedCafe()
     }
 
     override fun onResume() {
@@ -95,9 +98,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), LOCATION_PERMISSION)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ActivityCompat.checkSelfPermission(requireContext(), LOCATION_PERMISSION) == PackageManager.PERMISSION_GRANTED) {
             moveToMyLocation()
         } else {
             requestLocationPermission.launch(LOCATION_PERMISSION)
@@ -125,7 +126,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
             imageviewFilter.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
-
             }
         }
     }
@@ -280,7 +280,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun archiveCafeToMyMap() {
         binding.constraintlayoutPinSave.setOnClickListener {
             val gson = Gson()
-            val jsonCafeInfo = gson.toJson(viewModel.selectedCafe.value)
+            val jsonCafeInfo = gson.toJson(viewModel.selectedCafe.value?.data)
             val intent = Intent(requireContext(), SelectCategoryActivity::class.java)
             intent.putExtra(SELECTED_CAFE_INFO, jsonCafeInfo)
             startActivity(intent)
@@ -298,6 +298,21 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.shimmerlayout.run {
             showShimmer(showShimmer)
             visibility = if (showShimmer) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun checkIsSavedCafe() {
+        viewModel.selectedCafe.observe(viewLifecycleOwner) {
+            binding.run {
+                Log.e("saved", "${it.data?.isSaved}")
+                checkboxPinIcon.isChecked = (it.data?.isSaved == true)
+                checkboxPinText.isChecked = (it.data?.isSaved == true)
+                constraintlayoutPinSave.background = if (it.data?.isSaved == true) {
+                    ContextCompat.getDrawable(requireContext(), R.drawable.shape_blue_5dp)
+                } else {
+                    ContextCompat.getDrawable(requireContext(), R.drawable.shape_blue_stroke_5dp)
+                }
+            }
         }
     }
 
