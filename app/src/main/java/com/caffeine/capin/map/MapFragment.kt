@@ -4,11 +4,13 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.fragment.findNavController
@@ -18,7 +20,10 @@ import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
-import com.caffeine.capin.util.AutoClearedValue
+import com.caffeine.capin.util.*
+import com.google.android.flexbox.FlexDirection
+import com.google.android.flexbox.FlexWrap
+import com.google.android.flexbox.FlexboxLayoutManager
 import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.LocationTrackingMode
@@ -58,8 +63,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         setCafeInformation()
         setToolbar()
         archiveCafeToMyMap()
-        updateCafeDeatail()
-        showCafeDetail()
+        updateCafeDetail()
+        checkIsSavedCafe()
     }
 
     override fun onResume() {
@@ -80,6 +85,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         getTagResult()
         changeMap()
         setMarker()
+        setCafeDetailTags()
     }
 
     private fun getTagResult() {
@@ -92,9 +98,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun checkPermissions() {
-        if (ActivityCompat.checkSelfPermission(requireContext(), LOCATION_PERMISSION)
-            == PackageManager.PERMISSION_GRANTED
-        ) {
+        if (ActivityCompat.checkSelfPermission(requireContext(), LOCATION_PERMISSION) == PackageManager.PERMISSION_GRANTED) {
             moveToMyLocation()
         } else {
             requestLocationPermission.launch(LOCATION_PERMISSION)
@@ -122,14 +126,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
             imageviewFilter.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
-
             }
-        }
-    }
-
-    private fun showCafeDetail() {
-        viewModel.selectedCafe.observe(viewLifecycleOwner) {
-            binding.cardviewCafeSelected.visibility = View.VISIBLE
         }
     }
 
@@ -143,16 +140,16 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun changeMap() {
         binding.radiogroupMap.apply {
             when (viewModel.isMyMap.value) {
-                true -> {
-                    check(binding.radiobuttonMyMap.id)
-                }
-                false -> {
-                    check(binding.radiobuttonCapinMap.id)
-                }
+                true -> check(binding.radiobuttonMyMap.id)
+                false -> check(binding.radiobuttonCapinMap.id)
             }
 
             setOnCheckedChangeListener { _, checkedId ->
-                binding.cardviewCafeSelected.visibility = View.GONE
+                binding.cardviewCafeSelected.run {
+                    if (visibility == View.VISIBLE) {
+                        applyVisibilityAnimation(false, false, 400)
+                    }
+                }
                 removeActiveMarkers()
                 checkMapSort()
             }
@@ -227,6 +224,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             marker.setOnClickListener(object : Overlay.OnClickListener {
                 override fun onClick(overlay: Overlay): Boolean {
                     if (overlay is Marker) {
+                        binding.cardviewCafeSelected.run{
+                            if(visibility == View.GONE) {
+                                visibility = View.VISIBLE
+                                applyVisibilityAnimation(true, true, 400)
+                            }
+                        }
                         viewModel.changeCafeCurrentChecked(cafe.key)
                         viewModel.addCafeInsideCurrentCamera(cafe.key, true)
                         viewModel.getSelectedCafeDetailInfo()
@@ -238,33 +241,46 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         }
     }
 
-    private fun updateCafeDeatail() {
+    private fun updateCafeDetail() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
             binding.apply {
-                if (!cafeDetail.tags.isNullOrEmpty()) {
-                    textviewCafeTag.visibility = View.VISIBLE
-                    textviewCafeTag.text = cafeDetail.tags[0].name
-                } else {
-                    textviewCafeTag.visibility = View.GONE
-                }
-                if(!cafeDetail.img.isNullOrEmpty()) {
-                    Glide.with(requireContext()).load(cafeDetail.img).into(imageviewCafe)
+                if(!cafeDetail.data?.img.isNullOrEmpty()) {
+                    Glide.with(requireContext()).load(cafeDetail.data?.img).into(imageviewCafe)
                 } else {
                     Glide.with(requireContext()).load(R.drawable.ic_component_86).into(binding.imageviewCafe)
                 }
                 cardviewCafeSelected.setOnClickListener {
                     Intent(activity, CafeDetailsActivity::class.java)
-                        .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail._id)
+                        .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail.data?._id)
                         .also { startActivity(it) }
                 }
             }
         }
     }
 
+    private fun setCafeDetailTags() {
+        binding.recyclerviewTags.run {
+            adapter = CafeTagListAdapter()
+            addItemDecoration(VerticalItemDecoration(3.toPx()))
+            layoutManager = FlexboxLayoutManager(requireContext()).apply {
+                flexWrap = FlexWrap.WRAP
+                flexDirection = FlexDirection.ROW
+            }
+            viewModel.selectedCafe.observe(viewLifecycleOwner) {
+                (binding.recyclerviewTags.adapter as CafeTagListAdapter).submitList(it.data?.tags?.map { it.name })
+                when(it.status) {
+                    UiState.Status.LOADING -> applySkeletonUI(true)
+                    UiState.Status.SUCCESS -> applySkeletonUI(false)
+                    UiState.Status.ERROR -> {}
+                }
+            }
+        }
+    }
+
     private fun archiveCafeToMyMap() {
-        binding.buttonSaveCafe.setOnClickListener {
+        binding.constraintlayoutPinSave.setOnClickListener {
             val gson = Gson()
-            val jsonCafeInfo = gson.toJson(viewModel.selectedCafe.value)
+            val jsonCafeInfo = gson.toJson(viewModel.selectedCafe.value?.data)
             val intent = Intent(requireContext(), SelectCategoryActivity::class.java)
             intent.putExtra(SELECTED_CAFE_INFO, jsonCafeInfo)
             startActivity(intent)
@@ -276,6 +292,28 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             marker.map = null
         }
         viewModel.clearExposedMarker()
+    }
+
+    private fun applySkeletonUI(showShimmer: Boolean) {
+        binding.shimmerlayout.run {
+            showShimmer(showShimmer)
+            visibility = if (showShimmer) View.VISIBLE else View.GONE
+        }
+    }
+
+    private fun checkIsSavedCafe() {
+        viewModel.selectedCafe.observe(viewLifecycleOwner) {
+            binding.run {
+                Log.e("saved", "${it.data?.isSaved}")
+                checkboxPinIcon.isChecked = (it.data?.isSaved == true)
+                checkboxPinText.isChecked = (it.data?.isSaved == true)
+                constraintlayoutPinSave.background = if (it.data?.isSaved == true) {
+                    ContextCompat.getDrawable(requireContext(), R.drawable.shape_blue_5dp)
+                } else {
+                    ContextCompat.getDrawable(requireContext(), R.drawable.shape_blue_stroke_5dp)
+                }
+            }
+        }
     }
 
     companion object {

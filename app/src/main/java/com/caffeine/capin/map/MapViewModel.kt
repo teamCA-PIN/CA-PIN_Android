@@ -9,6 +9,7 @@ import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.map.repository.CafeListRepository
 import com.caffeine.capin.map.repository.MyMapLocationsRepository
 import com.caffeine.capin.tagfilter.model.TagFilterEntity
+import com.caffeine.capin.util.UiState
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -37,8 +38,8 @@ class MapViewModel @Inject constructor(
 
     private var cafeList = mutableMapOf<CafeInformationEntity, Boolean>()
 
-    private val _selectedCafe = MutableLiveData<CafeDetailEntity>()
-    val selectedCafe: LiveData<CafeDetailEntity>
+    private val _selectedCafe = MutableLiveData<UiState<CafeDetailEntity>>()
+    val selectedCafe: LiveData<UiState<CafeDetailEntity>>
         get() = _selectedCafe
 
     private val _cafeCurrentChecked = MutableLiveData<CafeInformationEntity?>()
@@ -179,14 +180,16 @@ class MapViewModel @Inject constructor(
     }
 
     fun getSelectedCafeDetailInfo() {
+        _selectedCafe.value = UiState.loading(null)
         cafeInsideCurrentCamera.value?.forEach { isSelectedCafe ->
             if (isSelectedCafe.value) {
                 cafeListRepository.getCafeDetail(isSelectedCafe.key.cafeId)
                     .subscribeOn(Schedulers.io())
                     .observeOn(AndroidSchedulers.mainThread())
                     .subscribe({
-                        _selectedCafe.postValue(it)
+                        _selectedCafe.postValue(UiState.success(it))
                     }, {
+                        _selectedCafe.postValue(UiState.error(null, it.message))
                         it.printStackTrace()
                     })
             }

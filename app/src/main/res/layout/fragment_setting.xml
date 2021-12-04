@@ -16,14 +16,14 @@
         tools:context=".profile.SettingFragment">
 
         <androidx.appcompat.widget.AppCompatImageButton
-            android:id="@+id/button_exit"
+            android:id="@+id/button_back"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="16dp"
+            android:layout_marginStart="16dp"
             app:layout_constraintVertical_bias="0.4"
-            android:background="@drawable/icon_close_black"
+            android:background="@drawable/icon_back_black"
             app:layout_constraintBottom_toTopOf="@+id/imageview_logo"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
 

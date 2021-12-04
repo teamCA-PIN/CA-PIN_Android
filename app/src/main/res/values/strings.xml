@@ -44,5 +44,7 @@
     <string name="ios_members">노한솔&#160;&#160;장서현&#160;&#160;김지수</string>
     <string name="android_members">손평화&#160;&#160;조성림&#160;&#160;홍은결&#160;&#160;윤혁</string>
     <string name="server_members">이예슬&#160;&#160;이원석</string>
+    <string name="save_pin">핀저장</string>
+    <string name="already_saved">저장됨</string>
 </resources>
 

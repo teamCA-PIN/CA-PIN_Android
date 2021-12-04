@@ -37,7 +37,7 @@ class SettingFragment : Fragment() {
 
         logout()
 
-        binding.buttonExit.setOnClickListener {
+        binding.buttonBack.setOnClickListener {
             findNavController().popBackStack()
         }
     }

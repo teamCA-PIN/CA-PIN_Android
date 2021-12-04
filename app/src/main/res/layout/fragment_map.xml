@@ -98,6 +98,152 @@
             app:layout_constraintStart_toStartOf="@id/zoomcontrolview"
             app:layout_constraintEnd_toEndOf="@id/zoomcontrolview"/>
 
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_cafe_selected"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintWidth_percent="0.93"
+            app:layout_constraintDimensionRatio="1:0.53"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@id/radiogroup_map"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageview_cafe"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="@{viewModel.selectedCafe.data == null ? view.GONE : view.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintWidth_percent="0.417"
+                    app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_cafe_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:text="@{viewModel.selectedCafe.data.name}"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:theme="@style/Headline1"
+                    app:layout_constraintStart_toEndOf="@id/imageview_cafe"
+                    app:layout_constraintTop_toTopOf="@+id/imageview_cafe"
+                    tools:text="후엘고" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageview_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_star_small"
+                    android:layout_marginEnd="4dp"
+                    android:visibility="@{viewModel.selectedCafe.data == null ? view.GONE : view.VISIBLE}"
+                    app:layout_constraintTop_toTopOf="@id/textview_cafe_rating"
+                    app:layout_constraintBottom_toBottomOf="@id/textview_cafe_rating"
+                    app:layout_constraintStart_toStartOf="@+id/textview_cafe_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_cafe_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:theme="@style/Body4"
+                    android:visibility="@{viewModel.selectedCafe.data == null ? view.GONE : view.VISIBLE}"
+                    android:text="@{viewModel.selectedCafe.data.average != null ? @string/float_0_1(viewModel.selectedCafe.data.average): @string/float_0_1(0.0)}"
+                    android:textColor="@color/pointcolor_yellow"
+                    android:layout_marginStart="4dp"
+                    app:layout_constraintTop_toBottomOf="@id/textview_cafe_name"
+                    app:layout_constraintStart_toEndOf="@id/imageview_star"
+                    tools:text="4.5"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_tags"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Body5"
+                    android:textSize="12dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                    android:textColor="@color/white"
+                    app:layout_constraintTop_toBottomOf="@id/textview_cafe_rating"
+                    app:layout_constraintStart_toStartOf="@id/textview_cafe_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/constraintlayout_pin_save"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:listitem="@layout/item_pin_detail_tag"
+                    tools:itemCount="4"
+                    tools:text="브런치카페"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintlayout_pin_save"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="11dp"
+                    android:visibility="@{viewModel.selectedCafe.data == null ? view.GONE : view.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@id/imageview_cafe"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/imageview_cafe">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkbox_pin_icon"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/selector_pinsave_icon"
+                        android:button="@null"
+                        android:clickable="false"
+                        android:checked="@{viewModel.selectedCafe.data.isSaved}"
+                        app:layout_constraintBottom_toBottomOf="@id/checkbox_pin_text"
+                        app:layout_constraintEnd_toStartOf="@id/checkbox_pin_text"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/checkbox_pin_text" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkbox_pin_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:text="@{viewModel.selectedCafe.data.isSaved ? @string/already_saved: @string/save_pin}"
+                        android:clickable="false"
+                        android:checked="@{viewModel.selectedCafe.data.isSaved}"
+                        android:textColor="@color/selector_tagfilter_text"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/checkbox_pin_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <include layout="@layout/item_skeleton_cafe"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
 
         <RadioGroup
             android:id="@+id/radiogroup_map"
@@ -142,117 +288,6 @@
                 android:button="@null"
                 android:background="@drawable/selector_my_map_toggle"/>
         </RadioGroup>
-
-
-        <androidx.cardview.widget.CardView
-            android:id="@+id/cardview_cafe_selected"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.91"
-            app:layout_constraintDimensionRatio="1:0.49"
-            android:layout_marginBottom="12dp"
-            app:cardCornerRadius="10dp"
-            android:visibility="@{viewModel.selectedCafe != null ? view.VISIBLE : view.GONE}"
-            app:layout_constraintBottom_toTopOf="@id/radiogroup_map"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent">
-
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent">
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textview_cafe_name"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="20dp"
-                    android:text="@{viewModel.selectedCafe.name}"
-                    android:theme="@style/Headline1"
-                    android:textColor="@color/black"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="20dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    tools:text="후엘고"/>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/imageview_star"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_star_small"
-                    android:layout_marginEnd="4dp"
-                    app:layout_constraintBottom_toBottomOf="@id/textview_cafe_rating"
-                    app:layout_constraintEnd_toStartOf="@+id/textview_cafe_rating"
-                    app:layout_constraintTop_toTopOf="@id/textview_cafe_rating" />
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textview_cafe_rating"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:textSize="14dp"
-                    android:theme="@style/Body4"
-                    android:layout_marginEnd="20dp"
-                    android:text="@{viewModel.selectedCafe.average != null ? @string/float_0_1(viewModel.selectedCafe.average): @string/float_0_1(0.0)}"
-                    android:textColor="@color/pointcolor_yellow"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginStart="20dp"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    tools:text="4.5"/>
-
-                <com.google.android.material.imageview.ShapeableImageView
-                    android:id="@+id/imageview_cafe"
-                    android:layout_width="0dp"
-                    android:layout_height="0dp"
-                    app:layout_constraintWidth_percent="0.275"
-                    android:background="@color/gray_3"
-                    app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}"
-                    app:layout_constraintDimensionRatio="1:1"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.0"
-                    app:layout_constraintTop_toBottomOf="@id/textview_cafe_name"
-                    app:layout_constraintStart_toStartOf="@id/textview_cafe_name"
-                    app:layout_constraintBottom_toBottomOf="parent"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textview_address"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    style="@style/Body3"
-                    android:textColor="@color/gray_4"
-                    android:textSize="12dp"
-                    android:text="@{viewModel.selectedCafe.address}"
-                    android:layout_marginStart="15dp"
-                    app:layout_constraintTop_toTopOf="@id/imageview_cafe"
-                    app:layout_constraintEnd_toEndOf="@id/textview_cafe_rating"
-                    app:layout_constraintStart_toEndOf="@id/imageview_cafe"
-                    tools:text="서울 마포구 마포대로 11길 118 1층"/>
-
-                <androidx.appcompat.widget.AppCompatTextView
-                    android:id="@+id/textview_cafe_tag"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:theme="@style/Body5"
-                    android:textSize="12dp"
-                    android:paddingVertical="4dp"
-                    android:paddingHorizontal="10dp"
-                    android:background="@drawable/tagfilter_selected"
-                    android:textColor="@color/white"
-                    app:layout_constraintBottom_toBottomOf="@id/imageview_cafe"
-                    app:layout_constraintStart_toStartOf="@id/textview_address"
-                    tools:text="브런치카페"/>
-
-                <androidx.appcompat.widget.AppCompatImageView
-                    android:id="@+id/button_save_cafe"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/ic_icon_pinplus"
-                    app:layout_constraintBottom_toBottomOf="@+id/imageview_cafe"
-                    app:layout_constraintEnd_toEndOf="@+id/textview_cafe_rating" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-        </androidx.cardview.widget.CardView>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
