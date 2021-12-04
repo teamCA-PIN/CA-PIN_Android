@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+        <variable
+            name="viewModel"
+            type="com.caffeine.capin.profile.MapProfileViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/logo_white"
+        tools:context=".profile.SettingFragment">
+
+        <androidx.appcompat.widget.AppCompatImageButton
+            android:id="@+id/button_exit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.4"
+            android:background="@drawable/icon_close_black"
+            app:layout_constraintBottom_toTopOf="@+id/imageview_logo"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_logo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_capinlogo_with_name"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_terms"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
+            android:text="@string/terms_and_policy"
+            android:textColor="@color/maincolor_1"
+            android:textSize="14dp"
+            android:theme="@style/Body2"
+            app:layout_constraintEnd_toEndOf="@id/imageview_logo"
+            app:layout_constraintStart_toStartOf="@id/imageview_logo"
+            app:layout_constraintTop_toBottomOf="@id/imageview_logo" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_logout"
+            style="@style/Body2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="@string/logout"
+            android:textColor="@color/maincolor_1"
+            android:textSize="14dp"
+            app:layout_constraintEnd_toEndOf="@id/textview_terms"
+            app:layout_constraintStart_toStartOf="@id/textview_terms"
+            app:layout_constraintTop_toBottomOf="@id/textview_terms" />
+
+        <LinearLayout
+            android:id="@+id/linearlayout_cafeti_animals"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="@id/textview_logout"
+            app:layout_constraintStart_toStartOf="@id/textview_logout"
+            app:layout_constraintTop_toBottomOf="@id/textview_logout">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_cat_small" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_deer_small" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_giraffe_small" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_zebra_small" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_squirrel_small" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_sheep_small" />
+
+        </LinearLayout>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_plan"
+            style="@style/Body4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Plan"
+            android:textColor="@color/pointcolor_1"
+            app:layout_constraintBottom_toTopOf="@+id/textview_design"
+            app:layout_constraintStart_toStartOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toBottomOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintVertical_chainStyle="packed" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_plan_members"
+            style="@style/Body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/plan_members"
+            android:textColor="@color/gray_4"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_plan"
+            app:layout_constraintEnd_toEndOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toTopOf="@id/textview_plan" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_design"
+            style="@style/Body4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Design"
+            android:layout_marginTop="28dp"
+            android:textColor="@color/pointcolor_1"
+            app:layout_constraintBottom_toTopOf="@+id/textview_ios"
+            app:layout_constraintStart_toStartOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toBottomOf="@id/textview_plan"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_design_members"
+            style="@style/Body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/design_members"
+            android:textColor="@color/gray_4"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_design"
+            app:layout_constraintEnd_toEndOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toTopOf="@id/textview_design" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_ios"
+            style="@style/Body4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="iOS"
+            android:textColor="@color/pointcolor_1"
+            app:layout_constraintBottom_toTopOf="@+id/textview_android"
+            app:layout_constraintStart_toStartOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toBottomOf="@id/textview_design"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_ios_members"
+            style="@style/Body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/ios_members"
+            android:textColor="@color/gray_4"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_ios"
+            app:layout_constraintEnd_toEndOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toTopOf="@id/textview_ios" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_android"
+            style="@style/Body4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Android"
+            android:textColor="@color/pointcolor_1"
+            app:layout_constraintBottom_toTopOf="@+id/textview_server"
+            app:layout_constraintStart_toStartOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toBottomOf="@id/textview_ios"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_android_members"
+            style="@style/Body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/android_members"
+            android:textColor="@color/gray_4"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_android"
+            app:layout_constraintEnd_toEndOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toTopOf="@id/textview_android" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_server"
+            style="@style/Body4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Server"
+            android:textColor="@color/pointcolor_1"
+            app:layout_constraintBottom_toTopOf="@+id/textview_copyright"
+            app:layout_constraintStart_toStartOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toBottomOf="@id/textview_android"
+            app:layout_constraintVertical_bias="0.0" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_server_members"
+            style="@style/Body3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/server_members"
+            android:textColor="@color/gray_4"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_server"
+            app:layout_constraintEnd_toEndOf="@id/linearlayout_cafeti_animals"
+            app:layout_constraintTop_toTopOf="@id/textview_server" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_copyright"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/copyright"
+            android:textColor="@color/pointcolor_1"
+            android:textSize="8dp"
+            android:theme="@style/Sub"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.9" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

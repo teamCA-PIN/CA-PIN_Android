@@ -4,7 +4,6 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -22,7 +21,10 @@ import com.caffeine.capin.detail.CafeDetailsActivity
 import com.caffeine.capin.util.AutoClearedValue
 import com.google.gson.Gson
 import com.naver.maps.geometry.LatLng
-import com.naver.maps.map.*
+import com.naver.maps.map.LocationTrackingMode
+import com.naver.maps.map.MapView
+import com.naver.maps.map.NaverMap
+import com.naver.maps.map.OnMapReadyCallback
 import com.naver.maps.map.overlay.Marker
 import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
@@ -58,7 +60,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         archiveCafeToMyMap()
         updateCafeDeatail()
         showCafeDetail()
-
     }
 
     override fun onResume() {
@@ -75,19 +76,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.zoomcontrolview.map = naverMap
         binding.locationButton.map = naverMap
 
-        setMarker()
         checkPermissions()
         getTagResult()
         changeMap()
+        setMarker()
     }
 
     private fun getTagResult() {
         if (viewModel.checkedTagList.value != null) {
             if (viewModel.checkedTagList.value!!.all { it == null }) {
-                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
                 viewModel.initializeFilterTag()
             } else {
-                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
             }
         }
     }
@@ -117,12 +116,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setToolbar() {
-        binding.toolbar.apply {
-            setMenuButton {
+        binding.run {
+            imageviewSetting.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_mapProfileFragment)
             }
-            setTagSearchButton {
+            imageviewFilter.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
+
             }
         }
     }

@@ -70,9 +70,22 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/my_page_tab_icon.xml" value="0.3925" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/toast_message_capin.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/window_loading.xml" value="0.43" />
+        <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/ic_pin_inactive_cate_1.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/selector_capin_map.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/selector_map_toggle.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/selector_my_map_toggle.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/selector_tagfilter.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/toggle_selected.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/toggle_unselected.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
+        <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/layout/item_tag_filter.xml" value="0.15885416666666666" />
       </map>
     </option>
   </component>
+  <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/build/classes" />
   </component>
