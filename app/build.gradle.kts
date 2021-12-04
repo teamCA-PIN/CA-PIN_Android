@@ -117,6 +117,7 @@ android {
         testImplementation(TestDependencies.JUNIT)
         androidTestImplementation(TestDependencies.EXT)
         androidTestImplementation(TestDependencies.ESPRESSO)
+        implementation("com.facebook.shimmer:shimmer:0.5.0")
         implementation("com.google.android.gms:play-services-location:16.0.0")
         implementation("com.google.android.flexbox:flexbox:3.0.0")
     }
