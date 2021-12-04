@@ -16,5 +16,6 @@ data class CafeDetailEntity(
     val latitude: Double,
     val longitude: Double,
     val average: Float?,
-    val img: String?
+    val img: String?,
+    val isSaved: Boolean
 )
