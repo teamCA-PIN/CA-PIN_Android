@@ -22,9 +22,9 @@
 
     <fragment
         android:id="@+id/mapProfileFragment"
-        android:name="com.caffeine.capin.profile.MapProfileFragment"
+        android:name="com.caffeine.capin.profile.SettingFragment"
         android:label="MapProfileFragment"
-        tools:layout="@layout/fragment_map_profile"/>
+        tools:layout="@layout/fragment_setting"/>
 
     <fragment
         android:id="@+id/tagFilterFragment"

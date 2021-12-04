@@ -1,6 +1,7 @@
 package com.caffeine.capin
 
 import android.app.Application
+import androidx.appcompat.app.AppCompatDelegate
 import com.naver.maps.map.NaverMapSdk
 import dagger.hilt.android.HiltAndroidApp
 
@@ -9,9 +10,14 @@ class CapinApplication: Application() {
     override fun onCreate() {
         super.onCreate()
 
+        disableDarkMode()
         setMapClientId()
-
     }
+
+    private fun disableDarkMode() {
+        AppCompatDelegate.setDefaultNightMode(AppCompatDelegate.MODE_NIGHT_NO)
+    }
+
 
     private fun setMapClientId() {
         NaverMapSdk.getInstance(this).client =

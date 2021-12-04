@@ -2,23 +2,22 @@ package com.caffeine.capin.profile
 
 import android.content.Intent
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
-import com.caffeine.capin.databinding.FragmentMapProfileBinding
+import com.caffeine.capin.databinding.FragmentSettingBinding
 import com.caffeine.capin.login.ui.LoginActivity
-import com.caffeine.capin.mypage.ui.MyPageActivity
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.AutoClearedValue
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class MapProfileFragment : Fragment() {
-    private var binding by AutoClearedValue<FragmentMapProfileBinding>()
+class SettingFragment : Fragment() {
+    private var binding by AutoClearedValue<FragmentSettingBinding>()
     private val viewModel by viewModels<MapProfileViewModel>()
     @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
@@ -27,7 +26,7 @@ class MapProfileFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMapProfileBinding.inflate(layoutInflater, container, false)
+        binding = FragmentSettingBinding.inflate(layoutInflater, container, false)
         return binding.root
     }
 
@@ -38,10 +37,6 @@ class MapProfileFragment : Fragment() {
 
         logout()
 
-        binding.constraintlayoutArchive.setOnClickListener {
-            val intent = Intent(this@MapProfileFragment.requireActivity(), MyPageActivity::class.java)
-            startActivity(intent)
-        }
         binding.buttonExit.setOnClickListener {
             findNavController().popBackStack()
         }

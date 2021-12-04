@@ -60,7 +60,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         archiveCafeToMyMap()
         updateCafeDeatail()
         showCafeDetail()
-
     }
 
     override fun onResume() {
@@ -77,19 +76,17 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.zoomcontrolview.map = naverMap
         binding.locationButton.map = naverMap
 
-        setMarker()
         checkPermissions()
         getTagResult()
         changeMap()
+        setMarker()
     }
 
     private fun getTagResult() {
         if (viewModel.checkedTagList.value != null) {
             if (viewModel.checkedTagList.value!!.all { it == null }) {
-                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_inactive)
                 viewModel.initializeFilterTag()
             } else {
-                binding.toolbar.changeTagSearchBackground(R.drawable.ic_btn_tag_btn_tag_active)
             }
         }
     }
@@ -119,12 +116,13 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setToolbar() {
-        binding.toolbar.apply {
-            setMenuButton {
+        binding.run {
+            imageviewSetting.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_mapProfileFragment)
             }
-            setTagSearchButton {
+            imageviewFilter.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
+
             }
         }
     }

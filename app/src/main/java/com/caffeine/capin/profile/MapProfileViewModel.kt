@@ -19,7 +19,7 @@ class MapProfileViewModel @Inject constructor(
         get() = _userInfo
 
     init {
-        getUserInfo()
+//        getUserInfo()
     }
 
     private fun getUserInfo() {

@@ -8,7 +8,7 @@ import com.caffeine.capin.network.DTOMapper
 class CafeListMapper: DTOMapper<CafeLocationDTO, CafeInformationEntity> {
     override fun map(from: CafeLocationDTO): CafeInformationEntity {
         return CafeInformationEntity(
-            CategoryType.CATEGORY10.hexCode,
+            CategoryType.CATEGORY7.hexCode,
             from.id,
             from.latitude,
             from.longitude

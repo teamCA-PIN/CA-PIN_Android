@@ -39,5 +39,10 @@
     <string name="error_cafe_name">카페정보없음</string>
     <string name="exit_page_tagfilter">페이지를 나가시겠습니까?</string>
     <string name="exit_page_content_tagfilter">검색결과 보기를 눌러\n원하시는 검색 결과를 받아보세요.</string>
+    <string name="plan_members">김현아&#160;&#160;곽민제</string>
+    <string name="design_members">이혜빈&#160;&#160;한유진&#160;&#160;김나원</string>
+    <string name="ios_members">노한솔&#160;&#160;장서현&#160;&#160;김지수</string>
+    <string name="android_members">손평화&#160;&#160;조성림&#160;&#160;홍은결&#160;&#160;윤혁</string>
+    <string name="server_members">이예슬&#160;&#160;이원석</string>
 </resources>
 
