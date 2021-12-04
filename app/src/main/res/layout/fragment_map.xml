@@ -57,10 +57,9 @@
 
         <RadioGroup
             android:id="@+id/radiogroup_map"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="0dp"
-            app:layout_constraintWidth_percent="0.611"
-            app:layout_constraintDimensionRatio="1:0.223"
+            app:layout_constraintDimensionRatio="1:0.3"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintVertical_bias="0.9"
@@ -78,28 +77,26 @@
                 android:id="@+id/radiobutton_capin_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="카핀맵"
-                android:textColor="@color/selector_map_toggle_text"
                 android:button="@null"
                 android:textSize="16dp"
+                android:paddingHorizontal="40dp"
                 android:theme="@style/Subhead"
                 android:layout_marginEnd="4dp"
                 android:layout_weight="1"
                 android:textAlignment="center"
-                android:background="@drawable/selector_map_toggle"/>
+                android:background="@drawable/selector_capin_map_toggle"/>
 
             <androidx.appcompat.widget.AppCompatRadioButton
                 android:id="@+id/radiobutton_my_map"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:theme="@style/Subhead"
-                android:text="마이맵"
                 android:layout_weight="1"
+                android:paddingHorizontal="40dp"
                 android:textSize="16dp"
                 android:textAlignment="center"
-                android:textColor="@color/selector_map_toggle_text"
                 android:button="@null"
-                android:background="@drawable/selector_map_toggle"/>
+                android:background="@drawable/selector_my_map_toggle"/>
         </RadioGroup>
 
 

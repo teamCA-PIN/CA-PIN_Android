@@ -35,16 +35,18 @@
         </provider>
 
         <activity android:name=".mypage.ui.MyPageActivity">
+
+        </activity>
+        <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
+        <activity android:name=".mypage.ui.MyPageProfileEditActivity" />
+        <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
-        <activity android:name=".mypage.ui.MyPageProfileEditActivity" />
-        <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
-        <activity android:name=".MainActivity"/>
         <activity android:name=".cafeti.ui.CoffeeTasteActivity" />
         <activity android:name=".cafeti.ui.CafeColorActivity" />
         <activity android:name=".cafeti.ui.CafeStyleActivity" />

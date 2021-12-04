@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:state_checked="true">
+        <layer-list>
+            <item
+                android:drawable="@drawable/toggle_selected"
+                android:gravity="center"/>
+
+            <item
+                android:drawable="@drawable/ic_icon_capinmap_selected"
+                android:width="24dp"
+                android:height="25dp"
+                android:gravity="center"/>
+        </layer-list>
+    </item>
+
+    <item android:state_checked="false">
+        <layer-list>
+            <item
+                android:drawable="@drawable/toggle_unselected"
+
+                android:gravity="center"/>
+
+            <item
+                android:drawable="@drawable/ic_icon_capinmap_unselected"
+                android:width="24dp"
+                android:height="25dp"
+                android:gravity="center"/>
+        </layer-list>
+    </item>
+</selector>
