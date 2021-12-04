@@ -156,7 +156,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
 
             setOnCheckedChangeListener { _, checkedId ->
-                binding.cardviewCafeSelected.applyVisibilityAnimation(false, false, 400)
+                binding.cardviewCafeSelected.run {
+                    if (visibility == View.VISIBLE) {
+                        applyVisibilityAnimation(false, false, 400)
+                    }
+                }
                 removeActiveMarkers()
                 checkMapSort()
             }
