@@ -91,7 +91,7 @@
         <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/item_pin_detail_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_recyclerview_category.xml" value="0.29635416666666664" />
-        <entry key="app/src/main/res/layout/item_skeleton_cafe.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/item_skeleton_cafe.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/item_tag_filter.xml" value="0.15885416666666666" />
       </map>
     </option>

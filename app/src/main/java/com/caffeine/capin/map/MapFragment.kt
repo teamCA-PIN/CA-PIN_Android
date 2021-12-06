@@ -147,7 +147,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             setOnCheckedChangeListener { _, checkedId ->
                 binding.cardviewCafeSelected.run {
                     if (visibility == View.VISIBLE) {
-                        applyVisibilityAnimation(false, false, 400)
+                        applyVisibilityAnimation(false, false, 500)
                     }
                 }
                 removeActiveMarkers()
@@ -227,7 +227,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         binding.cardviewCafeSelected.run{
                             if(visibility == View.GONE) {
                                 visibility = View.VISIBLE
-                                applyVisibilityAnimation(true, true, 400)
+                                applyVisibilityAnimation(true, true, 500)
                             }
                         }
                         viewModel.changeCafeCurrentChecked(cafe.key)
@@ -244,11 +244,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun updateCafeDetail() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
             binding.apply {
-                if(!cafeDetail.data?.img.isNullOrEmpty()) {
-                    Glide.with(requireContext()).load(cafeDetail.data?.img).into(imageviewCafe)
-                } else {
-                    Glide.with(requireContext()).load(R.drawable.ic_component_86).into(binding.imageviewCafe)
-                }
                 cardviewCafeSelected.setOnClickListener {
                     Intent(activity, CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail.data?._id)
@@ -304,7 +299,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun checkIsSavedCafe() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) {
             binding.run {
-                Log.e("saved", "${it.data?.isSaved}")
                 checkboxPinIcon.isChecked = (it.data?.isSaved == true)
                 checkboxPinText.isChecked = (it.data?.isSaved == true)
                 constraintlayoutPinSave.background = if (it.data?.isSaved == true) {

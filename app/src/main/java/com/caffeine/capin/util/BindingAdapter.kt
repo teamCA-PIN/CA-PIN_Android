@@ -30,6 +30,14 @@ object BindingAdapter {
         }
     }
 
+    @BindingAdapter("app:loadCafeImageMapView")
+    @JvmStatic
+    fun ImageView.bindingCafeImageMapview(url: String?) {
+        Glide.with(this).load(
+            if (url.isNullOrEmpty()) R.drawable.ic_component_86 else url
+        ).into(this)
+    }
+
     @BindingAdapter("app:loadCafeMainImage")
     @JvmStatic
     fun bindingCafeMainImage(imageView: ImageView, imageUrl: String?) {

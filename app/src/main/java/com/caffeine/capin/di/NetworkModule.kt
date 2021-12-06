@@ -26,9 +26,9 @@ object NetworkModule {
     }
 
     private val baseClient = OkHttpClient.Builder()
-        .connectTimeout(30, TimeUnit.SECONDS)
-        .writeTimeout(30, TimeUnit.SECONDS)
-        .readTimeout(30, TimeUnit.SECONDS)
+        .connectTimeout(15, TimeUnit.SECONDS)
+        .writeTimeout(15, TimeUnit.SECONDS)
+        .readTimeout(15, TimeUnit.SECONDS)
         .addInterceptor(loggingInterceptor)
         .build()
 
@@ -38,7 +38,7 @@ object NetworkModule {
         val interceptor = object : Interceptor{
             override fun intercept(chain: Interceptor.Chain): Response {
                 val request = chain.request()
-                    .newBuilder().addHeader("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWFiNzZhNDQ5MDJlMDQ4OGJhN2JmOTgiLCJpYXQiOjE2Mzg2MjczMDUsImV4cCI6MTYzODcxMzcwNX0.3IgAvcIvB7WwVHHr5bEl6B1Q3wQuF8JqNyN5sv94IjE")
+                    .newBuilder().addHeader("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWFiNzZhNDQ5MDJlMDQ4OGJhN2JmOTgiLCJpYXQiOjE2Mzg3NTgyNjksImV4cCI6MTYzODg0NDY2OX0.2TxVlpayBlvuzFOSThYDR907_ixXNTtvUSvqcNz1LnQ")
                     .build()
                 return chain.proceed(request)
             }

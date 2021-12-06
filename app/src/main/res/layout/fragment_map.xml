@@ -128,6 +128,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintWidth_percent="0.417"
+                    app:loadCafeImageMapView="@{viewModel.selectedCafe.data.img}"
                     app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}" />
 
                 <androidx.appcompat.widget.AppCompatTextView
