@@ -34,8 +34,7 @@ import javax.inject.Inject
 
 @AndroidEntryPoint
 class WriteReviewActivity : AppCompatActivity() {
-    @Inject
-    lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivityWriteReviewBinding
     private val viewModel by viewModels<WriteReviewViewModel>()
     private lateinit var pictureUri: Uri

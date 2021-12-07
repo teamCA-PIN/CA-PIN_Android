@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="tag"
+            type="String" />
+    </data>
+    <TextView
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/Body3"
+        android:text="@{tag}"
+        android:paddingVertical="3dp"
+        android:paddingHorizontal="12dp"
+        android:textColor="@color/pointcolor_1"
+        android:background="@drawable/shape_pointcolor1_stroke_99dp"
+        tools:text="분위기 추천"/>
+</layout>

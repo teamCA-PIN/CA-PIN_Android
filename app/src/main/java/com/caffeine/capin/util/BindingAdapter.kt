@@ -27,6 +27,8 @@ object BindingAdapter {
     fun ImageView.loadImageView(url: String?) {
         if (url != null) {
             Glide.with(context).load(url).into(this)
+        } else {
+            setBackgroundColor(ContextCompat.getColor(context, R.color.gray_3))
         }
     }
 
@@ -93,7 +95,6 @@ object BindingAdapter {
                 chipGroup.addView(it)
 
                 (it.layoutParams as? ViewGroup.MarginLayoutParams)?.updateMargins(
-                    bottom = chipGroup.context.resources.getDimensionPixelSize(R.dimen.chip_bottom_margin),
                     right = chipGroup.context.resources.getDimensionPixelSize(R.dimen.chip_margin),
                     left = chipGroup.context.resources.getDimensionPixelSize(R.dimen.chip_margin),
                 )

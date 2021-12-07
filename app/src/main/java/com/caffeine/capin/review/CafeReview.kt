@@ -9,7 +9,7 @@ import java.util.*
 
 data class CafeReview(
     val id: String,
-    val profileImageUrl: String,
+    val profileImageUrl: String?,
     val writerNickname: String,
     val createDate: Date,
     val recommend: List<Recommend>,

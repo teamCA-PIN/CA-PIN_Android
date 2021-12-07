@@ -6,15 +6,10 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemCafeReviewBinding
+import com.caffeine.capin.util.HorizontalItemDecoration
 import java.util.ArrayList
 
-/**
- * Created By Malibin
- * on 7월 09, 2021
- */
-
-class CafeReviewsAdapter :
-    ListAdapter<CafeReview, CafeReviewsAdapter.ViewHolder>(ItemComparator()) {
+class CafeReviewsAdapter : ListAdapter<CafeReview, CafeReviewsAdapter.ViewHolder>(ItemComparator()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -24,12 +19,20 @@ class CafeReviewsAdapter :
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
+        setTags(holder)
     }
 
-    inner class ViewHolder(
-        private val binding: ItemCafeReviewBinding
-    ) : RecyclerView.ViewHolder(binding.root) {
+    private fun setTags(holder: ViewHolder) {
+        val review = getItem(holder.absoluteAdapterPosition)
+        holder.binding.recyclerviewTag.run {
+            adapter = ReviewTagAdapter(2)
+            addItemDecoration(HorizontalItemDecoration(4))
+            (adapter as ReviewTagAdapter).submitList(review.getRecommendStrings())
+        }
+    }
 
+
+    inner class ViewHolder(val binding: ItemCafeReviewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(review: CafeReview) {
             binding.review = review
         }

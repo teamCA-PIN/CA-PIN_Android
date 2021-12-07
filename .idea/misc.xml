@@ -70,6 +70,7 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/my_page_tab_icon.xml" value="0.3925" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/toast_message_capin.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/window_loading.xml" value="0.43" />
+        <entry key="app/src/main/res/drawable/background_add_picture.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
@@ -81,18 +82,30 @@
         <entry key="app/src/main/res/drawable/selector_pinsave_icon.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_pinsave_map.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_tagfilter.xml" value="0.175" />
+        <entry key="app/src/main/res/drawable/selector_write_review_checkbox.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/shape_blue_5dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/shape_blue_stroke_5dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/shape_gray2_5dp.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/shape_pointcolor1_stroke_99dp.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/toggle_selected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/toggle_unselected.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/write_review_checkbox_selected.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/drawable/write_review_checkbox_unselected.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/layout/activity_all_cafe_reviews.xml" value="0.14412360688956433" />
+        <entry key="app/src/main/res/layout/activity_cafe_details.xml" value="0.253125" />
+        <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
+        <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/layout/item_cafe_review.xml" value="0.2183288409703504" />
         <entry key="app/src/main/res/layout/item_pin_detail_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_recyclerview_category.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/item_review_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_skeleton_cafe.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/item_tag_filter.xml" value="0.15885416666666666" />
+        <entry key="app/src/main/res/layout/item_tag_type_first.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/item_write_review_add_picture.xml" value="0.29635416666666664" />
       </map>
     </option>
   </component>

@@ -40,6 +40,6 @@ data class CafeReviewsResponse(
     data class Writer(
         val _id: String,
         val nickname: String,
-        val profileImg: String,
+        val profileImg: String?,
     )
 }

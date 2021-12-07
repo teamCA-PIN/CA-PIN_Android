@@ -8,13 +8,15 @@ import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
 import com.caffeine.capin.review.CafeReviewsAdapter
+import com.caffeine.capin.review.ReviewTagAdapter
 import com.caffeine.capin.review.all.AllCafeReviewsActivity
 import com.caffeine.capin.review.write.ui.WriteReviewActivity
+import com.caffeine.capin.util.HorizontalItemDecoration
+import com.google.android.flexbox.*
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class CafeDetailsActivity : AppCompatActivity() {
-
     private val cafeDetailsViewModel: CafeDetailsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,6 +28,20 @@ class CafeDetailsActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         val adapter = CafeReviewsAdapter()
+        binding.recyclerviewCafeTags.run {
+            this.adapter = ReviewTagAdapter(1)
+            layoutManager = FlexboxLayoutManager(this@CafeDetailsActivity).apply {
+                addItemDecoration(HorizontalItemDecoration(4))
+                flexWrap = FlexWrap.WRAP
+                flexDirection = FlexDirection.ROW
+                justifyContent = JustifyContent.CENTER
+                alignItems = AlignItems.CENTER
+
+            }
+            cafeDetailsViewModel.cafeDetails.observe(this@CafeDetailsActivity) {
+                (this.adapter as ReviewTagAdapter).submitList(it.tags)
+            }
+        }
         binding.listReviews.adapter = adapter
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
         binding.buttonBack.setOnClickListener { finish() }

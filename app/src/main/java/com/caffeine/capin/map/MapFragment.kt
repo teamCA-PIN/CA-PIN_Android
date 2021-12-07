@@ -245,7 +245,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
             binding.apply {
                 cardviewCafeSelected.setOnClickListener {
-                    Intent(activity, CafeDetailsActivity::class.java)
+                    Intent(requireActivity(), CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail.data?._id)
                         .also { startActivity(it) }
                 }
