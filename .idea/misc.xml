@@ -44,12 +44,14 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_loginpw.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_main.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page.xml" value="0.5528169014084507" />
-        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page_pin_detail.xml" value="0.6666666666666666" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page_category_edit.xml" value="0.43" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page_pin_detail.xml" value="0.6454033771106942" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_page_profile_edit.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_my_review_image.xml" value="0.325" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_splash.xml" value="0.3925" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/activity_write_review.xml" value="0.22375" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/capin_dialog.xml" value="0.43" />
+        <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_map.xml" value="0.43" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_map_profile.xml" value="0.22375" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_my_page_category.xml" value="0.3925" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/fragment_my_review_image.xml" value="0.43" />

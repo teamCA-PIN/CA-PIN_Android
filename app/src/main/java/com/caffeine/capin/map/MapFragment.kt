@@ -127,6 +127,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             imageviewFilter.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
             }
+            imageviewMypage.setOnClickListener {
+                findNavController().navigate(R.id.action_mapFragment_to_myPageActivity)
+            }
         }
     }
 
