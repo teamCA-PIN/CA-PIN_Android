@@ -13,11 +13,17 @@
         <action
             android:id="@+id/action_mapFragment_to_mapProfileFragment"
             app:destination="@id/mapProfileFragment"
-            app:enterAnim="@anim/animation_slide_right_to_left"/>
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit"/>
 
         <action
             android:id="@+id/action_mapFragment_to_tagFilterFragment"
-            app:destination="@id/tagFilterFragment" />
+            app:destination="@id/tagFilterFragment"
+            app:enterAnim="@anim/slide_up_enter"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_down_exit"/>
     </fragment>
 
     <fragment
