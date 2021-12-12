@@ -74,6 +74,10 @@
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/ic_pin_active_cate_1.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_pin_active_cate_4.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_pin_active_cate_5.xml" value="0.18489583333333334" />
+        <entry key="app/src/main/res/drawable/ic_pin_active_cate_6.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/drawable/ic_pin_inactive_cate_1.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/round_rectangle_5dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_capin_map.xml" value="0.23703703703703705" />

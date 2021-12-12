@@ -18,10 +18,12 @@
             app:popEnterAnim="@anim/slide_right_enter"
             app:popExitAnim="@anim/slide_right_exit"/>
 
-
         <action
             android:id="@+id/action_mapFragment_to_tagFilterFragment"
-            app:destination="@id/tagFilterFragment" />
+            app:destination="@id/tagFilterFragment"
+            app:enterAnim="@anim/slide_up_enter"
+            app:popEnterAnim="@anim/fade_in"
+            app:popExitAnim="@anim/slide_down_exit"/>
     </fragment>
 
     <fragment
