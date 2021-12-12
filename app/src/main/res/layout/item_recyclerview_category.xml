@@ -53,7 +53,7 @@
             android:text="/100"
             android:textColor="@color/gray_4"
             android:theme="@style/Body5"
-            android:layout_marginEnd="43dp"
+            android:layout_marginEnd="66dp"
             app:layout_constraintBottom_toBottomOf="@+id/rcv_category_edit_btn"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@+id/rcv_category_edit_btn" />
@@ -64,6 +64,7 @@
             android:layout_height="0dp"
             app:layout_constraintWidth_percent="0.078"
             app:layout_constraintDimensionRatio="1:1"
+            android:layout_marginEnd="23dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
