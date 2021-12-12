@@ -18,10 +18,16 @@ class AllCafeReviewsActivity : AppCompatActivity() {
         val binding = ActivityAllCafeReviewsBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        binding.run {
+            toolbar.setToolbarTitle("리뷰 전체보기")
+            toolbar.setBackButton{
+                finish()
+            }
+        }
+
         binding.lifecycleOwner = this
         binding.viewModel = allCafeReviewsViewModel
         binding.listReviews.adapter = cafeReviewsAdapter
-        binding.buttonBack.setOnClickListener { finish() }
 
         allCafeReviewsViewModel.cafeReviews.observe(this) {
             cafeReviewsAdapter.submitList(it)

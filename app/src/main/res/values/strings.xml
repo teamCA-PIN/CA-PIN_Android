@@ -46,5 +46,6 @@
     <string name="server_members">이예슬&#160;&#160;이원석</string>
     <string name="save_pin">핀저장</string>
     <string name="already_saved">저장됨</string>
+    <string name="entire_review_count_format">총 %d개의 리뷰</string>
 </resources>
 

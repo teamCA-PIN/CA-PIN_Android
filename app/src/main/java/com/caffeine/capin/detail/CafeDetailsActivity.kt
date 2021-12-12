@@ -47,6 +47,10 @@ class CafeDetailsActivity : AppCompatActivity() {
         binding.layoutSavePinButton.root.setOnClickListener { deploySelectCategoryActivity() }
 
         cafeDetailsViewModel.cafeReviews.observe(this) { adapter.submitList(it) }
+    }
+
+    override fun onResume() {
+        super.onResume()
         cafeDetailsViewModel.loadCafeDetails(getCafeId())
     }
 

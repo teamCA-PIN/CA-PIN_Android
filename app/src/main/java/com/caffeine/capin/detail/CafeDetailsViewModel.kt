@@ -51,7 +51,6 @@ class CafeDetailsViewModel @Inject constructor(
         capinService.getCafeReviewsOf(cafeId).enqueue(
             onSuccess = { onSuccessLoadReviews(it.toCafeReviews()) },
             onFailure = {
-                Log.d("MalibinDebug", "getCafeReviewsOf response : $it")
                 _isReviewsLoading.value = false
             },
         )
