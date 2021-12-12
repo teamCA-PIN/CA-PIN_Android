@@ -18,10 +18,6 @@
         <action
             android:id="@+id/action_mapFragment_to_tagFilterFragment"
             app:destination="@id/tagFilterFragment" />
-
-        <action
-            android:id="@+id/action_mapFragment_to_myPageActivity"
-            app:destination="@id/myPageActivity"/>
     </fragment>
 
     <fragment
@@ -37,11 +33,5 @@
         tools:layout="@layout/fragment_tag_filter">
 
     </fragment>
-
-    <activity
-        android:id="@+id/myPageActivity"
-        android:name="com.caffeine.capin.mypage.ui.MyPageActivity"
-        android:label="MyPageActivity"
-        tools:layout="@layout/activity_my_page"/>
 
 </navigation>
