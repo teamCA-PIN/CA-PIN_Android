@@ -15,7 +15,7 @@
     <string name="select_tag_filter">원하시는 카페 태그를 선택해주세요.</string>
     <string name="tagfilter_button">%d 건의 검색결과 보기</string>
     <string name="tagfilter_button_no_result">- 건의 검색결과 보기</string>
-    <string name="show_menu_details">메뉴 상세보기</string>
+    <string name="show_menu_details"><u>메뉴 상세보기</u></string>
     <string name="float_0_1">%.1f</string>
     <string name="plus_n">+%d</string>
     <string name="write_review_notice_picture">방문한 카페와 관련된 사진을 공유해주세요.</string>
