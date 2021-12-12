@@ -25,7 +25,7 @@
     <string name="profile_edit">프로필 편집</string>
     <string name="cafeti">카페TI 검사</string>
     <string name="edit_name">이름 변경하기</string>
-    <string name="profile_edit_description">공백없이 2-10자 내외로, 한글,영문,숫자만 입력 가능합니다.</string>
+    <string name="profile_edit_description">공백없이 2-10자 이내로 한글,영문,숫자만 입력 가능합니다.</string>
     <string name="profile_edit_complete">완료</string>
 
     <string name="recommend_flavor">맛 추천</string>

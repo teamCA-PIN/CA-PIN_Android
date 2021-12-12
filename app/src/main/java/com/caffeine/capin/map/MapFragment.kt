@@ -20,6 +20,7 @@ import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
+import com.caffeine.capin.mypage.ui.MyPageActivity
 import com.caffeine.capin.util.*
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -126,6 +127,10 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             }
             imageviewFilter.setOnClickListener {
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
+            }
+            imageviewMypage.setOnClickListener {
+                val intent = Intent(requireContext(), MyPageActivity::class.java)
+                startActivity(intent)
             }
         }
     }

@@ -91,6 +91,8 @@ class MyPageActivity : AppCompatActivity() {
             val intent = Intent(this, MyPageProfileEditActivity::class.java)
             startActivity(intent)
         }
+
+        binding.mypageBackBtn.setOnClickListener { onBackPressed() }
     }
 
     private fun setViewPager() {
@@ -103,8 +105,6 @@ class MyPageActivity : AppCompatActivity() {
         TabLayoutMediator(binding.mypageTabLayout, viewPager) { tab, position ->
             tab.customView = getTabView(position)
         }.attach()
-
-        binding.mypageCloseBtn.setOnClickListener { finish() }
     }
 
     override fun onResume() {

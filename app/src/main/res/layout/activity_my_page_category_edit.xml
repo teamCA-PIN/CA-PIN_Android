@@ -11,7 +11,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="14dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:srcCompat="@drawable/icon_back_black" />
@@ -20,7 +20,7 @@
         android:id="@+id/mypage_category_edit_header_tv"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="38dp"
+        android:layout_marginTop="14dp"
         android:text="아아아"
         android:textColor="@color/black"
         android:theme="@style/Headline1"
