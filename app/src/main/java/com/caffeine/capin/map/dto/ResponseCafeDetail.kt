@@ -21,6 +21,7 @@ data class ResponseCafeDetail(
             cafeDetail.opentimeHoliday,
             cafeDetail.closetimeHoliday,
         ),
+        isSaved = cafeDetail.isSaved
     )
 
     private fun offDays(): String {

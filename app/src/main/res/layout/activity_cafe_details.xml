@@ -31,6 +31,7 @@
                 android:layout_height="wrap_content">
 
                 <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     app:collapsedTitleGravity="center"
@@ -72,25 +73,22 @@
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent" />
 
-                        <ImageView
-                            android:id="@+id/button_back"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="16dp"
-                            android:layout_marginTop="16dp"
-                            android:visibility="gone"
-                            app:layout_collapseMode="pin"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/icon_back_white" />
-
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <androidx.appcompat.widget.Toolbar
                         android:id="@+id/toolbar"
                         android:layout_width="match_parent"
                         android:layout_height="64dp"
-                        app:contentInsetStart="0dp" />
+                        app:contentInsetStart="0dp"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageview_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="64dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/icon_back_black"
+                        app:layout_collapseMode="pin"/>
 
                 </com.google.android.material.appbar.CollapsingToolbarLayout>
 
@@ -345,15 +343,18 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent">
 
-            <ImageView
-                android:id="@+id/button_add_pin"
-                android:layout_width="wrap_content"
+            <include
+                android:id="@+id/layout_save_pin_button"
+                layout="@layout/layout_save_pin"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
+                android:layout_marginStart="20dp"
+                app:layout_constraintWidth_percent="0.3"
+                app:layout_constraintEnd_toStartOf="@id/button_write_review"
                 app:layout_constraintBottom_toBottomOf="@+id/button_write_review"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/button_write_review"
-                app:srcCompat="@drawable/pin_save" />
+                app:isSaved="@{viewModel.cafeDetails.isSaved}"/>
 
             <TextView
                 android:id="@+id/button_write_review"
@@ -363,17 +364,19 @@
                 android:layout_marginStart="17dp"
                 android:layout_marginTop="10dp"
                 android:layout_marginEnd="20dp"
-                android:background="@drawable/circle_rectangle"
-                android:backgroundTint="@color/black"
+                android:background="@drawable/shape_maincolor_8dp"
                 android:gravity="center"
+                android:drawablePadding="10dp"
+                android:paddingHorizontal="45dp"
                 android:includeFontPadding="false"
                 android:paddingTop="14dp"
                 android:paddingBottom="14dp"
                 android:text="리뷰 작성하기"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/button_add_pin"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintStart_toEndOf="@+id/layout_save_pin_button"
+                app:layout_constraintTop_toTopOf="parent"
+                app:drawableStartCompat="@drawable/ic_icon_pencil" />
         </androidx.constraintlayout.widget.ConstraintLayout>
 
         <include

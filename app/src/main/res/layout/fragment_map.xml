@@ -192,6 +192,7 @@
                     android:layout_width="0dp"
                     android:layout_height="40dp"
                     android:layout_marginHorizontal="11dp"
+                    android:background="@{viewModel.selectedCafe.data.isSaved ? @drawable/shape_blue_5dp: @drawable/shape_blue_stroke_5dp }"
                     android:visibility="@{viewModel.selectedCafe.data == null ? view.GONE : view.VISIBLE}"
                     app:layout_constraintBottom_toBottomOf="@id/imageview_cafe"
                     app:layout_constraintEnd_toEndOf="parent"

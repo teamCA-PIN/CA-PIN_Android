@@ -1,9 +1,15 @@
 package com.caffeine.capin.detail
 
 import android.content.Intent
+import android.graphics.PorterDuff
 import android.os.Bundle
+import android.util.Log
+import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
+import androidx.core.view.ViewCompat
+import com.caffeine.capin.R
 import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
@@ -13,6 +19,7 @@ import com.caffeine.capin.review.all.AllCafeReviewsActivity
 import com.caffeine.capin.review.write.ui.WriteReviewActivity
 import com.caffeine.capin.util.HorizontalItemDecoration
 import com.google.android.flexbox.*
+import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -44,13 +51,20 @@ class CafeDetailsActivity : AppCompatActivity() {
         }
         binding.listReviews.adapter = adapter
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
-        binding.buttonBack.setOnClickListener { finish() }
+        binding.imageviewBack.setOnClickListener { finish() }
         binding.buttonAllReviews.setOnClickListener { deployAllCafeReviewsActivity() }
         binding.buttonWriteReview.setOnClickListener { deployWriteReviewActivity() }
-        binding.buttonAddPin.setOnClickListener { deploySelectCategoryActivity() }
-
+        binding.layoutSavePinButton.root.setOnClickListener { deploySelectCategoryActivity() }
         cafeDetailsViewModel.cafeReviews.observe(this) { adapter.submitList(it) }
         cafeDetailsViewModel.loadCafeDetails(getCafeId())
+
+        binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
+            if ((binding.collapsingToolbar.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(binding.collapsingToolbar))) {
+                binding.imageviewBack.setImageResource(R.drawable.icon_back_black)
+            } else {
+                binding.imageviewBack.setImageResource(R.drawable.icon_back_white)
+            }
+        })
     }
 
     private fun getCafeId(): String {
