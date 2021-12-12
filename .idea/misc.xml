@@ -100,6 +100,10 @@
         <entry key="app/src/main/res/drawable/write_review_checkbox_unselected.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/layout/activity_all_cafe_reviews.xml" value="0.26104563355182075" />
         <entry key="app/src/main/res/layout/activity_cafe_details.xml" value="0.36541889483065954" />
+        <entry key="app/src/main/res/layout/activity_cafe_style.xml" value="0.3070652173913043" />
+        <entry key="app/src/main/res/layout/activity_coffee_menu.xml" value="0.3070652173913043" />
+        <entry key="app/src/main/res/layout/activity_coffee_most.xml" value="0.3070652173913043" />
+        <entry key="app/src/main/res/layout/activity_coffee_taste.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
         <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.2004994935838341" />
