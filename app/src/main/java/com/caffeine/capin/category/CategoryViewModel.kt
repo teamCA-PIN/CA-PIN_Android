@@ -71,8 +71,6 @@ class CategoryViewModel @Inject constructor(
     }
 
     fun archiveCafe() {
-        Log.e("cafe", "${selectedCafeDetail.value!!._id}")
-        Log.e("cafe", "${selectedCategory.value?.id}")
         archiveCafeController.archiveCafe(
             selectedCafeDetail.value!!._id,
             RequestArchiveCafeDTO(

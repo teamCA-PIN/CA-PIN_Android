@@ -30,8 +30,8 @@ class SplashActivity : AppCompatActivity() {
                 checkIsAlreadyLogin()
             }
 
-        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.animation_fade_in)
-        binding.splashIv.startAnimation(fadeInAnim)
+//        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.animation_fade_in)
+//        binding.splashIv.startAnimation(fadeInAnim)
     }
 
     private fun checkIsAlreadyLogin() {

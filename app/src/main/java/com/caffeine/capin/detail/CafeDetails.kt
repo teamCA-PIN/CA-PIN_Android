@@ -18,4 +18,5 @@ data class CafeDetails(
     val tags: List<String>,
     val instagramId: String,
     val operationTime: String,
+    val isSaved: Boolean?
 ) : Parcelable

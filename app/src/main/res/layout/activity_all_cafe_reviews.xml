@@ -15,81 +15,26 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/textView7"
-            style="@style/Headline1"
-            android:layout_width="wrap_content"
+        <com.caffeine.capin.customview.CapinToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="리뷰 전체보기"
-            android:textColor="@color/black"
-            app:layout_constraintBottom_toBottomOf="@+id/button_back"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="@+id/button_back"
-            app:layout_constraintVertical_bias="0.166" />
-
-        <ImageView
-            android:id="@+id/button_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="14dp"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:srcCompat="@drawable/icon_back_black" />
-
-        <TextView
-            android:id="@+id/textView8"
-            style="@style/Body4"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="39dp"
-            android:text="전체 리뷰"
-            android:textColor="@color/black"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/button_back" />
+            app:layout_constraintEnd_toEndOf="parent"/>
 
         <TextView
-            android:id="@+id/textView10"
+            android:id="@+id/textView_entire_review"
             style="@style/Body2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
-            android:text="@{String.valueOf(viewModel.reviewCount)}"
-            android:textColor="@color/gray_4"
-            app:layout_constraintBottom_toBottomOf="@+id/textView8"
-            app:layout_constraintStart_toEndOf="@+id/textView8"
-            app:layout_constraintTop_toTopOf="@+id/textView8"
-            tools:text="12" />
-
-        <CheckBox
-            android:id="@+id/checkBox"
-            style="@style/Body5"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="8dp"
-            android:button="@drawable/selector_checkbox"
-            android:checked="@={viewModel.isPhotoFiltered()}"
-            android:minWidth="0dp"
-            android:minHeight="0dp"
-            android:onClick="@{(view) -> viewModel.filterPhotoReviews()}"
-            android:paddingStart="6dp"
-            android:text="포토 리뷰만 보기"
-            android:textColor="@color/black"
+            android:layout_marginTop="18dp"
+            android:text="@{@string/entire_review_count_format(viewModel.reviewCount)}"
+            android:textColor="@color/gray_4"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-        <View
-            android:id="@+id/view"
-            android:layout_width="wrap_content"
-            android:layout_height="1dp"
-            android:layout_marginTop="11dp"
-            android:background="@color/gray_2"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/checkBox" />
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            tools:text="총 12개의 리뷰"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/list_reviews"
@@ -102,7 +47,7 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/view"
+            app:layout_constraintTop_toBottomOf="@+id/textView_entire_review"
             tools:listitem="@layout/item_cafe_review" />
 
         <include
