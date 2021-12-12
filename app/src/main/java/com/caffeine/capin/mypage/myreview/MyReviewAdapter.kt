@@ -50,6 +50,16 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
         this.editButtonClickListener = listener
     }
 
+    interface OnDetailButtonClickListener {
+        fun onDetailButtonClick(myReview: MyReview)
+    }
+
+    private lateinit var detailButtonClickListener: OnDetailButtonClickListener
+
+    fun setOnDetailButtonClickListener(listener: OnDetailButtonClickListener) {
+        this.detailButtonClickListener = listener
+    }
+
     interface OnImageClickListener {
         fun onImageClick(myReview: MyReview)
     }
@@ -144,6 +154,10 @@ MyReviewAdapter : RecyclerView.Adapter<MyReviewAdapter.MyReviewViewHolder>() {
 
             binding.mypageReviewEditBtn.setOnClickListener {
                 editButtonClickListener.onEditButtonClick(myReview)
+            }
+
+            binding.mypageReviewSeemoreBtn.setOnClickListener {
+                detailButtonClickListener.onDetailButtonClick(myReview)
             }
 
             listOf<ImageView>(

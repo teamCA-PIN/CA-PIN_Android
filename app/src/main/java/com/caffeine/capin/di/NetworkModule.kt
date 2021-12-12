@@ -38,7 +38,7 @@ object NetworkModule {
         val interceptor = object : Interceptor{
             override fun intercept(chain: Interceptor.Chain): Response {
                 val request = chain.request()
-                    .newBuilder().addHeader("token","eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWFiNzZhNDQ5MDJlMDQ4OGJhN2JmOTgiLCJpYXQiOjE2MzkyODUxNzksImV4cCI6MTYzOTM3MTU3OX0.QscxavCHZXCypDYNg2kNnhcPeSHpYlJU8Eg6wwsQuUI")
+                    .newBuilder().addHeader("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWI1ZGQzMDQ5MDJlMDQ4OGJhN2Q4ZmMiLCJpYXQiOjE2MzkzMDg2OTAsImV4cCI6MTYzOTM5NTA5MH0.zDFu_GrDNmdYfRGO9Emj9wBe45bstu-5mwvVhTAGQIc")
                     .build()
                 return chain.proceed(request)
             }
