@@ -12,6 +12,7 @@ import androidx.fragment.app.Fragment
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.*
 import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
+import com.caffeine.capin.detail.CafeDetailsActivity
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
@@ -64,16 +65,23 @@ class MyPageReviewFragment : Fragment() {
 
         myReviewAdapter.setOnEditButtonClickListener(object :
             MyReviewAdapter.OnEditButtonClickListener {
-
             override fun onEditButtonClick(myReview: MyReview) {
                 removeReviewInfo = myReview
                 showEditReviewDialog()
             }
         })
 
-        myReviewAdapter.setOnImageClickListener(object :
-            MyReviewAdapter.OnImageClickListener{
+        myReviewAdapter.setOnDetailButtonClickListener(object :
+            MyReviewAdapter.OnDetailButtonClickListener {
+            override fun onDetailButtonClick(myReview: MyReview) {
+                val intent = Intent(requireContext(), CafeDetailsActivity::class.java)
+                intent.putExtra(CafeDetailsActivity.KEY_CAFE_ID, myReview.cafeId)
+                startActivity(intent)
+            }
+        })
 
+        myReviewAdapter.setOnImageClickListener(object :
+            MyReviewAdapter.OnImageClickListener {
             override fun onImageClick(myReview: MyReview) {
                 MyReviewImageDialog(arrayListOf(*myReview.imgs.toTypedArray())).show(
                     childFragmentManager, "SampleDialog"
@@ -160,8 +168,9 @@ class MyPageReviewFragment : Fragment() {
                 response: Response<ResponseMyReviewData>
             ) { //통신 성공
                 if (response.isSuccessful) {
-                    if(response.body() != null) {
-                        myReviewAdapter.myReviewList = response.body()?.reviews as MutableList<MyReview>
+                    if (response.body() != null) {
+                        myReviewAdapter.myReviewList =
+                            response.body()?.reviews as MutableList<MyReview>
                         Log.d("리미", response.body().toString())
                         myReviewAdapter.notifyDataSetChanged()
                     }
