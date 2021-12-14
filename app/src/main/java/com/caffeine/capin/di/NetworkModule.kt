@@ -1,6 +1,7 @@
 package com.caffeine.capin.di
 
 import com.caffeine.capin.BuildConfig
+import com.caffeine.capin.network.AuthInterceptor
 import com.caffeine.capin.network.CapinApiService
 import com.caffeine.capin.preference.UserPreferenceManager
 import dagger.Module
@@ -8,6 +9,7 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
 import okhttp3.Interceptor
+import okhttp3.OkHttp
 import okhttp3.OkHttpClient
 import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
@@ -25,26 +27,16 @@ object NetworkModule {
         this.level = HttpLoggingInterceptor.Level.BODY
     }
 
-    private val baseClient = OkHttpClient.Builder()
-        .connectTimeout(15, TimeUnit.SECONDS)
-        .writeTimeout(15, TimeUnit.SECONDS)
-        .readTimeout(15, TimeUnit.SECONDS)
-        .addInterceptor(loggingInterceptor)
-        .build()
-
     @Provides
     @Singleton
-    fun provideHttpClient(userPreferenceManager: UserPreferenceManager): OkHttpClient {
-        val interceptor = object : Interceptor{
-            override fun intercept(chain: Interceptor.Chain): Response {
-                val request = chain.request()
-                    .newBuilder().addHeader("token", "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MWI1ZGQzMDQ5MDJlMDQ4OGJhN2Q4ZmMiLCJpYXQiOjE2MzkzMDg2OTAsImV4cCI6MTYzOTM5NTA5MH0.zDFu_GrDNmdYfRGO9Emj9wBe45bstu-5mwvVhTAGQIc")
-                    .build()
-                return chain.proceed(request)
-            }
-        }
-        val client =  baseClient.newBuilder().addNetworkInterceptor(interceptor).build()
-        return client
+    fun provideOkHttpClientBuilder(authInterceptor: AuthInterceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .addInterceptor(loggingInterceptor)
+            .addInterceptor(authInterceptor)
+            .build()
     }
 
     @Provides

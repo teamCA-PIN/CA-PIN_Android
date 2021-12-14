@@ -2,10 +2,8 @@ package com.caffeine.capin.login.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.view.animation.AnimationUtils
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.MainActivity
-import com.caffeine.capin.R
 import com.caffeine.capin.databinding.ActivitySplashBinding
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.transparentStatusAndNavigation
@@ -35,7 +33,7 @@ class SplashActivity : AppCompatActivity() {
     }
 
     private fun checkIsAlreadyLogin() {
-        if (!userPreferenceManager.getUserToken().isNullOrEmpty()) {
+        if (!userPreferenceManager.getUserAccessToken().isNullOrEmpty()) {
             val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         } else {

@@ -45,7 +45,7 @@ class MyPageViewModel @Inject constructor(
 
     fun getMyCategoryFromServer() {
         val capinApiService = ServiceCreator.capinApiService.getMyCategory(
-            userPreferenceManager.getUserToken()
+            userPreferenceManager.getUserAccessToken()
         )
 
         capinApiService.enqueue(object : Callback<ResponseMyCategoryData> {
@@ -73,7 +73,7 @@ class MyPageViewModel @Inject constructor(
 
     fun deleteMyCategoryAtServer() {
         val capinApiService = ServiceCreator.capinApiService.deleteMyCategory(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             removeCategoryInfo.value!!._id
         )
 

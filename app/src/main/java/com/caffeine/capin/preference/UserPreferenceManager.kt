@@ -2,25 +2,34 @@ package com.caffeine.capin.preference
 
 class UserPreferenceManager(
     private val preferenceManager: PreferenceManager
-    ) {
-    companion object {
-        private const val PREFS_KEY_USER_TOKEN = "user_token"
-        private const val PREFS_NEED_CAFETI_CHECK = "need_cafeti_check"
+) {
+    fun setUserAccessToken(accessToken: String) {
+        preferenceManager.setPreferences(ACCESS_TOKEN, accessToken)
     }
 
-    fun setUserToken(token: String) {
-        preferenceManager.setPreferences(PREFS_KEY_USER_TOKEN, token)
+    fun getUserAccessToken(): String {
+        return preferenceManager.getPreferences(ACCESS_TOKEN, "")
     }
 
-    fun getUserToken(): String {
-        return preferenceManager.getPreferences(PREFS_KEY_USER_TOKEN, "")
+    fun setUserRefreshToken(refreshToken: String) {
+        preferenceManager.setPreferences(REFRESH_TOKEN, refreshToken)
+    }
+
+    fun getUserRefreshToken(): String {
+        return preferenceManager.getPreferences(REFRESH_TOKEN, "")
     }
 
     fun setNeedCafetiCheck(check: Boolean) {
-        preferenceManager.setPreferences(PREFS_NEED_CAFETI_CHECK, check)
+        preferenceManager.setPreferences(NEED_CAFETI_CHECK, check)
     }
 
     fun getNeedCafetiCheck(): Boolean {
-        return preferenceManager.getPreferences(PREFS_NEED_CAFETI_CHECK, false)
+        return preferenceManager.getPreferences(NEED_CAFETI_CHECK, false)
+    }
+
+    companion object {
+        private const val REFRESH_TOKEN = "REFRESH_TOKEN"
+        private const val ACCESS_TOKEN = "ACCESS_TOKEN"
+        private const val NEED_CAFETI_CHECK = "NEED_CAFETI_CHECK"
     }
 }

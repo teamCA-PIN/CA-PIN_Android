@@ -101,7 +101,7 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         )
 
         val capinApiService = ServiceCreator.capinApiService.postNewCategory(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             requestNewCategoryData
         )
 
@@ -124,7 +124,7 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         )
 
         val capinApiService = ServiceCreator.capinApiService.putMyCategory(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             categoryId = categoryId,
             requestNewCategoryData
         )
