@@ -133,7 +133,8 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         response.body()?.loginData?.token?.let { token ->
-                            userPreferenceManager.setUserToken(token)
+                            userPreferenceManager.setUserAccessToken(token)
+
                         }
 
                         createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)

@@ -106,7 +106,7 @@ class CafeColorActivity : AppCompatActivity() {
         )
         val call: Call<ResponseCafetiData> =
             ServiceCreator.capinApiService.postCafeti(
-                userPreferenceManager.getUserToken(),
+                userPreferenceManager.getUserAccessToken(),
                 requestCafetiData
             )
         call.enqueue(object : Callback<ResponseCafetiData> {

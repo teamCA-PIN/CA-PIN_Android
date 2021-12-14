@@ -20,7 +20,6 @@ import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import java.util.*
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -54,7 +53,7 @@ class MyPageActivity : AppCompatActivity() {
 
     private fun getMyInfoFromServer() {
         val capinApiService = ServiceCreator.capinApiService.getMyInfo(
-            userPreferenceManager.getUserToken()
+            userPreferenceManager.getUserAccessToken()
         )
 
         capinApiService.enqueue(object : Callback<ResponseMyData> {

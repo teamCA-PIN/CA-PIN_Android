@@ -16,19 +16,15 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
 import com.caffeine.capin.R
-import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
 import com.caffeine.capin.databinding.ActivityMyPageProfileEditBinding
-import com.caffeine.capin.mypage.api.request.RequestProfileEditData
 import com.caffeine.capin.mypage.api.response.ResponseMyData
 import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
-import com.caffeine.capin.review.write.ui.WriteReviewActivity
 import dagger.hilt.android.AndroidEntryPoint
-import okhttp3.MediaType
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.MultipartBody
 import okhttp3.RequestBody
@@ -135,7 +131,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
 
     private fun getMyInfoFromServer() {
         val capinApiService = ServiceCreator.capinApiService.getMyInfo(
-            userPreferenceManager.getUserToken()
+            userPreferenceManager.getUserAccessToken()
         )
 
         capinApiService.enqueue(object : Callback<ResponseMyData> {
@@ -198,7 +194,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         //todo 모르겠음 으앙아아ㅏㄱ 파일은 받았는데 그 뒤로는 모르게써~~~~~~
 
         val capinApiService = ServiceCreator.capinApiService.putMyProfileEdit(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             nickname = nicknameBody,
             profileImg = body
         )

@@ -17,6 +17,7 @@ import com.caffeine.capin.mypage.api.response.ResponseMyPinData
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.network.response.CafeMenusResponse
 import com.caffeine.capin.network.response.CafeReviewsResponse
+import com.caffeine.capin.network.response.ResponseToken
 import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
@@ -161,4 +162,7 @@ interface CapinApiService {
         @Part nickname: MultipartBody.Part,
         @Part profileImg: MultipartBody.Part
     ): Call<BaseResponse>
+
+    @POST("/refresh")
+    fun refreshUserToken(@Body requestToken: ResponseToken.Token): Single<ResponseToken>
 }

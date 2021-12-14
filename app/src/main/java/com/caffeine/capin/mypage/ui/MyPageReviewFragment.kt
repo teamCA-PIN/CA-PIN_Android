@@ -144,7 +144,7 @@ class MyPageReviewFragment : Fragment() {
 
     private fun getMyReviewFromServer() {
         val capinApiService = ServiceCreator.capinApiService.getMyReview(
-            userPreferenceManager.getUserToken()
+            userPreferenceManager.getUserAccessToken()
         )
 
         capinApiService.enqueue(object : Callback<ResponseMyReviewData> {
@@ -176,7 +176,7 @@ class MyPageReviewFragment : Fragment() {
 
     private fun deleteMyReviewAtServer() {
         val capinApiService = ServiceCreator.capinApiService.deleteMyReview(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             reviewId = removeReviewInfo._id
         )
 

@@ -47,7 +47,7 @@ class SettingFragment : Fragment() {
             val intent = Intent(requireContext(), LoginActivity::class.java)
             intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
             intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
-            userPreferenceManager.setUserToken("")
+            userPreferenceManager.setUserAccessToken("")
             startActivity(intent)
         }
     }

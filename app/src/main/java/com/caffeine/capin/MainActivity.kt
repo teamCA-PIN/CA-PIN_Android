@@ -22,7 +22,7 @@ class MainActivity: AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        Log.e("token", "${userPreferenceManager.getUserToken()}")
+        Log.e("token", "${userPreferenceManager.getUserAccessToken()}")
         binding = ActivityMainBinding.inflate(LayoutInflater.from(this))
         setContentView(binding.root)
         setNavController()

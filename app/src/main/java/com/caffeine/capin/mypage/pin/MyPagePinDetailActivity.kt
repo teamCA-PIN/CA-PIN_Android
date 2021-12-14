@@ -5,7 +5,6 @@ import android.util.Log
 import android.view.View
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.isGone
-import androidx.core.view.isInvisible
 import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -169,7 +168,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
 
     private fun getMyPinFromServer() {
         val capinApiService = ServiceCreator.capinApiService.getMyPin(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             categoryId = categoryPinId
         )
 
@@ -222,7 +221,7 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         )
 
         val capinApiService = ServiceCreator.capinApiService.deleteMyPin(
-            userPreferenceManager.getUserToken(),
+            userPreferenceManager.getUserAccessToken(),
             categoryPinId,
             requestDeletePinData
         )
