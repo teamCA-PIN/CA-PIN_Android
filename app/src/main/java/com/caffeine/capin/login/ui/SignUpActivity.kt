@@ -251,7 +251,7 @@ class SignUpActivity : AppCompatActivity() {
                 } else {
                     val errorBody = response.errorBody() ?: return
                     val errorMessage = JSONObject(errorBody.string())
-                    CapinToastMessage.createCapinToast(this@SignUpActivity, "이미 존재하는 이메일입니다.", 135)
+                    CapinToastMessage.createCapinToast(this@SignUpActivity, "이미 사용중인 이메일입니다.", 135)
                         ?.show()
                 }
             }
