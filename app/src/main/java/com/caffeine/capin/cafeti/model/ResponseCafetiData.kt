@@ -11,6 +11,7 @@ data class ResponseCafetiData(
         val type: String,
         val modifier: String,
         val modifierDetail: String?,
+        val introduction : String,
         val img: String,
         val plainImg: String
     ): Serializable
