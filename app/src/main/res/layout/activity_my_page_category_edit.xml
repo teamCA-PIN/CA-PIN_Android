@@ -47,7 +47,6 @@
         android:layout_marginTop="15dp"
         android:layout_marginEnd="16dp"
         android:backgroundTint="@color/gray_4"
-        android:textCursorDrawable="@drawable/cursor_gray"
         android:ems="10"
         android:hint="@string/new_category_name"
         android:maxLength="10"
