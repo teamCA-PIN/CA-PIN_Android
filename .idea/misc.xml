@@ -86,6 +86,7 @@
         <entry key="app/src/main/res/drawable/selector_my_map_toggle.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_pinsave_icon.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_pinsave_map.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/selector_rating_unfilled.xml" value="0.35462962962962963" />
         <entry key="app/src/main/res/drawable/selector_tagfilter.xml" value="0.175" />
         <entry key="app/src/main/res/drawable/selector_write_review_checkbox.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/shape_blue_5dp.xml" value="0.23703703703703705" />
