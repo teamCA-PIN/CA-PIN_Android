@@ -25,7 +25,9 @@ object Dependencies {
     const val NAVIGATION_UI = "androidx.navigation:navigation-ui-ktx:${BuildDependencyVersions.NAVIGATION}"
 
     //OkHttp
-    const val OKHTTP = "com.squareup.okhttp3:logging-interceptor:${BuildDependencyVersions.OKHTTP}"
+    const val OKHTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${BuildDependencyVersions.OKHTTP}"
+    const val OKHTTP = "com.squareup.okhttp3:okhttp:4.8.0"
+
 
     //Hilt
     const val HILT = "com.google.dagger:hilt-android:${BuildDependencyVersions.HILT}"

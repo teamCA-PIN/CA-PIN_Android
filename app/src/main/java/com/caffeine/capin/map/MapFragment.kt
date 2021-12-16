@@ -21,6 +21,7 @@ import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
 import com.caffeine.capin.mypage.ui.MyPageActivity
+import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.*
 import com.google.android.flexbox.FlexDirection
 import com.google.android.flexbox.FlexWrap
@@ -36,6 +37,7 @@ import com.naver.maps.map.overlay.Overlay
 import com.naver.maps.map.overlay.OverlayImage
 import com.naver.maps.map.util.FusedLocationSource
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
 @AndroidEntryPoint
 class MapFragment : Fragment(), OnMapReadyCallback {
@@ -44,6 +46,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private lateinit var naverMap: NaverMap
     private lateinit var mapView: MapView
     private lateinit var locationSource: FusedLocationSource
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -59,7 +62,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         binding.viewModel = viewModel
         mapView = binding.mapview
         mapView.getMapAsync(this)
-
 
         setCafeInformation()
         setToolbar()
@@ -93,7 +95,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
         if (viewModel.checkedTagList.value != null) {
             if (viewModel.checkedTagList.value!!.all { it == null }) {
                 viewModel.initializeFilterTag()
-            } else {
             }
         }
     }
@@ -232,6 +233,8 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                         binding.cardviewCafeSelected.run{
                             if(visibility == View.GONE) {
                                 visibility = View.VISIBLE
+                                Log.e("click", userPreferenceManager.getUserAccessToken())
+
                                 applyVisibilityAnimation(true, true, 500)
                             }
                         }
@@ -271,7 +274,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 when(it.status) {
                     UiState.Status.LOADING -> applySkeletonUI(true)
                     UiState.Status.SUCCESS -> applySkeletonUI(false)
-                    UiState.Status.ERROR -> {}
+                    UiState.Status.ERROR -> applySkeletonUI(false)
                 }
             }
         }
