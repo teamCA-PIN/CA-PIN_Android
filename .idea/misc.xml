@@ -72,6 +72,7 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/window_loading.xml" value="0.43" />
         <entry key="app/src/main/res/drawable/background_add_picture.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/cursor_gray.xml" value="0.33489583333333334" />
         <entry key="app/src/main/res/drawable/gradient_image_mask.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
@@ -104,6 +105,7 @@
         <entry key="app/src/main/res/layout/activity_coffee_menu.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_coffee_most.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_coffee_taste.xml" value="0.3070652173913043" />
+        <entry key="app/src/main/res/layout/activity_my_page_category_edit.xml" value="0.271286231884058" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
         <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.2004994935838341" />
