@@ -27,9 +27,7 @@ import javax.inject.Inject
 class LoginActivity : AppCompatActivity() {
     private lateinit var binding: ActivityLoginBinding
     private var edittextCount = 0
-
-    @Inject
-    lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -132,11 +130,13 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponseLoginData>
                 ) {
                     if (response.isSuccessful) {
-                        response.body()?.loginData?.token?.let { token ->
+                        response.body()?.loginData?.token_access?.let { token ->
                             userPreferenceManager.setUserAccessToken(token)
 
                         }
-
+                        response.body()?.loginData?.token_refresh?.let { token ->
+                            userPreferenceManager.setUserRefreshToken(token)
+                        }
                         createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
 
                         successLogin()

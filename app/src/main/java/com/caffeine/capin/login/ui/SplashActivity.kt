@@ -2,10 +2,16 @@ package com.caffeine.capin.login.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.view.View
+import android.view.animation.AlphaAnimation
+import android.view.animation.Animation
+import android.view.animation.AnimationSet
+import android.view.animation.TranslateAnimation
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.MainActivity
 import com.caffeine.capin.databinding.ActivitySplashBinding
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.util.applyVisibilityAnimation
 import com.caffeine.capin.util.transparentStatusAndNavigation
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.core.Observable
@@ -22,14 +28,28 @@ class SplashActivity : AppCompatActivity() {
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
         transparentStatusAndNavigation()
+        setSplashAnimation()
 
-        Observable.timer(2, TimeUnit.SECONDS)
-            .subscribe {
-                checkIsAlreadyLogin()
+    }
+
+    private fun setSplashAnimation() {
+        val animationSet = AnimationSet(true)
+        val alphaAnimation = AlphaAnimation(0f, 1f)
+        val translateAnimation = TranslateAnimation(0f, 0f, 70f, 0f)
+        animationSet.duration = 1000
+        animationSet.addAnimation(alphaAnimation)
+        animationSet.addAnimation(translateAnimation)
+        animationSet.setAnimationListener(object: Animation.AnimationListener{
+            override fun onAnimationRepeat(animation: Animation?) {}
+            override fun onAnimationStart(animation: Animation?) {
+                binding.imageviewSplash.visibility = View.VISIBLE
             }
 
-//        val fadeInAnim = AnimationUtils.loadAnimation(this, R.anim.animation_fade_in)
-//        binding.splashIv.startAnimation(fadeInAnim)
+            override fun onAnimationEnd(animation: Animation?) {
+                checkIsAlreadyLogin()
+            }
+        })
+        binding.imageviewSplash.startAnimation(animationSet)
     }
 
     private fun checkIsAlreadyLogin() {
