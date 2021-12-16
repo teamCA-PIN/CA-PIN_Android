@@ -162,7 +162,4 @@ interface CapinApiService {
         @Part nickname: MultipartBody.Part,
         @Part profileImg: MultipartBody.Part
     ): Call<BaseResponse>
-
-    @POST("/refresh")
-    fun refreshUserToken(@Body requestToken: ResponseToken.Token): Single<ResponseToken>
 }
