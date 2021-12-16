@@ -19,6 +19,7 @@ import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityMyPageProfileEditBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyData
 import com.caffeine.capin.network.BaseResponse
@@ -61,11 +62,9 @@ class MyPageProfileEditActivity : AppCompatActivity() {
 
         binding.profileEditBackBtn.setOnClickListener { onBackPressed() }
         binding.profileEditProfileEditBtn.setOnClickListener {
-            Log.d("리미", "편집 버튼 눌렀다")
             showEditProfileDialog()
         }
         binding.profileEditDoneBtn.setOnClickListener {
-            Log.d("리미", "완료 버튼 눌렀다")
             putMyProfileEditToServer() }
     }
 
@@ -183,15 +182,9 @@ class MyPageProfileEditActivity : AppCompatActivity() {
     private fun putMyProfileEditToServer() {
         val file = File(path)
 
-        Log.d("리미", file.name)
-
         var requestBody : RequestBody = RequestBody.create("image/jpeg".toMediaTypeOrNull(),file)
         var body : MultipartBody.Part = MultipartBody.Part.createFormData("profileImg",file.name,requestBody)
         var nicknameBody : MultipartBody.Part = MultipartBody.Part.createFormData("nickname", binding.profileEditNameEdt.text.toString())
-
-        Log.d("리미", requestBody.toString())
-        Log.d("리미", body.toString())
-        //todo 모르겠음 으앙아아ㅏㄱ 파일은 받았는데 그 뒤로는 모르게써~~~~~~
 
         val capinApiService = ServiceCreator.capinApiService.putMyProfileEdit(
             userPreferenceManager.getUserAccessToken(),
@@ -202,11 +195,15 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         capinApiService.enqueue(object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("fail", "error:$t")
+                CapinToastMessage.createCapinRejectToast(
+                    this@MyPageProfileEditActivity,
+                    "사용할 수 없는 이름입니다.",
+                    100
+                )?.show()
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 if (response.isSuccessful) {
-                    Log.d("리미", "멀티파트..")
                     finish()
                 }
             }
