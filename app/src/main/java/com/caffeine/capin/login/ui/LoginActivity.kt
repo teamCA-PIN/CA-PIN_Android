@@ -136,7 +136,9 @@ class LoginActivity : AppCompatActivity() {
                         }
                         response.body()?.loginData?.token_refresh?.let { token ->
                             userPreferenceManager.setUserRefreshToken(token)
+
                         }
+
                         createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
 
                         successLogin()
