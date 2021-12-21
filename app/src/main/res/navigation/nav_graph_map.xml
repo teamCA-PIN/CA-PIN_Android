@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_map" >
         <action
             android:id="@+id/action_mapFragment_to_mapProfileFragment"
-            app:destination="@id/mapProfileFragment"
+            app:destination="@id/settingFragment"
             app:enterAnim="@anim/slide_left_enter"
             app:exitAnim="@anim/slide_left_exit"
             app:popEnterAnim="@anim/slide_right_enter"
@@ -27,10 +27,18 @@
     </fragment>
 
     <fragment
-        android:id="@+id/mapProfileFragment"
+        android:id="@+id/settingFragment"
         android:name="com.caffeine.capin.profile.SettingFragment"
-        android:label="MapProfileFragment"
-        tools:layout="@layout/fragment_setting"/>
+        android:label="SettingFragment"
+        tools:layout="@layout/fragment_setting">
+        <action
+            android:id="@+id/action_setting_to_policyFragment"
+            app:destination="@id/policyFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit"/>
+    </fragment>
 
     <fragment
         android:id="@+id/tagFilterFragment"
@@ -39,5 +47,10 @@
         tools:layout="@layout/fragment_tag_filter">
 
     </fragment>
+    <fragment
+        android:id="@+id/policyFragment"
+        android:name="com.caffeine.capin.profile.PolicyFragment"
+        android:label="PolicyFragment"
+        tools:layout="@layout/fragment_policy"/>
 
 </navigation>

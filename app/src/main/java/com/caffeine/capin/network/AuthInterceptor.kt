@@ -55,7 +55,7 @@ class AuthInterceptor @Inject constructor(
 
         with(userPreferenceManager) {
             tokenResponse?.tokens?.let {
-                if(it.accessToken.isNullOrEmpty() || it.refreshToken.isNullOrEmpty()) {
+                if(it.accessToken.isNullOrEmpty()) {
                     setUserAccessToken("")
                     setUserRefreshToken("")
                     setNeedCafetiCheck(true)
@@ -65,7 +65,7 @@ class AuthInterceptor @Inject constructor(
                     }
                 } else {
                     setUserAccessToken(it.accessToken)
-                    setUserRefreshToken(it.refreshToken)
+                    it.refreshToken?.let { setUserRefreshToken(it) }
                 }
             }
         }

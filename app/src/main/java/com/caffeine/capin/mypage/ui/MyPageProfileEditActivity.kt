@@ -37,9 +37,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MyPageProfileEditActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var userPreferenceManager: UserPreferenceManager
-
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivityMyPageProfileEditBinding
     private lateinit var path: String
 
@@ -61,11 +59,9 @@ class MyPageProfileEditActivity : AppCompatActivity() {
 
         binding.profileEditBackBtn.setOnClickListener { onBackPressed() }
         binding.profileEditProfileEditBtn.setOnClickListener {
-            Log.d("리미", "편집 버튼 눌렀다")
             showEditProfileDialog()
         }
         binding.profileEditDoneBtn.setOnClickListener {
-            Log.d("리미", "완료 버튼 눌렀다")
             putMyProfileEditToServer() }
     }
 
@@ -183,15 +179,9 @@ class MyPageProfileEditActivity : AppCompatActivity() {
     private fun putMyProfileEditToServer() {
         val file = File(path)
 
-        Log.d("리미", file.name)
-
         var requestBody : RequestBody = RequestBody.create("image/jpeg".toMediaTypeOrNull(),file)
         var body : MultipartBody.Part = MultipartBody.Part.createFormData("profileImg",file.name,requestBody)
         var nicknameBody : MultipartBody.Part = MultipartBody.Part.createFormData("nickname", binding.profileEditNameEdt.text.toString())
-
-        Log.d("리미", requestBody.toString())
-        Log.d("리미", body.toString())
-        //todo 모르겠음 으앙아아ㅏㄱ 파일은 받았는데 그 뒤로는 모르게써~~~~~~
 
         val capinApiService = ServiceCreator.capinApiService.putMyProfileEdit(
             userPreferenceManager.getUserAccessToken(),
@@ -206,7 +196,6 @@ class MyPageProfileEditActivity : AppCompatActivity() {
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 if (response.isSuccessful) {
-                    Log.d("리미", "멀티파트..")
                     finish()
                 }
             }
