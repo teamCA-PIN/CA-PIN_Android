@@ -19,6 +19,7 @@ import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
 import com.caffeine.capin.customview.CapinDialogButton
+import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityMyPageProfileEditBinding
 import com.caffeine.capin.mypage.api.response.ResponseMyData
 import com.caffeine.capin.network.BaseResponse
@@ -192,6 +193,11 @@ class MyPageProfileEditActivity : AppCompatActivity() {
         capinApiService.enqueue(object : Callback<BaseResponse> {
             override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
                 Log.d("fail", "error:$t")
+                CapinToastMessage.createCapinRejectToast(
+                    this@MyPageProfileEditActivity,
+                    "사용할 수 없는 이름입니다.",
+                    100
+                )?.show()
             }
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
@@ -203,7 +209,6 @@ class MyPageProfileEditActivity : AppCompatActivity() {
     }
 
     fun absolutelyPath(path: Uri): String {
-
         var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
         var c: Cursor = contentResolver.query(path, proj, null, null, null)!!
         var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
