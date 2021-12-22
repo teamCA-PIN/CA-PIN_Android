@@ -11,6 +11,7 @@ import androidx.core.view.isVisible
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinToastMessage
 import com.caffeine.capin.databinding.ActivityFindPasswordBinding
+import com.caffeine.capin.util.hideKeyBoard
 
 class FindPasswordActivity : AppCompatActivity() {
 
@@ -24,6 +25,9 @@ class FindPasswordActivity : AppCompatActivity() {
         binding.btnChange.clipToOutline = true
         binding.btnProve.clipToOutline = true
 
+        binding.root.run {
+            setOnClickListener { hideKeyBoard()}
+        }
         numberButtonClickEvent()
         changePwButtonClickEvent()
         imageviewButtonClickEvent()

@@ -101,11 +101,12 @@ interface CapinApiService {
     ): Call<BaseResponse>
 
     @PUT("/reviews/{reviewId}")
-    fun putMyReview(
-        @Header("token") token: String,
+    @Multipart
+    fun modifyReview(
         @Path("reviewId") reviewId: String,
-        @Body body: RequestPutReviewData
-    ): Call<BaseResponse>
+        @Part review: MultipartBody.Part,
+        @Part imgs: List<MultipartBody.Part?>
+    ): Single<BaseResponse>
 
     @GET("/cafes/myMap")
     fun getMyMapPins(

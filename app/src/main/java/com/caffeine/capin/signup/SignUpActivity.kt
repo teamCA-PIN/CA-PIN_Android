@@ -20,6 +20,7 @@ import com.caffeine.capin.login.model.ResponseSignUpData
 import com.caffeine.capin.login.ui.LoginActivity
 import com.caffeine.capin.network.ServiceCreator.capinApiService
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.util.hideKeyBoard
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
@@ -38,6 +39,11 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.btnSignup.clipToOutline = true
 
+        binding.root.run {
+            setOnClickListener {
+                hideKeyBoard()
+            }
+        }
         signUpButtonClickEvent()
 
         lateinit var username : EditText

@@ -27,6 +27,7 @@ import com.caffeine.capin.review.write.PictureUriEntity
 import com.caffeine.capin.review.write.WriteReviewViewModel
 import com.caffeine.capin.util.HorizontalItemDecoration
 import com.caffeine.capin.util.UiState
+import com.caffeine.capin.util.hideKeyBoard
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -44,9 +45,9 @@ class WriteReviewActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityWriteReviewBinding.inflate(layoutInflater)
-        setContentView(binding.root)
         binding.viewModel = viewModel
         binding.lifecycleOwner = this
+        setContentView(binding.root)
 
         tagCheckBoxList = mapOf(
             binding.checkboxFeeling to 0,
@@ -60,6 +61,7 @@ class WriteReviewActivity : AppCompatActivity() {
         postReview()
         goToMapView()
         settingBeforeReview()
+        hideKeyBoard()
     }
 
     private fun setWriteReviewToolber() {
@@ -86,9 +88,13 @@ class WriteReviewActivity : AppCompatActivity() {
                     tag == tagCheckBoxList[it]
                 }?.isChecked = true
             }
-
+            review.imgs?.forEach {
+                viewModel.addImagesOfCafe(PictureUriEntity(null, it))
+            }
+            viewModel.changeInitialImageCounts(review.imgs?.count() ?: 0)
             viewModel.changeCheckedRecommend(review.recommend)
             viewModel.contentsOfReview.value = review.content
+            viewModel.changeReviewId(review._id)
             viewModel.rateOfReview.value = review.rating.toFloat()
         }
     }
@@ -204,20 +210,19 @@ class WriteReviewActivity : AppCompatActivity() {
     private val cameraActivityLauncher =
         registerForActivityResult(ActivityResultContracts.TakePicture()) { isSaved ->
             if (isSaved) {
-                viewModel.addImagesOfCafe(PictureUriEntity(pictureUri))
+                viewModel.addImagesOfCafe(PictureUriEntity(pictureUri, null))
             }
         }
 
     private val getHousePicture =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             if (result.data != null) {
-                Log.e("gallery", "${result.data}")
-                viewModel.addImagesOfCafe(PictureUriEntity(result.data?.data))
+                viewModel.addImagesOfCafe(PictureUriEntity(result.data?.data, null))
             }
         }
 
     private fun stagePictures() {
-        binding.recyclerviewPicture.apply {
+        binding.recyclerviewPicture.run {
             isNestedScrollingEnabled = false
             adapter = WriteReviewPictureAdapter(object : WriteReviewPictureAdapter.DeleteListener {
                 override fun delete(pictureUriEntity: PictureUriEntity) {
@@ -225,13 +230,12 @@ class WriteReviewActivity : AppCompatActivity() {
                 }
             })
             addItemDecoration(HorizontalItemDecoration(5))
-        }
 
-        viewModel.imagesOfCafe.observe(this) {
-            (binding.recyclerviewPicture.adapter as WriteReviewPictureAdapter).apply {
-                submitList(it)
-                //FixMe: notirfy 안해주면 왜 안뜨냐..
-                notifyDataSetChanged()
+            viewModel.imagesOfCafe.observe(this@WriteReviewActivity) {
+                (adapter as WriteReviewPictureAdapter).apply {
+                    submitList(it)
+                    notifyDataSetChanged()
+                }
             }
         }
     }
@@ -261,7 +265,11 @@ class WriteReviewActivity : AppCompatActivity() {
                 if (it.key.isChecked) checkedTags.add(it.value)
             }
             viewModel.changeCheckedRecommend(checkedTags)
-            viewModel.uploadReview(contentResolver)
+            if(intent.hasExtra(EDIT_REVIEW)) {
+                viewModel.modifyReview(contentResolver)
+            } else {
+                viewModel.uploadReview(contentResolver)
+            }
         }
     }
 
@@ -280,6 +288,12 @@ class WriteReviewActivity : AppCompatActivity() {
                     finish()
                 }
             }
+        }
+    }
+
+    private fun hideKeyBoard() {
+        binding.root.run {
+            setOnClickListener { hideKeyBoard()}
         }
     }
 

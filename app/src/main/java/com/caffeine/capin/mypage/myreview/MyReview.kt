@@ -6,7 +6,7 @@ data class MyReview(
     val cafeName: String,
     val content: String,
     val create_at: String,
-    val imgs: List<String>,
+    val imgs: List<String>?,
     val rating: Double,
     val recommend: List<Int>
 )

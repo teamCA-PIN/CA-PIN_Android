@@ -120,7 +120,7 @@
                     android:layout_height="wrap_content"
                     android:text="확인"
                     android:layout_weight="1"
-                    android:background="@color/pointcolor_1"
+                    android:background="@color/maincolor_1"
                     style="@style/Body2"
                     android:textColor="@color/white"/>
 
