@@ -122,6 +122,7 @@
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.2004994935838341" />
         <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my_page_category.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/fragment_my_page_review.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/fragment_policy.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
@@ -129,6 +130,7 @@
         <entry key="app/src/main/res/layout/item_cafe_review.xml" value="0.2183288409703504" />
         <entry key="app/src/main/res/layout/item_pin_detail_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_recyclerview_category.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/item_review_picture.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/item_review_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_skeleton_cafe.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/item_tag_filter.xml" value="0.15885416666666666" />

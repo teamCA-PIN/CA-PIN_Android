@@ -1,5 +1,6 @@
 package com.caffeine.capin.review.write.controller
 
+import com.caffeine.capin.mypage.api.request.RequestPutReviewData
 import com.caffeine.capin.network.CapinApiService
 import com.caffeine.capin.review.write.controller.WriteReviewController
 import io.reactivex.rxjava3.core.Completable
@@ -11,4 +12,7 @@ class WriteReviewControllerImpl @Inject constructor(
 ): WriteReviewController {
     override fun postReview(cafeId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>): Completable =
         capinApiService.postReview(cafeId, review,imgs)
+
+    override fun modifyReview(reviewId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>) =
+        capinApiService.modifyReview(reviewId, review, imgs)
 }
