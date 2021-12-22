@@ -17,6 +17,7 @@ import com.caffeine.capin.login.model.RequestLoginData
 import com.caffeine.capin.login.model.ResponseLoginData
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.util.hideKeyBoard
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
 import retrofit2.Callback
@@ -35,6 +36,9 @@ class LoginActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.btnLogin.clipToOutline = true
 
+        binding.root.run {
+            setOnClickListener { hideKeyBoard()}
+        }
         loginButtonClickEvent()
         signupTextClickEvent()
         findPwTextClickEvent()

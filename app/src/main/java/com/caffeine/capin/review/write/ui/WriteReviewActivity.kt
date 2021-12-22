@@ -27,6 +27,7 @@ import com.caffeine.capin.review.write.PictureUriEntity
 import com.caffeine.capin.review.write.WriteReviewViewModel
 import com.caffeine.capin.util.HorizontalItemDecoration
 import com.caffeine.capin.util.UiState
+import com.caffeine.capin.util.hideKeyBoard
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 import java.io.File
@@ -60,6 +61,7 @@ class WriteReviewActivity : AppCompatActivity() {
         postReview()
         goToMapView()
         settingBeforeReview()
+        hideKeyBoard()
     }
 
     private fun setWriteReviewToolber() {
@@ -280,6 +282,12 @@ class WriteReviewActivity : AppCompatActivity() {
                     finish()
                 }
             }
+        }
+    }
+
+    private fun hideKeyBoard() {
+        binding.root.run {
+            setOnClickListener { hideKeyBoard()}
         }
     }
 
