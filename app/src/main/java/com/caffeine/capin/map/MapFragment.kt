@@ -134,6 +134,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             imageviewMypage.setOnClickListener {
                 val intent = Intent(requireContext(), MyPageActivity::class.java)
                 startActivity(intent)
+                requireActivity().overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_left_exit)
             }
         }
     }

@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
+import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
+import com.caffeine.capin.MainActivity
 import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.databinding.ActivityMyPageBinding
@@ -33,6 +35,7 @@ class MyPageActivity : AppCompatActivity() {
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        popBackStack()
         setViewPager()
         setButtonClickEvent()
         getMyInfoFromServer()
@@ -90,8 +93,23 @@ class MyPageActivity : AppCompatActivity() {
             startActivity(intent)
         }
 
-        binding.mypageBackBtn.setOnClickListener { onBackPressed() }
+        onBackPressedDispatcher.addCallback(object: OnBackPressedCallback(true){
+            override fun handleOnBackPressed() {
+                popBackStack()
+            }
+        })
+
+        binding.mypageBackBtn.setOnClickListener { popBackStack() }
     }
+
+    private fun popBackStack() {
+        val intent = Intent(this@MyPageActivity, MainActivity::class.java)
+        intent.flags = Intent.FLAG_ACTIVITY_CLEAR_TOP
+        startActivity(intent)
+        overridePendingTransition(R.anim.slide_right_enter, R.anim.slide_right_exit)
+        finish()
+    }
+
 
     private fun setViewPager() {
         viewPager = binding.mypageViewpager
@@ -109,4 +127,5 @@ class MyPageActivity : AppCompatActivity() {
         super.onResume()
         getMyInfoFromServer()
     }
+
 }
