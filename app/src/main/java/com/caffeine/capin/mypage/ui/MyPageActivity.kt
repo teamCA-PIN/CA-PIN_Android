@@ -35,9 +35,13 @@ class MyPageActivity : AppCompatActivity() {
         binding = ActivityMyPageBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        popBackStack()
         setViewPager()
         setButtonClickEvent()
+        getMyInfoFromServer()
+    }
+
+    override fun onResume() {
+        super.onResume()
         getMyInfoFromServer()
     }
 
@@ -71,12 +75,9 @@ class MyPageActivity : AppCompatActivity() {
                 if (response.isSuccessful) {
                     binding.mypageUsernameTv.setText(response.body()?.myInfo?.nickname as String)
                     binding.mypageCafetiTv.setText(response.body()?.myInfo?.cafeti?.type as String)
-
-                    Glide
-                        .with(binding.mypageProfileIv.context)
+                    Glide.with(binding.mypageProfileIv.context)
                         .load(response.body()?.myInfo?.profileImg)
                         .into(binding.mypageProfileIv)
-
                 }
             }
         })
@@ -122,10 +123,4 @@ class MyPageActivity : AppCompatActivity() {
             tab.customView = getTabView(position)
         }.attach()
     }
-
-    override fun onResume() {
-        super.onResume()
-        getMyInfoFromServer()
-    }
-
 }

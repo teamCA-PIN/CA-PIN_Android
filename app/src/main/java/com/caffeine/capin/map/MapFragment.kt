@@ -165,14 +165,18 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun checkMapSort() {
+        binding.radiobuttonMyMap.setOnClickListener {
+            CustomToastTextView(requireContext(), null, "마이맵", null, 0.8, binding.constraintlayoutMap)
+        }
+        binding.radiobuttonCapinMap.setOnClickListener {
+            CustomToastTextView(requireContext(), null, "카핀맵", null, 0.8, binding.constraintlayoutMap)
+        }
         when (binding.radiogroupMap.checkedRadioButtonId) {
             binding.radiobuttonMyMap.id -> {
-                CustomToastTextView(requireContext(), null, "마이맵", null, 0.8, binding.constraintlayoutMap)
                 viewModel.changeIsMyMap(true)
                 viewModel.getMyMapPins()
             }
             binding.radiobuttonCapinMap.id -> {
-                CustomToastTextView(requireContext(), null, "카핀맵", null, 0.8, binding.constraintlayoutMap)
                 viewModel.changeIsMyMap(false)
                 viewModel.getCapinMapPins()
             }

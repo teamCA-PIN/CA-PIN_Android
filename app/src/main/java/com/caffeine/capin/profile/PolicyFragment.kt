@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import com.caffeine.capin.BuildConfig
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
@@ -63,13 +64,7 @@ class PolicyFragment: Fragment() {
 
     private fun withDraw() {
         binding.textviewWithdraw.setOnClickListener {
-            with(userPreferenceManager) {
-                setUserAccessToken("")
-                setUserRefreshToken("")
-            }
-            createCapinToast(requireContext(), "이용해주셔서 감사합니다.", 135)?.show()
-            startActivity(Intent(requireContext(), LoginActivity::class.java))
-            requireActivity().finish()
+            findNavController().navigate(R.id.action_policyFragment_to_withDrawFragment)
         }
     }
 }

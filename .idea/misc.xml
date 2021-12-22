@@ -70,9 +70,11 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/my_page_tab_icon.xml" value="0.3925" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/toast_message_capin.xml" value="0.41445783132530123" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/window_loading.xml" value="0.43" />
+        <entry key="app/src/main/res/drawable/active_button_25dp.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/background_add_picture.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/gradient_image_mask.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/ic_checkbox_active.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_pin_active_cate_1.xml" value="0.18489583333333334" />
@@ -80,8 +82,11 @@
         <entry key="app/src/main/res/drawable/ic_pin_active_cate_5.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/drawable/ic_pin_active_cate_6.xml" value="0.18489583333333334" />
         <entry key="app/src/main/res/drawable/ic_pin_inactive_cate_1.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/inactive_button_25dp.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/round_rectangle_5dp.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/rounded_button.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/selector_capin_map.xml" value="0.23703703703703705" />
+        <entry key="app/src/main/res/drawable/selector_checkbox.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/selector_map_toggle.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_my_map_toggle.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/selector_pinsave_icon.xml" value="0.23703703703703705" />

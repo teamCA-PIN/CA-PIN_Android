@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
     <androidx.constraintlayout.widget.ConstraintLayout
-        xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
@@ -9,9 +9,68 @@
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="25dp"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_capin_circle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintVertical_bias="0.23"
+            android:background="@drawable/ic_capincircle"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_withdraw_notice"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:fontFamily="@font/noto_sans_kr_medium"
+            android:textSize="16dp"
+            android:bufferType="spannable"
+            android:text="@string/withdraw_notice"
+            android:textColor="@color/gray_4"
+            app:layout_constraintVertical_bias="0.25"
+            app:layout_constraintBottom_toTopOf="@id/button_with_draw"
+            app:layout_constraintTop_toBottomOf="@id/imageview_capin_circle"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/checkbox_approve"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:button="@null"
+            android:background="@null"
+            android:drawableLeft="@drawable/selector_checkbox"
+            android:drawablePadding="9dp"
+            android:text="@string/approve_withdraw"
+            android:theme="@style/Body2"
+            android:gravity="center"
+            app:layout_constraintVertical_bias="0.85"
+            app:layout_constraintBottom_toTopOf="@+id/button_with_draw"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/textview_withdraw_notice" />
+
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/button_with_draw"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="60dp"
+            android:background="@drawable/rounded_button"
+            android:text="탈퇴하기"
+            android:textColor="@color/white"
+            android:theme="@style/Body1"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="@+id/checkbox_approve"
+            app:layout_constraintStart_toStartOf="@+id/checkbox_approve" />
+
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
