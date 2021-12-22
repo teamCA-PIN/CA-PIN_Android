@@ -41,7 +41,7 @@
         android:layout_width="0dp"
         android:layout_height="48dp"
         android:background="@drawable/button_image_view2"
-        android:text="다음"
+        android:text="검사 완료"
         android:textColor="@color/white"
         android:textSize="16dp"
         android:layout_marginStart="8dp"
