@@ -16,6 +16,7 @@ class AutoClearedValue<T: Any>: ReadWriteProperty<Fragment, T>, LifecycleObserve
     override fun setValue(thisRef: Fragment, property: KProperty<*>, value: T) {
         thisRef.viewLifecycleOwner.lifecycle.removeObserver(this)
         _value = value
+        thisRef.viewLifecycleOwner.lifecycle.addObserver(this)
     }
 
     @OnLifecycleEvent(Lifecycle.Event.ON_DESTROY)

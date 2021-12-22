@@ -92,6 +92,7 @@ android {
         implementation(Dependencies.RETROFIT_CONVERTER)
         implementation(Dependencies.RETROFIT_RX_ADAPTER)
         implementation(Dependencies.OKHTTP)
+        implementation(Dependencies.OKHTTP_LOGGING_INTERCEPTOR)
 
         implementation(Dependencies.NAVIGATION_FRAGMENT)
         implementation(Dependencies.NAVIGATION_UI)

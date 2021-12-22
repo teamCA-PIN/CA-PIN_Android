@@ -44,11 +44,7 @@ class MyPageReviewFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        binding = FragmentMyPageReviewBinding.inflate(
-            inflater,
-            container,
-            false
-        )
+        binding = FragmentMyPageReviewBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -83,9 +79,11 @@ class MyPageReviewFragment : Fragment() {
         myReviewAdapter.setOnImageClickListener(object :
             MyReviewAdapter.OnImageClickListener {
             override fun onImageClick(myReview: MyReview) {
-                MyReviewImageDialog(arrayListOf(*myReview.imgs.toTypedArray())).show(
-                    childFragmentManager, "SampleDialog"
-                )
+                myReview.imgs?.let {
+                    MyReviewImageDialog(it as ArrayList<String>).show(
+                        childFragmentManager, "SampleDialog"
+                    )
+                }
             }
         })
     }
@@ -169,9 +167,7 @@ class MyPageReviewFragment : Fragment() {
             ) { //통신 성공
                 if (response.isSuccessful) {
                     if (response.body() != null) {
-                        myReviewAdapter.myReviewList =
-                            response.body()?.reviews as MutableList<MyReview>
-                        Log.d("리미", response.body().toString())
+                        myReviewAdapter.myReviewList = response.body()?.reviews as MutableList<MyReview>
                         myReviewAdapter.notifyDataSetChanged()
                     }
                     binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")

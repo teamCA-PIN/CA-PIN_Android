@@ -121,16 +121,15 @@
         android:background="@drawable/textview_image_view2"
         android:layout_width="328dp"
         android:layout_height="160dp"
-        android:text="\n느낌있는 분위기와 밝은 공간의 카페를 선호하시는\n당신은 고즈넉한 기린씨 !\n추후 기린씨만을 위한 카페를 추천해드릴게요.\n조금만 기다려주세요"
-        android:textAlignment="center"
+        android:text="느낌있는 분위기와 밝은 공간의 카페를 선호하시는\n당신은 고즈넉한 기린씨 !\n추후 기린씨만을 위한 카페를 추천해드릴게요.\n조금만 기다려주세요"
+        android:gravity="center"
         android:textColor="@color/subcolor_blue_1"
         android:textSize="14dp"
         android:theme="@style/Body2"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/detail_cafeti_test_again"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_cafeti_modifier"
-        app:layout_constraintVertical_bias="0.175" />
+        app:layout_constraintTop_toBottomOf="@+id/textview_cafeti_modifierDetail" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
