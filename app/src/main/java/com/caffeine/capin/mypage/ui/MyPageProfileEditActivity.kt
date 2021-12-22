@@ -38,9 +38,7 @@ import javax.inject.Inject
 @AndroidEntryPoint
 class MyPageProfileEditActivity : AppCompatActivity() {
 
-    @Inject
-    lateinit var userPreferenceManager: UserPreferenceManager
-
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivityMyPageProfileEditBinding
     private lateinit var path: String
 
@@ -211,7 +209,6 @@ class MyPageProfileEditActivity : AppCompatActivity() {
     }
 
     fun absolutelyPath(path: Uri): String {
-
         var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
         var c: Cursor = contentResolver.query(path, proj, null, null, null)!!
         var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
