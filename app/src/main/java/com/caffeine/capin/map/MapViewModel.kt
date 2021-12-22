@@ -1,5 +1,6 @@
 package com.caffeine.capin.map
 
+import android.util.Log
 import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -114,10 +115,6 @@ class MapViewModel @Inject constructor(
         _checkedTagList.value = taglist
     }
 
-    fun updateCountCafeResult(count: Int?) {
-        _countCafeResult.postValue(count)
-    }
-
     fun removeTagList(tag: TagFilterEntity) {
         taglist.remove(tag)
         _checkedTagList.value = taglist
@@ -133,11 +130,7 @@ class MapViewModel @Inject constructor(
 
     fun getCapinMapPins() {
         val tags = mutableListOf<Int?>()
-        if (!taglist.isNullOrEmpty()) {
-            taglist.forEach {
-                tags.add(it.tagIndex)
-            }
-        }
+        if (!taglist.isNullOrEmpty()) { taglist.forEach { tags.add(it.tagIndex) } }
         cafeListRepository.getCafeList(tags)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -146,17 +139,14 @@ class MapViewModel @Inject constructor(
                 changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
             }, {
+                _countCafeResult.postValue(0)
                 it.printStackTrace()
             })
     }
 
     fun getMyMapPins() {
         val tags = mutableListOf<Int?>()
-        if (!taglist.isNullOrEmpty()) {
-            taglist.forEach {
-                tags.add(it.tagIndex)
-            }
-        }
+        if (!taglist.isNullOrEmpty()) { taglist.forEach { tags.add(it.tagIndex) } }
         myMapLocationsRepository.getPinCafes(tags)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
@@ -165,11 +155,12 @@ class MapViewModel @Inject constructor(
                 changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
             }, {
+                _countCafeResult.postValue(0)
                 it.printStackTrace()
             })
     }
 
-    fun changeCapinMapLocations(mapList: List<CafeInformationEntity>) {
+    private fun changeCapinMapLocations(mapList: List<CafeInformationEntity>) {
         _capinMapCafeLocations.value = mapList
         val cafes = mutableMapOf<CafeInformationEntity, Boolean>()
         mapList.forEach { cafe ->

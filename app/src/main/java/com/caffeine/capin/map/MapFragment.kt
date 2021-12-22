@@ -18,8 +18,10 @@ import com.bumptech.glide.Glide
 import com.caffeine.capin.R
 import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
+import com.caffeine.capin.customview.CustomToastTextView
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
+import com.caffeine.capin.map.entity.CafeInformationEntity
 import com.caffeine.capin.mypage.ui.MyPageActivity
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.*
@@ -92,7 +94,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun getTagResult() {
-        if (viewModel.checkedTagList.value != null) {
+        viewModel.checkedTagList.value?.let {
             if (viewModel.checkedTagList.value!!.all { it == null }) {
                 viewModel.initializeFilterTag()
             }
@@ -149,7 +151,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 true -> check(binding.radiobuttonMyMap.id)
                 false -> check(binding.radiobuttonCapinMap.id)
             }
-
             setOnCheckedChangeListener { _, checkedId ->
                 binding.cardviewCafeSelected.run {
                     if (visibility == View.VISIBLE) {
@@ -165,10 +166,12 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun checkMapSort() {
         when (binding.radiogroupMap.checkedRadioButtonId) {
             binding.radiobuttonMyMap.id -> {
+                CustomToastTextView(requireContext(), null, "마이맵", null, 0.8, binding.constraintlayoutMap)
                 viewModel.changeIsMyMap(true)
                 viewModel.getMyMapPins()
             }
             binding.radiobuttonCapinMap.id -> {
+                CustomToastTextView(requireContext(), null, "카핀맵", null, 0.8, binding.constraintlayoutMap)
                 viewModel.changeIsMyMap(false)
                 viewModel.getCapinMapPins()
             }
@@ -176,11 +179,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun setCameraChangeListener() {
-        naverMap.addOnCameraIdleListener(object : NaverMap.OnCameraIdleListener {
-            override fun onCameraIdle() {
-                setMarkersInsideCamera()
-            }
-        })
+        naverMap.addOnCameraIdleListener { setMarkersInsideCamera() }
     }
 
     private fun setMarkersInsideCamera() {
@@ -213,39 +212,35 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun initSelectMarker() {
         viewModel.cafeInsideCurrentCamera.value?.forEach { cafe ->
             val marker = Marker()
-            marker.position = LatLng(cafe.key.latitude, cafe.key.longitude)
-            viewModel.addExposedMarker(marker)
-
-            if (cafe.value) {
-                marker.icon =
-                    OverlayImage.fromResource(CategoryType.findActiveType(cafe.key.markType))
-                marker.map = naverMap
-            } else {
-                marker.icon =
-                    OverlayImage.fromResource(CategoryType.findInactiveType(cafe.key.markType))
-                marker.map = naverMap
+            with(marker) {
+                position = LatLng(cafe.key.latitude, cafe.key.longitude)
+                viewModel.addExposedMarker(this)
+                icon = OverlayImage.fromResource(if (cafe.value) CategoryType.findActiveType(cafe.key.markType) else CategoryType.findInactiveType(cafe.key.markType))
+                map = naverMap
             }
+            clickMarker(marker, cafe)
+        }
+    }
 
-            //Fixme: OnClickListener 메서드 분리시키기
-            marker.setOnClickListener(object : Overlay.OnClickListener {
-                override fun onClick(overlay: Overlay): Boolean {
-                    if (overlay is Marker) {
-                        binding.cardviewCafeSelected.run{
-                            if(visibility == View.GONE) {
-                                visibility = View.VISIBLE
-                                Log.e("click", userPreferenceManager.getUserAccessToken())
-
-                                applyVisibilityAnimation(true, true, 500)
-                            }
+    private fun clickMarker(marker: Marker, cafe: Map.Entry<CafeInformationEntity, Boolean>?) {
+        marker.onClickListener = object: Overlay.OnClickListener{
+            override fun onClick(overlay: Overlay): Boolean {
+                if (overlay is Marker) {
+                    binding.cardviewCafeSelected.run{
+                        if(visibility == View.GONE) {
+                            visibility = View.VISIBLE
+                            applyVisibilityAnimation(true, true, 500)
                         }
-                        viewModel.changeCafeCurrentChecked(cafe.key)
-                        viewModel.addCafeInsideCurrentCamera(cafe.key, true)
-                        viewModel.getSelectedCafeDetailInfo()
-                        return true
                     }
-                    return false
+                    cafe?.let {
+                        viewModel.changeCafeCurrentChecked(it.key)
+                        viewModel.addCafeInsideCurrentCamera(it.key, true)
+                        viewModel.getSelectedCafeDetailInfo()
+                    }
+                    return true
                 }
-            })
+                return false
+            }
         }
     }
 
