@@ -40,13 +40,11 @@ class TagFilterFragment : Fragment() {
         binding.lifecycleOwner = viewLifecycleOwner
         binding.recyclerviewTagFilter.isNestedScrollingEnabled = false
 
-        checkIsTagApplied()
         setTagFilterButton()
         activeResultButton()
         getFilterCafe()
         showResultInMapView()
         closeTagFilterFragment()
-        checkIsTagApplied()
         initializeTag()
     }
 
@@ -75,21 +73,18 @@ class TagFilterFragment : Fragment() {
     }
 
     private fun activeResultButton() {
-        viewModel.countCafeResult.observe(viewLifecycleOwner) { tagFilter ->
-            checkIsTagApplied()
-        }
-    }
-
-    private fun checkIsTagApplied() {
-        if (!viewModel.filterChecked.value.isNullOrEmpty()) {
-            changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
-            binding.buttonResult.text = resources.getString(R.string.tagfilter_button, viewModel.countCafeResult.value)
-
-            binding.buttonResult.isClickable = true
-        } else {
-            changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
-            binding.buttonResult.text = resources.getString(R.string.tagfilter_button_no_result)
-            binding.buttonResult.isClickable = false
+        viewModel.countCafeResult.observe(viewLifecycleOwner) { count ->
+            binding.buttonResult.run {
+                if(count != 0) {
+                    changeResultButtonStyle(R.color.pointcolor_1, R.color.white)
+                    text = resources.getString(R.string.tagfilter_button, viewModel.countCafeResult.value)
+                    isClickable = true
+                } else {
+                    changeResultButtonStyle(R.color.gray_1, R.color.gray_4)
+                    text = resources.getString(R.string.tagfilter_button_no_result)
+                    isClickable = false
+                }
+            }
         }
     }
 
@@ -122,7 +117,6 @@ class TagFilterFragment : Fragment() {
 
         binding.imageviewButtonClose.setOnClickListener {
             dialog.show(childFragmentManager,this.tag)
-
         }
     }
 

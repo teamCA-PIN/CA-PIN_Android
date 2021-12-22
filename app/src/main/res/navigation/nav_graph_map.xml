@@ -22,6 +22,7 @@
             android:id="@+id/action_mapFragment_to_tagFilterFragment"
             app:destination="@id/tagFilterFragment"
             app:enterAnim="@anim/slide_up_enter"
+            app:exitAnim="@anim/wait_anim"
             app:popEnterAnim="@anim/fade_in"
             app:popExitAnim="@anim/slide_down_exit"/>
     </fragment>
@@ -47,10 +48,25 @@
         tools:layout="@layout/fragment_tag_filter">
 
     </fragment>
+
     <fragment
         android:id="@+id/policyFragment"
         android:name="com.caffeine.capin.profile.PolicyFragment"
         android:label="PolicyFragment"
-        tools:layout="@layout/fragment_policy"/>
+        tools:layout="@layout/fragment_policy">
+        <action
+            android:id="@+id/action_policyFragment_to_withDrawFragment"
+            app:destination="@id/withDrawFragment"
+            app:enterAnim="@anim/slide_left_enter"
+            app:exitAnim="@anim/slide_left_exit"
+            app:popEnterAnim="@anim/slide_right_enter"
+            app:popExitAnim="@anim/slide_right_exit"/>
+    </fragment>
+
+    <fragment
+        android:id="@+id/withDrawFragment"
+        android:name="com.caffeine.capin.profile.WithDrawFragment"
+        android:label="WithDrawFragment"
+        tools:layout="@layout/fragment_with_draw" />
 
 </navigation>
