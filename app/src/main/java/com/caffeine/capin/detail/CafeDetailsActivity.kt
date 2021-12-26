@@ -11,6 +11,7 @@ import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.caffeine.capin.R
 import com.caffeine.capin.category.ui.SelectCategoryActivity
+import com.caffeine.capin.customview.CustomToastTextView
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
 import com.caffeine.capin.review.CafeReviewsAdapter
@@ -18,6 +19,7 @@ import com.caffeine.capin.review.ReviewTagAdapter
 import com.caffeine.capin.review.all.AllCafeReviewsActivity
 import com.caffeine.capin.review.write.ui.WriteReviewActivity
 import com.caffeine.capin.util.HorizontalItemDecoration
+import com.caffeine.capin.util.copyToClipBoard
 import com.google.android.flexbox.*
 import com.google.android.material.appbar.AppBarLayout
 import dagger.hilt.android.AndroidEntryPoint
@@ -39,6 +41,7 @@ class CafeDetailsActivity : AppCompatActivity() {
 
         loadCafeTags()
         checkToolbarCollapsed()
+        copyInstagramId()
 
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
         binding.imageviewBack.setOnClickListener { finish() }
@@ -106,6 +109,15 @@ class CafeDetailsActivity : AppCompatActivity() {
     private fun deploySelectCategoryActivity() {
         Intent(this, SelectCategoryActivity::class.java)
             .also { startActivity(it) }
+    }
+
+    private fun copyInstagramId() {
+        binding.textviewInstgramId.run {
+            setOnClickListener {
+                this@CafeDetailsActivity.copyToClipBoard(text.toString())
+                CustomToastTextView(this@CafeDetailsActivity, null, "아이디가 복사되었습니다.", null, 0.9, binding.constraintlayoutRoot)
+            }
+        }
     }
 
     companion object {

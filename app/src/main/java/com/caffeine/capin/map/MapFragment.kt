@@ -155,7 +155,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             setOnCheckedChangeListener { _, checkedId ->
                 binding.cardviewCafeSelected.run {
                     if (visibility == View.VISIBLE) {
-                        applyVisibilityAnimation(false, false, 500)
+                        applyVisibilityAnimation(isUpward = false, reveal = false, durationTime = 500)
                     }
                 }
                 removeActiveMarkers()
@@ -234,7 +234,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                     binding.cardviewCafeSelected.run{
                         if(visibility == View.GONE) {
                             visibility = View.VISIBLE
-                            applyVisibilityAnimation(true, true, 500)
+                            applyVisibilityAnimation(isUpward = true, reveal = true, durationTime = 500)
                         }
                     }
                     cafe?.let {
@@ -251,8 +251,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun updateCafeDetail() {
         viewModel.selectedCafe.observe(viewLifecycleOwner) { cafeDetail ->
-            binding.apply {
-                cardviewCafeSelected.setOnClickListener {
+            binding.cardviewCafeSelected.run {
+                isEnabled = (cafeDetail.status == UiState.Status.SUCCESS)
+                setOnClickListener {
                     Intent(requireActivity(), CafeDetailsActivity::class.java)
                         .putExtra(CafeDetailsActivity.KEY_CAFE_ID, cafeDetail.data?._id)
                         .also { startActivity(it) }

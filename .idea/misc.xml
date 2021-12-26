@@ -8,7 +8,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_circle_gray_2dp.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_dialog_title.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_round_rectangle_gray_1dp.xml" value="0.43125" />
@@ -75,6 +74,7 @@
         <entry key="app/src/main/res/drawable/background_add_picture.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/gradient_image_mask.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/ic_capin_menu.xml" value="0.225" />
         <entry key="app/src/main/res/drawable/ic_checkbox_active.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
@@ -120,7 +120,7 @@
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
         <entry key="app/src/main/res/layout/capin_dialog.xml" value="0.16032608695652173" />
         <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
-        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.2004994935838341" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my_page_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_my_page_review.xml" value="0.33229166666666665" />
