@@ -236,35 +236,45 @@ class SignUpActivity : AppCompatActivity() {
             password = binding.edittextPw.text.toString(),
             nickname = binding.edittextName.text.toString()
         )
-        val call: Call<ResponseSignUpData> =
-            ServiceCreator.capinApiService.postSignUp(requestSignUpData)
-        call.enqueue(object : Callback<ResponseSignUpData> {
-            override fun onResponse(
-                call: Call<ResponseSignUpData>,
-                response: Response<ResponseSignUpData>
-            ) {
-                if (response.isSuccessful) {
-                    userPreferenceManager.setNeedCafetiCheck(true)
-                    CapinToastMessage.createCapinToast(this@SignUpActivity, "가입이 완료되었습니다.", 135)
-                        ?.show()
-                    finish()
-                } else {
-                    val errorBody = response.errorBody() ?: return
-                    val errorMessage = JSONObject(errorBody.string())
-                    CapinToastMessage.createCapinToast(this@SignUpActivity, "이미 사용중인 이메일입니다.", 135)
-                        ?.show()
-                }
-            }
+        if(requestSignUpData.email != null && requestSignUpData.password != null && requestSignUpData.nickname != null)
+        {
+            val call: Call<ResponseSignUpData> =
+                ServiceCreator.capinApiService.postSignUp(requestSignUpData)
+            call.enqueue(object : Callback<ResponseSignUpData> {
+                override fun onResponse(
+                    call: Call<ResponseSignUpData>,
+                    response: Response<ResponseSignUpData>
+                ) {
+                    if (response.isSuccessful) {
+                        userPreferenceManager.setNeedCafetiCheck(true)
+                        CapinToastMessage.createCapinToast(this@SignUpActivity, "회원 가입 및 기본카테고리 생성 성공.", 135)
 
-            override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-                CapinToastMessage.createCapinRejectToast(
-                    this@SignUpActivity,
-                    "회원가입 실패.",
-                    135
-                )?.show()
-                Log.d("NetworkTest", "error:$t")
-            }
-        })
+                        finish()
+
+                    } else {
+                        val errorBody = response.errorBody() ?: return
+                        val errorMessage = JSONObject(errorBody.string())
+                        // errorMessage -> 문자열 교환
+                        CapinToastMessage.createCapinRejectToast(this@SignUpActivity,
+                            "이미 사용중인 이메일 입니다.", 135)
+                            ?.show()
+                    }
+                }
+
+                override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                    CapinToastMessage.createCapinRejectToast(
+                        this@SignUpActivity,
+                        "회원가입 실패.",
+                        135
+                    )
+                    Log.d("NetworkTest", "error:$t")
+                }
+            })
+        }
+        else{
+            CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "필요한 값이 없습니다.", 135)
+
+        }
     }
 
     private fun imageviewButtonClickEvent() {

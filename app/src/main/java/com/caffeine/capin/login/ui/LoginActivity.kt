@@ -12,6 +12,7 @@ import com.caffeine.capin.MainActivity
 import com.caffeine.capin.R
 import com.caffeine.capin.cafeti.CafetiActivity
 import com.caffeine.capin.customview.CapinToastMessage.createCapinRejectToast
+import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.ActivityLoginBinding
 import com.caffeine.capin.login.model.RequestLoginData
 import com.caffeine.capin.login.model.ResponseLoginData
@@ -141,7 +142,7 @@ class LoginActivity : AppCompatActivity() {
 
                         }
 
-                        createCapinRejectToast(this@LoginActivity, "로그인 성공.", 135)
+                        createCapinToast(this@LoginActivity, "로그인 성공.", 135)
 
                         successLogin()
                     } else {
