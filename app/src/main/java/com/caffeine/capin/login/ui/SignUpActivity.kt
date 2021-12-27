@@ -248,7 +248,7 @@ class SignUpActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         userPreferenceManager.setNeedCafetiCheck(true)
-                        CapinToastMessage.createCapinToast(this@SignUpActivity, "회원 가입 및 기본카테고리 생성 성공.", 135)
+                        CapinToastMessage.createCapinToast(this@SignUpActivity, "회원 가입 및 기본카테고리 생성 성공.",135)
 
                         finish()
 

@@ -33,6 +33,7 @@
         app:layout_constraintTop_toBottomOf="@+id/textview_test_finish"
         app:layout_constraintVertical_bias="0.0" />
 
+
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_type"
         style="@style/Subhead"
@@ -51,23 +52,22 @@
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imageview_cafetiResult"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_modifier"
-        android:theme="@style/Display1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="차분한 기린씨"
         android:layout_marginTop="8dp"
+        android:text="차분한 기린씨"
         android:textColor="@color/black"
         android:textSize="26dp"
+        android:theme="@style/Display1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/textview_cafeti_type"
         app:layout_constraintVertical_bias="0.0" />
-
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/detail_cafeti_test_again"
@@ -119,8 +119,8 @@
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_introduction"
         android:background="@drawable/textview_image_view2"
-        android:layout_width="328dp"
-        android:layout_height="160dp"
+        android:layout_width="320dp"
+        android:layout_height="140dp"
         android:text="느낌있는 분위기와 밝은 공간의 카페를 선호하시는\n당신은 고즈넉한 기린씨 !\n추후 기린씨만을 위한 카페를 추천해드릴게요.\n조금만 기다려주세요"
         android:gravity="center"
         android:textColor="@color/subcolor_blue_1"
