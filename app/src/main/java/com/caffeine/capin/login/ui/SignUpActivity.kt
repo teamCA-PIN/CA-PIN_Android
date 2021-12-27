@@ -17,6 +17,7 @@ import com.caffeine.capin.login.model.RequestSignUpData
 import com.caffeine.capin.login.model.ResponseSignUpData
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.util.hideKeyBoard
 import dagger.hilt.android.AndroidEntryPoint
 import org.json.JSONObject
 import retrofit2.Call
@@ -37,6 +38,9 @@ class SignUpActivity : AppCompatActivity() {
         setContentView(binding.root)
         binding.btnSignup.clipToOutline = true
 
+        binding.root.run {
+            setOnClickListener { hideKeyBoard()}
+        }
         signUpButtonClickEvent()
         imageviewButtonClickEvent()
 
@@ -222,9 +226,6 @@ class SignUpActivity : AppCompatActivity() {
         if (binding.edittextPw.text!!.equals( binding.edittextPwagain.text)) {
             CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", 135)
                 ?.show()
-            Log.e("pw", "${binding.edittextPw.text.toString()}")
-            Log.e("pw", "${binding.edittextPwagain.text.toString()}")
-
         } else {
             requestLogin()
         }

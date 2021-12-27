@@ -3,7 +3,9 @@ package com.caffeine.capin.di
 import com.caffeine.capin.BuildConfig
 import com.caffeine.capin.network.AuthInterceptor
 import com.caffeine.capin.network.CapinApiService
+import com.caffeine.capin.network.UnAuthApiService
 import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.qualifier.*
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -29,19 +31,21 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideOkHttpClientBuilder(authInterceptor: AuthInterceptor): OkHttpClient {
+    @AuthOkHttp
+    fun provideAuthOkHttpClientBuilder(authInterceptor: AuthInterceptor): OkHttpClient {
         return OkHttpClient.Builder()
             .connectTimeout(15, TimeUnit.SECONDS)
             .writeTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
-            .addInterceptor(loggingInterceptor)
+            .addNetworkInterceptor(loggingInterceptor)
             .addInterceptor(authInterceptor)
             .build()
     }
 
     @Provides
     @Singleton
-    fun provideRetrofit(okHttpClient: OkHttpClient):Retrofit =
+    @AuthRetrofit
+    fun provideAuthRetrofit(@AuthOkHttp okHttpClient: OkHttpClient):Retrofit =
         Retrofit.Builder()
             .baseUrl(BuildConfig.BASE_URL)
             .client(okHttpClient)
@@ -51,6 +55,35 @@ object NetworkModule {
 
     @Provides
     @Singleton
-    fun provideCapinApiService(retrofit: Retrofit): CapinApiService =
+    fun provideAuthCapinApiService(@AuthRetrofit retrofit: Retrofit): CapinApiService =
         retrofit.create(CapinApiService::class.java)
+
+
+    @Provides
+    @Singleton
+    @UnAuthOkHttp
+    fun provideUnAuthOkHttpClientBuilder(): OkHttpClient {
+        return OkHttpClient.Builder()
+            .connectTimeout(15, TimeUnit.SECONDS)
+            .writeTimeout(15, TimeUnit.SECONDS)
+            .readTimeout(15, TimeUnit.SECONDS)
+            .addNetworkInterceptor(loggingInterceptor)
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    @UnAuthRetrofit
+    fun provideUnAuthRetrofit(@UnAuthOkHttp okHttpClient: OkHttpClient):Retrofit =
+        Retrofit.Builder()
+            .baseUrl(BuildConfig.BASE_URL)
+            .client(okHttpClient)
+            .addConverterFactory(GsonConverterFactory.create())
+            .addCallAdapterFactory(RxJava3CallAdapterFactory.create())
+            .build()
+
+    @Provides
+    @Singleton
+    fun provideUnAuthCapinApiService(@UnAuthRetrofit retrofit: Retrofit): UnAuthApiService =
+        retrofit.create(UnAuthApiService::class.java)
 }

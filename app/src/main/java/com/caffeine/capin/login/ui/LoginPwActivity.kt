@@ -16,6 +16,7 @@ import com.caffeine.capin.databinding.ActivityLoginpwBinding
 import com.caffeine.capin.login.model.RequestLoginPwData
 import com.caffeine.capin.login.model.ResponseLoginPwData
 import com.caffeine.capin.network.ServiceCreator
+import com.caffeine.capin.util.hideKeyBoard
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -33,7 +34,9 @@ class LoginPwActivity : AppCompatActivity() {
         binding.btnFindpw.clipToOutline = true
 
         imageviewButtonClickEvent()
-
+        binding.root.run {
+            setOnClickListener { hideKeyBoard()}
+        }
 
         binding.loginpwDeleteBtn.setOnClickListener {
             binding.loginpwDeleteBtn.isVisible = false

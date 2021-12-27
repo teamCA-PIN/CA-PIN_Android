@@ -2,10 +2,7 @@ package com.caffeine.capin.di
 
 import com.caffeine.capin.category.controller.ArchiveCafeController
 import com.caffeine.capin.category.controller.ArchiveCafeControllerImpl
-import com.caffeine.capin.network.CapinApiService
-import com.caffeine.capin.network.ServiceCreator
-import com.caffeine.capin.network.TokenController
-import com.caffeine.capin.network.TokenControllerImpl
+import com.caffeine.capin.network.*
 import com.caffeine.capin.review.write.controller.WriteReviewController
 import com.caffeine.capin.review.write.controller.WriteReviewControllerImpl
 import dagger.Module
@@ -30,6 +27,6 @@ object ControllerModule {
 
     @Provides
     @Singleton
-    fun provideTokenController(): TokenController =
-        TokenControllerImpl(ServiceCreator.capinApiService)
+    fun provideTokenController(unAuthApiService: UnAuthApiService): TokenController =
+        TokenControllerImpl(unAuthApiService)
 }

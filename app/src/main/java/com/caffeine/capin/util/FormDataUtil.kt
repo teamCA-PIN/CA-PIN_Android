@@ -1,6 +1,7 @@
 package com.caffeine.capin.util
 
 import android.content.ContentResolver
+import android.graphics.Bitmap
 import android.net.Uri
 import android.provider.OpenableColumns
 import okhttp3.MediaType
@@ -37,5 +38,16 @@ object FormDataUtil {
                 null
             }
         }
+    }
+
+    fun Bitmap.convertToRequestBody(): RequestBody {
+        val requestBody = object: RequestBody() {
+            override fun contentType(): MediaType? = "image/jpeg".toMediaType()
+
+            override fun writeTo(sink: BufferedSink) {
+                compress(Bitmap.CompressFormat.JPEG, 80, sink.outputStream())
+            }
+        }
+        return requestBody
     }
 }
