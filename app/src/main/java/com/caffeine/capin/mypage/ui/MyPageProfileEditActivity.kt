@@ -12,12 +12,10 @@ import android.text.TextWatcher
 import android.util.Log
 import androidx.activity.result.ActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.Nullable
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import androidx.core.view.isVisible
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.DataSource
 import com.caffeine.capin.R
 import com.caffeine.capin.customview.CapinDialog
 import com.caffeine.capin.customview.CapinDialogBuilder
@@ -37,19 +35,18 @@ import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import javax.inject.Inject
-import com.bumptech.glide.load.engine.GlideException
 
-import com.bumptech.glide.request.RequestListener
-
-import com.bumptech.glide.load.engine.DiskCacheStrategy
-import java.lang.Exception
-import android.graphics.Bitmap.CompressFormat
 import android.graphics.drawable.Drawable
-import android.os.Environment
 import android.os.Handler
 import android.os.Looper
+import androidx.lifecycle.lifecycleScope
 import com.bumptech.glide.request.target.CustomTarget
 import com.bumptech.glide.request.transition.Transition
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
+import okhttp3.MediaType
+import okhttp3.MediaType.Companion.toMediaType
+import okio.BufferedSink
 import java.io.*
 
 
@@ -66,11 +63,12 @@ class MyPageProfileEditActivity : AppCompatActivity() {
     private var tempNickname: String? = null
     private var tempCafeti: String? = null
     private var tempExistingImage: String? = null
-    private var tempFile: File? = null
+    private var state = NOT_CHOOSE_IMAGE
 
     private val getImageLauncher =
         registerForActivityResult(ActivityResultContracts.StartActivityForResult()) { result: ActivityResult ->
             binding.profileEditProfileIv.setImageURI(result.data?.data)
+            state = CHOOSE_IMAGE_IN_GALLERY
             if (result.data != null) {
                 path = absolutelyPath(result.data?.data!!)
             }
@@ -89,7 +87,6 @@ class MyPageProfileEditActivity : AppCompatActivity() {
             showEditProfileDialog()
         }
         binding.profileEditDoneBtn.setOnClickListener {
-            makeMultipartBody()
             Handler(Looper.getMainLooper()).postDelayed({
                 putMyProfileEditToServer()
             }, 1000)
@@ -146,43 +143,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
                     this@MyPageProfileEditActivity,
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
-                            nicknameBody =
-                                MultipartBody.Part.createFormData("nickname", tempNickname!!)
-                            Glide.with(this@MyPageProfileEditActivity)
-                                .asBitmap().load(tempCafeti)
-                                .diskCacheStrategy(DiskCacheStrategy.NONE)
-                                .skipMemoryCache(true)
-                                .listener(object : RequestListener<Bitmap?> {
-                                    override fun onLoadFailed(
-                                        @Nullable e: GlideException?,
-                                        o: Any?,
-                                        target: com.bumptech.glide.request.target.Target<Bitmap?>?,
-                                        b: Boolean
-                                    ): Boolean {
-                                        return false
-                                    }
-
-                                    override fun onResourceReady(
-                                        resource: Bitmap?,
-                                        model: Any?,
-                                        target: com.bumptech.glide.request.target.Target<Bitmap?>?,
-                                        dataSource: DataSource?,
-                                        isFirstResource: Boolean
-                                    ): Boolean {
-                                        tempFile = bitmapToFile(resource!!, "image.jpeg")
-                                        return true
-                                    }
-                                }
-                                ).submit()
-                            if (tempFile != null) {
-                                val requestBody: RequestBody =
-                                    tempFile!!.asRequestBody("image/jpeg".toMediaTypeOrNull())
-                                profileImageBody = MultipartBody.Part.createFormData(
-                                    "profileImg",
-                                    tempFile!!.name,
-                                    requestBody
-                                )
-                            }
+                            state = CHOOSE_BASIC_IMAGE
                             putMyProfileEditToServer()
                             getMyInfoFromServer()
                             dialog.dismiss()
@@ -249,7 +210,7 @@ class MyPageProfileEditActivity : AppCompatActivity() {
             }
         }
 
-    private fun makeMultipartBody() {
+    private fun putMyProfileEditToServer() {
         nicknameBody = if (binding.profileEditNameEdt.text.isNullOrBlank()) {
             MultipartBody.Part.createFormData(
                 "nickname",
@@ -262,102 +223,113 @@ class MyPageProfileEditActivity : AppCompatActivity() {
             )
         }
 
-        if (path == "") {
-            Glide.with(this)
-                .asBitmap()
-                .load(tempExistingImage)
-                .into(object: CustomTarget<Bitmap>() {
-                    override fun onLoadCleared(placeholder: Drawable?) {
-                        // 아래 resource가 들어간 뷰가 사라지는 등의 경우의 처리
-                    }
-
-                    override fun onResourceReady(resource: Bitmap, transition: Transition<in Bitmap>?) {
-                        // 얻어낸 Bitmap 자원을 resource를 통하여 접근.
-                        tempFile = bitmapToFile(resource!!, "image.jpeg")
-                    }
-                })
-            if (tempFile != null) {
-                val requestBody: RequestBody =
-                    tempFile!!.asRequestBody("image/jpeg".toMediaTypeOrNull())
+        when (state) {
+            CHOOSE_IMAGE_IN_GALLERY -> {
+                val file = File(path)
+                val requestBody: RequestBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
                 profileImageBody =
-                    MultipartBody.Part.createFormData("profileImg", tempFile!!.name, requestBody)
+                    MultipartBody.Part.createFormData("profileImg", file.name, requestBody)
             }
-        } else {
-            val file = File(path)
-            val requestBody: RequestBody = file.asRequestBody("image/jpeg".toMediaTypeOrNull())
-            profileImageBody =
-                MultipartBody.Part.createFormData("profileImg", file.name, requestBody)
+            NOT_CHOOSE_IMAGE -> {
+                Glide.with(this)
+                    .asBitmap()
+                    .load(tempExistingImage)
+                    .into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: Transition<in Bitmap>?
+                        ) {
+                            val bitmapRequestBody = BitmapRequestBody(resource)
+                            profileImageBody = MultipartBody.Part.createFormData(
+                                "profileImg",
+                                "image",
+                                bitmapRequestBody
+                            )
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+
+                        }
+                    })
+            }
+            CHOOSE_BASIC_IMAGE -> {
+                Glide.with(this)
+                    .asBitmap()
+                    .load(tempCafeti)
+                    .into(object : CustomTarget<Bitmap>() {
+                        override fun onResourceReady(
+                            resource: Bitmap,
+                            transition: Transition<in Bitmap>?
+                        ) {
+                            val bitmapRequestBody = BitmapRequestBody(resource)
+                            profileImageBody = MultipartBody.Part.createFormData(
+                                "profileImg",
+                                "image",
+                                bitmapRequestBody
+                            )
+                        }
+
+                        override fun onLoadCleared(placeholder: Drawable?) {
+
+                        }
+                    })
+            }
         }
-    }
 
-    private fun putMyProfileEditToServer() {
-        val capinApiService = ServiceCreator.capinApiService.putMyProfileEdit(
-            userPreferenceManager.getUserAccessToken(),
-            nickname = nicknameBody,
-            profileImg = profileImageBody
-        )
+        lifecycleScope.launch {
+            delay(500)
+            val capinApiService = ServiceCreator.capinApiService.putMyProfileEdit(
+                userPreferenceManager.getUserAccessToken(),
+                nickname = nicknameBody,
+                profileImg = profileImageBody
+            )
 
-        capinApiService.enqueue(object : Callback<BaseResponse> {
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("fail", "error:$t")
+            capinApiService.enqueue(object : Callback<BaseResponse> {
+                override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
+                    Log.d("fail", "error:$t")
 
-            }
-
-            override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                if (response.isSuccessful) {
-                    finish()
-                } else {
-                    CapinToastMessage.createCapinRejectToast(
-                        this@MyPageProfileEditActivity,
-                        "사용할 수 없는 이름입니다.",
-                        100
-                    )?.show()
                 }
-            }
-        })
+
+                override fun onResponse(
+                    call: Call<BaseResponse>,
+                    response: Response<BaseResponse>
+                ) {
+                    if (response.isSuccessful) {
+                        finish()
+                    } else {
+                        CapinToastMessage.createCapinRejectToast(
+                            this@MyPageProfileEditActivity,
+                            "사용할 수 없는 이름입니다.",
+                            100
+                        )?.show()
+                    }
+                }
+            })
+        }
     }
 
     private fun absolutelyPath(path: Uri): String {
 
-        var proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
-        var c: Cursor = contentResolver.query(path, proj, null, null, null)!!
-        var index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
+        val proj: Array<String> = arrayOf(MediaStore.Images.Media.DATA)
+        val c: Cursor = contentResolver.query(path, proj, null, null, null)!!
+        val index = c.getColumnIndexOrThrow(MediaStore.Images.Media.DATA)
         c.moveToFirst()
 
-        var result = c.getString(index)
-
-        return result
+        return c.getString(index)
     }
 
-    fun bitmapToFile(bitmap: Bitmap, fileNameToSave: String): File? { // File name like "image.png"
-        //create a file to write bitmap data
-        var file: File? = null
-        return try {
-            file = File(
-                Environment.getExternalStorageDirectory()
-                    .toString() + File.separator + fileNameToSave
-            )
-            file.createNewFile()
-
-            //Convert bitmap to byte array
-            val bos = ByteArrayOutputStream()
-            bitmap.compress(CompressFormat.JPEG, 0, bos) // YOU can also save it in JPEG
-            val bitmapdata = bos.toByteArray()
-
-            //write the bytes in file
-            val fos = FileOutputStream(file)
-            fos.write(bitmapdata)
-            fos.flush()
-            fos.close()
-            file
-        } catch (e: Exception) {
-            e.printStackTrace()
-            file // it will return null
+    inner class BitmapRequestBody(private val bitmap: Bitmap) : RequestBody() {
+        override fun contentType(): MediaType = "image/jpeg".toMediaType()
+        override fun writeTo(sink: BufferedSink) {
+            bitmap.compress(Bitmap.CompressFormat.JPEG, 99, sink.outputStream())
         }
     }
 
     companion object {
         private const val PERMISSION_READ_EXTERNAL_STORAGE =
             android.Manifest.permission.READ_EXTERNAL_STORAGE
+        private const val CHOOSE_IMAGE_IN_GALLERY = 0
+        private const val NOT_CHOOSE_IMAGE = 1
+        private const val CHOOSE_BASIC_IMAGE = 2
     }
 }
