@@ -13,6 +13,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".detail.CafeDetailsActivity">
@@ -195,10 +196,10 @@
                             android:layout_marginTop="20dp"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
-                            app:srcCompat="@drawable/ant_design_instagram_outlined" />
+                            app:srcCompat="@drawable/ic_icon_insta" />
 
                         <TextView
-                            android:id="@+id/text_instgram_id"
+                            android:id="@+id/textview_instgram_id"
                             style="@style/Body2"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
@@ -219,7 +220,7 @@
                             android:layout_marginTop="16dp"
                             app:layout_constraintStart_toStartOf="@+id/imageView2"
                             app:layout_constraintTop_toBottomOf="@+id/imageView2"
-                            app:srcCompat="@drawable/bx_bx_time_five" />
+                            app:srcCompat="@drawable/ic_icon_clock" />
 
                         <TextView
                             android:id="@+id/text_operation_time"
@@ -245,7 +246,7 @@
                             app:layout_constraintBottom_toBottomOf="parent"
                             app:layout_constraintStart_toStartOf="@+id/imageView3"
                             app:layout_constraintTop_toBottomOf="@+id/text_operation_time"
-                            app:srcCompat="@drawable/content_paste" />
+                            app:srcCompat="@drawable/ic_icon_menu" />
 
                         <TextView
                             android:id="@+id/button_menus"
@@ -256,6 +257,7 @@
                             android:layout_marginEnd="19dp"
                             android:text="@string/show_menu_details"
                             android:textColor="@color/gray_4"
+                            android:gravity="center_vertical"
                             app:layout_constraintBottom_toBottomOf="@+id/imageView4"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintStart_toEndOf="@+id/imageView4"

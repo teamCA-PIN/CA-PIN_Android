@@ -155,6 +155,8 @@ class MapViewModel @Inject constructor(
                 changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
             }, {
+                cafeList.clear()
+                changeCapinMapLocations(listOf())
                 _countCafeResult.postValue(0)
                 it.printStackTrace()
             })

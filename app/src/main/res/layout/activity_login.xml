@@ -69,6 +69,7 @@
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/login_textview_findpw"
+        style="@style/Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
@@ -77,24 +78,24 @@
         android:textColor="@color/gray_4"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.393"
+        app:layout_constraintHorizontal_bias="0.367"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_login"
-        app:layout_constraintWidth_percent="0.238"
-        style="@style/Body2" />
+        app:layout_constraintWidth_percent="0.238" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/login_textview_signup"
+        style="@style/Body2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="24dp"
         android:layout_marginEnd="140dp"
         android:paddingVertical="5dp"
         android:text="회원가입"
-        style="@style/Body2"
         android:textColor="@color/gray_4"
         android:textSize="14dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/login_textview_findpw"
         app:layout_constraintTop_toTopOf="@+id/login_textview_findpw" />
 

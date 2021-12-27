@@ -98,8 +98,13 @@ class LoginPwActivity : AppCompatActivity() {
                     response: Response<ResponseLoginPwData>
                 ) {
                     if (response.isSuccessful) {
-                        Toast.makeText(this@LoginPwActivity, "이메일 인증번호 전송 성공", LENGTH_SHORT)
+                        CapinToastMessage.createCapinToast(
+                            this@LoginPwActivity,
+                            "인증번호가 전송되었습니다.",
+                            135
+                        )?.show()
                         intent = Intent(this@LoginPwActivity, FindPasswordActivity::class.java)
+                        intent.putExtra("AuthNumber",response.body().toString())
                         startActivity(intent)
                     } else {
                         CapinToastMessage.createCapinRejectToast(
