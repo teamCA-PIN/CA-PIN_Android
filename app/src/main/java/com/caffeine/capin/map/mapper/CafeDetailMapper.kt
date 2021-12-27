@@ -21,6 +21,6 @@ class CafeDetailMapper:DTOMapper<ResponseCafeDetail, CafeDetailEntity> {
             from.cafeDetail.longitude,
             from.cafeDetail.rating,
             from.cafeDetail.img,
-            from.cafeDetail.isSaved
+            from.isSaved
         )
 }

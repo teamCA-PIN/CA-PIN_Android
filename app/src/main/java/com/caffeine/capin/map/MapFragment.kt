@@ -310,6 +310,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             binding.run {
                 checkboxPinIcon.isChecked = (it.data?.isSaved == true)
                 checkboxPinText.isChecked = (it.data?.isSaved == true)
+                Log.e("isSaved", "${it.data?.isSaved}")
                 constraintlayoutPinSave.background = if (it.data?.isSaved == true) {
                     ContextCompat.getDrawable(requireContext(), R.drawable.shape_blue_5dp)
                 } else {
@@ -320,7 +321,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     companion object {
-        private val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
+        private const val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
         private const val PERMISSION_FUSED_LOCATION = 1000
         private const val SELECTED_CAFE_INFO = "selected_cafe_info"
     }

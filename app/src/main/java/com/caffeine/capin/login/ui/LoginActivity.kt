@@ -135,14 +135,17 @@ class LoginActivity : AppCompatActivity() {
                     response: Response<ResponseLoginData>
                 ) {
                     if (response.isSuccessful) {
-                        response.body()?.loginData?.token_access?.let { token ->
-                            userPreferenceManager.setUserAccessToken(token)
-
+                        userPreferenceManager.run {
+                            response.body()?.loginData?.token_access?.let { token ->
+                                setUserAccessToken(token)
+                                setUserEmail(binding.loginEdittextEmail.text.toString())
+                                setUserPassword(binding.loginEdittextPw.text.toString())
+                            }
+                            response.body()?.loginData?.token_refresh?.let { token ->
+                                setUserRefreshToken(token)
+                            }
                         }
-                        response.body()?.loginData?.token_refresh?.let { token ->
-                            userPreferenceManager.setUserRefreshToken(token)
 
-                        }
 
                         createCapinToast(this@LoginActivity, "로그인 성공.", 135)
 

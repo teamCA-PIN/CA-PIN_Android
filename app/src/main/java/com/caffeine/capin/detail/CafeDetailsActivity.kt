@@ -14,6 +14,7 @@ import com.caffeine.capin.category.ui.SelectCategoryActivity
 import com.caffeine.capin.customview.CustomToastTextView
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
+import com.caffeine.capin.mypage.myreview.MyReviewImageDialog
 import com.caffeine.capin.review.CafeReviewsAdapter
 import com.caffeine.capin.review.ReviewTagAdapter
 import com.caffeine.capin.review.all.AllCafeReviewsActivity
@@ -36,9 +37,8 @@ class CafeDetailsActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
-        val adapter = CafeReviewsAdapter()
-        binding.listReviews.adapter = adapter
 
+        setReviewAdapter()
         loadCafeTags()
         checkToolbarCollapsed()
         copyInstagramId()
@@ -48,8 +48,6 @@ class CafeDetailsActivity : AppCompatActivity() {
         binding.buttonAllReviews.setOnClickListener { deployAllCafeReviewsActivity() }
         binding.buttonWriteReview.setOnClickListener { deployWriteReviewActivity() }
         binding.layoutSavePinButton.root.setOnClickListener { deploySelectCategoryActivity() }
-
-        cafeDetailsViewModel.cafeReviews.observe(this) { adapter.submitList(it) }
     }
 
     override fun onResume() {
@@ -57,9 +55,19 @@ class CafeDetailsActivity : AppCompatActivity() {
         cafeDetailsViewModel.loadCafeDetails(getCafeId())
     }
 
+    private fun setReviewAdapter() {
+        val adapter = CafeReviewsAdapter(object: CafeReviewsAdapter.ExpandImageInterface{
+            override fun expand(images: List<String>) {
+                MyReviewImageDialog(images as ArrayList<String>).show(supportFragmentManager, "SampleDialog")
+            }
+        })
+        binding.listReviews.adapter = adapter
+        cafeDetailsViewModel.cafeReviews.observe(this) { adapter.submitList(it) }
+    }
+
     private fun checkToolbarCollapsed() {
         binding.appBarLayout.addOnOffsetChangedListener(AppBarLayout.OnOffsetChangedListener { appBarLayout, verticalOffset ->
-            if ((binding.collapsingToolbar.getHeight() + verticalOffset) < (2 * ViewCompat.getMinimumHeight(binding.collapsingToolbar))) {
+            if ((binding.collapsingToolbar.height + verticalOffset) < (2 * ViewCompat.getMinimumHeight(binding.collapsingToolbar))) {
                 binding.imageviewBack.setImageResource(R.drawable.icon_back_black)
             } else {
                 binding.imageviewBack.setImageResource(R.drawable.icon_back_white)

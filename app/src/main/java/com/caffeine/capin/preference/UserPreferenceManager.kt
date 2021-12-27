@@ -15,6 +15,22 @@ class UserPreferenceManager(
         preferenceManager.setPreferences(REFRESH_TOKEN, refreshToken)
     }
 
+    fun setUserEmail(email: String) {
+        preferenceManager.setPreferences(EMAIL, email)
+    }
+
+    fun getUserEmail(): String {
+        return preferenceManager.getPreferences(EMAIL, "")
+    }
+
+    fun setUserPassword(password: String) {
+        preferenceManager.setPreferences(PASSWORD, password)
+    }
+
+    fun getUserPassword(): String {
+        return preferenceManager.getPreferences(PASSWORD, "")
+    }
+
     fun getUserRefreshToken(): String {
         return preferenceManager.getPreferences(REFRESH_TOKEN, "")
     }
@@ -31,5 +47,7 @@ class UserPreferenceManager(
         private const val REFRESH_TOKEN = "REFRESH_TOKEN"
         private const val ACCESS_TOKEN = "ACCESS_TOKEN"
         private const val NEED_CAFETI_CHECK = "NEED_CAFETI_CHECK"
+        private const val EMAIL = "EMAIL"
+        private const val PASSWORD = "PASSWORD"
     }
 }

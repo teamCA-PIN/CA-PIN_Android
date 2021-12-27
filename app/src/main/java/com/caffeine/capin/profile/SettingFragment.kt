@@ -54,6 +54,8 @@ class SettingFragment : Fragment() {
             userPreferenceManager.run {
                 setUserAccessToken("")
                 setUserRefreshToken("")
+                setUserEmail("")
+                setUserPassword("")
             }
             startActivity(intent)
         }

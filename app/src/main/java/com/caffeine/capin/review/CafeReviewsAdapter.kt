@@ -6,10 +6,18 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.caffeine.capin.databinding.ItemCafeReviewBinding
+import com.caffeine.capin.mypage.myreview.MyReviewImageDialog
+import com.caffeine.capin.util.DiffCallback
 import com.caffeine.capin.util.HorizontalItemDecoration
 import java.util.ArrayList
 
-class CafeReviewsAdapter : ListAdapter<CafeReview, CafeReviewsAdapter.ViewHolder>(ItemComparator()) {
+class CafeReviewsAdapter(private val listener: ExpandImageInterface) : ListAdapter<CafeReview, CafeReviewsAdapter.ViewHolder>(
+    DiffCallback<CafeReview>()
+) {
+    interface ExpandImageInterface {
+        fun expand(images: List<String>)
+    }
+
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val layoutInflater = LayoutInflater.from(parent.context)
@@ -20,6 +28,7 @@ class CafeReviewsAdapter : ListAdapter<CafeReview, CafeReviewsAdapter.ViewHolder
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         holder.bind(getItem(position))
         setTags(holder)
+        expandImages(holder)
     }
 
     private fun setTags(holder: ViewHolder) {
@@ -31,20 +40,20 @@ class CafeReviewsAdapter : ListAdapter<CafeReview, CafeReviewsAdapter.ViewHolder
         }
     }
 
+    private fun expandImages(holder: ViewHolder) {
+        val review = getItem(holder.absoluteAdapterPosition)
+        holder.binding.run {
+            val images = listOf(imageviewReviewFirst, imageviewReviewSecond, imageviewReviewThird)
+            images.forEach {
+                it.setOnClickListener { listener.expand(review.imageUrls) }
+            }
+        }
+    }
+
 
     inner class ViewHolder(val binding: ItemCafeReviewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(review: CafeReview) {
             binding.review = review
-        }
-    }
-
-    private class ItemComparator : DiffUtil.ItemCallback<CafeReview>() {
-        override fun areItemsTheSame(oldItem: CafeReview, newItem: CafeReview): Boolean {
-            return oldItem.id == newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: CafeReview, newItem: CafeReview): Boolean {
-            return oldItem == newItem
         }
     }
 }

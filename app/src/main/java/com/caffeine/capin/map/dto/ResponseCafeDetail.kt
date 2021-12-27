@@ -4,7 +4,8 @@ import com.caffeine.capin.detail.CafeDetails
 
 data class ResponseCafeDetail(
     val message: String,
-    val cafeDetail: CafeDetailDTO
+    val cafeDetail: CafeDetailDTO,
+    val isSaved: Boolean
 ) {
     fun toCafeDetails() = CafeDetails(
         id = cafeDetail._id,
@@ -14,14 +15,18 @@ data class ResponseCafeDetail(
         address = cafeDetail.address,
         tags = cafeDetail.tags.map { it.name },
         instagramId = cafeDetail.instagram.orEmpty(),
-        operationTime = "평일 %s~%s %s\n공휴일 %s~%s".format(
+        operationTime = cafeDetail.opentimeHoliday?.let { "평일 %s~%s %s\n공휴일 %s~%s".format(
             cafeDetail.opentime,
             cafeDetail.closetime,
             offDays(),
             cafeDetail.opentimeHoliday,
-            cafeDetail.closetimeHoliday,
+            cafeDetail.closetimeHoliday
+        ) } ?: "평일 %s~%s %s\n공휴일 휴무".format(
+            cafeDetail.opentime,
+            cafeDetail.closetime,
+            offDays()
         ),
-        isSaved = cafeDetail.isSaved
+        isSaved = isSaved
     )
 
     private fun offDays(): String {
