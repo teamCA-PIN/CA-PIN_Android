@@ -4,12 +4,17 @@ import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.databinding.ActivityAllCafeReviewsBinding
+import com.caffeine.capin.mypage.myreview.MyReviewImageDialog
 import com.caffeine.capin.review.CafeReviewsAdapter
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class AllCafeReviewsActivity : AppCompatActivity() {
-    private val cafeReviewsAdapter = CafeReviewsAdapter()
+    private val cafeReviewsAdapter = CafeReviewsAdapter(object: CafeReviewsAdapter.ExpandImageInterface{
+        override fun expand(images: List<String>) {
+            MyReviewImageDialog(images as ArrayList<String>).show(supportFragmentManager, "SampleDialog")
+        }
+    })
     private val allCafeReviewsViewModel: AllCafeReviewsViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {

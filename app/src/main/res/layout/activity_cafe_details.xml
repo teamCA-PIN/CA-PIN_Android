@@ -303,6 +303,7 @@
                         android:drawablePadding="2dp"
                         android:gravity="center_vertical"
                         android:text="전체보기"
+                        android:visibility="@{viewModel.cafeReviews.empty | viewModel.cafeReviews == null ? View.GONE : View.VISIBLE}"
                         android:textColor="@color/gray_3"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintTop_toTopOf="@+id/textView9" />
@@ -330,7 +331,7 @@
                         android:lineSpacingExtra="2sp"
                         android:text="아직 등록된 리뷰가 없어요.\n가장 먼저 리뷰를 작성해보세요."
                         android:textColor="@color/gray_4"
-                        android:visibility="@{viewModel.cafeReviews.empty ? View.VISIBLE : View.GONE}"
+                        android:visibility="@{viewModel.cafeReviews.empty | viewModel.cafeReviews == null ? View.VISIBLE : View.GONE}"
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
