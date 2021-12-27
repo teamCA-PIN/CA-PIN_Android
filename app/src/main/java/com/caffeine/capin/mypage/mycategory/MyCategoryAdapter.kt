@@ -61,11 +61,7 @@ class MyCategoryAdapter : RecyclerView.Adapter<MyCategoryAdapter.ArchivingCatego
                 binding.rcvCategoryEditBtn.isVisible = false
             }
 
-            binding.rcvCategoryNameTv.setOnClickListener {
-                categoryClickListener.onCategoryClick(myCategory)
-            }
-
-            binding.rcvCategoryColorIv.setOnClickListener {
+            itemView.setOnClickListener {
                 categoryClickListener.onCategoryClick(myCategory)
             }
 
