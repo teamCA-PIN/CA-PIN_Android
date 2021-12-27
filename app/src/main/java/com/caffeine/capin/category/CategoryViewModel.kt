@@ -64,7 +64,7 @@ class CategoryViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                       _categoryList.postValue(it)
+                _categoryList.postValue(it)
             }, {
                 it.printStackTrace()
             })

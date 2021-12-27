@@ -16,6 +16,5 @@ data class CafeDetailDTO(
     val latitude: Double,
     val longitude: Double,
     val img: String?,
-    val rating: Float?,
-    val isSaved: Boolean
+    val rating: Float?
 )

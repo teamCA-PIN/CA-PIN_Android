@@ -7,9 +7,11 @@ import android.view.animation.AlphaAnimation
 import android.view.animation.Animation
 import android.view.animation.AnimationSet
 import android.view.animation.TranslateAnimation
+import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import com.caffeine.capin.MainActivity
 import com.caffeine.capin.databinding.ActivitySplashBinding
+import com.caffeine.capin.login.LoginViewModel
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.util.applyVisibilityAnimation
 import com.caffeine.capin.util.transparentStatusAndNavigation
@@ -22,11 +24,13 @@ import javax.inject.Inject
 class SplashActivity : AppCompatActivity() {
     @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private lateinit var binding: ActivitySplashBinding
+    private val viewModel: LoginViewModel by viewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivitySplashBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        viewModel.login()
         transparentStatusAndNavigation()
         setSplashAnimation()
 

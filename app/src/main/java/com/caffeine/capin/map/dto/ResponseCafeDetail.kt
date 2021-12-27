@@ -4,7 +4,8 @@ import com.caffeine.capin.detail.CafeDetails
 
 data class ResponseCafeDetail(
     val message: String,
-    val cafeDetail: CafeDetailDTO
+    val cafeDetail: CafeDetailDTO,
+    val isSaved: Boolean
 ) {
     fun toCafeDetails() = CafeDetails(
         id = cafeDetail._id,
@@ -21,7 +22,7 @@ data class ResponseCafeDetail(
             cafeDetail.opentimeHoliday,
             cafeDetail.closetimeHoliday,
         ),
-        isSaved = cafeDetail.isSaved
+        isSaved = isSaved
     )
 
     private fun offDays(): String {
