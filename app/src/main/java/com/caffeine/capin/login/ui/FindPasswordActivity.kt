@@ -117,7 +117,7 @@ class FindPasswordActivity : AppCompatActivity() {
         binding.btnProve.setOnClickListener() {
             val authNumber = binding.edittextNumber.text
             if (authNumber.toString() != Authnumber){
-                CapinToastMessage.createCapinRejectToast(this@FindPasswordActivity,"인증번호가 틀립니다.",135)?.show()
+                CapinToastMessage.createCapinRejectToast(this@FindPasswordActivity,"인증번호가 틀립니다.",135)
 
             }
             else {
