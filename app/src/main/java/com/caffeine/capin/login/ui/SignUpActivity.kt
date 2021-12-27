@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.text.Editable
 import android.text.TextWatcher
 import android.util.Log
+import android.util.Patterns
 import android.widget.EditText
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -23,6 +24,7 @@ import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
+import java.util.regex.Pattern
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -237,42 +239,77 @@ class SignUpActivity : AppCompatActivity() {
             password = binding.edittextPw.text.toString(),
             nickname = binding.edittextName.text.toString()
         )
-        if(requestSignUpData.email != null && requestSignUpData.password != null && requestSignUpData.nickname != null)
-        {
-            val call: Call<ResponseSignUpData> =
-                ServiceCreator.capinApiService.postSignUp(requestSignUpData)
-            call.enqueue(object : Callback<ResponseSignUpData> {
-                override fun onResponse(
-                    call: Call<ResponseSignUpData>,
-                    response: Response<ResponseSignUpData>
-                ) {
-                    if (response.isSuccessful) {
-                        userPreferenceManager.setNeedCafetiCheck(true)
-                        CapinToastMessage.createCapinToast(this@SignUpActivity, "회원 가입 및 기본카테고리 생성 성공.",135)
+        if(requestSignUpData.email != null && requestSignUpData.password != null && requestSignUpData.nickname != null) {
 
-                        finish()
+            val pattern: Pattern = Patterns.EMAIL_ADDRESS
 
-                    } else {
-                        val errorBody = response.errorBody() ?: return
-                        val errorMessage = JSONObject(errorBody.string())
-                        // errorMessage -> 문자열 교환
-                        CapinToastMessage.createCapinRejectToast(this@SignUpActivity,
-                            "이미 사용중인 이메일 입니다.", 135)
-                            ?.show()
-                    }
+            //android.util 에서 제공하는 기본 패턴을 이용하면 정규식을 쓰지 않고 간단히 검사 가능
+            if (pattern.matcher(requestSignUpData.email).matches()) {
+                //이메일 맞는 형식
+
+
+                //특수문자 검사
+
+                val ps =
+                    Pattern.compile("^[a-zA-Z0-9가-힣ㄱ-ㅎㅏ-ㅣ\\u318D\\u119E\\u11A2\\u2022\\u2025a\\u00B7\\uFE55]+$")
+                if(requestSignUpData.nickname.length in 2..10
+                    && ps.matcher(requestSignUpData.nickname).matches()) {
+
+
+                    val call: Call<ResponseSignUpData> =
+                        ServiceCreator.capinApiService.postSignUp(requestSignUpData)
+                    call.enqueue(object : Callback<ResponseSignUpData> {
+                        override fun onResponse(
+                            call: Call<ResponseSignUpData>,
+                            response: Response<ResponseSignUpData>
+                        ) {
+                            if (response.isSuccessful) {
+                                userPreferenceManager.setNeedCafetiCheck(true)
+                                CapinToastMessage.createCapinToast(
+                                    this@SignUpActivity,
+                                    "회원 가입 및 기본카테고리 생성 성공.",
+                                    135
+                                )
+
+                                finish()
+
+                            } else {
+                                val errorBody = response.errorBody() ?: return
+                                val errorMessage = JSONObject(errorBody.string())
+                                // errorMessage -> 문자열 교환
+                                CapinToastMessage.createCapinRejectToast(
+                                    this@SignUpActivity,
+                                    "이미 사용중인 이메일 입니다.", 135
+                                )
+                                    ?.show()
+                            }
+                        }
+
+                        override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
+                            CapinToastMessage.createCapinRejectToast(
+                                this@SignUpActivity,
+                                "회원가입 실패.",
+                                135)
+
+                            Log.d("NetworkTest", "error:$t")
+                        }
+                    })
+                }
+                else
+                {
+                    CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "닉네임이 형식에 맞지 않습니다. ", 135)
+
                 }
 
-                override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-                    CapinToastMessage.createCapinRejectToast(
-                        this@SignUpActivity,
-                        "회원가입 실패.",
-                        135
-                    )
-                    Log.d("NetworkTest", "error:$t")
-                }
-            })
+
+            } else {
+                CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "이메일이 형식에 맞지 않습니다. ", 135)
+                    ?.show()
+            }
+
         }
-        else{
+        else
+        {
             CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "필요한 값이 없습니다.", 135)
 
         }
