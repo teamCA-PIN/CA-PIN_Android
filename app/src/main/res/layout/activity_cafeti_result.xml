@@ -20,6 +20,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.022" />
 
+
     <androidx.appcompat.widget.AppCompatImageView
         android:id="@+id/imageview_cafetiResult"
         android:layout_width="278dp"
@@ -30,9 +31,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textview_test_finish"
-        app:layout_constraintVertical_bias="0.0" />
-
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.095" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_type"
@@ -51,8 +51,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/imageview_cafetiResult"
-        app:layout_constraintVertical_bias="0.023" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445" />
 
     <androidx.appcompat.widget.AppCompatTextView
         android:id="@+id/textview_cafeti_modifier"
