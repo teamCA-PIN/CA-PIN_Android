@@ -35,6 +35,7 @@
 
 
     <androidx.appcompat.widget.AppCompatButton
+        android:stateListAnimator="@null"
         android:id="@+id/btn_before"
         style="@style/Subhead"
         android:layout_width="0dp"
@@ -50,6 +51,7 @@
         app:layout_constraintTop_toBottomOf="@+id/radiogroup_coffee_taste" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:stateListAnimator="@null"
         android:id="@+id/btn_next"
         style="@style/Subhead"
         android:layout_width="0dp"

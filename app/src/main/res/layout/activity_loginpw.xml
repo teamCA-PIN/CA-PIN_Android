@@ -79,6 +79,7 @@
         app:layout_constraintTop_toBottomOf="@+id/loginpw_edittext_email" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:stateListAnimator="@null"
         android:id="@+id/btn_findpw"
         android:layout_width="219dp"
         android:layout_height="49dp"
