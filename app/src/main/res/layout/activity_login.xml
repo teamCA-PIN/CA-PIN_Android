@@ -100,6 +100,7 @@
         app:layout_constraintTop_toTopOf="@+id/login_textview_findpw" />
 
     <androidx.appcompat.widget.AppCompatButton
+        android:stateListAnimator="@null"
         android:id="@+id/btn_login"
         android:layout_width="219dp"
         android:layout_height="49dp"
