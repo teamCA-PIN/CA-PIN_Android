@@ -18,6 +18,7 @@ import com.bumptech.glide.Glide
 import com.caffeine.capin.R
 import com.caffeine.capin.category.model.CategoryType
 import com.caffeine.capin.category.ui.SelectCategoryActivity
+import com.caffeine.capin.customview.CustomToastBuilder
 import com.caffeine.capin.customview.CustomToastTextView
 import com.caffeine.capin.databinding.FragmentMapBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
@@ -111,9 +112,7 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private val requestLocationPermission =
         registerForActivityResult(ActivityResultContracts.RequestPermission()) { isGranted ->
-            if (isGranted) {
-                moveToMyLocation()
-            }
+            if (isGranted) { moveToMyLocation() }
         }
 
     private fun moveToMyLocation() {
@@ -166,10 +165,14 @@ class MapFragment : Fragment(), OnMapReadyCallback {
 
     private fun checkMapSort() {
         binding.radiobuttonMyMap.setOnClickListener {
-            CustomToastTextView(requireContext(), null, "마이맵", null, 0.8, binding.constraintlayoutMap)
+            CustomToastBuilder(requireContext(), "마이맵", binding.constraintlayoutMap)
+                .setYLocation(0.8)
+                .build()
         }
         binding.radiobuttonCapinMap.setOnClickListener {
-            CustomToastTextView(requireContext(), null, "카핀맵", null, 0.8, binding.constraintlayoutMap)
+            CustomToastBuilder(requireContext(), "카핀맵", binding.constraintlayoutMap)
+                .setYLocation(0.8)
+                .build()
         }
         when (binding.radiogroupMap.checkedRadioButtonId) {
             binding.radiobuttonMyMap.id -> {
@@ -310,7 +313,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             binding.run {
                 checkboxPinIcon.isChecked = (it.data?.isSaved == true)
                 checkboxPinText.isChecked = (it.data?.isSaved == true)
-                Log.e("isSaved", "${it.data?.isSaved}")
                 constraintlayoutPinSave.background = if (it.data?.isSaved == true) {
                     ContextCompat.getDrawable(requireContext(), R.drawable.shape_blue_5dp)
                 } else {
@@ -323,6 +325,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     companion object {
         private const val LOCATION_PERMISSION = Manifest.permission.ACCESS_FINE_LOCATION
         private const val PERMISSION_FUSED_LOCATION = 1000
-        private const val SELECTED_CAFE_INFO = "selected_cafe_info"
+        const val SELECTED_CAFE_INFO = "selected_cafe_info"
     }
 }

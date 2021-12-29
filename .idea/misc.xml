@@ -72,6 +72,7 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/window_loading.xml" value="0.43" />
         <entry key="app/src/main/res/drawable/active_button_25dp.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/background_add_picture.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/drawable/background_capin_toast.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/gradient_image_mask.xml" value="0.23055555555555557" />
         <entry key="app/src/main/res/drawable/ic_capin_menu.xml" value="0.225" />
@@ -115,6 +116,7 @@
         <entry key="app/src/main/res/layout/activity_coffee_most.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_coffee_taste.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25729166666666664" />
+        <entry key="app/src/main/res/layout/activity_select_category.xml" value="0.15121580547112462" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />

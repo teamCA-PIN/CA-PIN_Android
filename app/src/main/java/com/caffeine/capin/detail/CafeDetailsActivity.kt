@@ -1,19 +1,16 @@
 package com.caffeine.capin.detail
 
 import android.content.Intent
-import android.graphics.PorterDuff
 import android.os.Bundle
-import android.util.Log
-import android.widget.ImageView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.content.ContextCompat
 import androidx.core.view.ViewCompat
 import com.caffeine.capin.R
 import com.caffeine.capin.category.ui.SelectCategoryActivity
-import com.caffeine.capin.customview.CustomToastTextView
+import com.caffeine.capin.customview.CustomToastBuilder
 import com.caffeine.capin.databinding.ActivityCafeDetailsBinding
 import com.caffeine.capin.detail.menus.CafeMenusActivity
+import com.caffeine.capin.map.MapFragment
 import com.caffeine.capin.mypage.myreview.MyReviewImageDialog
 import com.caffeine.capin.review.CafeReviewsAdapter
 import com.caffeine.capin.review.ReviewTagAdapter
@@ -23,6 +20,7 @@ import com.caffeine.capin.util.HorizontalItemDecoration
 import com.caffeine.capin.util.copyToClipBoard
 import com.google.android.flexbox.*
 import com.google.android.material.appbar.AppBarLayout
+import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -116,6 +114,11 @@ class CafeDetailsActivity : AppCompatActivity() {
 
     private fun deploySelectCategoryActivity() {
         Intent(this, SelectCategoryActivity::class.java)
+            .apply {
+                val cafeDetail = cafeDetailsViewModel.cafeDetails.value?.toCafeDetailEntity()
+                val gson = Gson()
+                putExtra(MapFragment.SELECTED_CAFE_INFO, gson.toJson(cafeDetail) )
+            }
             .also { startActivity(it) }
     }
 
@@ -123,7 +126,10 @@ class CafeDetailsActivity : AppCompatActivity() {
         binding.textviewInstgramId.run {
             setOnClickListener {
                 this@CafeDetailsActivity.copyToClipBoard(text.toString())
-                CustomToastTextView(this@CafeDetailsActivity, null, "아이디가 복사되었습니다.", null, 0.9, binding.constraintlayoutRoot)
+                CustomToastBuilder(this@CafeDetailsActivity, "아이디가 복사되었습니다.", binding.constraintlayoutRoot)
+                    .setBackgroundDrawable(R.drawable.background_capin_toast)
+                    .setIcon(R.drawable.ic_checkbox_active_toast)
+                    .build()
             }
         }
     }

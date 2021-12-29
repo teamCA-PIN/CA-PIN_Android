@@ -26,6 +26,7 @@ class CustomToastTextView @JvmOverloads constructor(
     context: Context, attrs: AttributeSet? = null,
     private val message: String,
     private val icon: Int?,
+    private val drawable: Int?,
     private val yLocation: Double,
     private val root: ViewGroup,
 ): AppCompatTextView(context, attrs, -1) {

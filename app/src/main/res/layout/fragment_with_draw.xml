@@ -58,13 +58,15 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/textview_withdraw_notice" />
 
-        <androidx.appcompat.widget.AppCompatButton
+        <androidx.appcompat.widget.AppCompatTextView
             android:id="@+id/button_with_draw"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="60dp"
+            android:paddingVertical="13dp"
             android:background="@drawable/rounded_button"
             android:text="탈퇴하기"
+            android:gravity="center"
             android:textColor="@color/white"
             android:theme="@style/Body1"
             app:layout_constraintBottom_toBottomOf="parent"

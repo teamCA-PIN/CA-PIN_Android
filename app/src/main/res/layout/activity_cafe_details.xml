@@ -359,32 +359,33 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="20dp"
-                app:layout_constraintWidth_percent="0.3"
                 app:layout_constraintEnd_toStartOf="@id/button_write_review"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:isSaved="@{viewModel.cafeDetails.isSaved}"/>
 
-            <TextView
+            <androidx.appcompat.widget.AppCompatTextView
                 android:id="@+id/button_write_review"
                 style="@style/Subhead"
-                android:layout_width="0dp"
+                android:layout_width="wrap_content"
                 android:layout_height="0dp"
                 android:layout_marginStart="17dp"
                 android:layout_marginEnd="20dp"
+                android:theme="@null"
                 android:background="@drawable/shape_maincolor_8dp"
+                android:textAlignment="center"
                 android:gravity="center"
-                android:drawablePadding="10dp"
-                android:paddingHorizontal="45dp"
                 android:includeFontPadding="false"
+                android:drawablePadding="10dp"
+                android:paddingHorizontal="50dp"
                 android:text="리뷰 작성하기"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/layout_save_pin_button"
                 app:layout_constraintTop_toTopOf="@id/layout_save_pin_button"
                 app:layout_constraintBottom_toBottomOf="@id/layout_save_pin_button"
-                app:drawableStartCompat="@drawable/ic_icon_pencil" />
+                android:drawableLeft="@drawable/ic_icon_pencil" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
