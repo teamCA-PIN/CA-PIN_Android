@@ -176,8 +176,8 @@
         app:layout_constraintStart_toStartOf="@+id/edittext_pw"
         app:layout_constraintTop_toBottomOf="@+id/edittext_pw" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:stateListAnimator="@null"
+    <androidx.appcompat.widget.AppCompatTextView
+        android:gravity="center"
         android:id="@+id/btn_signup"
         style="@style/Body1"
         android:layout_width="219dp"

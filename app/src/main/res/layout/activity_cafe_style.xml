@@ -20,8 +20,7 @@
         app:layout_constraintVertical_bias="0.09"
         app:layout_constraintWidth_percent="0.325" />
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:stateListAnimator="@null"
+    <TextView
         android:id="@+id/btn_before"
         style="@style/Subhead"
         android:layout_width="0dp"
@@ -35,10 +34,10 @@
         app:layout_constraintEnd_toStartOf="@+id/btn_next"
         app:layout_constraintHorizontal_chainStyle="packed"
         app:layout_constraintStart_toStartOf="@+id/radiogroup_cafe_style"
-        app:layout_constraintTop_toBottomOf="@+id/radiogroup_cafe_style" />
+        app:layout_constraintTop_toBottomOf="@+id/radiogroup_cafe_style"
+        android:gravity="center"/>
 
-    <androidx.appcompat.widget.AppCompatButton
-        android:stateListAnimator="@null"
+    <TextView
         android:id="@+id/btn_next"
         style="@style/Subhead"
         android:layout_width="0dp"
@@ -51,7 +50,8 @@
         app:layout_constraintBottom_toBottomOf="@+id/btn_before"
         app:layout_constraintEnd_toEndOf="@+id/radiogroup_cafe_style"
         app:layout_constraintStart_toEndOf="@+id/btn_before"
-        app:layout_constraintTop_toTopOf="@+id/btn_before" />
+        app:layout_constraintTop_toTopOf="@+id/btn_before"
+        android:gravity="center"/>
 
     <TextView
         android:id="@+id/question_number"
