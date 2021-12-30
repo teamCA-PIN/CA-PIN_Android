@@ -17,7 +17,8 @@
         <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_image_view3.xml" value="0.36974358974358973" />
         <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_image_view4.xml" value="0.36974358974358973" />
         <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_rectangle.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_color.xml" value="0.17477203647416414" />
+        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_color.xml" value="0.3333333333333333" />
+        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_details.xml" value="0.17477203647416414" />
         <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_menus.xml" value="0.35520833333333335" />
         <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_style.xml" value="0.17274569402228976" />
         <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafeti.xml" value="0.17477203647416414" />
@@ -143,12 +144,10 @@
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
         <entry key="app/src/main/res/layout/capin_dialog.xml" value="0.16032608695652173" />
         <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
-        <entry key="app/src/main/res/layout/dialog_my_review_image.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my_page_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_my_page_review.xml" value="0.33229166666666665" />
-        <entry key="app/src/main/res/layout/fragment_my_review_image.xml" value="0.2427536231884058" />
         <entry key="app/src/main/res/layout/fragment_policy.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
