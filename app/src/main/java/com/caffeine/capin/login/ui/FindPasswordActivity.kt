@@ -35,7 +35,6 @@ class FindPasswordActivity : AppCompatActivity() {
         }
         numberButtonClickEvent()
         changePwButtonClickEvent()
-        checkEditTextEmpty()
         imageviewButtonClickEvent()
 
         lateinit var number : EditText
@@ -133,7 +132,7 @@ class FindPasswordActivity : AppCompatActivity() {
         binding.btnChange.setOnClickListener() {
             val password = binding.edittextNewpw.text
             val newPassword = binding.edittextNewpwcheck.text
-            if (password.isNullOrBlank() || newPassword.isNullOrBlank()) {
+            if (password.isNullOrBlank() && newPassword.isNullOrBlank()) {
                 binding.btnChange.apply {
                     setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
                         R.drawable.circle_image_view
@@ -157,23 +156,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
 
 
-    private fun checkEditTextEmpty() {
-        if (binding.edittextNewpw.text.toString().isNotEmpty() && binding.edittextNewpwcheck.text.toString().isNotEmpty() ) {
-            binding.btnChange.apply {
-                setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                    R.drawable.circle_image_view2
-                ))
-                isClickable = true
-            }
-        } else {
-            binding.btnChange.apply {
-                setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                    R.drawable.circle_image_view
-                ))
-                isClickable = false
-            }
-        }
-    }
+
 
     private fun imageviewButtonClickEvent(){
         binding.imageviewTool.setOnClickListener() {
