@@ -134,15 +134,28 @@ class FindPasswordActivity : AppCompatActivity() {
             val password = binding.edittextNewpw.text
             val newPassword = binding.edittextNewpwcheck.text
             if (password.isNullOrBlank() || newPassword.isNullOrBlank()) {
-
+                binding.btnChange.apply {
+                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
+                        R.drawable.circle_image_view
+                    ))
+                    isClickable = false
+                }
             }
             else {
+                binding.btnChange.apply {
+                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
+                        R.drawable.circle_image_view2
+                    ))
+                    isClickable = true
+                }
                 val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
                 CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
                 startActivity(intent)
             }
         }
     }
+
+
 
     private fun checkEditTextEmpty() {
         if (binding.edittextNewpw.text.toString().isNotEmpty() && binding.edittextNewpwcheck.text.toString().isNotEmpty() ) {
