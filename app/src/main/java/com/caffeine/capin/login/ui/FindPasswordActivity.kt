@@ -17,14 +17,16 @@ class FindPasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFindPasswordBinding
     private var edittextCount = 0
-    val secondIntent = intent
 
-    val Authnumber = secondIntent.getStringExtra("auth")
+    private var Authnumber: String? = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFindPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Authnumber = intent.getStringExtra("auth")
         binding.btnChange.clipToOutline = true
         binding.btnProve.clipToOutline = true
 
