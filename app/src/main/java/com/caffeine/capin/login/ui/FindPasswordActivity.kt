@@ -129,7 +129,6 @@ class FindPasswordActivity : AppCompatActivity() {
 
 
     private fun changePwButtonClickEvent() {
-        binding.btnChange.setOnClickListener() {
             if (binding.edittextNewpw.text.toString().isNotEmpty() && binding.edittextNewpwcheck.text.toString().isNotEmpty()) {
                 binding.btnChange.apply {
                     setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
@@ -149,7 +148,6 @@ class FindPasswordActivity : AppCompatActivity() {
                     isClickable = false
                 }
             }
-        }
     }
 
 
