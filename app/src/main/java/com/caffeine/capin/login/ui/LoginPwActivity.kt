@@ -104,7 +104,7 @@ class LoginPwActivity : AppCompatActivity() {
                             135
                         )?.show()
                         intent = Intent(this@LoginPwActivity, FindPasswordActivity::class.java)
-                        intent.putExtra("auth",response.body().toString())
+                        intent.putExtra("auth",response.body()?.auth.toString())
                         startActivity(intent)
                     } else {
                         CapinToastMessage.createCapinRejectToast(
