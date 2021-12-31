@@ -34,7 +34,6 @@ class FindPasswordActivity : AppCompatActivity() {
             setOnClickListener { hideKeyBoard()}
         }
         numberButtonClickEvent()
-        changePwButtonClickEvent()
         imageviewButtonClickEvent()
 
         lateinit var number : EditText
@@ -83,6 +82,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
         binding.edittextNewpw.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -91,6 +91,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
+
             }
         })
 
@@ -100,6 +101,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
         binding.edittextNewpwcheck.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -108,6 +110,15 @@ class FindPasswordActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
+                binding.btnChange.apply {
+                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
+                        R.drawable.circle_image_view2
+                    ))
+                    isClickable = true
+                }
+                val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
+                CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
+                startActivity(intent)
             }
         })
 
@@ -126,30 +137,6 @@ class FindPasswordActivity : AppCompatActivity() {
             }
         }
     }
-
-
-    private fun changePwButtonClickEvent() {
-            if (binding.edittextNewpw.text.toString().isNotEmpty() && binding.edittextNewpwcheck.text.toString().isNotEmpty()) {
-                binding.btnChange.apply {
-                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                        R.drawable.circle_image_view2
-                    ))
-                    isClickable = true
-                }
-                val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
-                CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
-                startActivity(intent)
-            }
-            else {
-                binding.btnChange.apply {
-                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                        R.drawable.circle_image_view
-                    ))
-                    isClickable = false
-                }
-            }
-    }
-
 
 
 
