@@ -130,17 +130,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
     private fun changePwButtonClickEvent() {
         binding.btnChange.setOnClickListener() {
-            val password = binding.edittextNewpw.text
-            val newPassword = binding.edittextNewpwcheck.text
-            if (password.isNullOrBlank() && newPassword.isNullOrBlank()) {
-                binding.btnChange.apply {
-                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                        R.drawable.circle_image_view
-                    ))
-                    isClickable = false
-                }
-            }
-            else {
+            if (binding.edittextNewpw.text.toString().isNotEmpty() && binding.edittextNewpwcheck.text.toString().isNotEmpty()) {
                 binding.btnChange.apply {
                     setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
                         R.drawable.circle_image_view2
@@ -150,6 +140,14 @@ class FindPasswordActivity : AppCompatActivity() {
                 val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
                 CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
                 startActivity(intent)
+            }
+            else {
+                binding.btnChange.apply {
+                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
+                        R.drawable.circle_image_view
+                    ))
+                    isClickable = false
+                }
             }
         }
     }
