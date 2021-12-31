@@ -19,7 +19,7 @@ class FindPasswordActivity : AppCompatActivity() {
     private var edittextCount = 0
     val secondIntent = intent
 
-    val Authnumber = secondIntent.getStringExtra("AuthNumber")
+    val Authnumber = secondIntent.getStringExtra("auth")
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)

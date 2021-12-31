@@ -34,7 +34,8 @@
         app:layout_constraintWidth_percent="0.694" />
 
 
-    <androidx.appcompat.widget.AppCompatButton
+    <TextView
+        android:gravity="center"
         android:id="@+id/btn_before"
         style="@style/Subhead"
         android:layout_width="0dp"
@@ -49,7 +50,8 @@
         app:layout_constraintTop_toBottomOf="@+id/radiogroup_coffee_menu"
         app:layout_constraintVertical_bias="0.6" />
 
-    <androidx.appcompat.widget.AppCompatButton
+    <TextView
+        android:gravity="center"
         android:id="@+id/btn_next"
         style="@style/Subhead"
         android:layout_width="0dp"
