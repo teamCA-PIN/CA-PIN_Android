@@ -17,14 +17,16 @@ class FindPasswordActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityFindPasswordBinding
     private var edittextCount = 0
-    val secondIntent = intent
 
-    val Authnumber = secondIntent.getStringExtra("AuthNumber")
+    private var Authnumber: String? = ""
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityFindPasswordBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        Authnumber = intent.getStringExtra("auth")
         binding.btnChange.clipToOutline = true
         binding.btnProve.clipToOutline = true
 
@@ -32,9 +34,8 @@ class FindPasswordActivity : AppCompatActivity() {
             setOnClickListener { hideKeyBoard()}
         }
         numberButtonClickEvent()
-        changePwButtonClickEvent()
-        checkEditTextEmpty()
         imageviewButtonClickEvent()
+        changePwButtonClickEvent()
 
         lateinit var number : EditText
         lateinit var newPassword : EditText
@@ -82,6 +83,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
         binding.edittextNewpw.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -90,6 +92,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 binding.pwDeleteBtn.isVisible = !s.isNullOrEmpty()
+
             }
         })
 
@@ -99,6 +102,7 @@ class FindPasswordActivity : AppCompatActivity() {
 
         binding.edittextNewpwcheck.addTextChangedListener(object : TextWatcher{
             override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {
+
             }
 
             override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
@@ -107,9 +111,31 @@ class FindPasswordActivity : AppCompatActivity() {
 
             override fun afterTextChanged(s: Editable?) {
                 binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
+                binding.btnChange.apply {
+                    setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
+                        R.drawable.circle_image_view2
+                    ))
+                    isClickable = true
+                }
+
             }
         })
 
+    }
+
+    private fun changePwButtonClickEvent() {
+        binding.btnChange.setOnClickListener() {
+            val password = binding.edittextNewpw.text
+            val newPassword = binding.edittextNewpwcheck.text
+            if (password.isNullOrBlank() || newPassword.isNullOrBlank()) {
+
+            }
+            else {
+                val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
+                CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
+                startActivity(intent)
+            }
+        }
     }
 
 
@@ -127,38 +153,7 @@ class FindPasswordActivity : AppCompatActivity() {
     }
 
 
-    private fun changePwButtonClickEvent() {
-        binding.btnChange.setOnClickListener() {
-            val password = binding.edittextNewpw.text
-            val newPassword = binding.edittextNewpwcheck.text
-            if (password.isNullOrBlank() || newPassword.isNullOrBlank()) {
 
-            }
-            else {
-                val intent = Intent(this@FindPasswordActivity, LoginActivity::class.java)
-                CapinToastMessage.createCapinToast(this@FindPasswordActivity,"비밀번호가 변경되었습니다.", 135)?.show()
-                startActivity(intent)
-            }
-        }
-    }
-
-    private fun checkEditTextEmpty() {
-        if (binding.edittextNewpw.text.toString().isNotEmpty() && binding.edittextNewpwcheck.text.toString().isNotEmpty() ) {
-            binding.btnChange.apply {
-                setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                    R.drawable.circle_image_view2
-                ))
-                isClickable = true
-            }
-        } else {
-            binding.btnChange.apply {
-                setBackgroundDrawable(ContextCompat.getDrawable(this@FindPasswordActivity,
-                    R.drawable.circle_image_view
-                ))
-                isClickable = false
-            }
-        }
-    }
 
     private fun imageviewButtonClickEvent(){
         binding.imageviewTool.setOnClickListener() {

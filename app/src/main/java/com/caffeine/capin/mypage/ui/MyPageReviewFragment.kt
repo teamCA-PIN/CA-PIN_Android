@@ -142,7 +142,7 @@ class MyPageReviewFragment : Fragment() {
                     deleteMyReviewAtServer()
                     myReviewAdapter.myReviewList.remove(removeReviewInfo)
                     myReviewAdapter.notifyDataSetChanged()
-                    binding.mypageReviewNumTv.setText("총 ${myReviewAdapter.myReviewList.size}개의 리뷰")
+                    binding.mypageReviewNumTv.text = "총 ${myReviewAdapter.myReviewList.size}개의 리뷰"
                 }
             }).build()
         dialog.show(childFragmentManager, "DeleteReview")
@@ -201,5 +201,10 @@ class MyPageReviewFragment : Fragment() {
             }
         })
 
+    }
+
+    override fun onResume() {
+        super.onResume()
+        getMyReviewFromServer()
     }
 }

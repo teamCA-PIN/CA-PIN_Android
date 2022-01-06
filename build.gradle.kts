@@ -6,7 +6,7 @@ buildscript {
 
     }
     dependencies {
-        classpath("com.android.tools.build:gradle:${BuildDependencyVersions.GRADLE}")
+        classpath("com.android.tools.build:gradle:7.0.4")
         classpath("org.jetbrains.kotlin:kotlin-gradle-plugin:${BuildDependencyVersions.KOTLIN}")
         classpath("com.google.dagger:hilt-android-gradle-plugin:${BuildDependencyVersions.HILT}")
         classpath("androidx.navigation:navigation-safe-args-gradle-plugin:${BuildDependencyVersions.NAVIGATION}")
