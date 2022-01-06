@@ -1,5 +1,6 @@
 package com.caffeine.capin.map
 
+import android.location.Location
 import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -35,7 +36,6 @@ class MapViewModel @Inject constructor(
     val cafeInsideCurrentCamera: LiveData<List<CafeInformationEntity>>
         get() = _cafeInsideCurrentCamera
 
-
     private val _selectedCafeDetail = MutableLiveData<UiState<CafeDetailEntity>>()
     val selectedCafeDetail: LiveData<UiState<CafeDetailEntity>>
         get() = _selectedCafeDetail
@@ -70,6 +70,10 @@ class MapViewModel @Inject constructor(
 
     fun clearCheckedCafe() {
         _cafeCurrentChecked.value = null
+    }
+
+    fun deleteCafeDetail() {
+        _selectedCafeDetail.value = UiState.error(null,null)
     }
 
     fun changeCafeInsideCurrentCamera(cafes: List<CafeInformationEntity>) {

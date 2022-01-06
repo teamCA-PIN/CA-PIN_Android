@@ -16,6 +16,7 @@ import com.caffeine.capin.review.CafeReviewsAdapter
 import com.caffeine.capin.review.ReviewTagAdapter
 import com.caffeine.capin.review.all.AllCafeReviewsActivity
 import com.caffeine.capin.review.write.ui.WriteReviewActivity
+import com.caffeine.capin.review.write.ui.WriteReviewActivity.Companion.EDIT_REVIEW
 import com.caffeine.capin.util.HorizontalItemDecoration
 import com.caffeine.capin.util.copyToClipBoard
 import com.google.android.flexbox.*
@@ -35,11 +36,11 @@ class CafeDetailsActivity : AppCompatActivity() {
         binding.lifecycleOwner = this
         setContentView(binding.root)
 
-
         setReviewAdapter()
         loadCafeTags()
         checkToolbarCollapsed()
         copyInstagramId()
+        checkIsReviewWritten()
 
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
         binding.imageviewBack.setOnClickListener { finish() }
@@ -51,6 +52,10 @@ class CafeDetailsActivity : AppCompatActivity() {
     override fun onResume() {
         super.onResume()
         cafeDetailsViewModel.loadCafeDetails(getCafeId())
+    }
+
+    private fun checkIsReviewWritten() {
+        intent.getStringExtra(EDIT_REVIEW)?.let { cafeDetailsViewModel.updateReviewWritten(it) }
     }
 
     private fun setReviewAdapter() {
@@ -108,7 +113,15 @@ class CafeDetailsActivity : AppCompatActivity() {
 
     private fun deployWriteReviewActivity() {
         Intent(this, WriteReviewActivity::class.java)
-            .apply { putExtra(WriteReviewActivity.KEY_CAFE_ID, getCafeId()) }
+            .apply {
+                cafeDetailsViewModel.isReviewWritten.value?.let {
+                    if (it.isNotEmpty()) {
+                        putExtra(EDIT_REVIEW, it)
+                    } else {
+                        putExtra(WriteReviewActivity.KEY_CAFE_ID, getCafeId())
+                    }
+                } ?: putExtra(WriteReviewActivity.KEY_CAFE_ID, getCafeId())
+            }
             .also { startActivity(it) }
     }
 

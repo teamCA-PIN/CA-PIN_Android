@@ -74,10 +74,9 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     override fun onResume() {
         super.onResume()
         checkMapSort()
-        if(viewModel.selectedCafeDetail.value == null) {
+        if (viewModel.cafeCurrentChecked.value == null) {
             binding.cardviewCafeSelected.visibility = View.GONE
         }
-
     }
 
     override fun onMapReady(naverMap: NaverMap) {
@@ -127,17 +126,26 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     private fun setToolbar() {
         binding.run {
             imageviewSetting.setOnClickListener {
+                initSelectedCafe()
                 findNavController().navigate(R.id.action_mapFragment_to_mapProfileFragment)
             }
             imageviewFilter.setOnClickListener {
+                initSelectedCafe()
                 findNavController().navigate(R.id.action_mapFragment_to_tagFilterFragment)
             }
             imageviewMypage.setOnClickListener {
+                initSelectedCafe()
                 val intent = Intent(requireContext(), MyPageActivity::class.java)
                 startActivity(intent)
                 requireActivity().overridePendingTransition(R.anim.slide_left_enter, R.anim.slide_left_exit)
             }
         }
+    }
+
+    private fun initSelectedCafe() {
+        viewModel.clearCheckedCafe()
+        viewModel.deleteCafeDetail()
+        binding.cardviewCafeSelected.applyVisibilityAnimation(isUpward = false, reveal = false, durationTime = 500)
     }
 
     private fun setCameraChangeListener() {
@@ -193,32 +201,30 @@ class MapFragment : Fragment(), OnMapReadyCallback {
     }
 
     private fun clickMarker(cafeMarker: Marker) {
-        cafeMarker.onClickListener = object: Overlay.OnClickListener {
-            override fun onClick(overlay: Overlay): Boolean {
-                binding.cardviewCafeSelected.run{
-                    if(visibility == View.GONE) {
-                        visibility = View.VISIBLE
-                        applyVisibilityAnimation(isUpward = true, reveal = true, durationTime = 500)
-                    }
+        cafeMarker.onClickListener = Overlay.OnClickListener {
+            binding.cardviewCafeSelected.run{
+                if(visibility == View.GONE) {
+                    visibility = View.VISIBLE
+                    applyVisibilityAnimation(isUpward = true, reveal = true, durationTime = 500)
                 }
-                val clickedCafe = viewModel.cafeInsideCurrentCamera.value?.find {
-                    it.longitude == cafeMarker.position.longitude && it.latitude == cafeMarker.position.latitude
-                }
-                clickedCafe?.let {
-                    cafeMarker.icon = OverlayImage.fromResource(CategoryType.findActiveType(it.markType))
-                }
-
-                viewModel.exposedMarker.value?.forEach { before ->
-                    viewModel.cafeCurrentChecked.value?.let {
-                        if (before.position.latitude == it.latitude &&
-                            before.position.longitude == it.longitude) {
-                            before.icon = OverlayImage.fromResource(CategoryType.findInactiveType(it.markType))
-                        }
-                    }
-                }
-                viewModel.changeCafeCurrentChecked(clickedCafe)
-                return false
             }
+            val clickedCafe = viewModel.cafeInsideCurrentCamera.value?.find {
+                it.longitude == cafeMarker.position.longitude && it.latitude == cafeMarker.position.latitude
+            }
+            clickedCafe?.let {
+                cafeMarker.icon = OverlayImage.fromResource(CategoryType.findActiveType(it.markType))
+            }
+
+            viewModel.exposedMarker.value?.forEach { before ->
+                viewModel.cafeCurrentChecked.value?.let {
+                    if (before.position.latitude == it.latitude &&
+                        before.position.longitude == it.longitude) {
+                        before.icon = OverlayImage.fromResource(CategoryType.findInactiveType(it.markType))
+                    }
+                }
+            }
+            viewModel.changeCafeCurrentChecked(clickedCafe)
+            false
         }
     }
 

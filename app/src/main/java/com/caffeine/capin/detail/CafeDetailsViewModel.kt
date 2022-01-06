@@ -32,6 +32,13 @@ class CafeDetailsViewModel @Inject constructor(
     private val _cafeReviews = MutableLiveData<List<CafeReview>>()
     val cafeReviews: LiveData<List<CafeReview>> = _cafeReviews
 
+    private val _isReviewWritten = MutableLiveData<String>()
+    val isReviewWritten: LiveData<String> = _isReviewWritten
+
+    fun updateReviewWritten(review: String) {
+        _isReviewWritten.value = review
+    }
+
     fun loadCafeDetails(cafeId: String) {
         _isDetailsLoading.value = true
         _isReviewsLoading.value = true

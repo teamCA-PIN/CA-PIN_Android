@@ -133,14 +133,16 @@
 
                 <androidx.appcompat.widget.AppCompatTextView
                     android:id="@+id/textview_cafe_name"
-                    android:layout_width="wrap_content"
+                    android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="11dp"
                     android:text="@{viewModel.selectedCafeDetail.data.name}"
                     android:textColor="@color/black"
                     android:textSize="20dp"
                     android:theme="@style/Headline1"
+                    app:layout_constraintHorizontal_bias="0.0"
                     app:layout_constraintStart_toEndOf="@id/imageview_cafe"
+                    app:layout_constraintEnd_toEndOf="@id/constraintlayout_pin_save"
                     app:layout_constraintTop_toTopOf="@+id/imageview_cafe"
                     tools:text="후엘고" />
 

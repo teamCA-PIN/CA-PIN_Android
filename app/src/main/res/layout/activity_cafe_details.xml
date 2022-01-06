@@ -271,7 +271,7 @@
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <TextView
-                        android:id="@+id/textView9"
+                        android:id="@+id/textView_review"
                         style="@style/Headline1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -289,8 +289,8 @@
                         android:layout_marginStart="17dp"
                         android:layout_marginBottom="1dp"
                         android:visibility="gone"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView9"
-                        app:layout_constraintStart_toEndOf="@+id/textView9" />
+                        app:layout_constraintBottom_toBottomOf="@+id/textView_review"
+                        app:layout_constraintStart_toEndOf="@+id/textView_review" />
 
                     <TextView
                         android:id="@+id/button_all_reviews"
@@ -306,7 +306,7 @@
                         android:visibility="@{viewModel.cafeReviews.empty | viewModel.cafeReviews == null ? View.GONE : View.VISIBLE}"
                         android:textColor="@color/gray_3"
                         app:layout_constraintEnd_toEndOf="parent"
-                        app:layout_constraintTop_toTopOf="@+id/textView9" />
+                        app:layout_constraintTop_toTopOf="@+id/textView_review" />
 
                     <androidx.recyclerview.widget.RecyclerView
                         android:id="@+id/list_reviews"
@@ -317,7 +317,7 @@
                         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_review"
                         tools:itemCount="0"
                         tools:listitem="@layout/item_cafe_review" />
 
@@ -335,7 +335,7 @@
                         app:layout_constraintBottom_toBottomOf="parent"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toBottomOf="@+id/textView9" />
+                        app:layout_constraintTop_toBottomOf="@+id/textView_review" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
 
@@ -379,7 +379,7 @@
                 android:includeFontPadding="false"
                 android:drawablePadding="10dp"
                 android:paddingHorizontal="50dp"
-                android:text="리뷰 작성하기"
+                android:text="@{viewModel.isReviewWritten().empty | viewModel.isReviewWritten() == null ? `리뷰 작성하기` : `리뷰 수정하기` }"
                 android:textColor="@color/white"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@+id/layout_save_pin_button"
