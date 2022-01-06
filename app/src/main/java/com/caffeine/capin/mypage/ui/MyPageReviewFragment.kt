@@ -13,6 +13,7 @@ import com.caffeine.capin.R
 import com.caffeine.capin.customview.*
 import com.caffeine.capin.databinding.FragmentMyPageReviewBinding
 import com.caffeine.capin.detail.CafeDetailsActivity
+import com.caffeine.capin.detail.CafeDetailsActivity.Companion.KEY_CAFE_ID
 import com.caffeine.capin.mypage.api.response.ResponseMyReviewData
 import com.caffeine.capin.mypage.myreview.MyReview
 import com.caffeine.capin.mypage.myreview.MyReviewAdapter
@@ -21,6 +22,7 @@ import com.caffeine.capin.network.BaseResponse
 import com.caffeine.capin.network.ServiceCreator
 import com.caffeine.capin.preference.UserPreferenceManager
 import com.caffeine.capin.review.write.ui.WriteReviewActivity
+import com.caffeine.capin.review.write.ui.WriteReviewActivity.Companion.EDIT_REVIEW
 import com.caffeine.capin.util.AutoClearedValue
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
@@ -33,8 +35,7 @@ import kotlin.collections.ArrayList
 
 @AndroidEntryPoint
 class MyPageReviewFragment : Fragment() {
-    @Inject
-    lateinit var userPreferenceManager: UserPreferenceManager
+    @Inject lateinit var userPreferenceManager: UserPreferenceManager
     private var binding by AutoClearedValue<FragmentMyPageReviewBinding>()
     private lateinit var myReviewAdapter: MyReviewAdapter
     private lateinit var removeReviewInfo: MyReview
@@ -70,8 +71,12 @@ class MyPageReviewFragment : Fragment() {
         myReviewAdapter.setOnDetailButtonClickListener(object :
             MyReviewAdapter.OnDetailButtonClickListener {
             override fun onDetailButtonClick(myReview: MyReview) {
+                removeReviewInfo = myReview
+                val gson = Gson()
+                val reviewSelected = gson.toJson(removeReviewInfo)
                 val intent = Intent(requireContext(), CafeDetailsActivity::class.java)
-                intent.putExtra(CafeDetailsActivity.KEY_CAFE_ID, myReview.cafeId)
+                intent.putExtra(KEY_CAFE_ID, myReview.cafeId)
+                intent.putExtra(EDIT_REVIEW, reviewSelected)
                 startActivity(intent)
             }
         })
@@ -104,14 +109,7 @@ class MyPageReviewFragment : Fragment() {
                     ), this@MyPageReviewFragment.requireContext(),
                     object : CapinDialogButton.OnClickListener {
                         override fun onClick() {
-                            val intent = Intent(
-                                this@MyPageReviewFragment.requireContext(),
-                                WriteReviewActivity::class.java
-                            )
-                            val gson = Gson()
-                            val reviewSelected = gson.toJson(removeReviewInfo)
-                            intent.putExtra("edit_review", reviewSelected)
-                            startActivity(intent)
+                            goToModifyReview()
                             dialog.dismiss()
                         }
                     })
@@ -132,6 +130,14 @@ class MyPageReviewFragment : Fragment() {
         }
 
         dialog.show(childFragmentManager, "picture")
+    }
+
+    private fun goToModifyReview() {
+        val intent = Intent(requireContext(), WriteReviewActivity::class.java)
+        val gson = Gson()
+        val reviewSelected = gson.toJson(removeReviewInfo)
+        intent.putExtra(EDIT_REVIEW, reviewSelected)
+        startActivity(intent)
     }
 
     private fun showDeleteReviewConfirmDialog() {

@@ -5,13 +5,13 @@ import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
-import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.category.CategoryViewModel
+import com.caffeine.capin.category.model.CategoryNameEntity
 import com.caffeine.capin.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.ActivitySelectCategoryBinding
+import com.caffeine.capin.map.MapFragment.Companion.SELECTED_CAFE_INFO
 import com.caffeine.capin.map.entity.CafeDetailEntity
 import com.caffeine.capin.mypage.mycategory.MyPageCategoryEditActivity
-import com.caffeine.capin.mypage.myreview.MyReview
 import com.google.gson.Gson
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -43,9 +43,9 @@ class SelectCategoryActivity : AppCompatActivity() {
             finish()
         }
 
-        if (intent.hasExtra("selected_cafe_info")) {
+        if (intent.hasExtra(SELECTED_CAFE_INFO)) {
             val gson = Gson()
-            val jsonString = intent.getStringExtra("selected_cafe_info")
+            val jsonString = intent.getStringExtra(SELECTED_CAFE_INFO)
             val selectedCafeInfo = gson.fromJson(jsonString, CafeDetailEntity::class.java)
             viewModel.changeSelectedCafeDetail(selectedCafeInfo)
             binding.toolbarCafeName.setToolbarTitle(selectedCafeInfo.name)
@@ -56,7 +56,6 @@ class SelectCategoryActivity : AppCompatActivity() {
         binding.recyclerviewSelectCategory.apply {
             adapter = CategoryListAdapter(object: CategoryListAdapter.CategorySelectListener{
                 override fun selectCategory(categoryNameEntity: CategoryNameEntity) {
-                    Log.e("category", "$categoryNameEntity")
                     viewModel.changeSelectedCategory(categoryNameEntity)
                 }
             })

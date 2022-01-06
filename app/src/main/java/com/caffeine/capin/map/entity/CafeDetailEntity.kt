@@ -3,7 +3,7 @@ package com.caffeine.capin.map.entity
 import com.caffeine.capin.tagfilter.model.CafeTagEntity
 
 data class CafeDetailEntity(
-    val tags: List<CafeTagEntity>,
+    val tags: List<CafeTagEntity>?,
     val _id: String,
     val name: String,
     val address: String,

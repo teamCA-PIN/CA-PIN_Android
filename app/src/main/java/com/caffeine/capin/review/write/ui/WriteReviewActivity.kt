@@ -230,7 +230,6 @@ class WriteReviewActivity : AppCompatActivity() {
                 }
             })
             addItemDecoration(HorizontalItemDecoration(5))
-
             viewModel.imagesOfCafe.observe(this@WriteReviewActivity) {
                 (adapter as WriteReviewPictureAdapter).apply {
                     submitList(it)
@@ -298,7 +297,7 @@ class WriteReviewActivity : AppCompatActivity() {
     }
 
     companion object {
-        private val EDIT_REVIEW = "edit_review"
+        const val EDIT_REVIEW = "edit_review"
         private const val PERMISSION_CAMERA = android.Manifest.permission.CAMERA
         private const val PERMISSION_WRITE_EXTERNAL_STORAGE =
             android.Manifest.permission.WRITE_EXTERNAL_STORAGE

@@ -1,12 +1,8 @@
 package com.caffeine.capin.detail
 
 import android.os.Parcelable
+import com.caffeine.capin.map.entity.CafeDetailEntity
 import kotlinx.android.parcel.Parcelize
-
-/**
- * Created By Malibin
- * on 7월 09, 2021
- */
 
 @Parcelize
 data class CafeDetails(
@@ -19,4 +15,24 @@ data class CafeDetails(
     val instagramId: String,
     val operationTime: String,
     val isSaved: Boolean?
-) : Parcelable
+) : Parcelable {
+    fun toCafeDetailEntity(): CafeDetailEntity {
+        return CafeDetailEntity(
+            null,
+            id,
+            cafeName,
+            address,
+            instagramId,
+            operationTime,
+            null,
+            null,
+            null,
+            null,
+            0.0,
+            0.0,
+            starRate.toFloat(),
+            mainImageUrl,
+            isSaved ?: false
+        )
+    }
+}

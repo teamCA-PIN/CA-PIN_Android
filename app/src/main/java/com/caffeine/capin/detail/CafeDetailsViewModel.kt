@@ -15,11 +15,6 @@ import io.reactivex.rxjava3.schedulers.Schedulers
 import java.util.*
 import javax.inject.Inject
 
-/**
- * Created By Malibin
- * on 7월 09, 2021
- */
-
 @HiltViewModel
 class CafeDetailsViewModel @Inject constructor(
     private val capinService: CapinApiService,
@@ -36,6 +31,13 @@ class CafeDetailsViewModel @Inject constructor(
 
     private val _cafeReviews = MutableLiveData<List<CafeReview>>()
     val cafeReviews: LiveData<List<CafeReview>> = _cafeReviews
+
+    private val _isReviewWritten = MutableLiveData<String>()
+    val isReviewWritten: LiveData<String> = _isReviewWritten
+
+    fun updateReviewWritten(review: String) {
+        _isReviewWritten.value = review
+    }
 
     fun loadCafeDetails(cafeId: String) {
         _isDetailsLoading.value = true
@@ -67,7 +69,6 @@ class CafeDetailsViewModel @Inject constructor(
     }
 
     private fun onServiceFailure(t: Throwable) {
-        Log.d("MalibinDebug", TextUtils.join("\n", t.stackTrace))
         _isDetailsLoading.value = false
     }
 }

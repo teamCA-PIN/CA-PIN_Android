@@ -1,6 +1,6 @@
 package com.caffeine.capin.map
 
-import android.util.Log
+import android.location.Location
 import android.widget.CompoundButton
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -11,6 +11,7 @@ import com.caffeine.capin.map.repository.CafeListRepository
 import com.caffeine.capin.map.repository.MyMapLocationsRepository
 import com.caffeine.capin.tagfilter.model.TagFilterEntity
 import com.caffeine.capin.util.UiState
+import com.naver.maps.geometry.LatLng
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -23,33 +24,29 @@ class MapViewModel @Inject constructor(
     private val cafeListRepository: CafeListRepository,
     private val myMapLocationsRepository: MyMapLocationsRepository
 ) : ViewModel() {
-    private val markerList = ArrayList<Marker>()
-
     private val _isMyMap = MutableLiveData<Boolean>()
     val isMyMap: LiveData<Boolean>
         get() = _isMyMap
 
-    private val _exposedMarker = MutableLiveData<ArrayList<Marker>>()
-    val exposedMarker: LiveData<ArrayList<Marker>>
+    private val _exposedMarker = MutableLiveData<MutableList<Marker>>()
+    val exposedMarker: LiveData<MutableList<Marker>>
         get() = _exposedMarker
 
-    private val _cafeInsideCurrentCamera = MutableLiveData<Map<CafeInformationEntity, Boolean>?>()
-    val cafeInsideCurrentCamera: LiveData<Map<CafeInformationEntity, Boolean>?>
+    private val _cafeInsideCurrentCamera = MutableLiveData<List<CafeInformationEntity>>()
+    val cafeInsideCurrentCamera: LiveData<List<CafeInformationEntity>>
         get() = _cafeInsideCurrentCamera
 
-    private var cafeList = mutableMapOf<CafeInformationEntity, Boolean>()
-
-    private val _selectedCafe = MutableLiveData<UiState<CafeDetailEntity>>()
-    val selectedCafe: LiveData<UiState<CafeDetailEntity>>
-        get() = _selectedCafe
+    private val _selectedCafeDetail = MutableLiveData<UiState<CafeDetailEntity>>()
+    val selectedCafeDetail: LiveData<UiState<CafeDetailEntity>>
+        get() = _selectedCafeDetail
 
     private val _cafeCurrentChecked = MutableLiveData<CafeInformationEntity?>()
     val cafeCurrentChecked: LiveData<CafeInformationEntity?>
         get() = _cafeCurrentChecked
 
-    private val _capinMapCafeLocations = MutableLiveData<List<CafeInformationEntity>>()
-    val capinMapCafeLocation: LiveData<List<CafeInformationEntity>>
-        get() = _capinMapCafeLocations
+    private val _cafeLocations = MutableLiveData<List<CafeInformationEntity>>()
+    val cafeLocations: LiveData<List<CafeInformationEntity>>
+        get() = _cafeLocations
 
     init {
         if(isMyMap.value == true) {
@@ -59,30 +56,34 @@ class MapViewModel @Inject constructor(
         }
     }
 
-    fun changeCafeCurrentChecked(cafe: CafeInformationEntity) {
+    fun changeCafeCurrentChecked(cafe: CafeInformationEntity?) {
         _cafeCurrentChecked.value = cafe
     }
 
-    fun addExposedMarker(marker: Marker) {
-        markerList.add(marker)
-        _exposedMarker.value = markerList
+    fun changeExposedMarkers(markers: List<Marker>) {
+        _exposedMarker.value = markers.toMutableList()
     }
 
     fun clearExposedMarker() {
         _exposedMarker.value?.clear()
     }
 
-    fun addCafeInsideCurrentCamera(key: CafeInformationEntity, isSelected: Boolean) {
-        cafeList.forEach {
-            cafeList[it.key] = false
-        }
-        cafeList[key] = isSelected
-        _cafeInsideCurrentCamera.value = cafeList
+    fun clearCheckedCafe() {
+        _cafeCurrentChecked.value = null
+    }
+
+    fun deleteCafeDetail() {
+        _selectedCafeDetail.value = UiState.error(null,null)
+    }
+
+    fun changeCafeInsideCurrentCamera(cafes: List<CafeInformationEntity>) {
+        _cafeInsideCurrentCamera.value = cafes
     }
 
     fun removeAllCafeCurrentCamera() {
-        cafeList.clear()
-        _cafeInsideCurrentCamera.value = cafeList
+        val cafes = cafeInsideCurrentCamera.value?.toMutableList() ?: mutableListOf()
+        cafes.clear()
+        _cafeInsideCurrentCamera.value = cafes
     }
 
     //TagFilter
@@ -135,7 +136,6 @@ class MapViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                cafeList.clear()
                 changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
             }, {
@@ -151,11 +151,9 @@ class MapViewModel @Inject constructor(
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe({
-                cafeList.clear()
                 changeCapinMapLocations(it)
                 _countCafeResult.postValue(it.size)
             }, {
-                cafeList.clear()
                 changeCapinMapLocations(listOf())
                 _countCafeResult.postValue(0)
                 it.printStackTrace()
@@ -163,29 +161,23 @@ class MapViewModel @Inject constructor(
     }
 
     private fun changeCapinMapLocations(mapList: List<CafeInformationEntity>) {
-        _capinMapCafeLocations.value = mapList
-        val cafes = mutableMapOf<CafeInformationEntity, Boolean>()
-        mapList.forEach { cafe ->
-            cafes[cafe] = false
-        }
-        _cafeCurrentChecked.value = null
-        _cafeInsideCurrentCamera.postValue(cafes)
+        _cafeLocations.postValue(mapList)
+        _cafeCurrentChecked.postValue(null)
+        _selectedCafeDetail.postValue(UiState.error(null, null))
     }
 
     fun getSelectedCafeDetailInfo() {
-        _selectedCafe.value = UiState.loading(null)
-        cafeInsideCurrentCamera.value?.forEach { isSelectedCafe ->
-            if (isSelectedCafe.value) {
-                cafeListRepository.getCafeDetail(isSelectedCafe.key.cafeId)
-                    .subscribeOn(Schedulers.io())
-                    .observeOn(AndroidSchedulers.mainThread())
-                    .subscribe({
-                        _selectedCafe.postValue(UiState.success(it))
-                    }, {
-                        _selectedCafe.postValue(UiState.error(null, it.message))
-                        it.printStackTrace()
-                    })
-            }
+        _selectedCafeDetail.value = UiState.loading(null)
+        cafeCurrentChecked.value?.let {
+            cafeListRepository.getCafeDetail(it.cafeId)
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({
+                    _selectedCafeDetail.postValue(UiState.success(it))
+                }, {
+                    _selectedCafeDetail.postValue(UiState.error(null, it.message))
+                    it.printStackTrace()
+                })
         }
     }
 }
