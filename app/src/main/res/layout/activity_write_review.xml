@@ -258,7 +258,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="*"
-                    android:textColor="@color/pointcolor_1"
+                    android:textColor="@color/maincolor_1"
                     android:textSize="16dp"
                     style="@style/Body1"
                     app:layout_constraintTop_toTopOf="@id/textview_rating"

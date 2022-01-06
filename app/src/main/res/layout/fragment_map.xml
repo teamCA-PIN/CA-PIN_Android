@@ -91,9 +91,8 @@
 
         <com.naver.maps.map.widget.LocationButtonView
             android:id="@+id/location_button"
-            android:layout_width="0dp"
-            android:layout_height="0dp"
-            app:layout_constraintDimensionRatio="1:1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             app:layout_constraintTop_toBottomOf="@id/zoomcontrolview"
             app:layout_constraintStart_toStartOf="@id/zoomcontrolview"
