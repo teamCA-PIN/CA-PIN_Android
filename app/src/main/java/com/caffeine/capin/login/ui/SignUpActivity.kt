@@ -2,8 +2,6 @@ package com.caffeine.capin.login.ui
 
 import android.content.Intent
 import android.os.Bundle
-import android.text.Editable
-import android.text.TextWatcher
 import android.util.Log
 import android.util.Patterns
 import android.widget.EditText
@@ -27,10 +25,33 @@ import retrofit2.Response
 import java.util.regex.Pattern
 import javax.inject.Inject
 
+import android.text.style.ForegroundColorSpan
+
+import android.graphics.Color
+import android.text.*
+
+import android.widget.TextView
+import android.text.SpannableString
+
+import android.text.style.RelativeSizeSpan
+
+import android.text.Spannable
+
+import android.graphics.Typeface
+
+import android.text.style.StyleSpan
+
+
+
+
+
+
+
 @AndroidEntryPoint
 class SignUpActivity : AppCompatActivity() {
     @Inject
     lateinit var userPreferenceManager: UserPreferenceManager
+
     private lateinit var binding: ActivitySignupBinding
     private var edittextCount = 0
 
@@ -38,6 +59,45 @@ class SignUpActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        val textView = findViewById<TextView>(R.id.textView)
+
+        // 1
+        val content = textView.text.toString()
+        val spannableString = SpannableString(content)
+
+        // 2
+
+        val word = "서비스 이용약관"
+        val start = content.indexOf(word)
+        val end = start + word.length
+
+        val word2 = "개인정보처리방침"
+        val start2 = content.indexOf(word2)
+        val end2 = start2 + word2.length
+
+
+        // 3
+        spannableString.setSpan(
+            ForegroundColorSpan(Color.parseColor("#000000")),
+            start,
+            end,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        spannableString.setSpan(
+            ForegroundColorSpan(Color.parseColor("#000000")),
+            start2,
+            end2,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        
+
+        // 4
+        textView.text = spannableString
+
+
+
         binding.btnSignup.clipToOutline = true
 
         binding.root.run {
