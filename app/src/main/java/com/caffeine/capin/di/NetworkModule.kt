@@ -1,25 +1,23 @@
 package com.caffeine.capin.di
 
 import com.caffeine.capin.BuildConfig
-import com.caffeine.capin.network.AuthInterceptor
-import com.caffeine.capin.network.CapinApiService
-import com.caffeine.capin.network.UnAuthApiService
-import com.caffeine.capin.preference.UserPreferenceManager
-import com.caffeine.capin.qualifier.*
+import com.caffeine.capin.data.network.AuthOkHttp
+import com.caffeine.capin.data.network.AuthRetrofit
+import com.caffeine.capin.data.network.UnAuthOkHttp
+import com.caffeine.capin.data.network.UnAuthRetrofit
+import com.caffeine.capin.data.network.AuthInterceptor
+import com.caffeine.capin.data.network.CapinApiService
+import com.caffeine.capin.data.network.UnAuthApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
-import okhttp3.Interceptor
-import okhttp3.OkHttp
 import okhttp3.OkHttpClient
-import okhttp3.Response
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava3.RxJava3CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
-import javax.inject.Qualifier
 import javax.inject.Singleton
 
 @Module

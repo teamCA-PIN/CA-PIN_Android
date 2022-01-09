@@ -7,7 +7,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.caffeine.capin.customview.CapinToolbar
+        <com.caffeine.capin.presentation.customview.CapinToolbar
             android:id="@+id/toolbar_cafe_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

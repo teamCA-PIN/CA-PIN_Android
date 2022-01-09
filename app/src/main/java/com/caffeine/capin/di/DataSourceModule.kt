@@ -1,14 +1,14 @@
 package com.caffeine.capin.di
 
-import com.caffeine.capin.category.datasource.CategoryListDataSource
-import com.caffeine.capin.category.datasource.CategoryListDataSourceImpl
-import com.caffeine.capin.map.datasource.CafeListDataSource
-import com.caffeine.capin.map.datasource.CafeListDataSourceImpl
-import com.caffeine.capin.map.datasource.MyMapLocationsDataSource
-import com.caffeine.capin.map.datasource.MyMapLocationsDataSourceImpl
-import com.caffeine.capin.network.CapinApiService
-import com.caffeine.capin.profile.datasource.UserProfileDataSource
-import com.caffeine.capin.profile.datasource.UserProfileDataSourceImpl
+import com.caffeine.capin.data.source.category.CategoryListDataSource
+import com.caffeine.capin.data.source.category.CategoryListDataSourceImpl
+import com.caffeine.capin.data.source.map.CafeListDataSource
+import com.caffeine.capin.data.source.map.CafeListDataSourceImpl
+import com.caffeine.capin.data.source.map.MyMapLocationsDataSource
+import com.caffeine.capin.data.source.map.MyMapLocationsDataSourceImpl
+import com.caffeine.capin.data.network.CapinApiService
+import com.caffeine.capin.data.source.profile.UserProfileDataSource
+import com.caffeine.capin.data.source.profile.UserProfileDataSourceImpl
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

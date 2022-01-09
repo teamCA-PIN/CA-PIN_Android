@@ -25,7 +25,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.caffeine.capin.customview.CircleIndicator
+        <com.caffeine.capin.presentation.customview.CircleIndicator
             android:id="@+id/myreview_image_circle_indicator"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"

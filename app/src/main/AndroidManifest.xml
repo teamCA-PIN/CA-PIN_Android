@@ -14,8 +14,9 @@
         android:required="true" />
 
     <application
-        android:name=".CapinApplication"
-        android:allowBackup="true"
+        android:name=".application.CapinApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:requestLegacyExternalStorage="true"
@@ -34,46 +35,40 @@
                 android:resource="@xml/filepaths" />
         </provider>
 
-        <activity android:name=".mypage.ui.MyPageActivity">
+        <activity android:name=".presentation.mypage.MyPageActivity">
 
         </activity>
-        <activity android:name=".mypage.pin.MyPagePinDetailActivity" />
-        <activity android:name=".mypage.ui.MyPageProfileEditActivity" />
-        <activity android:name=".mypage.mycategory.MyPageCategoryEditActivity" />
-        <activity android:name=".MainActivity">
+        <activity android:name=".presentation.mypage.MyPagePinDetailActivity" />
+        <activity android:name=".presentation.mypage.MyPageProfileEditActivity" />
+        <activity android:name=".presentation.mypage.MyPageCategoryEditActivity" />
+        <activity android:name=".presentation.main.MainActivity">
 
         </activity>
-        <activity android:name=".cafeti.ui.CoffeeTasteActivity" />
-        <activity android:name=".cafeti.ui.CafeColorActivity" />
-        <activity android:name=".cafeti.ui.CafeStyleActivity" />
-        <activity android:name=".cafeti.ui.CoffeeMenuActivity" />
-        <activity android:name=".cafeti.CafetiActivity">
-
-        </activity>
-        <activity android:name=".cafeti.ui.CafetiResultActivity" />
-        <activity android:name=".cafeti.ui.CoffeeMostActivity" />
-        <activity android:name=".login.ui.FindPasswordActivity" />
-        <activity android:name=".login.ui.LoginPwActivity" />
-        <activity android:name=".login.ui.SignUpActivity" />
-        <activity android:name=".login.ui.LoginActivity"
-            android:exported="true">
-
-
-        </activity>
-        <activity android:name=".login.ui.SplashActivity">
+        <activity android:name=".presentation.cafeti.CoffeeTasteActivity" />
+        <activity android:name=".presentation.cafeti.CafeColorActivity" />
+        <activity android:name=".presentation.cafeti.CafeStyleActivity" />
+        <activity android:name=".presentation.cafeti.CoffeeMenuActivity" />
+        <activity android:name=".presentation.cafeti.CafetiActivity"/>
+        <activity android:name=".presentation.cafeti.CafetiResultActivity" />
+        <activity android:name=".presentation.cafeti.CoffeeMostActivity" />
+        <activity android:name=".presentation.login.FindPasswordActivity" />
+        <activity android:name=".presentation.login.LoginPwActivity" />
+        <activity android:name=".presentation.login.SignUpActivity" />
+        <activity android:name=".presentation.login.LoginActivity"/>
+        <activity android:name=".presentation.login.SplashActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".detail.CafeDetailsActivity" />
-        <activity android:name=".review.write.ui.WriteReviewActivity">
+        <activity android:name=".presentation.cafedetail.ui.CafeDetailsActivity" />
+        <activity android:name=".presentation.review.ui.WriteReviewActivity">
 
         </activity>
-        <activity android:name=".category.ui.SelectCategoryActivity"></activity>
-        <activity android:name=".detail.menus.CafeMenusActivity" />
-        <activity android:name=".review.all.AllCafeReviewsActivity" />
+        <activity android:name=".presentation.category.ui.SelectCategoryActivity"></activity>
+        <activity android:name=".presentation.cafedetail.ui.CafeMenusActivity" />
+        <activity android:name=".presentation.review.ui.AllCafeReviewsActivity" />
     </application>
 
 </manifest>
