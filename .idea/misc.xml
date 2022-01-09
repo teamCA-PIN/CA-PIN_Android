@@ -75,7 +75,10 @@
         <entry key="app/src/main/res/drawable/background_capin_toast.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/gradient_image_mask.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/ic_ca_logo_frame.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_capin_menu.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_capin_text_logo.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/drawable/ic_capintypo.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_checkbox_active.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
@@ -144,7 +147,10 @@
         <entry key="app/src/main/res/layout/item_write_review_add_picture.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/layout_save_pin.xml" value="0.1291577968557594" />
         <entry key="app/src/main/res/layout/layout_save_pin_stroke2dp.xml" value="0.16875" />
+        <entry key="app/src/main/res/layout/map_toolbar_capin.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/toast_message_capin.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24722222222222223" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23072916666666668" />
       </map>
     </option>
   </component>
