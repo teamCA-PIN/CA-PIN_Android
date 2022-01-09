@@ -6,13 +6,13 @@
     <data>
         <variable
             name="category"
-            type="com.caffeine.capin.mypage.mycategory.MyCategory" />
+            type="com.caffeine.capin.data.dto.category.MyCategory" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".mypage.pin.MyPagePinDetailActivity">
+        tools:context=".presentation.mypage.MyPagePinDetailActivity">
 
         <ImageView
             android:id="@+id/pin_detail_basic_iv"

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.caffeine.capin.map.MapViewModel" />
+            type="com.caffeine.capin.presentation.map.MapViewModel" />
         <variable
             name="view"
             type="android.view.View" />
@@ -14,7 +14,7 @@
         android:id="@+id/constraintlayout_map"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".map.MapFragment">
+        tools:context=".presentation.map.MapFragment">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/toolbar"

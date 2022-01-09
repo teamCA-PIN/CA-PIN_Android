@@ -3,17 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <data>
-        <variable
-            name="viewModel"
-            type="com.caffeine.capin.profile.MapProfileViewModel" />
-    </data>
-
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@color/logo_white"
-        tools:context=".profile.SettingFragment">
+        tools:context=".presentation.setting.SettingFragment">
 
         <androidx.appcompat.widget.AppCompatImageButton
             android:id="@+id/button_back"

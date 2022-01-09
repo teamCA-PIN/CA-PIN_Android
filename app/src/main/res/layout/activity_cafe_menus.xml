@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.caffeine.capin.detail.menus.CafeMenusViewModel" />
+            type="com.caffeine.capin.presentation.cafedetail.viewmodel.CafeMenusViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
@@ -13,7 +13,7 @@
         xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".detail.menus.CafeMenusActivity">
+        tools:context=".presentation.cafedetail.ui.CafeMenusActivity">
 
         <TextView
             android:id="@+id/textView23"
