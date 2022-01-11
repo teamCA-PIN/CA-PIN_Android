@@ -91,7 +91,7 @@ class SignUpActivity : AppCompatActivity() {
             end2,
             Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
         )
-        
+
 
         // 4
         textView.text = spannableString
@@ -219,6 +219,7 @@ class SignUpActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
                 checkEditTextEmpty()
+                checkPassword()
             }
         })
 
