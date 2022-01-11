@@ -219,7 +219,7 @@ class SignUpActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
                 checkEditTextEmpty()
-                checkPassword()
+                signUpButtonClickEvent()
             }
         })
 
@@ -279,6 +279,11 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
+    private fun signUpButtonClickEvent() {
+        binding.btnSignup.setOnClickListener() {
+            checkPassword()
+        }
+    }
 
 
     private fun checkPassword() {
