@@ -274,13 +274,14 @@ class SignUpActivity : AppCompatActivity() {
 
 
     private fun checkPassword() {
-        if (binding.edittextPw.text.toString() != binding.edittextPwagain.text.toString()) {
+        if (binding.edittextPw.text!!.equals(binding.edittextPwagain.text)) {
             CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", 135)
                 ?.show()
         } else {
             requestLogin()
         }
     }
+
 
     private fun requestLogin() {
         val requestSignUpData = RequestSignUpData(
