@@ -279,11 +279,7 @@ class SignUpActivity : AppCompatActivity() {
     }
 
 
-    private fun signUpButtonClickEvent() {
-        binding.btnSignup.setOnClickListener() {
-            checkPassword()
-        }
-    }
+
 
     private fun checkPassword() {
         if (binding.edittextPw.text!!.equals( binding.edittextPwagain.text)) {
