@@ -219,7 +219,6 @@ class SignUpActivity : AppCompatActivity() {
             override fun afterTextChanged(s: Editable?) {
                 binding.pwagainDeleteBtn.isVisible = !s.isNullOrEmpty()
                 checkEditTextEmpty()
-                signUpButtonClickEvent()
             }
         })
 
@@ -287,7 +286,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
     private fun checkPassword() {
-        if (binding.edittextPw.text!!.equals( binding.edittextPwagain.text)) {
+        if (binding.edittextPw.text.toString() != binding.edittextPwagain.text.toString()) {
             CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", 135)
                 ?.show()
         } else {
