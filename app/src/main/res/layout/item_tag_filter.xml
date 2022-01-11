@@ -3,14 +3,14 @@
     <data>
         <variable
             name="data"
-            type="com.caffeine.capin.tagfilter.model.TagFilterEntity" />
+            type="com.caffeine.capin.domain.entity.map.TagFilterEntity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <com.caffeine.capin.customview.TagFilterCheckbox
+        <com.caffeine.capin.presentation.customview.TagFilterCheckbox
             android:id="@+id/checkbox_tag_filter"
             app:layout_constraintDimensionRatio="1:0.23"
             app:layout_constraintEnd_toEndOf="parent"

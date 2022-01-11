@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         xmlns:app="http://schemas.android.com/apk/res-auto"
-        tools:context=".mypage.ui.MyPageCategoryFragment">
+        tools:context=".presentation.mypage.MyPageCategoryFragment">
 
         <TextView
             android:id="@+id/if_basic_category_tv"
@@ -21,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <com.caffeine.capin.util.NestedScrollableHost
+        <com.caffeine.capin.presentation.util.NestedScrollableHost
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             app:layout_constraintVertical_bias="0.0"
@@ -87,7 +87,7 @@
 
             </androidx.core.widget.NestedScrollView>
 
-        </com.caffeine.capin.util.NestedScrollableHost>
+        </com.caffeine.capin.presentation.util.NestedScrollableHost>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

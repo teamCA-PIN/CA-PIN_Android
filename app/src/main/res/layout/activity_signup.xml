@@ -250,7 +250,20 @@
         app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/icon_delete_1616" />
 
-
+    <TextView
+        android:id="@+id/textView"
+        style="@style/Body3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:bufferType="spannable"
+        android:gravity="center"
+        android:text="가입완료 시 카핀의 서비스 이용약관과\n 개인정보처리방침에 동의한 것으로 간주합니다."
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_pwagain" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

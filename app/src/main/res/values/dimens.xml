@@ -4,4 +4,5 @@
     <dimen name="radius_review_picture">5dp</dimen>
     <dimen name="chip_margin">3.5dp</dimen>
     <dimen name="chip_bottom_margin">7dp</dimen>
+    <dimen name="radius_8dp">8dp</dimen>
 </resources>

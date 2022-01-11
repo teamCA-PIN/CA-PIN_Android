@@ -3,7 +3,7 @@
     <data>
         <variable
             name="data"
-            type="com.caffeine.capin.review.write.PictureUriEntity" />
+            type="com.caffeine.capin.domain.entity.review.PictureUriEntity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="80dp"

@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.caffeine.capin.review.write.WriteReviewViewModel" />
+            type="com.caffeine.capin.presentation.review.viewmodel.WriteReviewViewModel" />
         <variable
             name="view"
             type="android.view.View" />
@@ -15,8 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-
-        <com.caffeine.capin.customview.CapinToolbar
+        <com.caffeine.capin.presentation.customview.CapinToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -258,7 +257,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="*"
-                    android:textColor="@color/pointcolor_1"
+                    android:textColor="@color/maincolor_1"
                     android:textSize="16dp"
                     style="@style/Body1"
                     app:layout_constraintTop_toTopOf="@id/textview_rating"
@@ -313,7 +312,7 @@
                     app:layout_constraintBottom_toBottomOf="@id/ratingbar_review"
                     app:layout_constraintEnd_toEndOf="@id/edittext_write_review"/>
 
-                <com.caffeine.capin.customview.CapinActiveInActiveButton
+                <com.caffeine.capin.presentation.customview.CapinActiveInActiveButton
                     android:id="@+id/button_post_review"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
