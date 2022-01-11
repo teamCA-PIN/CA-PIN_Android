@@ -5,7 +5,7 @@
     <data>
         <variable
             name="data"
-            type="com.caffeine.capin.category.model.CategoryNameEntity" />
+            type="com.caffeine.capin.domain.entity.category.CategoryNameEntity" />
     </data>
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"

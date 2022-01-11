@@ -5,7 +5,7 @@
 
         <variable
             name="viewModel"
-            type="com.caffeine.capin.review.all.AllCafeReviewsViewModel" />
+            type="com.caffeine.capin.presentation.review.viewmodel.AllCafeReviewsViewModel" />
 
     </data>
 
@@ -15,7 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <com.caffeine.capin.customview.CapinToolbar
+        <com.caffeine.capin.presentation.customview.CapinToolbar
             android:id="@+id/toolbar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"

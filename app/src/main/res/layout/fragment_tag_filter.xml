@@ -5,7 +5,7 @@
     <data>
         <variable
             name="viewModel"
-            type="com.caffeine.capin.map.MapViewModel" />
+            type="com.caffeine.capin.presentation.map.MapViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

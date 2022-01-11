@@ -4,8 +4,8 @@ import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
 import androidx.security.crypto.MasterKeys
-import com.caffeine.capin.preference.PreferenceManager
-import com.caffeine.capin.preference.UserPreferenceManager
+import com.caffeine.capin.data.local.PreferenceManager
+import com.caffeine.capin.data.local.UserPreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

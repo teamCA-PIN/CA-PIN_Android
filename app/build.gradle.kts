@@ -1,3 +1,4 @@
+import com.android.build.gradle.internal.cxx.configure.gradleLocalProperties
 import org.gradle.internal.impldep.com.jcraft.jsch.ConfigRepository.defaultConfig
 import java.util.Properties
 import java.io.FileInputStream
@@ -17,42 +18,40 @@ val properties = Properties()
 properties.load(FileInputStream(rootProject.file("./local.properties")))
 
 android {
-    compileSdkVersion(BuildAndroidConfig.COMPILE_SDK_VERSION)
-    buildToolsVersion(BuildAndroidConfig.BUILD_TOOLS_VERSION)
-
     defaultConfig {
         applicationId = BuildAndroidConfig.APPLICATION_ID
-        targetSdkVersion(BuildAndroidConfig.TARGET_SDK_VERSION)
-        minSdkVersion(BuildAndroidConfig.MIN_SDK_VERSION)
+        compileSdk = BuildAndroidConfig.COMPILE_SDK_VERSION
+        buildToolsVersion = BuildAndroidConfig.BUILD_TOOLS_VERSION
+        targetSdk = BuildAndroidConfig.TARGET_SDK_VERSION
+        minSdk = BuildAndroidConfig.MIN_SDK_VERSION
         versionCode = BuildAndroidConfig.VERSION_CODE
         versionName = BuildAndroidConfig.VERSION_NAME
 
         testInstrumentationRunner = BuildAndroidConfig.TEST_INSTRUMENTATION_RUNNER
-        buildConfigField(
-            "String",
-            "NAVER_MAP_CLIENT_ID",
-            properties["NAVER_MAP_CLIENT_ID"] as String
-        )
+        buildConfigField("String", "NAVER_MAP_CLIENT_ID", properties["NAVER_MAP_CLIENT_ID"] as String)
+        buildConfigField("String", "BASE_URL", properties["BASE_URL"] as String)
 
-        buildConfigField(
-            "String",
-            "BASE_URL",
-            properties["BASE_URL"] as String
-        )
+        signingConfigs {
+            register("release") {
+                storeFile = file("capinkeystores.jks")
+                storePassword = gradleLocalProperties(rootDir).getProperty("CAPIN_KEYSTORE_PASSWORD")
+                keyAlias = gradleLocalProperties(rootDir).getProperty("CAPIN_ALIAS")
+                keyPassword = gradleLocalProperties(rootDir).getProperty("CAPIN_ALIAS_PASSWORD")
+            }
+        }
     }
 
     buildTypes {
         getByName("release") {
-            isMinifyEnabled = false
+            isDebuggable = true
+            signingConfig = signingConfigs.getByName("release")
+            isMinifyEnabled = true
+            isShrinkResources = true
             proguardFiles("proguard-android-optimize.txt", "proguard-rules.pro")
         }
 
         getByName("debug") {
-            buildConfigField(
-                "String",
-                "NAVER_MAP_CLIENT_ID",
-                properties["NAVER_MAP_CLIENT_ID"] as String
-            )
+            buildConfigField("String", "NAVER_MAP_CLIENT_ID", properties["NAVER_MAP_CLIENT_ID"] as String)
             buildConfigField("String", "BASE_URL", properties["BASE_URL"] as String)
         }
     }

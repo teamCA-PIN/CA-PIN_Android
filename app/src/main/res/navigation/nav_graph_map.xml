@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/mapFragment"
-        android:name="com.caffeine.capin.map.MapFragment"
+        android:name="com.caffeine.capin.presentation.map.MapFragment"
         android:label="fragment_map"
         tools:layout="@layout/fragment_map" >
         <action
@@ -29,7 +29,7 @@
 
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.caffeine.capin.profile.SettingFragment"
+        android:name="com.caffeine.capin.presentation.setting.SettingFragment"
         android:label="SettingFragment"
         tools:layout="@layout/fragment_setting">
         <action
@@ -43,7 +43,7 @@
 
     <fragment
         android:id="@+id/tagFilterFragment"
-        android:name="com.caffeine.capin.tagfilter.ui.TagFilterFragment"
+        android:name="com.caffeine.capin.domain.entity.map.TagFilterFragment"
         android:label="TagFilterFragment"
         tools:layout="@layout/fragment_tag_filter">
 
@@ -51,7 +51,7 @@
 
     <fragment
         android:id="@+id/policyFragment"
-        android:name="com.caffeine.capin.profile.PolicyFragment"
+        android:name="com.caffeine.capin.presentation.setting.PolicyFragment"
         android:label="PolicyFragment"
         tools:layout="@layout/fragment_policy">
         <action
@@ -65,7 +65,7 @@
 
     <fragment
         android:id="@+id/withDrawFragment"
-        android:name="com.caffeine.capin.profile.WithDrawFragment"
+        android:name="com.caffeine.capin.presentation.setting.WithDrawFragment"
         android:label="WithDrawFragment"
         tools:layout="@layout/fragment_with_draw" />
 

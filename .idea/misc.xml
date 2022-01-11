@@ -8,30 +8,6 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/borderless.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/button_image_view.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/button_image_view2.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/cafeti_asset.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_image_view.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_image_view2.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_image_view3.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_image_view4.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/drawable/circle_rectangle.xml" value="0.36974358974358973" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_color.xml" value="0.3333333333333333" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_details.xml" value="0.17477203647416414" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_menus.xml" value="0.35520833333333335" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafe_style.xml" value="0.17274569402228976" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafeti.xml" value="0.17477203647416414" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_cafeti_result.xml" value="0.1" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_coffee_menu.xml" value="0.17477203647416414" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_coffee_most.xml" value="0.17477203647416414" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_coffee_taste.xml" value="0.17477203647416414" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_find_password.xml" value="0.23958333333333334" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_login.xml" value="0.23958333333333334" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_loginpw.xml" value="0.17274569402228976" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/activity_signup.xml" value="0.3333333333333333" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/item_cafe_menu.xml" value="0.340625" />
-        <entry key="..\:/CA-PIN_Android/app/src/main/res/layout/item_review_picture.xml" value="0.17274569402228976" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_circle_gray_2dp.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_dialog_title.xml" value="0.43125" />
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/drawable/border_round_rectangle_gray_1dp.xml" value="0.43125" />
@@ -96,9 +72,13 @@
         <entry key="..\:/Users/srcho/AndroidStudioProjects/CA-PIN_Android/app/src/main/res/layout/window_loading.xml" value="0.43" />
         <entry key="app/src/main/res/drawable/active_button_25dp.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/background_add_picture.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/drawable/background_capin_toast.xml" value="0.18796296296296297" />
         <entry key="app/src/main/res/drawable/border_round_rectangle_blue_1dp.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/gradient_image_mask.xml" value="0.23055555555555557" />
+        <entry key="app/src/main/res/drawable/ic_ca_logo_frame.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_capin_menu.xml" value="0.225" />
+        <entry key="app/src/main/res/drawable/ic_capin_text_logo.xml" value="0.23072916666666668" />
+        <entry key="app/src/main/res/drawable/ic_capintypo.xml" value="0.23072916666666668" />
         <entry key="app/src/main/res/drawable/ic_checkbox_active.xml" value="0.3537037037037037" />
         <entry key="app/src/main/res/drawable/ic_icon_mymap_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/ic_icon_pinsave_saved.xml" value="0.23703703703703705" />
@@ -131,20 +111,23 @@
         <entry key="app/src/main/res/drawable/toggle_unselected.xml" value="0.23703703703703705" />
         <entry key="app/src/main/res/drawable/write_review_checkbox_selected.xml" value="0.2388888888888889" />
         <entry key="app/src/main/res/drawable/write_review_checkbox_unselected.xml" value="0.2388888888888889" />
+        <entry key="app/src/main/res/font/noto_sans_kr.xml" value="0.24722222222222223" />
         <entry key="app/src/main/res/layout/activity_all_cafe_reviews.xml" value="0.26104563355182075" />
         <entry key="app/src/main/res/layout/activity_cafe_details.xml" value="0.33248730964467005" />
+        <entry key="app/src/main/res/layout/activity_cafe_menus.xml" value="0.3109375" />
         <entry key="app/src/main/res/layout/activity_cafe_style.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_cafeti_result.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/activity_coffee_menu.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_coffee_most.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_coffee_taste.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25729166666666664" />
+        <entry key="app/src/main/res/layout/activity_select_category.xml" value="0.15121580547112462" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
         <entry key="app/src/main/res/layout/capin_dialog.xml" value="0.16032608695652173" />
         <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
-        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.25" />
+        <entry key="app/src/main/res/layout/fragment_map.xml" value="0.3720528755478676" />
         <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my_page_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_my_page_review.xml" value="0.33229166666666665" />
@@ -157,13 +140,17 @@
         <entry key="app/src/main/res/layout/item_recyclerview_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_review_picture.xml" value="0.33229166666666665" />
         <entry key="app/src/main/res/layout/item_review_tag.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/item_select_category.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/item_skeleton_cafe.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/item_tag_filter.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/item_tag_type_first.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_write_review_add_picture.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/layout_save_pin.xml" value="0.1291577968557594" />
         <entry key="app/src/main/res/layout/layout_save_pin_stroke2dp.xml" value="0.16875" />
+        <entry key="app/src/main/res/layout/map_toolbar_capin.xml" value="0.21458333333333332" />
         <entry key="app/src/main/res/layout/toast_message_capin.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.24722222222222223" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher_round.xml" value="0.23072916666666668" />
       </map>
     </option>
   </component>
