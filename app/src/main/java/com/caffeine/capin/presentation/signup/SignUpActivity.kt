@@ -201,16 +201,13 @@ class SignUpActivity : AppCompatActivity() {
         }
     }
 
-
     private fun checkPassword() {
-        if (binding.edittextPw.text!!.equals(binding.edittextPwagain.text)) {
-            CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", 135)
-                ?.show()
+        if (binding.edittextPw.text.toString() != binding.edittextPwagain.text.toString()) {
+            CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "비밀번호가 일치하지 않습니다.", 135)?.show()
         } else {
             requestLogin()
         }
     }
-
 
     private fun requestLogin() {
         val requestSignUpData = RequestSignUpData(
@@ -244,53 +241,30 @@ class SignUpActivity : AppCompatActivity() {
                         ) {
                             if (response.isSuccessful) {
                                 userPreferenceManager.setNeedCafetiCheck(true)
-                                CapinToastMessage.createCapinToast(
-                                    this@SignUpActivity,
-                                    "회원 가입 및 기본카테고리 생성 성공.",
-                                    135
-                                )
-
+                                CapinToastMessage.createCapinToast(this@SignUpActivity, "회원 가입 및 기본카테고리 생성 성공.", 135)?.show()
                                 finish()
 
                             } else {
                                 val errorBody = response.errorBody() ?: return
                                 val errorMessage = JSONObject(errorBody.string())
                                 // errorMessage -> 문자열 교환
-                                CapinToastMessage.createCapinRejectToast(
-                                    this@SignUpActivity,
-                                    "이미 사용중인 이메일 입니다.", 135
-                                )
-                                    ?.show()
+                                CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "이미 사용중인 이메일 입니다.", 135)?.show()
                             }
                         }
 
                         override fun onFailure(call: Call<ResponseSignUpData>, t: Throwable) {
-                            CapinToastMessage.createCapinRejectToast(
-                                this@SignUpActivity,
-                                "회원가입 실패.",
-                                135)
-
-                            Log.d("NetworkTest", "error:$t")
+                            CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "회원가입 실패.", 135)?.show()
                         }
                     })
+                } else {
+                    CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "닉네임이 형식에 맞지 않습니다. ", 135)?.show()
                 }
-                else
-                {
-                    CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "닉네임이 형식에 맞지 않습니다. ", 135)
-
-                }
-
-
             } else {
-                CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "이메일이 형식에 맞지 않습니다. ", 135)
-                    ?.show()
+                CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "이메일이 형식에 맞지 않습니다. ", 135)?.show()
             }
 
-        }
-        else
-        {
-            CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "필요한 값이 없습니다.", 135)
-
+        } else {
+            CapinToastMessage.createCapinRejectToast(this@SignUpActivity, "필요한 값이 없습니다.", 135)?.show()
         }
     }
 
