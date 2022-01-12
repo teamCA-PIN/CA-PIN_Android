@@ -53,11 +53,7 @@ class MyPageCategoryFragment : Fragment() {
         deleteCategory()
 
         binding.mypageCategoryAddCl.setOnClickListener {
-            val intent =
-                Intent(
-                    this@MyPageCategoryFragment.requireContext(),
-                    MyPageCategoryEditActivity::class.java
-                )
+            val intent = Intent(requireContext(), MyPageCategoryEditActivity::class.java)
             intent.putExtra("feature", "새 카테고리")
             startActivity(intent)
         }
@@ -66,10 +62,7 @@ class MyPageCategoryFragment : Fragment() {
             MyCategoryAdapter.OnCategoryClickListener {
             override fun onCategoryClick(myCategory: MyCategory) {
                 viewModel.changeRemoveCategoryInfo(myCategory)
-                val intent = Intent(
-                    this@MyPageCategoryFragment.requireContext(),
-                    MyPagePinDetailActivity::class.java
-                )
+                val intent = Intent(requireContext(), MyPagePinDetailActivity::class.java)
                 val categoryName = myCategory.name
                 intent.putExtra("name", categoryName)
                 intent.putExtra("categoryPinId", viewModel.removeCategoryInfo.value?._id)
@@ -141,7 +134,7 @@ class MyPageCategoryFragment : Fragment() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile("카테고리를 삭제하시겠습니까?")
             .setContent("해당 카테고리에 저장된 모든 핀이 함께 삭제됩니다.")
-            .setContentDialogButtons(true, object : DialogClickListener {
+            .setContentDialogButtons(true, "취소", "확인", object : DialogClickListener {
                 override fun onClick() {
                     viewModel.deleteMyCategoryAtServer()
                     viewModel.getMyCategoryFromServer()

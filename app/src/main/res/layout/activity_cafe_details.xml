@@ -309,7 +309,7 @@
                         app:layout_constraintTop_toTopOf="@+id/textView_review" />
 
                     <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/list_reviews"
+                        android:id="@+id/recyclerview_review"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="25dp"

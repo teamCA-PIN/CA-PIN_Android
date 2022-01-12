@@ -53,7 +53,7 @@
         <activity android:name=".presentation.cafeti.CoffeeMostActivity" />
         <activity android:name=".presentation.login.FindPasswordActivity" />
         <activity android:name=".presentation.login.LoginPwActivity" />
-        <activity android:name=".presentation.login.SignUpActivity" />
+        <activity android:name=".presentation.signup.SignUpActivity" />
         <activity android:name=".presentation.login.LoginActivity"/>
         <activity android:name=".presentation.login.SplashActivity" android:exported="true">
             <intent-filter>
