@@ -135,7 +135,7 @@
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/fragment_with_draw.xml" value="0.29635416666666664" />
-        <entry key="app/src/main/res/layout/item_cafe_review.xml" value="0.2183288409703504" />
+        <entry key="app/src/main/res/layout/item_cafe_review.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_pin_detail_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_recyclerview_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_review_picture.xml" value="0.33229166666666665" />

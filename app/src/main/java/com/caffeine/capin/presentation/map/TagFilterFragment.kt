@@ -1,4 +1,4 @@
-package com.caffeine.capin.domain.entity.map
+package com.caffeine.capin.presentation.map
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -14,6 +14,8 @@ import com.caffeine.capin.presentation.customview.CapinDialog
 import com.caffeine.capin.presentation.customview.CapinDialogBuilder
 import com.caffeine.capin.presentation.customview.DialogClickListener
 import com.caffeine.capin.databinding.FragmentTagFilterBinding
+import com.caffeine.capin.domain.entity.map.TagFilterAdapter
+import com.caffeine.capin.domain.entity.map.TagFilterEntity
 import com.caffeine.capin.presentation.map.MapViewModel
 import com.caffeine.capin.presentation.util.AutoClearedValue
 import com.caffeine.capin.presentation.util.VerticalItemDecoration
@@ -105,7 +107,7 @@ class TagFilterFragment : Fragment() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile(resources.getString(R.string.exit_page_tagfilter))
             .setContent(resources.getString(R.string.exit_page_content_tagfilter))
-            .setContentDialogButtons(true, object : DialogClickListener {
+            .setContentDialogButtons(true, "취소", "확인", object : DialogClickListener {
                 override fun onClick() {
                     viewModel.initializeFilterTag()
                     viewModel.getCapinMapPins()

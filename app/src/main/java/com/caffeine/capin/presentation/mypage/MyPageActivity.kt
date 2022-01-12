@@ -65,7 +65,6 @@ class MyPageActivity : AppCompatActivity() {
 
         capinApiService.enqueue(object : Callback<ResponseMyData> {
             override fun onFailure(call: Call<ResponseMyData>, t: Throwable) {
-                Log.d("fail", "error:$t")
             }
 
             override fun onResponse(

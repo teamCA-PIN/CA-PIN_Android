@@ -144,7 +144,7 @@ class MyPageReviewFragment : Fragment() {
     private fun showDeleteReviewConfirmDialog() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile("리뷰를 삭제하시겠습니까?")
-            .setContentDialogButtons(true, object : DialogClickListener {
+            .setContentDialogButtons(true, "취소","신고",object : DialogClickListener {
                 override fun onClick() {
                     deleteMyReviewAtServer()
                     myReviewAdapter.myReviewList.remove(removeReviewInfo)

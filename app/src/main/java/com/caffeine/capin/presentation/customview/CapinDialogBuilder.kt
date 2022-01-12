@@ -8,6 +8,8 @@ class CapinDialogBuilder(
     private var contentDialogButtons: Boolean = false
     private var buttonArray: ArrayList<CapinDialogButton>? = null
     private var exitButton: Boolean = false
+    private var leftButton: String = ""
+    private var rightButton: String = ""
     private var listener: DialogClickListener? = null
 
     fun build(): CapinDialog {
@@ -17,6 +19,8 @@ class CapinDialogBuilder(
             exitButton,
             contentDialogTitle,
             content,
+            leftButton,
+            rightButton,
             contentDialogButtons,
             listener
         )
@@ -42,7 +46,9 @@ class CapinDialogBuilder(
         return this
     }
 
-    fun setContentDialogButtons(contentDialogButtons: Boolean, listener: DialogClickListener): CapinDialogBuilder {
+    fun setContentDialogButtons(contentDialogButtons: Boolean, left: String, right: String, listener: DialogClickListener): CapinDialogBuilder {
+        this.leftButton = left
+        this.rightButton = right
         this.contentDialogButtons = contentDialogButtons
         this.listener = listener
         return this
