@@ -57,19 +57,8 @@ class LoginActivity : AppCompatActivity() {
 
         edittextList.forEach { edittext ->
             edittext.addTextChangedListener(object : TextWatcher {
-                override fun beforeTextChanged(
-                    s: CharSequence?,
-                    start: Int,
-                    count: Int,
-                    after: Int
-                ) {
-
-                }
-
-                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {
-
-                }
-
+                override fun beforeTextChanged(s: CharSequence?, start: Int, count: Int, after: Int) {}
+                override fun onTextChanged(s: CharSequence?, start: Int, before: Int, count: Int) {}
                 override fun afterTextChanged(text: Editable?) {
                     if (text.isNullOrEmpty()) {
                         edittextCount--
@@ -137,26 +126,19 @@ class LoginActivity : AppCompatActivity() {
                 ) {
                     if (response.isSuccessful) {
                         userPreferenceManager.run {
-                            response.body()?.loginData?.token_access?.let { token ->
-                                setUserAccessToken(token)
+                            response.body()?.let { result ->
+                                setUserAccessToken(result.loginData.token_access)
+                                setUserNickName(result.loginData.nickname)
                                 setUserEmail(binding.loginEdittextEmail.text.toString())
                                 setUserPassword(binding.loginEdittextPw.text.toString())
-                            }
-                            response.body()?.loginData?.token_refresh?.let { token ->
-                                setUserRefreshToken(token)
+                                setUserRefreshToken(result.loginData.token_refresh)
                             }
                         }
 
-
                         createCapinToast(this@LoginActivity, "로그인 성공.", 135)
-
                         successLogin()
                     } else {
-                        createCapinRejectToast(
-                            this@LoginActivity,
-                            "이메일 또는 비밀번호가 잘못되었습니다.",
-                            100
-                        )?.show()
+                        createCapinRejectToast(this@LoginActivity, "이메일 또는 비밀번호가 잘못되었습니다.", 100)?.show()
                     }
                 }
 
@@ -182,7 +164,6 @@ class LoginActivity : AppCompatActivity() {
         }
     }
 
-
     private fun signupTextClickEvent() {
         binding.loginTextviewSignup.setOnClickListener() {
             val intent = Intent(this@LoginActivity, SignUpActivity::class.java)
@@ -197,6 +178,4 @@ class LoginActivity : AppCompatActivity() {
         }
 
     }
-
-
 }

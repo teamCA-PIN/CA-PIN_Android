@@ -141,7 +141,7 @@ class MyPageCategoryFragment : Fragment() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile("카테고리를 삭제하시겠습니까?")
             .setContent("해당 카테고리에 저장된 모든 핀이 함께 삭제됩니다.")
-            .setContentDialogButtons(true, object : DialogClickListener {
+            .setContentDialogButtons(true, "취소", "확인", object : DialogClickListener {
                 override fun onClick() {
                     viewModel.deleteMyCategoryAtServer()
                     viewModel.getMyCategoryFromServer()

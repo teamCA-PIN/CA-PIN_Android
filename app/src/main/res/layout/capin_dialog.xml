@@ -104,10 +104,9 @@
                 app:layout_constraintEnd_toEndOf="parent">
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/textview_cancel_button"
+                    android:id="@+id/textview_left_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="취소"
                     android:layout_weight="1"
                     android:background="@color/gray_2"
                     style="@style/Body2"
@@ -115,10 +114,9 @@
 
 
                 <androidx.appcompat.widget.AppCompatButton
-                    android:id="@+id/textview_ok_button"
+                    android:id="@+id/textview_right_button"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="확인"
                     android:layout_weight="1"
                     android:background="@color/maincolor_1"
                     style="@style/Body2"

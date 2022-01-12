@@ -145,9 +145,8 @@ class MyPagePinDetailActivity : AppCompatActivity() {
     private fun showDeletePinConfirmDialog() {
         val dialog: CapinDialog = CapinDialogBuilder(null)
             .setContentDialogTitile("선택된 핀을 모두 삭제하시겠습니까?")
-            .setContentDialogButtons(true, object : DialogClickListener {
+            .setContentDialogButtons(true, "취소", "확인", object : DialogClickListener {
                 override fun onClick() {
-
                     deleteMyPinAtServer()
 
                     for (i in 0 until removePinInfoList.size) {
@@ -176,7 +175,6 @@ class MyPagePinDetailActivity : AppCompatActivity() {
         success.value = UiState.loading(false)
         capinApiService.enqueue(object : Callback<ResponseMyPinData> {
             override fun onFailure(call: Call<ResponseMyPinData>, t: Throwable) {
-                Log.d("fail", "error:$t")
                 success.value = UiState.error(true, t.message)
             }
 

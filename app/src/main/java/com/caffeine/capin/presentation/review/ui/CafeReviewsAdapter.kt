@@ -14,6 +14,7 @@ class CafeReviewsAdapter(private val listener: ExpandImageInterface) : ListAdapt
 ) {
     interface ExpandImageInterface {
         fun expand(images: List<String>)
+        fun edit(review: CafeReview)
     }
 
 
@@ -27,6 +28,7 @@ class CafeReviewsAdapter(private val listener: ExpandImageInterface) : ListAdapt
         holder.bind(getItem(position))
         setTags(holder)
         expandImages(holder)
+        editReview(holder)
     }
 
     private fun setTags(holder: ViewHolder) {
@@ -48,6 +50,12 @@ class CafeReviewsAdapter(private val listener: ExpandImageInterface) : ListAdapt
         }
     }
 
+    private fun editReview(holder: ViewHolder) {
+        val review = getItem(holder.absoluteAdapterPosition)
+        holder.binding.imageviewEdit.setOnClickListener {
+            listener.edit(review)
+        }
+    }
 
     inner class ViewHolder(val binding: ItemCafeReviewBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(review: CafeReview) {

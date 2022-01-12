@@ -10,7 +10,4 @@ class WriteReviewControllerImpl @Inject constructor(
 ): WriteReviewController {
     override fun postReview(cafeId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>): Completable =
         capinApiService.postReview(cafeId, review,imgs)
-
-    override fun modifyReview(reviewId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>?) =
-        capinApiService.modifyReview(reviewId, review, imgs)
 }

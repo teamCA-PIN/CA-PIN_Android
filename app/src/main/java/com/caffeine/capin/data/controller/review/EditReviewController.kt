@@ -5,6 +5,8 @@ import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Single
 import okhttp3.MultipartBody
 
-interface WriteReviewController {
-    fun postReview(cafeId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>): Completable
+interface EditReviewController{
+    fun deleteReview(reviewId: String):Completable
+    fun modifyReview(reviewId: String, review: MultipartBody.Part, imgs: List<MultipartBody.Part?>?): Single<BaseResponse>
+
 }

@@ -23,8 +23,10 @@ data class CafeReviewsResponse(
         val imgs: List<String>?,
     ) {
         fun toCafeReview() = CafeReview(
-            id = this._id,
+            reviewId = this._id,
+            cafeId = this.cafeId,
             profileImageUrl = this.writer.profileImg,
+            writerId = writer._id,
             writerNickname = this.writer.nickname,
             createDate = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'", Locale.KOREA)
                 .parse(this.created_at)!!,

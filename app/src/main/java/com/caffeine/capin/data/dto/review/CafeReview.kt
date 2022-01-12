@@ -4,8 +4,10 @@ import com.caffeine.capin.presentation.review.Recommend
 import java.util.*
 
 data class CafeReview(
-    val id: String,
+    val reviewId: String,
+    val cafeId: String,
     val profileImageUrl: String?,
+    val writerId: String,
     val writerNickname: String,
     val createDate: Date,
     val recommend: List<Recommend>,
