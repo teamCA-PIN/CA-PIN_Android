@@ -166,4 +166,10 @@ interface CapinApiService {
 
     @DELETE("/reviews/{reviewId}")
     fun deleteReview(@Path("reviewId") reviewId: String): Completable
+
+    @DELETE("/category/:categoryId/archive")
+    fun unArchiveCafe(
+        @Path ("categoryId") categoryId: String,
+        @Body cafeList: List<String>
+    ): Completable
 }

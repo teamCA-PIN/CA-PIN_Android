@@ -53,11 +53,7 @@ class MyPageCategoryFragment : Fragment() {
         deleteCategory()
 
         binding.mypageCategoryAddCl.setOnClickListener {
-            val intent =
-                Intent(
-                    this@MyPageCategoryFragment.requireContext(),
-                    MyPageCategoryEditActivity::class.java
-                )
+            val intent = Intent(requireContext(), MyPageCategoryEditActivity::class.java)
             intent.putExtra("feature", "새 카테고리")
             startActivity(intent)
         }
@@ -66,10 +62,7 @@ class MyPageCategoryFragment : Fragment() {
             MyCategoryAdapter.OnCategoryClickListener {
             override fun onCategoryClick(myCategory: MyCategory) {
                 viewModel.changeRemoveCategoryInfo(myCategory)
-                val intent = Intent(
-                    this@MyPageCategoryFragment.requireContext(),
-                    MyPagePinDetailActivity::class.java
-                )
+                val intent = Intent(requireContext(), MyPagePinDetailActivity::class.java)
                 val categoryName = myCategory.name
                 intent.putExtra("name", categoryName)
                 intent.putExtra("categoryPinId", viewModel.removeCategoryInfo.value?._id)

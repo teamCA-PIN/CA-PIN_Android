@@ -274,7 +274,6 @@ class MapFragment : Fragment(), OnMapReadyCallback {
             CustomToastBuilder(requireContext(), "마이맵", binding.constraintlayoutMap)
                 .setYLocation(0.8)
                 .build()
-
         }
         binding.radiobuttonCapinMap.setOnClickListener {
             viewModel.changeIsMyMap(false)

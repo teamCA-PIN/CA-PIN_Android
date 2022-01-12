@@ -2,6 +2,8 @@ package com.caffeine.capin.di
 
 import com.caffeine.capin.data.controller.archive.ArchiveCafeController
 import com.caffeine.capin.data.controller.archive.ArchiveCafeControllerImpl
+import com.caffeine.capin.data.controller.archive.UnArchiveCafeController
+import com.caffeine.capin.data.controller.archive.UnArchiveControllerImpl
 import com.caffeine.capin.data.controller.review.*
 import com.caffeine.capin.data.network.CapinApiService
 import com.caffeine.capin.data.network.TokenController
@@ -41,4 +43,9 @@ object ControllerModule {
     @Singleton
     fun provideEditReviewController(capinApiService: CapinApiService): EditReviewController =
         EditReviewControllerImpl(capinApiService)
+
+    @Provides
+    @Singleton
+    fun provideUnArchiveCafeController(capinApiService: CapinApiService): UnArchiveCafeController =
+        UnArchiveControllerImpl(capinApiService)
 }
