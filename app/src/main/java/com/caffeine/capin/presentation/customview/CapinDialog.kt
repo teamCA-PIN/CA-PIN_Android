@@ -64,11 +64,11 @@ class CapinDialog(
                     visibility = View.VISIBLE
                     textviewRightButton.text = rightButton
                     textviewRightButton.setOnClickListener{
+                        listener?.onClick()
                         dismiss()
                     }
                     textviewLeftButton.text = leftButton
                     textviewLeftButton.setOnClickListener {
-                        listener?.onClick()
                         dismiss()
                     }
                 }
