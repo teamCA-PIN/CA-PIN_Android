@@ -9,6 +9,7 @@ import androidx.core.view.isVisible
 import androidx.lifecycle.MutableLiveData
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.caffeine.capin.R
 import com.caffeine.capin.presentation.customview.CapinDialog
 import com.caffeine.capin.presentation.customview.CapinDialogBuilder
 import com.caffeine.capin.presentation.customview.DialogClickListener
@@ -19,6 +20,7 @@ import com.caffeine.capin.data.network.BaseResponse
 import com.caffeine.capin.data.network.ServiceCreator
 import com.caffeine.capin.data.local.UserPreferenceManager
 import com.caffeine.capin.data.dto.mypage.MyPinInfo
+import com.caffeine.capin.presentation.customview.CustomToastBuilder
 import com.caffeine.capin.presentation.util.UiState
 import dagger.hilt.android.AndroidEntryPoint
 import retrofit2.Call
@@ -233,6 +235,10 @@ class MyPagePinDetailActivity : AppCompatActivity() {
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
                 getMyPinFromServer()
                 myPinInfoAdapter.notifyDataSetChanged()
+                CustomToastBuilder(this@MyPagePinDetailActivity, "카테고리에서 삭제하였습니다.", binding.constraintlayoutRoot)
+                    .setIcon(R.drawable.ic_checkbox_active_toast)
+                    .setBackgroundDrawable(R.drawable.background_capin_toast)
+                    .build()
             }
         })
     }

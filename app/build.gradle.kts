@@ -15,7 +15,7 @@ plugins {
 }
 
 val properties = Properties()
-properties.load(FileInputStream(rootProject.file("./local.properties")))
+properties.load(FileInputStream(rootProject.file("local.properties")))
 
 android {
     defaultConfig {

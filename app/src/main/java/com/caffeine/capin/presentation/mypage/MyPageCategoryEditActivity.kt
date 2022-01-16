@@ -129,12 +129,9 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         )
 
         capinApiService.enqueue(object : Callback<BaseResponse> {
-            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {
-                Log.d("fail", "error:$t")
-            }
+            override fun onFailure(call: Call<BaseResponse>, t: Throwable) {}
 
             override fun onResponse(call: Call<BaseResponse>, response: Response<BaseResponse>) {
-                Log.d("success", "성공")
                 finish()
             }
         })

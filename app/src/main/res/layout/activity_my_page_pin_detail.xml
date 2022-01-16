@@ -10,6 +10,7 @@
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_root"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         tools:context=".presentation.mypage.MyPagePinDetailActivity">
