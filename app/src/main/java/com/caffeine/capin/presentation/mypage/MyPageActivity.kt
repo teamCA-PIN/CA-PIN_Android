@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.caffeine.capin.presentation.main.MainActivity
@@ -72,11 +73,19 @@ class MyPageActivity : AppCompatActivity() {
                 response: Response<ResponseMyData>
             ) {
                 if (response.isSuccessful) {
-                    binding.mypageUsernameTv.setText(response.body()?.myInfo?.nickname as String)
-                    binding.mypageCafetiTv.setText(response.body()?.myInfo?.cafeti?.type as String)
-                    Glide.with(binding.mypageProfileIv.context)
-                        .load(response.body()?.myInfo?.profileImg)
-                        .into(binding.mypageProfileIv)
+                    response.body()?.myInfo?.let {
+                        binding.mypageUsernameTv.text = it.nickname
+                        binding.mypageCafetiTv.text = it.cafeti.type
+                        binding.mypageProfileIv.run {
+                            if (it.profileImg.isNullOrEmpty()) {
+                                setBackgroundColor(ContextCompat.getColor(this@MyPageActivity, R.color.gray_3))
+                            } else {
+                                Glide.with(this.context)
+                                    .load(response.body()?.myInfo?.profileImg)
+                                    .into(this)
+                            }
+                        }
+                    }
                 }
             }
         })

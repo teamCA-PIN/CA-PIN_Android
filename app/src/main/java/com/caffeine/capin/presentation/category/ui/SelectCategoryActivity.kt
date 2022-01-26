@@ -30,6 +30,7 @@ class SelectCategoryActivity : AppCompatActivity() {
         setToolbar()
         archiveCafeToCategory()
         addCategory()
+        finishFragment()
     }
 
     override fun onResume() {
@@ -80,6 +81,12 @@ class SelectCategoryActivity : AppCompatActivity() {
             val intent = Intent(this, MyPageCategoryEditActivity::class.java)
             intent.putExtra("feature", "새 카테고리")
             startActivity(intent)
+        }
+    }
+
+    private fun finishFragment() {
+        binding.buttonCancel.setOnClickListener {
+            finish()
         }
     }
 }

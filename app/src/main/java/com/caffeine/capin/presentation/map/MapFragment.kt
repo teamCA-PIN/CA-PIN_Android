@@ -310,7 +310,11 @@ class MapFragment : Fragment(), OnMapReadyCallback {
                 flexDirection = FlexDirection.ROW
             }
             viewModel.selectedCafeDetail.observe(viewLifecycleOwner) {
-                (binding.recyclerviewTags.adapter as CafeTagListAdapter).submitList(it.data?.tags?.map { it.name })
+                val tags = it.data?.tags?.map { it.name }
+                (binding.recyclerviewTags.adapter as CafeTagListAdapter).submitList(
+                    if((tags?.count() ?: 0) > 3) { tags?.subList(0,3) } else { tags }
+                )
+
                 when(it.status) {
                     UiState.Status.LOADING -> applySkeletonUI(true)
                     UiState.Status.SUCCESS -> applySkeletonUI(false)
