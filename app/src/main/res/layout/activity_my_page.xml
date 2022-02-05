@@ -91,7 +91,7 @@
             android:id="@+id/mypage_cafeti_btn_tv"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="카페TI 검사"
+            android:text="CAFETI 검사"
             android:theme="@style/Body3"
             android:textColor="@color/black"
             android:textSize="12dp"

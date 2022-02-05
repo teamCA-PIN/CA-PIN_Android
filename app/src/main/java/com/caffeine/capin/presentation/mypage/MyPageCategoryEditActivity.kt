@@ -46,7 +46,7 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
         doneButtonClickEvent()
     }
 
-    fun selectSingleColor() {
+    private fun selectSingleColor() {
         var currentColor = binding.categoryColor1Iv
         var previousColor = binding.categoryColor2Iv
 
@@ -94,7 +94,6 @@ class MyPageCategoryEditActivity : AppCompatActivity() {
     }
 
     private fun postNewCategoryToServer() {
-
         val requestNewCategoryData = RequestNewCategoryData(
             categoryName = binding.mypageCategoryEditEdt.text.toString(),
             colorIdx = selectedColor

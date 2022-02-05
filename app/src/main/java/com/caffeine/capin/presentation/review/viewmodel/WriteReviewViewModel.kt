@@ -7,6 +7,7 @@ import android.util.Log
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.caffeine.capin.data.controller.review.EditReviewController
 import com.caffeine.capin.domain.entity.review.PictureUriEntity
 import com.caffeine.capin.data.dto.review.RequestWriteReview
 import com.caffeine.capin.data.controller.review.WriteReviewController
@@ -27,8 +28,8 @@ import javax.inject.Inject
 
 @HiltViewModel
 class WriteReviewViewModel @Inject constructor(
-    private val writeReviewController: WriteReviewController
-
+    private val writeReviewController: WriteReviewController,
+    private val editReviewController: EditReviewController
 ) : ViewModel() {
     val rateOfReview = MutableLiveData<Float>(0.0f)
     val contentsOfReview = MutableLiveData<String>()
@@ -164,7 +165,7 @@ class WriteReviewViewModel @Inject constructor(
         }
 
         _successPost.value = UiState.loading(null)
-        writeReviewController.modifyReview(
+        editReviewController.modifyReview(
             reviewId.value ?: "",
             reviewJson,
             requestMap

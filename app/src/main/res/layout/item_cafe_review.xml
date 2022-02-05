@@ -38,7 +38,8 @@
             android:text="@{review.writerNickname}"
             android:textColor="@color/black"
             app:layout_constraintStart_toEndOf="@+id/imageview_profile"
-            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintTop_toTopOf="@id/imageview_edit"
+            app:layout_constraintBottom_toBottomOf="@id/imageview_edit"
             tools:text="친절한 하마아저씨" />
 
         <TextView
@@ -49,9 +50,19 @@
             android:layout_marginStart="11dp"
             android:textColor="@color/gray_4"
             app:date="@{review.createDate}"
-            app:layout_constraintStart_toEndOf="@+id/textview_name"
-            app:layout_constraintTop_toTopOf="@+id/textview_name"
+            app:layout_constraintStart_toEndOf="@id/textview_name"
+            app:layout_constraintTop_toTopOf="@id/imageview_edit"
+            app:layout_constraintBottom_toBottomOf="@id/imageview_edit"
             tools:text="2020.04.01" />
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_edit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_icon_edit"
+            app:layout_constraintEnd_toEndOf="parent"
+            android:layout_marginEnd="18dp"
+            app:layout_constraintTop_toTopOf="parent"/>
 
         <ImageView
             android:id="@+id/imageview_star"
@@ -83,7 +94,7 @@
             android:orientation="horizontal"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/imageview_edit"
             app:layout_constraintBottom_toBottomOf="@id/imageview_star"
             app:layout_constraintStart_toEndOf="@id/textview_rating"
             app:layout_constraintTop_toTopOf="@id/imageview_star" />
@@ -95,11 +106,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
             android:layout_marginBottom="32dp"
-            android:layout_marginEnd="16dp"
             android:text="@{review.content}"
             android:textColor="@color/black"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintEnd_toEndOf="@id/imageview_edit"
             app:layout_constraintHorizontal_bias="0.0"
             app:layout_constraintStart_toStartOf="@+id/textview_name"
             app:layout_constraintTop_toBottomOf="@+id/recyclerview_tag"

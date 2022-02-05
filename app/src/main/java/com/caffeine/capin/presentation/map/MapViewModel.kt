@@ -9,6 +9,7 @@ import com.caffeine.capin.domain.entity.map.CafeInformationEntity
 import com.caffeine.capin.domain.repository.map.CafeListRepository
 import com.caffeine.capin.domain.repository.map.MyMapLocationsRepository
 import com.caffeine.capin.domain.entity.map.TagFilterEntity
+import com.caffeine.capin.domain.usecase.UnArchiveCafeUseCase
 import com.caffeine.capin.presentation.util.UiState
 import com.naver.maps.map.overlay.Marker
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,7 +21,8 @@ import kotlin.collections.ArrayList
 @HiltViewModel
 class MapViewModel @Inject constructor(
     private val cafeListRepository: CafeListRepository,
-    private val myMapLocationsRepository: MyMapLocationsRepository
+    private val myMapLocationsRepository: MyMapLocationsRepository,
+    private val unArchiveCafeUseCase: UnArchiveCafeUseCase
 ) : ViewModel() {
     private val _isMyMap = MutableLiveData<Boolean>()
     val isMyMap: LiveData<Boolean>

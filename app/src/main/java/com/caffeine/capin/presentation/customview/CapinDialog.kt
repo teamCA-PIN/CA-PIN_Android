@@ -17,6 +17,8 @@ class CapinDialog(
     private val exitButton: Boolean,
     private val contentDialogTitle: String?,
     private val content: String?,
+    private val leftButton: String?,
+    private val rightButton: String?,
     private val contentDialogButtons: Boolean,
     private val listener: DialogClickListener?
     ): DialogFragment() {
@@ -57,14 +59,18 @@ class CapinDialog(
         }
 
         if (contentDialogButtons) {
-            capinDialogBinding.linearlayoutContentDialogButton.apply {
-                visibility = View.VISIBLE
-                capinDialogBinding.textviewCancelButton.setOnClickListener{
-                    dismiss()
-                }
-                capinDialogBinding.textviewOkButton.setOnClickListener {
-                    listener?.onClick()
-                    dismiss()
+            capinDialogBinding.run {
+                linearlayoutContentDialogButton.apply {
+                    visibility = View.VISIBLE
+                    textviewRightButton.text = rightButton
+                    textviewRightButton.setOnClickListener{
+                        listener?.onClick()
+                        dismiss()
+                    }
+                    textviewLeftButton.text = leftButton
+                    textviewLeftButton.setOnClickListener {
+                        dismiss()
+                    }
                 }
             }
         }

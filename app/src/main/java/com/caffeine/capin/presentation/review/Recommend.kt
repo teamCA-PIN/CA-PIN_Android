@@ -6,7 +6,7 @@ package com.caffeine.capin.presentation.review
  */
 
 enum class Recommend(
-    private val id: Int,
+    val id: Int,
     val description: String,
 ) {
     MOOD(0, "분위기 추천"),

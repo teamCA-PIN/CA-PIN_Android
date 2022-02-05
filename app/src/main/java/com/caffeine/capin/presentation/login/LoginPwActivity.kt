@@ -37,7 +37,7 @@ class LoginPwActivity : AppCompatActivity() {
         }
 
         binding.loginpwDeleteBtn.setOnClickListener {
-            binding.loginpwEdittextEmail.text!!.clear()
+            binding.loginpwEdittextEmail.text?.clear()
             binding.loginpwDeleteBtn.isVisible = false
         }
 

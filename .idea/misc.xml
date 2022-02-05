@@ -129,21 +129,24 @@
         <entry key="app/src/main/res/layout/activity_coffee_most.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_coffee_taste.xml" value="0.3070652173913043" />
         <entry key="app/src/main/res/layout/activity_login.xml" value="0.25729166666666664" />
+        <entry key="app/src/main/res/layout/activity_my_page.xml" value="0.2644927536231884" />
         <entry key="app/src/main/res/layout/activity_select_category.xml" value="0.15121580547112462" />
         <entry key="app/src/main/res/layout/activity_signup.xml" value="0.22056159420289856" />
         <entry key="app/src/main/res/layout/activity_splash.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/activity_write_review.xml" value="0.1974169741697417" />
         <entry key="app/src/main/res/layout/capin_dialog.xml" value="0.16032608695652173" />
         <entry key="app/src/main/res/layout/chip_tag.xml" value="0.29635416666666664" />
+        <entry key="app/src/main/res/layout/dialog_my_review_image.xml" value="0.2033514492753623" />
         <entry key="app/src/main/res/layout/fragment_map.xml" value="0.3720528755478676" />
         <entry key="app/src/main/res/layout/fragment_map_profile.xml" value="0.335" />
         <entry key="app/src/main/res/layout/fragment_my_page_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/fragment_my_page_review.xml" value="0.33229166666666665" />
+        <entry key="app/src/main/res/layout/fragment_my_review_image.xml" value="0.16210739614994935" />
         <entry key="app/src/main/res/layout/fragment_policy.xml" value="0.25" />
         <entry key="app/src/main/res/layout/fragment_setting.xml" value="0.253125" />
         <entry key="app/src/main/res/layout/fragment_tag_filter.xml" value="0.15885416666666666" />
         <entry key="app/src/main/res/layout/fragment_with_draw.xml" value="0.29635416666666664" />
-        <entry key="app/src/main/res/layout/item_cafe_review.xml" value="0.2183288409703504" />
+        <entry key="app/src/main/res/layout/item_cafe_review.xml" value="0.33" />
         <entry key="app/src/main/res/layout/item_pin_detail_tag.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_recyclerview_category.xml" value="0.29635416666666664" />
         <entry key="app/src/main/res/layout/item_review_picture.xml" value="0.33229166666666665" />
