@@ -59,7 +59,6 @@ class CoffeeMenuActivity : AppCompatActivity() {
     private fun nextButtonClickEvent() {
         binding.btnNext.setOnClickListener() {
             val intent = Intent(this@CoffeeMenuActivity, CafeStyleActivity::class.java)
-
             val checkedButton = binding.radiogroupCoffeeMenu.checkedRadioButtonId
             if (checkedButton != -1) {
                 when(checkedButton) {

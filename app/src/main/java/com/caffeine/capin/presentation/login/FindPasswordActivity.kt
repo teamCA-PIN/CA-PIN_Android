@@ -78,6 +78,7 @@ class FindPasswordActivity : AppCompatActivity() {
         }
 
         binding.pwDeleteBtn.setOnClickListener {
+            binding.edittextNewpw.text?.clear()
             binding.pwDeleteBtn.isVisible = false
         }
 
@@ -97,6 +98,7 @@ class FindPasswordActivity : AppCompatActivity() {
         })
 
         binding.pwagainDeleteBtn.setOnClickListener {
+            binding.edittextNewpwcheck.text?.clear()
             binding.pwagainDeleteBtn.isVisible = false
         }
 
