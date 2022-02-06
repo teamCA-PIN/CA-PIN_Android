@@ -48,44 +48,6 @@ class SignUpActivity : AppCompatActivity() {
         binding = ActivitySignupBinding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        val textView = findViewById<TextView>(R.id.textView)
-
-        // 1
-        val content = textView.text.toString()
-        val spannableString = SpannableString(content)
-
-        // 2
-
-        val word = "서비스 이용약관"
-        val start = content.indexOf(word)
-        val end = start + word.length
-
-        val word2 = "개인정보처리방침"
-        val start2 = content.indexOf(word2)
-        val end2 = start2 + word2.length
-
-
-        // 3
-        spannableString.setSpan(
-            ForegroundColorSpan(Color.parseColor("#000000")),
-            start,
-            end,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-        spannableString.setSpan(
-            ForegroundColorSpan(Color.parseColor("#000000")),
-            start2,
-            end2,
-            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
-        )
-
-
-        // 4
-        textView.text = spannableString
-
-
-
         binding.btnSignup.clipToOutline = true
 
         binding.root.run {
