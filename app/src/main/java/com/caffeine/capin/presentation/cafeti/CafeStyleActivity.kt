@@ -35,7 +35,7 @@ class CafeStyleActivity : AppCompatActivity() {
         binding.btnBefore.setOnClickListener() {
             when (coffeebinding.radiogroupCoffeeMost.checkedRadioButtonId) {
                 coffeebinding.radiobtnCoffee.id -> {
-                    val intent = Intent(this@CafeStyleActivity, CoffeeMostActivity::class.java)
+                    val intent = Intent(this@CafeStyleActivity, CoffeeTasteActivity::class.java)
                     startActivity(intent)
                 }
                 coffeebinding.radiobtnNoncoffee.id -> {
