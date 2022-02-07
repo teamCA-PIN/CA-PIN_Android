@@ -122,6 +122,7 @@ class SignUpActivity : AppCompatActivity() {
         }
 
         binding.pwDeleteBtn.setOnClickListener {
+            binding.edittextPw.text?.clear()
             binding.pwDeleteBtn.isVisible = false
         }
 
@@ -135,6 +136,7 @@ class SignUpActivity : AppCompatActivity() {
         })
 
         binding.emailidDeleteBtn.setOnClickListener {
+            binding.edittextEmail.text?.clear()
             binding.emailidDeleteBtn.isVisible = false
         }
 
@@ -148,6 +150,7 @@ class SignUpActivity : AppCompatActivity() {
         })
 
         binding.pwagainDeleteBtn.setOnClickListener {
+            binding.edittextPwagain.text?.clear()
             binding.pwagainDeleteBtn.isVisible = false
         }
 
@@ -162,6 +165,7 @@ class SignUpActivity : AppCompatActivity() {
 
 
         binding.usernameDeleteBtn.setOnClickListener {
+            binding.edittextName.text?.clear()
             binding.usernameDeleteBtn.isVisible = false
         }
 
