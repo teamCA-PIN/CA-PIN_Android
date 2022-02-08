@@ -85,4 +85,3 @@
 
 # dto
 -keep class com.caffeine.capin.data.dto.** { *; }
-

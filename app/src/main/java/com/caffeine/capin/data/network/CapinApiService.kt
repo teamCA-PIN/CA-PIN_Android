@@ -131,9 +131,8 @@ interface CapinApiService {
 
     @POST("/cafeti")
     fun postCafeti(
-        @Header("token") token: String,
         @Body body: RequestCafetiData
-    ): Call<ResponseCafetiData>
+    ): Single<ResponseCafetiData>
 
     @POST("/user/emailAuth")
     fun postLoginPw(

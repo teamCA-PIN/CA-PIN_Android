@@ -53,5 +53,45 @@
     <string name="service_using_terms_url">https://beryl-balloon-2b5.notion.site/21f17ec3a90a44779ee1ab7dae8c1110</string>
     <string name="personal_info_terms_url">https://beryl-balloon-2b5.notion.site/b977d86415c54446bb8fdb42fd7bed48</string>
     <string name="approve_withdraw">위 내용을 숙지하였으며, 동의합니다.</string>
+
+    <string name="question_format">Question.0%d</string>
+    <string name="question_drink_type">주로 마시는 음료는 무엇인가요?</string>
+    <string name="question_coffee_taste">어떤 맛을 선호하시나요?</string>
+    <string name="question_noncoffe_menu">주로 마시는 메뉴는 무엇인가요?</string>
+    <string name="question_cafe_style">어떤 스타일의 카페를 선호하시나요?</string>
+    <string name="question_cafe_mood">어떤 색감의 카페를 선호하시나요?</string>
+
+    <string-array name="drink_type_answers">
+        <item>커피</item>
+        <item>논커피</item>
+    </string-array>
+
+    <string-array name="coffee_taste_answers">
+        <item>산미가 있는</item>
+        <item>산미가 없는</item>
+        <item>상관없음</item>
+    </string-array>
+
+    <string-array name="non_coffee_menu_answers">
+        <item>티</item>
+        <item>라떼</item>
+        <item>쥬스,에이드,스무디</item>
+    </string-array>
+
+    <string-array name="cafe_style_answers">
+        <item>모던</item>
+        <item>빈티지</item>
+        <item>힙</item>
+        <item>특색 있는</item>
+        <item>아기자기한</item>
+    </string-array>
+
+    <string-array name="cafe_mood_answers">
+        <item>어두운</item>
+        <item>채광이 좋은</item>
+        <item>따뜻한</item>
+        <item>컬러풀한</item>
+    </string-array>
 </resources>
+
 

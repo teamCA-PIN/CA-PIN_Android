@@ -48,7 +48,7 @@
         <activity android:name=".presentation.cafeti.CafeColorActivity" />
         <activity android:name=".presentation.cafeti.CafeStyleActivity" />
         <activity android:name=".presentation.cafeti.CoffeeMenuActivity" />
-        <activity android:name=".presentation.cafeti.CafetiActivity"/>
+        <activity android:name=".presentation.cafeti.ui.CafetiActivity"/>
         <activity android:name=".presentation.cafeti.CafetiResultActivity" />
         <activity android:name=".presentation.cafeti.CoffeeMostActivity" />
         <activity android:name=".presentation.login.FindPasswordActivity" />

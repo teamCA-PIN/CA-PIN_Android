@@ -2,7 +2,6 @@ package com.caffeine.capin.presentation.mypage
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.OnBackPressedCallback
@@ -12,7 +11,7 @@ import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.caffeine.capin.presentation.main.MainActivity
 import com.caffeine.capin.R
-import com.caffeine.capin.presentation.cafeti.CafetiActivity
+import com.caffeine.capin.presentation.cafeti.ui.CafetiActivity
 import com.caffeine.capin.databinding.ActivityMyPageBinding
 import com.caffeine.capin.databinding.MyPageTabIconBinding
 import com.caffeine.capin.data.dto.mypage.ResponseMyData
@@ -94,6 +93,7 @@ class MyPageActivity : AppCompatActivity() {
     private fun setButtonClickEvent() {
         binding.mypageCafetiBtnTv.setOnClickListener {
             val intent = Intent(this, CafetiActivity::class.java)
+            intent.putExtra(FROM_MYPAGE, true)
             startActivity(intent)
         }
 
@@ -130,5 +130,9 @@ class MyPageActivity : AppCompatActivity() {
         TabLayoutMediator(binding.mypageTabLayout, viewPager) { tab, position ->
             tab.customView = getTabView(position)
         }.attach()
+    }
+
+    companion object {
+        const val FROM_MYPAGE = "FROM_MYPAGE"
     }
 }

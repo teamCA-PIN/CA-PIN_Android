@@ -2,6 +2,7 @@ package com.caffeine.capin.presentation.util
 
 import android.graphics.Color
 import android.net.Uri
+import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
@@ -23,6 +24,13 @@ import java.text.SimpleDateFormat
 import java.util.*
 
 object BindingAdapter {
+
+    @BindingAdapter("load_drawable")
+    @JvmStatic
+    fun ImageView.loadDrawable(drawable: Int?) {
+        Glide.with(context).load(drawable).into(this)
+    }
+
     @BindingAdapter("load_url")
     @JvmStatic
     fun ImageView.loadImageView(url: String?) {

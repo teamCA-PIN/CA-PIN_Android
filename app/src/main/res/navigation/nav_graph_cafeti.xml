@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph_cafeti"
+    app:startDestination="@id/startCafetiFragment">
+
+    <fragment
+        android:id="@+id/startCafetiFragment"
+        android:name="com.caffeine.capin.presentation.cafeti.ui.StartCafetiFragment"
+        android:label="StartCafetiFragment"
+        tools:layout="@layout/fragment_start_cafeti">
+        <action
+            android:id="@+id/action_startCafetiFragment_to_cafetiQuestionFragment"
+            app:destination="@id/cafetiQuestionFragment" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/cafetiQuestionFragment"
+        android:name="com.caffeine.capin.presentation.cafeti.ui.CafetiQuestionFragment"
+        android:label="CafetiQuestionFragment"
+        tools:layout="@layout/fragment_cafeti_question">
+        <action
+            android:id="@+id/action_cafetiQuestionFragment_to_cafetiResultFragment"
+            app:destination="@id/cafetiResultFragment"
+            app:popUpToInclusive="true"
+            app:popUpTo="@id/cafetiQuestionFragment"/>
+    </fragment>
+    <fragment
+        android:id="@+id/cafetiResultFragment"
+        android:name="com.caffeine.capin.presentation.cafeti.ui.CafetiResultFragment"
+        android:label="CafetiResultFragment"
+        tools:layout="@layout/fragment_cafeti_result">
+        <argument android:name="responseCafeti"
+            app:argType="com.caffeine.capin.data.dto.cafeti.ResponseCafetiData"/>
+    </fragment>
+</navigation>
