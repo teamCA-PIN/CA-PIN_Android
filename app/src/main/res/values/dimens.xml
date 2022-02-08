@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="radius_mapview_cafe_iamge">10dp</dimen>
+    <dimen name="radius_review_picture">5dp</dimen>
+    <dimen name="chip_margin">3.5dp</dimen>
+    <dimen name="chip_bottom_margin">7dp</dimen>
+    <dimen name="radius_8dp">8dp</dimen>
+</resources>

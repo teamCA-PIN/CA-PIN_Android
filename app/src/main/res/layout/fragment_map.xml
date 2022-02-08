@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.caffeine.capin.presentation.map.MapViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_map"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.map.MapFragment">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/white"
+            android:paddingTop="50dp"
+            android:paddingBottom="14dp"
+            android:paddingHorizontal="12dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            android:elevation="10dp">
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_logo"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_capintypo"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_setting"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/ic_icon_setting"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_mypage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/ic_icon_mypage"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageview_setting"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/imageview_filter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="14dp"
+                android:background="@drawable/ic_icon_filter"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/imageview_mypage"
+                app:layout_constraintBottom_toBottomOf="parent"/>
+
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <com.naver.maps.map.MapView
+            android:id="@+id/mapview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.naver.maps.map.widget.ZoomControlView
+            android:id="@+id/zoomcontrolview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintVertical_bias="0.356"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <com.naver.maps.map.widget.LocationButtonView
+            android:id="@+id/location_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            app:layout_constraintTop_toBottomOf="@id/zoomcontrolview"
+            app:layout_constraintStart_toStartOf="@id/zoomcontrolview"
+            app:layout_constraintEnd_toEndOf="@id/zoomcontrolview"/>
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cardview_cafe_selected"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintWidth_percent="0.93"
+            android:layout_marginBottom="12dp"
+            app:cardCornerRadius="10dp"
+            app:layout_constraintBottom_toTopOf="@id/radiogroup_map"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.imageview.ShapeableImageView
+                    android:id="@+id/imageview_cafe"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:scaleType="centerCrop"
+                    android:visibility="@{viewModel.selectedCafeDetail.data == null ? view.GONE : view.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="@id/constraintlayout_pin_save"
+                    app:layout_constraintDimensionRatio="1:1"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    android:layout_marginStart="12dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="@id/textview_cafe_name"
+                    app:layout_constraintWidth_percent="0.417"
+                    app:loadCafeImageMapView="@{viewModel.selectedCafeDetail.data.img}"
+                    app:useCircleOutlineRadius="@{@dimen/radius_mapview_cafe_iamge}" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_cafe_name"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@{viewModel.selectedCafeDetail.data.name}"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:theme="@style/Headline1"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    app:layout_constraintStart_toEndOf="@id/imageview_cafe"
+                    app:layout_constraintEnd_toEndOf="@id/constraintlayout_pin_save"
+                    app:layout_constraintTop_toTopOf="parent"
+                    tools:text="후엘고" />
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/imageview_star"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/ic_star_small"
+                    android:layout_marginEnd="4dp"
+                    android:visibility="@{viewModel.selectedCafeDetail.data == null ? view.GONE : view.VISIBLE}"
+                    app:layout_constraintTop_toTopOf="@id/textview_cafe_rating"
+                    app:layout_constraintBottom_toBottomOf="@id/textview_cafe_rating"
+                    app:layout_constraintStart_toStartOf="@+id/textview_cafe_name" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_cafe_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="14dp"
+                    android:theme="@style/Body4"
+                    android:visibility="@{viewModel.selectedCafeDetail.data == null ? view.GONE : view.VISIBLE}"
+                    android:text="@{viewModel.selectedCafeDetail.data.average != null ? @string/float_0_1(viewModel.selectedCafeDetail.data.average): @string/float_0_1(0.0)}"
+                    android:textColor="@color/pointcolor_yellow"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginTop="4dp"
+                    app:layout_constraintVertical_bias="0.0"
+                    app:layout_constraintTop_toBottomOf="@id/textview_cafe_name"
+                    app:layout_constraintStart_toEndOf="@id/imageview_star"
+                    tools:text="4.5"/>
+
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview_tags"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Body5"
+                    android:textSize="12dp"
+                    android:orientation="horizontal"
+                    app:layoutManager="com.google.android.flexbox.FlexboxLayoutManager"
+                    android:textColor="@color/white"
+                    android:layout_marginVertical="6dp"
+                    app:layout_constraintTop_toBottomOf="@id/textview_cafe_rating"
+                    app:layout_constraintStart_toStartOf="@id/textview_cafe_name"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toTopOf="@id/constraintlayout_pin_save"
+                    app:layout_constraintHorizontal_bias="0.0"
+                    tools:listitem="@layout/item_pin_detail_tag"
+                    tools:itemCount="4"
+                    tools:text="브런치카페"/>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/constraintlayout_pin_save"
+                    android:layout_width="0dp"
+                    android:layout_height="40dp"
+                    android:layout_marginHorizontal="11dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@{viewModel.selectedCafeDetail.data.isSaved ? @drawable/shape_blue_5dp: @drawable/shape_blue_stroke_5dp }"
+                    android:visibility="@{viewModel.selectedCafeDetail.data == null ? view.GONE : view.VISIBLE}"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintVertical_bias="1.0"
+                    app:layout_constraintTop_toBottomOf="@id/recyclerview_tags"
+                    app:layout_constraintStart_toEndOf="@id/imageview_cafe">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkbox_pin_icon"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:background="@drawable/selector_pinsave_icon"
+                        android:button="@null"
+                        android:clickable="false"
+                        android:checked="@{viewModel.selectedCafeDetail.data.isSaved}"
+                        app:layout_constraintBottom_toBottomOf="@id/checkbox_pin_text"
+                        app:layout_constraintEnd_toStartOf="@id/checkbox_pin_text"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="@id/checkbox_pin_text" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkbox_pin_text"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:button="@null"
+                        android:fontFamily="@font/noto_sans_kr_medium"
+                        android:gravity="center"
+                        android:text="@{viewModel.selectedCafeDetail.data.isSaved ? @string/already_saved: @string/save_pin}"
+                        android:clickable="false"
+                        android:checked="@{viewModel.selectedCafeDetail.data.isSaved}"
+                        android:textColor="@color/selector_tagfilter_text"
+                        android:textSize="14dp"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toEndOf="@id/checkbox_pin_icon"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmerlayout"
+                    android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    app:layout_constraintDimensionRatio="1:0.49"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent">
+
+                    <include layout="@layout/item_skeleton_cafe"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"/>
+
+                </com.facebook.shimmer.ShimmerFrameLayout>
+
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+        <RadioGroup
+            android:id="@+id/radiogroup_map"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="1:0.3"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintVertical_bias="0.9"
+            android:orientation="horizontal"
+            android:checkedButton="@id/radiobutton_capin_map"
+            android:gravity="center"
+            android:paddingVertical="6dp"
+            android:paddingHorizontal="6dp"
+            android:elevation="2dp"
+            android:background="@drawable/background_map_radio_group"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radiobutton_capin_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:button="@null"
+                android:textSize="16dp"
+                android:paddingHorizontal="40dp"
+                android:theme="@style/Subhead"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:textAlignment="center"
+                android:background="@drawable/selector_capin_map_toggle"/>
+
+            <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/radiobutton_my_map"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:theme="@style/Subhead"
+                android:layout_weight="1"
+                android:paddingHorizontal="40dp"
+                android:textSize="16dp"
+                android:textAlignment="center"
+                android:button="@null"
+                android:background="@drawable/selector_my_map_toggle"/>
+        </RadioGroup>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

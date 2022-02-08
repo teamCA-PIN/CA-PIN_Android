@@ -2,20 +2,73 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.caffeine.capin">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="true" />
+
     <application
-        android:allowBackup="true"
-        android:icon="@mipmap/ic_launcher"
+        android:name=".application.CapinApplication"
+        android:allowBackup="false"
+        android:fullBackupContent="false"
+        android:icon="@mipmap/ic_capin_logo_round"
         android:label="@string/app_name"
+        android:requestLegacyExternalStorage="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.Capin">
-        <activity android:name=".MainActivity">
+        android:theme="@style/Theme.Capin"
+        android:usesCleartextTraffic="true">
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/filepaths" />
+        </provider>
+
+        <activity android:name=".presentation.mypage.MyPageActivity">
+
+        </activity>
+        <activity android:name=".presentation.mypage.MyPagePinDetailActivity" />
+        <activity android:name=".presentation.mypage.MyPageProfileEditActivity" />
+        <activity android:name=".presentation.mypage.MyPageCategoryEditActivity" />
+        <activity android:name=".presentation.main.MainActivity">
+
+        </activity>
+        <activity android:name=".presentation.cafeti.CoffeeTasteActivity" />
+        <activity android:name=".presentation.cafeti.CafeColorActivity" />
+        <activity android:name=".presentation.cafeti.CafeStyleActivity" />
+        <activity android:name=".presentation.cafeti.CoffeeMenuActivity" />
+        <activity android:name=".presentation.cafeti.ui.CafetiActivity"/>
+        <activity android:name=".presentation.cafeti.CafetiResultActivity" />
+        <activity android:name=".presentation.cafeti.CoffeeMostActivity" />
+        <activity android:name=".presentation.login.FindPasswordActivity" />
+        <activity android:name=".presentation.login.LoginPwActivity" />
+        <activity android:name=".presentation.signup.SignUpActivity" />
+        <activity android:name=".presentation.login.LoginActivity"/>
+        <activity android:name=".presentation.login.SplashActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".presentation.cafedetail.ui.CafeDetailsActivity" />
+        <activity android:name=".presentation.review.ui.WriteReviewActivity">
+
+        </activity>
+        <activity android:name=".presentation.category.ui.SelectCategoryActivity"></activity>
+        <activity android:name=".presentation.cafedetail.ui.CafeMenusActivity" />
+        <activity android:name=".presentation.review.ui.AllCafeReviewsActivity" />
     </application>
 
 </manifest>

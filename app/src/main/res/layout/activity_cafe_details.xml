@@ -1,0 +1,405 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="viewModel"
+            type="com.caffeine.capin.presentation.cafedetail.viewmodel.CafeDetailsViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/constraintlayout_root"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".presentation.cafedetail.ui.CafeDetailsActivity">
+
+        <androidx.coordinatorlayout.widget.CoordinatorLayout
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_bar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <com.google.android.material.appbar.AppBarLayout
+                android:id="@+id/appBarLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <com.google.android.material.appbar.CollapsingToolbarLayout
+                    android:id="@+id/collapsing_toolbar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:collapsedTitleGravity="center"
+                    app:collapsedTitleTextAppearance="@style/CollapsedTitleStyle"
+                    app:contentScrim="@color/white"
+                    app:expandedTitleGravity="center"
+                    app:expandedTitleTextAppearance="@style/ExpandedTitleStyle"
+                    app:layout_scrollFlags="scroll|exitUntilCollapsed"
+                    app:scrimAnimationDuration="150"
+                    app:title="@{viewModel.cafeDetailsEntity.cafeName}"
+                    app:toolbarId="@id/toolbar">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        app:layout_collapseMode="pin">
+
+                        <ImageView
+                            android:id="@+id/imageView8"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:scaleType="centerCrop"
+                            android:src="@mipmap/ic_launcher"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintDimensionRatio="1:1"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:loadCafeMainImage="@{viewModel.cafeDetailsEntity.mainImageUrl}"
+                            tools:src="@tools:sample/backgrounds/scenic" />
+
+                        <View
+                            android:id="@+id/image_mask"
+                            android:layout_width="0dp"
+                            android:layout_height="0dp"
+                            android:background="@drawable/gradient_image_mask"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <androidx.appcompat.widget.Toolbar
+                        android:id="@+id/toolbar"
+                        android:layout_width="match_parent"
+                        android:layout_height="64dp"
+                        app:contentInsetStart="0dp"
+                        app:layout_constraintTop_toTopOf="parent"/>
+
+                    <androidx.appcompat.widget.AppCompatImageView
+                        android:id="@+id/imageview_back"
+                        android:layout_width="wrap_content"
+                        android:layout_height="64dp"
+                        android:layout_marginStart="16dp"
+                        android:src="@drawable/icon_back_black"
+                        app:layout_collapseMode="pin"/>
+
+                </com.google.android.material.appbar.CollapsingToolbarLayout>
+
+            </com.google.android.material.appbar.AppBarLayout>
+
+            <androidx.core.widget.NestedScrollView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:overScrollMode="never"
+                app:layout_behavior="@string/appbar_scrolling_view_behavior"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/appBarLayout">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:id="@+id/text_cafe_name"
+                        style="@style/Display1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="24dp"
+                        android:text="@{viewModel.cafeDetailsEntity.cafeName}"
+                        android:textColor="@color/black"
+                        android:textSize="26dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        tools:text="후엘고" />
+
+                    <ImageView
+                        android:id="@+id/imageview_star"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        app:layout_constraintBottom_toBottomOf="@+id/text_star_rate"
+                        app:layout_constraintEnd_toStartOf="@+id/text_star_rate"
+                        app:layout_constraintHorizontal_chainStyle="packed"
+                        app:layout_constraintStart_toStartOf="@+id/text_cafe_name"
+                        app:layout_constraintTop_toTopOf="@+id/text_star_rate"
+                        app:srcCompat="@drawable/star_small" />
+
+                    <TextView
+                        android:id="@+id/text_star_rate"
+                        style="@style/Headline1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_marginTop="7dp"
+                        android:text="@{@string/float_0_1(viewModel.cafeDetailsEntity.starRate)}"
+                        android:textColor="@color/pointcolor_yellow"
+                        app:layout_constraintEnd_toEndOf="@+id/text_cafe_name"
+                        app:layout_constraintHorizontal_bias="0.5"
+                        app:layout_constraintStart_toEndOf="@+id/imageview_star"
+                        app:layout_constraintTop_toBottomOf="@+id/text_cafe_name"
+                        tools:text="4.5" />
+
+                    <TextView
+                        android:id="@+id/text_cafe_address"
+                        style="@style/Body3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="8dp"
+                        android:layout_marginEnd="16dp"
+                        android:text="@{viewModel.cafeDetailsEntity.address}"
+                        android:textColor="@color/gray_4"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_star_rate"
+                        tools:text="서울 마포구 마포대로11길 118 1층 (염리동)" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_cafe_tags"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="19dp"
+                        android:layout_marginEnd="16dp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/text_cafe_address" />
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:id="@+id/constraintLayout"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="20dp"
+                        android:layout_marginTop="25dp"
+                        android:layout_marginEnd="20dp"
+                        android:paddingTop="19dp"
+                        android:background="@drawable/round_rectangle_10dp"
+                        android:backgroundTint="@color/gray_1"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/recyclerview_cafe_tags">
+
+                        <ImageView
+                            android:id="@+id/imageview_insta_logo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="19dp"
+                            android:paddingBottom="15dp"
+                            android:visibility="@{viewModel.cafeDetailsEntity.instagramId.empty | viewModel.cafeDetailsEntity.instagramId == null ? View.GONE : View.VISIBLE }"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:srcCompat="@drawable/ic_icon_insta" />
+
+                        <TextView
+                            android:id="@+id/textview_instgram_id"
+                            style="@style/Body2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="19dp"
+                            android:paddingBottom="15dp"
+                            android:visibility="@{viewModel.cafeDetailsEntity.instagramId.empty | viewModel.cafeDetailsEntity.instagramId == null ? View.GONE : View.VISIBLE }"
+                            android:text="@{viewModel.cafeDetailsEntity.instagramId}"
+                            android:textColor="@color/gray_4"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageview_insta_logo"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageview_insta_logo"
+                            app:layout_constraintTop_toTopOf="@+id/imageview_insta_logo"
+                            tools:text="TextView" />
+
+                        <ImageView
+                            android:id="@+id/imageview_clock"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginStart="19dp"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="@+id/textview_operation_time"
+                            app:srcCompat="@drawable/ic_icon_clock" />
+
+                        <TextView
+                            android:id="@+id/textview_operation_time"
+                            style="@style/Body2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="19dp"
+                            android:lineSpacingExtra="2dp"
+                            android:layout_gravity="top"
+                            android:text="@{viewModel.cafeDetailsEntity.operationTime}"
+                            android:textColor="@color/gray_4"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageview_clock"
+                            app:layout_constraintTop_toBottomOf="@+id/textview_instgram_id"
+                            tools:text="평일 11:00~22:00 (일요일 휴무)\n공휴일 12:00~20:00" />
+
+                        <ImageView
+                            android:id="@+id/imageview_menu"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:layout_marginBottom="19dp"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="@+id/imageview_clock"
+                            app:layout_constraintTop_toBottomOf="@+id/textview_operation_time"
+                            app:srcCompat="@drawable/ic_icon_menu" />
+
+                        <TextView
+                            android:id="@+id/button_menus"
+                            style="@style/Body2"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="15dp"
+                            android:layout_marginEnd="19dp"
+                            android:text="@string/show_menu_details"
+                            android:textColor="@color/gray_4"
+                            android:gravity="center_vertical"
+                            app:layout_constraintBottom_toBottomOf="@+id/imageview_menu"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@+id/imageview_menu"
+                            app:layout_constraintTop_toTopOf="@+id/imageview_menu" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    <TextView
+                        android:id="@+id/textView_review"
+                        style="@style/Headline1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginTop="36dp"
+                        android:text="리뷰"
+                        android:textColor="@color/black"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/constraintLayout" />
+
+                    <Spinner
+                        android:id="@+id/spinner_review_filter"
+                        android:layout_width="100dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="17dp"
+                        android:layout_marginBottom="1dp"
+                        android:visibility="gone"
+                        app:layout_constraintBottom_toBottomOf="@+id/textView_review"
+                        app:layout_constraintStart_toEndOf="@+id/textView_review" />
+
+                    <TextView
+                        android:id="@+id/button_all_reviews"
+                        style="@style/Body3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:layout_marginEnd="16dp"
+                        android:drawableEnd="@drawable/icon_nextbtn"
+                        android:drawablePadding="2dp"
+                        android:gravity="center_vertical"
+                        android:text="전체보기"
+                        android:visibility="@{viewModel.cafeReviews.empty | viewModel.cafeReviews == null ? View.GONE : View.VISIBLE}"
+                        android:textColor="@color/gray_3"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="@+id/textView_review" />
+
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/recyclerview_review"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:overScrollMode="never"
+                        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_review"
+                        tools:itemCount="0"
+                        tools:listitem="@layout/item_cafe_review" />
+
+                    <TextView
+                        android:id="@+id/text_review_empty"
+                        style="@style/Body2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="88dp"
+                        android:gravity="center"
+                        android:lineSpacingExtra="2sp"
+                        android:text="아직 등록된 리뷰가 없어요.\n가장 먼저 리뷰를 작성해보세요."
+                        android:textColor="@color/gray_4"
+                        android:visibility="@{viewModel.cafeReviews.empty | viewModel.cafeReviews == null ? View.VISIBLE : View.GONE}"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@+id/textView_review" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+            </androidx.core.widget.NestedScrollView>
+
+        </androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/bottom_bar"
+            android:layout_width="0dp"
+            android:layout_height="91dp"
+            android:background="@color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent">
+
+
+            <include
+                android:id="@+id/layout_save_pin_button"
+                layout="@layout/layout_save_pin_stroke2dp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                app:layout_constraintEnd_toStartOf="@id/button_write_review"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:isSaved="@{viewModel.cafeDetailsEntity.isSaved}"/>
+
+            <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/button_write_review"
+                style="@style/Subhead"
+                android:layout_width="wrap_content"
+                android:layout_height="0dp"
+                android:layout_marginStart="17dp"
+                android:layout_marginEnd="20dp"
+                android:theme="@null"
+                android:background="@drawable/shape_maincolor_8dp"
+                android:textAlignment="center"
+                android:gravity="center"
+                android:includeFontPadding="false"
+                android:drawablePadding="10dp"
+                android:paddingHorizontal="50dp"
+                android:text="@{viewModel.isReviewWritten().empty | viewModel.isReviewWritten() == null ? `리뷰 작성하기` : `리뷰 수정하기` }"
+                android:textColor="@color/white"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/layout_save_pin_button"
+                app:layout_constraintTop_toTopOf="@id/layout_save_pin_button"
+                app:layout_constraintBottom_toBottomOf="@id/layout_save_pin_button"
+                android:drawableLeft="@drawable/ic_icon_pencil" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <include
+            android:id="@+id/window_loading"
+            layout="@layout/window_loading"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:isLoading="@{viewModel.isDetailsLoading()}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:visibility="gone" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

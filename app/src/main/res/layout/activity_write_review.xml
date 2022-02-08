@@ -1,0 +1,336 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="viewModel"
+            type="com.caffeine.capin.presentation.review.viewmodel.WriteReviewViewModel" />
+        <variable
+            name="view"
+            type="android.view.View" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <com.caffeine.capin.presentation.customview.CapinToolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:indeterminateTint="@color/subcolor_blue_1"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/scrollview"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:fillViewport="true"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/constraintlayout_pictures"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_picture"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="사진"
+                    android:theme="@style/Headline1"
+                    android:layout_marginTop="40dp"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@id/textview_notice_picture"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_notice_picture"
+                    android:theme="@style/Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/write_review_notice_picture"
+                    android:textColor="@color/gray_4"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@id/scrollview_picture"
+                    app:layout_constraintTop_toBottomOf="@id/textview_picture" />
+
+                <HorizontalScrollView
+                    android:id="@+id/scrollview_picture"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="15dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/linearlayout_checkbox"
+                    app:layout_constraintTop_toBottomOf="@id/textview_notice_picture">
+
+                    <androidx.constraintlayout.widget.ConstraintLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <include
+                            android:id="@+id/button_add_picture"
+                            layout="@layout/item_write_review_add_picture"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintTop_toTopOf="parent" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview_picture"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="5dp"
+                            android:orientation="horizontal"
+                            android:scrollbars="none"
+                            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                            app:layout_constraintBottom_toBottomOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintStart_toEndOf="@id/button_add_picture"
+                            app:layout_constraintTop_toTopOf="parent"
+                            tools:listitem="@layout/item_review_picture" />
+                    </androidx.constraintlayout.widget.ConstraintLayout>
+                </HorizontalScrollView>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_recommandation"
+                    android:theme="@style/Headline1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="40dp"
+                    android:text="맛과 분위기 추천"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    app:layout_constraintStart_toStartOf="@id/scrollview_picture"
+                    app:layout_constraintTop_toBottomOf="@id/scrollview_picture" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_notice_recommandation"
+                    android:theme="@style/Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="@string/write_review_notice_recommendation"
+                    android:textColor="@color/gray_4"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@id/linearlayout_checkbox"
+                    app:layout_constraintTop_toBottomOf="@id/textview_recommandation" />
+
+                <LinearLayout
+                    android:id="@+id/linearlayout_checkbox"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2"
+                    android:layout_marginTop="19dp"
+                    app:layout_constraintDimensionRatio="1:0.152"
+                    android:layout_marginHorizontal="16dp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/textview_notice_recommandation">
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkbox_taste"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selector_write_review_checkbox"
+                        android:button="@null"
+                        android:textAlignment="center"
+                        android:theme="@style/Body1"
+                        android:text="맛 추천"
+                        android:textSize="16dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/selector_write_review_checkbox_text" />
+
+                    <androidx.appcompat.widget.AppCompatCheckBox
+                        android:id="@+id/checkbox_feeling"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:background="@drawable/selector_write_review_checkbox"
+                        android:button="@null"
+                        android:textSize="16dp"
+                        android:theme="@style/Body1"
+                        android:textAlignment="center"
+                        android:text="분위기 추천"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:textColor="@color/selector_write_review_checkbox_text" />
+                </LinearLayout>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="리뷰"
+                    android:theme="@style/Headline1"
+                    android:textColor="@color/black"
+                    android:textSize="20dp"
+                    android:layout_marginTop="41dp"
+                    app:layout_constraintTop_toBottomOf="@id/linearlayout_checkbox"
+                    app:layout_constraintStart_toStartOf="@id/linearlayout_checkbox"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_star_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/maincolor_1"
+                    android:textSize="16dp"
+                    style="@style/Body1"
+                    app:layout_constraintTop_toTopOf="@id/textview_review"
+                    app:layout_constraintStart_toEndOf="@id/textview_review"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_notice_write_review"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/write_review_notice_write"
+                    android:layout_marginTop="8dp"
+                    android:textColor="@color/gray_4"
+                    android:theme="@style/Body2"
+                    android:textSize="14dp"
+                    app:layout_constraintTop_toBottomOf="@id/textview_review"
+                    app:layout_constraintStart_toStartOf="@id/textview_review"/>
+                
+                
+                <androidx.appcompat.widget.AppCompatEditText
+                    android:id="@+id/edittext_write_review"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:layout_marginTop="20dp"
+                    android:paddingHorizontal="15dp"
+                    android:paddingVertical="15dp"
+                    android:text="@={viewModel.contentsOfReview}"
+                    android:gravity="top"
+                    android:maxLength="150"
+                    android:background="@drawable/background_write_review_edittext"
+                    app:layout_constraintDimensionRatio="1:0.485"
+                    app:layout_constraintTop_toBottomOf="@id/textview_notice_write_review"
+                    app:layout_constraintStart_toStartOf="@id/linearlayout_checkbox"
+                    app:layout_constraintEnd_toEndOf="@id/linearlayout_checkbox"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_textcount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="@color/gray_3"
+                    android:textSize="12dp"
+                    style="@style/Body3"
+                    android:text="@{@string/count_of_review_contents(viewModel.contentsOfReview.length())}"
+                    android:layout_marginBottom="11dp"
+                    android:layout_marginEnd="11dp"
+                    app:layout_constraintBottom_toBottomOf="@id/edittext_write_review"
+                    app:layout_constraintEnd_toEndOf="@id/edittext_write_review"
+                    tools:text="0/150"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="20dp"
+                    android:layout_marginTop="40dp"
+                    android:textColor="@color/black"
+                    android:theme="@style/Headline1"
+                    android:text="별점"
+                    app:layout_constraintTop_toBottomOf="@id/edittext_write_review"
+                    app:layout_constraintStart_toStartOf="@id/edittext_write_review"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_star_rating"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="*"
+                    android:textColor="@color/maincolor_1"
+                    android:textSize="16dp"
+                    style="@style/Body1"
+                    app:layout_constraintTop_toTopOf="@id/textview_rating"
+                    app:layout_constraintStart_toEndOf="@id/textview_rating"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_notice_rating"
+                    android:theme="@style/Body2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="@string/write_review_notice_rating"
+                    android:textColor="@color/gray_4"
+                    android:textSize="14dp"
+                    app:layout_constraintStart_toStartOf="@+id/textview_rating"
+                    app:layout_constraintTop_toBottomOf="@id/textview_star_rating" />
+
+                <RatingBar
+                    android:id="@+id/ratingbar_review"
+                    style="@style/CapinRatingBarStyle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="30dp"
+                    android:numStars="5"
+                    android:stepSize="0.5"
+                    android:rating="@={viewModel.rateOfReview}"
+                    app:layout_constraintStart_toStartOf="@id/textview_notice_rating"
+                    app:layout_constraintTop_toBottomOf="@id/textview_notice_rating" />
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_rating_input"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:theme="@style/Subhead"
+                    android:textSize="16dp"
+                    android:textColor="@color/black"
+                    android:text="@{@string/review_rating_format(viewModel.rateOfReview)}"
+                    app:layout_constraintTop_toTopOf="@id/ratingbar_review"
+                    app:layout_constraintBottom_toBottomOf="@id/ratingbar_review"
+                    app:layout_constraintEnd_toStartOf="@id/textview_rating_full"
+                    tools:text="5.0점"/>
+
+                <androidx.appcompat.widget.AppCompatTextView
+                    android:id="@+id/textview_rating_full"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="16dp"
+                    android:theme="@style/Subhead"
+                    android:textColor="@color/gray_3"
+                    android:text="/5.0점"
+                    app:layout_constraintTop_toTopOf="@id/ratingbar_review"
+                    app:layout_constraintBottom_toBottomOf="@id/ratingbar_review"
+                    app:layout_constraintEnd_toEndOf="@id/edittext_write_review"/>
+
+                <com.caffeine.capin.presentation.customview.CapinActiveInActiveButton
+                    android:id="@+id/button_post_review"
+                    android:layout_width="0dp"
+                    android:layout_height="0dp"
+                    android:text="리뷰 등록하기"
+                    android:foreground="?android:selectableItemBackground"
+                    android:layout_marginTop="30dp"
+                    android:layout_marginBottom="56dp"
+                    app:layout_constraintDimensionRatio="1:0.15"
+                    app:layout_constraintTop_toBottomOf="@id/ratingbar_review"
+                    app:layout_constraintStart_toStartOf="@id/edittext_write_review"
+                    app:layout_constraintEnd_toEndOf="@id/edittext_write_review"
+                    app:layout_constraintBottom_toBottomOf="parent"/>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

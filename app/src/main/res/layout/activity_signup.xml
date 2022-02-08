@@ -1,0 +1,269 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_signup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입"
+        style="@style/Headline1"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048"
+        app:layout_constraintWidth_percent="0.197" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_username"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:text="사용자 이름"
+        android:textColor="@color/maincolor_1"
+        android:textSize="16dp"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/textview_signup" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_email"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:inputType="text"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="이메일을 입력하세요."
+        style="@style/Body1"
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/textview_email_id_detail" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_name"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="사용할 이름을 입력하세요."
+        style="@style/Body1"
+        android:inputType="text"
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.505"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textview_username"
+        app:layout_constraintWidth_percent="0.772" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_pw"
+        style="@style/Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:inputType="textPassword"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="비밀번호를 입력하세요."
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/textview_password" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/edittext_pwagain"
+        style="@style/Body1"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@null"
+        android:inputType="textPassword"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="비밀번호를 한번 더 입력하세요"
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_pw"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pw_check" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_username_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="2~10자 이내의 한글, 영문, 숫자 사용가능"
+        style="@style/Body3"
+        android:textColor="@color/gray_4"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_name" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_email_id_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="이메일 아이디"
+        style="@style/Subhead"
+        android:textColor="@color/maincolor_1"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_name"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_name"
+        app:layout_constraintTop_toBottomOf="@+id/textview_username_detail" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_pw_detail"
+        style="@style/Body3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:text="비밀번호를 잊어버렸을 때 회원가입 시 입력한 이메일로\n임시 비밀번호를 보내드립니다."
+        android:textColor="@color/gray_4"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_email" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_password"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="비밀번호"
+        android:textColor="@color/maincolor_1"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_pw"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pw_detail" />
+
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_pw_check"
+        style="@style/Subhead"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="비밀번호 확인"
+        android:textColor="@color/maincolor_1"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="@+id/edittext_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edittext_pw"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_pw" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:gravity="center"
+        android:id="@+id/btn_signup"
+        style="@style/Body1"
+        android:layout_width="219dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="88dp"
+        android:layout_marginBottom="56dp"
+        android:background="@drawable/circle_image_view"
+        android:text="가입하기"
+        android:textSize="16dp"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_pwagain"
+        app:layout_constraintVertical_bias="0.769"
+        app:layout_constraintWidth_percent="0.608" />
+
+    <ImageView
+        android:id="@+id/imageview_tool"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_back_black"
+        app:layout_constraintVertical_bias="0.049"
+        app:layout_constraintHorizontal_bias="0.099"/>
+
+    <ImageView
+        android:id="@+id/username_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_name"
+        app:layout_constraintEnd_toEndOf="@id/edittext_name"
+        app:layout_constraintTop_toTopOf="@+id/edittext_name"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+    <ImageView
+        android:id="@+id/emailid_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/edittext_email"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_email"
+        app:layout_constraintTop_toTopOf="@+id/edittext_email"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+    <ImageView
+        android:id="@+id/pw_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_pw"
+        app:layout_constraintEnd_toEndOf="@id/edittext_pw"
+        app:layout_constraintTop_toTopOf="@+id/edittext_pw"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+    <ImageView
+        android:id="@+id/pwagain_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toBottomOf="@+id/edittext_pwagain"
+        app:layout_constraintEnd_toEndOf="@id/edittext_pwagain"
+        app:layout_constraintTop_toTopOf="@+id/edittext_pwagain"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+    <TextView
+        android:id="@+id/textView"
+        style="@style/Body3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:bufferType="spannable"
+        android:gravity="center"
+        android:text="가입완료 시 카핀의 서비스 이용약관과\n 개인정보처리방침에 동의한 것으로 간주합니다."
+        android:textColor="@color/black"
+        android:textSize="12dp"
+        app:layout_constraintBottom_toTopOf="@+id/btn_signup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edittext_pwagain" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

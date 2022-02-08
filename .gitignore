@@ -1,3 +1,4 @@
+.idea/
 *.iml
 .gradle
 /local.properties
@@ -68,8 +69,8 @@ captures/
 
 # Keystore files
 # Uncomment the following lines if you do not want to check your keystore files in.
-#*.jks
-#*.keystore
+*.jks
+*.keystore
 
 # External native build folder generated in Android Studio 2.2 and later
 .externalNativeBuild
@@ -102,4 +103,12 @@ lint/tmp/
 
 # Android Profiling
 *.hprof
+
+# SonarQube
+.sonar/
+.scannerwork/
+.sonarlint/
+.idea/sonarlint/
+.idea/sonarIssues.xml
+
 

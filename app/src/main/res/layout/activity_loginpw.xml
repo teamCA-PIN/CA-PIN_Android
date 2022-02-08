@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_find_password"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="비밀번호 찾기"
+        style="@style/Headline1"
+        android:textColor="@color/black"
+        android:textSize="20dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.048" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_notice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="회원가입 시에 사용한 이메일을 입력하시면\n인증번호를 전송해드립니다."
+        android:textColor="@color/gray_4"
+        android:textSize="16dp"
+        android:textAlignment="center"
+        style="@style/Subhead"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.186"/>
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_email_id"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="이메일 아이디"
+        android:textSize="16dp"
+        style="@style/Subhead"
+        android:layout_marginTop="74dp"
+        android:textColor="@color/maincolor_1"
+        app:layout_constraintStart_toStartOf="@id/textview_notice"
+        app:layout_constraintTop_toBottomOf="@id/textview_notice"/>
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/loginpw_edittext_email"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="yourname@example.com"
+        style="@style/Body1"
+        android:layerType="software"
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="15dp"
+        app:layout_constraintEnd_toEndOf="@+id/textview_notice"
+        app:layout_constraintHorizontal_bias="0.032"
+        app:layout_constraintStart_toStartOf="@+id/textview_notice"
+        app:layout_constraintTop_toBottomOf="@+id/textview_email_id" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_signup_detail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="회원가입시 사용한 이메일을 입력해주세요."
+        style="@style/Body3"
+        android:textColor="@color/gray_4"
+        android:textSize="12dp"
+        app:layout_constraintEnd_toEndOf="@+id/loginpw_edittext_email"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/loginpw_edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/loginpw_edittext_email" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:gravity="center"
+        android:id="@+id/btn_findpw"
+        android:layout_width="219dp"
+        android:layout_height="49dp"
+        android:background="@drawable/circle_image_view"
+        android:text="비밀번호 찾기"
+        android:textSize="16dp"
+        style="@style/Body1"
+        app:layout_constraintWidth_percent="0.608"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.868" />
+
+    <ImageView
+        android:id="@+id/imageview_back_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.099"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/icon_back_black"
+        app:layout_constraintVertical_bias="0.049"/>
+
+    <ImageView
+        android:id="@+id/loginpw_delete_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        app:layout_constraintEnd_toEndOf="@id/loginpw_edittext_email"
+        app:layout_constraintBottom_toBottomOf="@+id/loginpw_edittext_email"
+        app:layout_constraintTop_toTopOf="@+id/loginpw_edittext_email"
+        app:layout_constraintVertical_bias="0.0"
+        app:srcCompat="@drawable/icon_delete_1616" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

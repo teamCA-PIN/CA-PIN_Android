@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="cafetiViewModel"
+            type="com.caffeine.capin.presentation.cafeti.viewModel.CafetiViewModel" />
+        <import type="com.caffeine.capin.presentation.util.UiState"/>
+        <import type="android.view.View"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:android="http://schemas.android.com/apk/res/android"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_question_number"
+            style="@style/Headline1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@{@string/question_format(cafetiViewModel.questionNumber)}"
+            android:textColor="@color/gray_4"
+            android:textSize="20dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_bias="0.047"
+            app:layout_constraintWidth_percent="0.294"
+            tools:text="Question.01"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_cafeti"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_marginTop="16dp"
+            load_drawable="@{cafetiViewModel.currentQuestion.image}"
+            app:layout_constraintDimensionRatio="1:0.647"
+            app:layout_constraintTop_toBottomOf="@id/textview_question_number"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:background="@drawable/frame_136"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_question"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            style="@style/Headline1"
+            android:textColor="@color/black"
+            android:text="@{cafetiViewModel.questionText}"
+            app:layout_constraintTop_toBottomOf="@id/imageview_cafeti"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/imageview_cafeti"
+            tools:text="Question String"/>
+
+        <androidx.appcompat.widget.AppCompatImageView
+            android:id="@+id/imageview_indicator"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:background="@drawable/property_1_cafeti_step_1"
+            app:layout_constraintTop_toBottomOf="@id/textview_question"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:background="@drawable/property_1_cafeti_step_1"/>
+
+        <RadioGroup
+            android:id="@+id/radiogroup_answer"
+            android:layout_width="0dp"
+            android:layout_marginHorizontal="16dp"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/imageview_cafeti"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/textview_button_before"/>
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_button_before"
+            style="@style/Subhead"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:background="@drawable/button_image_view"
+            android:text="이전"
+            android:gravity="center"
+            android:textColor="@color/gray_4"
+            android:textSize="16dp"
+            android:layout_marginBottom="56dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@+id/textview_button_next"
+            app:layout_constraintStart_toStartOf="@+id/radiogroup_answer" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/textview_button_next"
+            style="@style/Subhead"
+            android:layout_width="0dp"
+            android:layout_height="48dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/button_image_view2"
+            android:gravity="center"
+            android:text="다음"
+            android:textColor="@color/white"
+            android:textSize="16dp"
+            app:layout_constraintBottom_toBottomOf="@+id/textview_button_before"
+            app:layout_constraintEnd_toEndOf="@id/radiogroup_answer"
+            app:layout_constraintStart_toEndOf="@+id/textview_button_before"
+            app:layout_constraintTop_toTopOf="@+id/textview_button_before" />
+
+        <ProgressBar
+            android:id="@+id/progressbar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:visibility="gone"
+            android:indeterminateTint="@color/subcolor_blue_1"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/login_edittext_pw"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="yourpassword"
+        android:inputType="textPassword"
+        style="@style/Body1"
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="@+id/textview_pw"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textview_pw"
+        app:layout_constraintTop_toBottomOf="@+id/textview_pw" />
+
+    <androidx.appcompat.widget.AppCompatImageView
+        android:id="@+id/imageview_capin"
+        android:layout_width="100dp"
+        android:layout_height="135dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.155"
+        app:layout_constraintWidth_percent="0.227"
+        app:srcCompat="@drawable/capinlogo" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/tv_emailid"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="이메일 아이디"
+        style="@style/Subhead"
+        android:textColor="@color/maincolor_1"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/login_edittext_email"
+        app:layout_constraintTop_toBottomOf="@+id/imageview_capin"
+        app:layout_constraintWidth_percent="0.244" />
+
+    <androidx.appcompat.widget.AppCompatEditText
+        android:id="@+id/login_edittext_email"
+        android:layout_width="278dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:background="@null"
+        android:foreground="@drawable/login_edittext_border"
+        android:hint="yourname@example.com"
+        android:inputType="text"
+        style="@style/Body1"
+        android:paddingVertical="6dp"
+        android:textColorHint="@color/gray_3"
+        android:textSize="16dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tv_emailid"
+        app:layout_constraintWidth_percent="0.777" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/login_textview_findpw"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:paddingVertical="5dp"
+        android:text="비밀번호 찾기"
+        android:textColor="@color/gray_4"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.367"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_login"
+        app:layout_constraintWidth_percent="0.238" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/login_textview_signup"
+        style="@style/Body2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="140dp"
+        android:paddingVertical="5dp"
+        android:text="회원가입"
+        android:textColor="@color/gray_4"
+        android:textSize="14dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/login_textview_findpw"
+        app:layout_constraintTop_toTopOf="@+id/login_textview_findpw" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:gravity="center"
+        android:id="@+id/btn_login"
+        android:layout_width="219dp"
+        android:layout_height="49dp"
+        android:layout_marginTop="42dp"
+        android:background="@drawable/circle_image_view"
+        android:text="로그인"
+        android:textSize="16dp"
+        style="@style/Body1"
+        android:textColor="@color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/login_edittext_pw"
+        app:layout_constraintWidth_percent="0.608" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/textview_pw"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="34dp"
+        android:text="비밀번호"
+        android:textSize="16dp"
+        style="@style/Subhead"
+        android:textColor="@color/maincolor_1"
+        app:layout_constraintEnd_toEndOf="@+id/tv_emailid"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_emailid"
+        app:layout_constraintTop_toBottomOf="@+id/login_edittext_email" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

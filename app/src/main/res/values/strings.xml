@@ -1,3 +1,97 @@
 <resources>
     <string name="app_name">Capin</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="terms_and_policy">약관 및 정책</string>
+    <string name="logout">로그아웃</string>
+    <string name="copyright">Copyright 2021. capin. All rights reserved.</string>
+    <string name="mypage_hello">안녕하세요!</string>
+    <string name="mypage_dear">님</string>
+    <string name="mypage_profile_edit">프로필 편집</string>
+
+    <string name="mypage_category_add">새 카테고리</string>
+    <string name="if_basic_category">원하는 장소에 핀하면\n카테고리 별로 모아볼 수 있어요</string>
+    <string name="tagfilter_find_cafe">어떤 카페를 찾고 계신가요?</string>
+    <string name="select_tag_filter">원하시는 카페 태그를 선택해주세요.</string>
+    <string name="tagfilter_button">%d 건의 검색결과 보기</string>
+    <string name="tagfilter_button_no_result">- 건의 검색결과 보기</string>
+    <string name="show_menu_details"><u>메뉴 상세보기</u></string>
+    <string name="float_0_1">%.1f</string>
+    <string name="plus_n">+%d</string>
+    <string name="write_review_notice_picture">방문한 카페와 관련된 사진을 공유해주세요.</string>
+    <string name="write_review_notice_recommendation">나와 취향이 비슷한 사람들에게 이곳을 추천하시겠어요?</string>
+    <string name="write_review_notice_write">방문한 카페와 메뉴에 대해 리뷰를 작성해주세요.</string>
+    <string name="write_review_notice_rating">방문한 카페의 별점은 몇점인가요?</string>
+    <string name="profile_edit">프로필 편집</string>
+    <string name="cafeti">카페TI 검사</string>
+    <string name="edit_name">이름 변경하기</string>
+    <string name="profile_edit_description">공백없이 2-10자 이내로 한글,영문,숫자만 입력 가능합니다.</string>
+    <string name="profile_edit_complete">완료</string>
+
+    <string name="recommend_flavor">맛 추천</string>
+    <string name="recommend_mood">분위기 추천</string>
+    <string name="category_edit_name">이름</string>
+    <string name="new_category_name">새 카테고리 이름</string>
+    <string name="done">완료</string>
+    <string name="review_rating_format">%.1f점</string>
+    <string name="count_of_review_contents">%d/150</string>
+    <string name="pin_detail_basic">이 카테고리에 핀 해둔 카페가 없습니다.</string>
+    <string name="error_cafe_name">카페정보없음</string>
+    <string name="exit_page_tagfilter">페이지를 나가시겠습니까?</string>
+    <string name="exit_page_content_tagfilter">검색결과 보기를 눌러\n원하시는 검색 결과를 받아보세요.</string>
+    <string name="plan_members">김현아&#160;&#160;곽민제</string>
+    <string name="design_members">이혜빈&#160;&#160;한유진&#160;&#160;김나원</string>
+    <string name="ios_members">노한솔&#160;&#160;장서현&#160;&#160;김지수</string>
+    <string name="android_members">손평화&#160;&#160;조성림&#160;&#160;홍은결&#160;&#160;윤혁</string>
+    <string name="server_members">이예슬&#160;&#160;이원석</string>
+    <string name="save_pin">핀저장</string>
+    <string name="already_saved">저장됨</string>
+    <string name="entire_review_count_format">총 %d개의 리뷰</string>
+
+    <string name="withdraw_notice">회원탈퇴 시 현재 회원님의 계정에 저장된\n모든 정보는 영구적으로 삭제되며,\n다시 복구할 수 없습니다.</string>
+
+    <string name="service_using_terms_url">https://beryl-balloon-2b5.notion.site/21f17ec3a90a44779ee1ab7dae8c1110</string>
+    <string name="personal_info_terms_url">https://beryl-balloon-2b5.notion.site/b977d86415c54446bb8fdb42fd7bed48</string>
+    <string name="approve_withdraw">위 내용을 숙지하였으며, 동의합니다.</string>
+
+    <string name="question_format">Question.0%d</string>
+    <string name="question_drink_type">주로 마시는 음료는 무엇인가요?</string>
+    <string name="question_coffee_taste">어떤 맛을 선호하시나요?</string>
+    <string name="question_noncoffe_menu">주로 마시는 메뉴는 무엇인가요?</string>
+    <string name="question_cafe_style">어떤 스타일의 카페를 선호하시나요?</string>
+    <string name="question_cafe_mood">어떤 색감의 카페를 선호하시나요?</string>
+
+    <string-array name="drink_type_answers">
+        <item>커피</item>
+        <item>논커피</item>
+    </string-array>
+
+    <string-array name="coffee_taste_answers">
+        <item>산미가 있는</item>
+        <item>산미가 없는</item>
+        <item>상관없음</item>
+    </string-array>
+
+    <string-array name="non_coffee_menu_answers">
+        <item>티</item>
+        <item>라떼</item>
+        <item>쥬스,에이드,스무디</item>
+    </string-array>
+
+    <string-array name="cafe_style_answers">
+        <item>모던</item>
+        <item>빈티지</item>
+        <item>힙</item>
+        <item>특색 있는</item>
+        <item>아기자기한</item>
+    </string-array>
+
+    <string-array name="cafe_mood_answers">
+        <item>어두운</item>
+        <item>채광이 좋은</item>
+        <item>따뜻한</item>
+        <item>컬러풀한</item>
+    </string-array>
 </resources>
+
+
