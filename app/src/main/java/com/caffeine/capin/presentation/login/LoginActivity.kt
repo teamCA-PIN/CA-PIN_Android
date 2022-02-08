@@ -10,7 +10,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
 import com.caffeine.capin.presentation.main.MainActivity
 import com.caffeine.capin.R
-import com.caffeine.capin.presentation.cafeti.CafetiActivity
+import com.caffeine.capin.presentation.cafeti.ui.CafetiActivity
 import com.caffeine.capin.presentation.customview.CapinToastMessage.createCapinRejectToast
 import com.caffeine.capin.presentation.customview.CapinToastMessage.createCapinToast
 import com.caffeine.capin.databinding.ActivityLoginBinding

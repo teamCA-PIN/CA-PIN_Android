@@ -5,87 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/question_cafeti"
-        style="@style/Headline1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="CAFETI 검사"
-        app:layout_constraintVertical_bias="0.0487"
-        android:textColor="@color/black"
-        android:textSize="20dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/question_user_cafeti"
-        style="@style/Display2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="당신의 카페 취향은?"
-        android:textColor="@color/black"
-        android:textSize="26dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+    <androidx.fragment.app.FragmentContainerView
+        android:id="@+id/nav_host_fragment_cafeti"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:name="androidx.navigation.fragment.NavHostFragment"
+        app:defaultNavHost="true"
+        app:navGraph="@navigation/nav_graph_cafeti"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.58" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/cafeti_test"
-        style="@style/Body1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="캐릭터로 알아보는 CAFETI\n카페이용유형 검사"
-        android:textAlignment="center"
-        android:textColor="@color/gray_3"
-        android:textSize="16dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.67" />
-
-    <androidx.appcompat.widget.AppCompatTextView
-        android:id="@+id/btn_cafetiteststart"
-        style="@style/BtnText"
-        android:layout_width="328dp"
-        android:layout_height="48dp"
-        android:background="@drawable/circle_image_view4"
-        android:text="시작하기"
-        android:textColor="@color/white"
-        android:textSize="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintWidth_percent="0.911"
-        app:layout_constraintVertical_bias="0.87"
-        android:gravity="center"/>
+        app:layout_constraintEnd_toEndOf="parent"/>
 
-    <ImageView
-        android:id="@+id/imageview_cafeti"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.20"
-        app:srcCompat="@drawable/frame_133" />
-
-    <ImageView
-        android:id="@+id/btnclose"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.8"
-        app:layout_constraintStart_toEndOf="@+id/question_cafeti"
-        app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_icon_close_black" />
 </androidx.constraintlayout.widget.ConstraintLayout>

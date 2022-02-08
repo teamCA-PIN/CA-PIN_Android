@@ -22,6 +22,7 @@
 
 # gson
 -keep class * extends com.google.gson.TypeAdapter
+-keepclassmembers enum * { *; }
 
 # firebase
 -keep class com.firebase.** { *; }
@@ -84,4 +85,3 @@
 
 # dto
 -keep class com.caffeine.capin.data.dto.** { *; }
-

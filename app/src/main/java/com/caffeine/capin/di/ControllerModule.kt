@@ -4,6 +4,8 @@ import com.caffeine.capin.data.controller.archive.ArchiveCafeController
 import com.caffeine.capin.data.controller.archive.ArchiveCafeControllerImpl
 import com.caffeine.capin.data.controller.archive.UnArchiveCafeController
 import com.caffeine.capin.data.controller.archive.UnArchiveControllerImpl
+import com.caffeine.capin.data.controller.cafeti.CafetiController
+import com.caffeine.capin.data.controller.cafeti.CafetiControllerImpl
 import com.caffeine.capin.data.controller.review.*
 import com.caffeine.capin.data.network.CapinApiService
 import com.caffeine.capin.data.network.TokenController
@@ -48,4 +50,9 @@ object ControllerModule {
     @Singleton
     fun provideUnArchiveCafeController(capinApiService: CapinApiService): UnArchiveCafeController =
         UnArchiveControllerImpl(capinApiService)
+
+    @Provides
+    @Singleton
+    fun provideCafetiController(capinApiService: CapinApiService): CafetiController =
+        CafetiControllerImpl(capinApiService)
 }

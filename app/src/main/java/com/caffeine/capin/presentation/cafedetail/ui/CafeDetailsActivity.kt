@@ -2,6 +2,7 @@ package com.caffeine.capin.presentation.cafedetail.ui
 
 import android.content.Intent
 import android.os.Bundle
+import android.widget.TextView
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
@@ -48,6 +49,7 @@ class CafeDetailsActivity: AppCompatActivity() {
         copyInstagramId()
         checkIsReviewWritten()
         showResultToast()
+        copyAddress()
 
         binding.buttonMenus.setOnClickListener { deployMenusActivity() }
         binding.imageviewBack.setOnClickListener { finish() }
@@ -210,7 +212,19 @@ class CafeDetailsActivity: AppCompatActivity() {
                 this@CafeDetailsActivity.copyToClipBoard(text.toString())
                 CustomToastBuilder(this@CafeDetailsActivity, "아이디가 복사되었습니다.", binding.constraintlayoutRoot)
                     .setBackgroundDrawable(R.drawable.background_capin_toast)
-                    .setIcon(R.drawable.ic_checkbox_active_toast)
+                    .setYLocation(0.87)
+                    .build()
+            }
+        }
+    }
+
+    private fun copyAddress() {
+        binding.textCafeAddress.run {
+            setOnClickListener {
+                this@CafeDetailsActivity.copyToClipBoard(text.toString())
+                CustomToastBuilder(this@CafeDetailsActivity, "주소가 복사되었습니다.", binding.constraintlayoutRoot)
+                    .setBackgroundDrawable(R.drawable.background_capin_toast)
+                    .setYLocation(0.87)
                     .build()
             }
         }

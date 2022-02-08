@@ -15,7 +15,7 @@ plugins {
 }
 
 val properties = Properties()
-properties.load(FileInputStream(rootProject.file("./local.properties")))
+properties.load(FileInputStream(rootProject.file("local.properties")))
 
 android {
     defaultConfig {
@@ -43,7 +43,6 @@ android {
 
     buildTypes {
         getByName("release") {
-            isDebuggable = true
             signingConfig = signingConfigs.getByName("release")
             isMinifyEnabled = true
             isShrinkResources = true
@@ -111,14 +110,14 @@ android {
         kapt(Dependencies.HILT_COMPILER)
 
         implementation(Dependencies.NAVER_MAP)
-
         implementation(Dependencies.CRYPTO)
+
+        implementation(Dependencies.SHIMMER)
+        implementation(Dependencies.GMS_LOCATION)
+        implementation(Dependencies.FLEX_BOX)
 
         testImplementation(TestDependencies.JUNIT)
         androidTestImplementation(TestDependencies.EXT)
         androidTestImplementation(TestDependencies.ESPRESSO)
-        implementation("com.facebook.shimmer:shimmer:0.5.0")
-        implementation("com.google.android.gms:play-services-location:16.0.0")
-        implementation("com.google.android.flexbox:flexbox:3.0.0")
     }
 }

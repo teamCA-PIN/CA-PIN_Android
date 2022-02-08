@@ -11,8 +11,6 @@ object BuildDependencyVersions {
     const val VIEW_PAGER = "1.0.0"
     const val RECYCLER_VIEW = "1.2.0"
 
-
-
     const val FRAGMENT_KTX = "1.3.4"
 
     const val NAVIGATION = "2.3.5"
@@ -35,6 +33,11 @@ object BuildDependencyVersions {
     const val NAVER_MAP = "3.12.0"
 
     const val CRYPTO =  "1.0.0"
+
+    const val SHIMMER="0.5.0"
+    const val GMS_LOCATION = "16.0.0"
+    const val FLEX_BOX = "3.0.0"
+
 
     //Test
     const val JUNIT = "4.13.2"

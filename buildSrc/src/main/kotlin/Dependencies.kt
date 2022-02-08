@@ -8,7 +8,6 @@ object Dependencies {
     const val RECYCLER_VIEW = "androidx.recyclerview:recyclerview:${BuildDependencyVersions.RECYCLER_VIEW}"
     const val VIEW_PAGER = "androidx.viewpager2:viewpager2:${BuildDependencyVersions.VIEW_PAGER}"
 
-
     //Fragment-ktx
     const val FRAGMENT_KTX = "androidx.fragment:fragment-ktx:${BuildDependencyVersions.FRAGMENT_KTX}"
 
@@ -55,4 +54,9 @@ object Dependencies {
     const val GLIDE_COMPILER = "com.github.bumptech.glide:compiler:${BuildDependencyVersions.GLIDE}"
     const val HILT_COMPILER = "com.google.dagger:hilt-android-compiler:${BuildDependencyVersions.HILT}"
     const val LIFECYCLE_COMPILER = "androidx.lifecycle:lifecycle-compiler:${BuildDependencyVersions.LIFECYCLE}"
+
+    //FaceBook
+    const val SHIMMER = "com.facebook.shimmer:shimmer:${BuildDependencyVersions.SHIMMER}"
+    const val GMS_LOCATION = "com.google.android.gms:play-services-location:${BuildDependencyVersions.GMS_LOCATION}"
+    const val FLEX_BOX = "com.google.android.flexbox:flexbox:${BuildDependencyVersions.FLEX_BOX}"
 }

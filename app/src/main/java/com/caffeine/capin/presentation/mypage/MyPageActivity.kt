@@ -2,16 +2,16 @@ package com.caffeine.capin.presentation.mypage
 
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import androidx.activity.OnBackPressedCallback
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.content.ContextCompat
 import androidx.viewpager2.widget.ViewPager2
 import com.bumptech.glide.Glide
 import com.caffeine.capin.presentation.main.MainActivity
 import com.caffeine.capin.R
-import com.caffeine.capin.presentation.cafeti.CafetiActivity
+import com.caffeine.capin.presentation.cafeti.ui.CafetiActivity
 import com.caffeine.capin.databinding.ActivityMyPageBinding
 import com.caffeine.capin.databinding.MyPageTabIconBinding
 import com.caffeine.capin.data.dto.mypage.ResponseMyData
@@ -72,11 +72,19 @@ class MyPageActivity : AppCompatActivity() {
                 response: Response<ResponseMyData>
             ) {
                 if (response.isSuccessful) {
-                    binding.mypageUsernameTv.setText(response.body()?.myInfo?.nickname as String)
-                    binding.mypageCafetiTv.setText(response.body()?.myInfo?.cafeti?.type as String)
-                    Glide.with(binding.mypageProfileIv.context)
-                        .load(response.body()?.myInfo?.profileImg)
-                        .into(binding.mypageProfileIv)
+                    response.body()?.myInfo?.let {
+                        binding.mypageUsernameTv.text = it.nickname
+                        binding.mypageCafetiTv.text = it.cafeti.type
+                        binding.mypageProfileIv.run {
+                            if (it.profileImg.isNullOrEmpty()) {
+                                setBackgroundColor(ContextCompat.getColor(this@MyPageActivity, R.color.gray_3))
+                            } else {
+                                Glide.with(this.context)
+                                    .load(response.body()?.myInfo?.profileImg)
+                                    .into(this)
+                            }
+                        }
+                    }
                 }
             }
         })
@@ -85,6 +93,7 @@ class MyPageActivity : AppCompatActivity() {
     private fun setButtonClickEvent() {
         binding.mypageCafetiBtnTv.setOnClickListener {
             val intent = Intent(this, CafetiActivity::class.java)
+            intent.putExtra(FROM_MYPAGE, true)
             startActivity(intent)
         }
 
@@ -121,5 +130,9 @@ class MyPageActivity : AppCompatActivity() {
         TabLayoutMediator(binding.mypageTabLayout, viewPager) { tab, position ->
             tab.customView = getTabView(position)
         }.attach()
+    }
+
+    companion object {
+        const val FROM_MYPAGE = "FROM_MYPAGE"
     }
 }
