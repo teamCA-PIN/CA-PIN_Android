@@ -50,8 +50,8 @@
 
     <string name="withdraw_notice">회원탈퇴 시 현재 회원님의 계정에 저장된\n모든 정보는 영구적으로 삭제되며,\n다시 복구할 수 없습니다.</string>
 
-    <string name="service_using_terms_url">https://beryl-balloon-2b5.notion.site/21f17ec3a90a44779ee1ab7dae8c1110</string>
-    <string name="personal_info_terms_url">https://beryl-balloon-2b5.notion.site/b977d86415c54446bb8fdb42fd7bed48</string>
+    <string name="service_using_terms_url">https://reckontwice.notion.site/21f17ec3a90a44779ee1ab7dae8c1110</string>
+    <string name="personal_info_terms_url">https://reckontwice.notion.site/b977d86415c54446bb8fdb42fd7bed48</string>
     <string name="approve_withdraw">위 내용을 숙지하였으며, 동의합니다.</string>
 
     <string name="question_format">Question.0%d</string>
